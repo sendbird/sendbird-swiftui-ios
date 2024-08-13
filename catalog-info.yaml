@@ -1,0 +1,12 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: sendbird-swiftui-ios
+  description: This is a repository for SendbirdSwiftUI SPM
+  annotations:
+    github.com/project-slug: sendbird/sendbird-swiftui-ios
+spec:
+  type: library
+  lifecycle: production
+  owner: dep-client-platform
+  system: sendbird-uikit
