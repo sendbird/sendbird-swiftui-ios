@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
 	"Kai" => "kai.lee@sendbird.com"
   	}
 	s.platform = :ios, "15.0"
-	s.source = { :git => "https://github.com/sendbird/sendbird-swiftui-ios/releases/download/#{s.version}/SendbirdSwiftUI.zip", :sha1 => "ac0e1e7741d69b4e1f0ffc6cb0bf76d6f6de0923"  }
+	s.source = { :http => "https://github.com/sendbird/sendbird-swiftui-ios/releases/download/#{s.version}/SendbirdSwiftUI.zip", :sha1 => "ac0e1e7741d69b4e1f0ffc6cb0bf76d6f6de0923"  }
 	s.ios.vendored_frameworks = 'Framework/SendbirdSwiftUI.xcframework'
 	s.ios.frameworks = ["UIKit", "SwiftUI", "Foundation", "CoreData", "SendbirdChatSDK"]
 	s.requires_arc = true
