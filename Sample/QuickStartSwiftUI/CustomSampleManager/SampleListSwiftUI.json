@@ -1,0 +1,1845 @@
+{
+    "keyFunctions": [
+        {
+            "name": "Theme",
+            "viewItems": [
+                {
+                    "viewTitle": "Main",
+                    "viewType": "[Custom]",
+                    "viewDesc": "ColorSet",
+                    "viewFullPath": "CustomTheme.ColorSet.Custom.Main"
+                },
+                {
+                    "viewTitle": "Main",
+                    "viewType": "[Custom]",
+                    "viewDesc": "FontSet",
+                    "viewFullPath": "CustomTheme.FontSet.Custom.Main"
+                },
+                {
+                    "viewTitle": "Main",
+                    "viewType": "[Custom]",
+                    "viewDesc": "IconSet",
+                    "viewFullPath": "CustomTheme.IconSet.Custom.Main"
+                },
+                {
+                    "viewTitle": "Main",
+                    "viewType": "[Custom]",
+                    "viewDesc": "Theme",
+                    "viewFullPath": "CustomTheme.Theme.Custom.Main"
+                }
+            ]
+        },
+        {
+            "name": "GroupChannelList",
+            "viewItems": [
+                {
+                    "viewTitle": "Main",
+                    "viewType": "[View]",
+                    "viewDesc": "SwiftUI",
+                    "viewFullPath": "CustomGroupChannelList.SwiftUI.View.Main"
+                },
+                {
+                    "viewTitle": "CustomMain",
+                    "viewType": "[View]",
+                    "viewDesc": "SwiftUI",
+                    "viewFullPath": "CustomGroupChannelList.SwiftUI.View.CustomMain"
+                },
+                {
+                    "viewTitle": "groupChannel",
+                    "viewType": "[Builder]",
+                    "viewDesc": "SubView",
+                    "viewFullPath": "CustomGroupChannelList.SubView.Builder.groupChannel"
+                },
+                {
+                    "viewTitle": "createChannel",
+                    "viewType": "[Builder]",
+                    "viewDesc": "SubView",
+                    "viewFullPath": "CustomGroupChannelList.SubView.Builder.createChannel"
+                },
+                {
+                    "viewTitle": "leftView",
+                    "viewType": "[Header]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomGroupChannelList.ViewConverter.Header.leftView"
+                },
+                {
+                    "viewTitle": "rightView",
+                    "viewType": "[Header]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomGroupChannelList.ViewConverter.Header.rightView"
+                },
+                {
+                    "viewTitle": "titleView",
+                    "viewType": "[Header]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomGroupChannelList.ViewConverter.Header.titleView"
+                },
+                {
+                    "viewTitle": "entireView",
+                    "viewType": "[List]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomGroupChannelList.ViewConverter.List.entireView"
+                },
+                {
+                    "viewTitle": "rowView",
+                    "viewType": "[List]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomGroupChannelList.ViewConverter.List.rowView"
+                },
+                {
+                    "viewTitle": "coverImage",
+                    "viewType": "[List]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomGroupChannelList.ViewConverter.List.coverImage"
+                },
+                {
+                    "viewTitle": "channelName",
+                    "viewType": "[List]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomGroupChannelList.ViewConverter.List.channelName"
+                },
+                {
+                    "viewTitle": "channelPreview",
+                    "viewType": "[List]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomGroupChannelList.ViewConverter.List.channelPreview"
+                },
+                {
+                    "viewTitle": "unreadCount",
+                    "viewType": "[List]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomGroupChannelList.ViewConverter.List.unreadCount"
+                }
+            ]
+        },
+        {
+            "name": "OpenChannelList",
+            "viewItems": [
+                {
+                    "viewTitle": "Main",
+                    "viewType": "[View]",
+                    "viewDesc": "SwiftUI",
+                    "viewFullPath": "CustomOpenChannelList.SwiftUI.View.Main"
+                },
+                {
+                    "viewTitle": "CustomMain",
+                    "viewType": "[View]",
+                    "viewDesc": "SwiftUI",
+                    "viewFullPath": "CustomOpenChannelList.SwiftUI.View.CustomMain"
+                },
+                {
+                    "viewTitle": "openChannel",
+                    "viewType": "[Builder]",
+                    "viewDesc": "SubView",
+                    "viewFullPath": "CustomOpenChannelList.SubView.Builder.openChannel"
+                },
+                {
+                    "viewTitle": "createChannel",
+                    "viewType": "[Builder]",
+                    "viewDesc": "SubView",
+                    "viewFullPath": "CustomOpenChannelList.SubView.Builder.createChannel"
+                },
+                {
+                    "viewTitle": "leftView",
+                    "viewType": "[Header]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomOpenChannelList.ViewConverter.Header.leftView"
+                },
+                {
+                    "viewTitle": "rightView",
+                    "viewType": "[Header]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomOpenChannelList.ViewConverter.Header.rightView"
+                },
+                {
+                    "viewTitle": "titleView",
+                    "viewType": "[Header]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomOpenChannelList.ViewConverter.Header.titleView"
+                },
+                {
+                    "viewTitle": "entireView",
+                    "viewType": "[List]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomOpenChannelList.ViewConverter.List.entireView"
+                },
+                {
+                    "viewTitle": "rowView",
+                    "viewType": "[List]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomOpenChannelList.ViewConverter.List.rowView"
+                },
+                {
+                    "viewTitle": "coverImage",
+                    "viewType": "[List]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomOpenChannelList.ViewConverter.List.coverImage"
+                },
+                {
+                    "viewTitle": "channelName",
+                    "viewType": "[List]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomOpenChannelList.ViewConverter.List.channelName"
+                },
+                {
+                    "viewTitle": "channelPreview",
+                    "viewType": "[List]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomOpenChannelList.ViewConverter.List.channelPreview"
+                }
+            ]
+        },
+        {
+            "name": "GroupChannel",
+            "viewItems": [
+                {
+                    "viewTitle": "Main",
+                    "viewType": "[View]",
+                    "viewDesc": "SwiftUI",
+                    "viewFullPath": "CustomGroupChannel.SwiftUI.View.Main"
+                },
+                {
+                    "viewTitle": "CustomMain",
+                    "viewType": "[View]",
+                    "viewDesc": "SwiftUI",
+                    "viewFullPath": "CustomGroupChannel.SwiftUI.View.CustomMain"
+                },
+                {
+                    "viewTitle": "channelSettings",
+                    "viewType": "[Builder]",
+                    "viewDesc": "SubView",
+                    "viewFullPath": "CustomGroupChannel.SubView.Builder.channelSettings"
+                },
+                {
+                    "viewTitle": "messageThread",
+                    "viewType": "[Builder]",
+                    "viewDesc": "SubView",
+                    "viewFullPath": "CustomGroupChannel.SubView.Builder.messageThread"
+                },
+                {
+                    "viewTitle": "leftView",
+                    "viewType": "[Header]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomGroupChannel.ViewConverter.Header.leftView"
+                },
+                {
+                    "viewTitle": "rightView",
+                    "viewType": "[Header]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomGroupChannel.ViewConverter.Header.rightView"
+                },
+                {
+                    "viewTitle": "titleView",
+                    "viewType": "[Header]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomGroupChannel.ViewConverter.Header.titleView"
+                },
+                {
+                    "viewTitle": "coverImage",
+                    "viewType": "[Header]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomGroupChannel.ViewConverter.Header.coverImage"
+                },
+                {
+                    "viewTitle": "titleLabel",
+                    "viewType": "[Header]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomGroupChannel.ViewConverter.Header.titleLabel"
+                },
+                {
+                    "viewTitle": "typingStatusView",
+                    "viewType": "[Header]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomGroupChannel.ViewConverter.Header.typingStatusView"
+                },
+                {
+                    "viewTitle": "entireView",
+                    "viewType": "[List]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomGroupChannel.ViewConverter.List.entireView"
+                },
+                {
+                    "viewTitle": "rowView",
+                    "viewType": "[List]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomGroupChannel.ViewConverter.List.rowView"
+                },
+                {
+                    "viewTitle": "senderProfileImage",
+                    "viewType": "[List]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomGroupChannel.ViewConverter.List.senderProfileImage"
+                },
+                {
+                    "viewTitle": "userMessageView",
+                    "viewType": "[List]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomGroupChannel.ViewConverter.List.userMessageView"
+                },
+                {
+                    "viewTitle": "fileMessageView",
+                    "viewType": "[List]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomGroupChannel.ViewConverter.List.fileMessageView"
+                },
+                {
+                    "viewTitle": "multipleFilesMessageView",
+                    "viewType": "[List]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomGroupChannel.ViewConverter.List.multipleFilesMessageView"
+                },
+                {
+                    "viewTitle": "adminMessageView",
+                    "viewType": "[List]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomGroupChannel.ViewConverter.List.adminMessageView"
+                },
+                {
+                    "viewTitle": "typingIndicatorView",
+                    "viewType": "[List]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomGroupChannel.ViewConverter.List.typingIndicatorView"
+                },
+                {
+                    "viewTitle": "newMessageInfoView",
+                    "viewType": "[List]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomGroupChannel.ViewConverter.List.newMessageInfoView"
+                },
+                {
+                    "viewTitle": "scrollBottomView",
+                    "viewType": "[List]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomGroupChannel.ViewConverter.List.scrollBottomView"
+                },
+                {
+                    "viewTitle": "channelStateBanner",
+                    "viewType": "[List]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomGroupChannel.ViewConverter.List.channelStateBanner"
+                },
+                {
+                    "viewTitle": "entireView",
+                    "viewType": "[Input]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomGroupChannel.ViewConverter.Input.entireView"
+                },
+                {
+                    "viewTitle": "leftView",
+                    "viewType": "[Input]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomGroupChannel.ViewConverter.Input.leftView"
+                },
+                {
+                    "viewTitle": "addButton",
+                    "viewType": "[Input]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomGroupChannel.ViewConverter.Input.addButton"
+                },
+                {
+                    "viewTitle": "rightView",
+                    "viewType": "[Input]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomGroupChannel.ViewConverter.Input.rightView"
+                },
+                {
+                    "viewTitle": "sendButton",
+                    "viewType": "[Input]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomGroupChannel.ViewConverter.Input.sendButton"
+                },
+                {
+                    "viewTitle": "voiceButton",
+                    "viewType": "[Input]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomGroupChannel.ViewConverter.Input.voiceButton"
+                }
+            ]
+        },
+        {
+            "name": "OpenChannel",
+            "viewItems": [
+                {
+                    "viewTitle": "Main",
+                    "viewType": "[View]",
+                    "viewDesc": "SwiftUI",
+                    "viewFullPath": "CustomOpenChannel.SwiftUI.View.Main"
+                },
+                {
+                    "viewTitle": "CustomMain",
+                    "viewType": "[View]",
+                    "viewDesc": "SwiftUI",
+                    "viewFullPath": "CustomOpenChannel.SwiftUI.View.CustomMain"
+                },
+                {
+                    "viewTitle": "channelSettings",
+                    "viewType": "[Builder]",
+                    "viewDesc": "SubView",
+                    "viewFullPath": "CustomOpenChannel.SubView.Builder.channelSettings"
+                },
+                {
+                    "viewTitle": "participantList",
+                    "viewType": "[Builder]",
+                    "viewDesc": "SubView",
+                    "viewFullPath": "CustomOpenChannel.SubView.Builder.participantList"
+                },
+                {
+                    "viewTitle": "leftView",
+                    "viewType": "[Header]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomOpenChannel.ViewConverter.Header.leftView"
+                },
+                {
+                    "viewTitle": "rightView",
+                    "viewType": "[Header]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomOpenChannel.ViewConverter.Header.rightView"
+                },
+                {
+                    "viewTitle": "titleView",
+                    "viewType": "[Header]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomOpenChannel.ViewConverter.Header.titleView"
+                },
+                {
+                    "viewTitle": "coverImage",
+                    "viewType": "[Header]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomOpenChannel.ViewConverter.Header.coverImage"
+                },
+                {
+                    "viewTitle": "titleLabel",
+                    "viewType": "[Header]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomOpenChannel.ViewConverter.Header.titleLabel"
+                },
+                {
+                    "viewTitle": "subtitleLabel",
+                    "viewType": "[Header]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomOpenChannel.ViewConverter.Header.subtitleLabel"
+                },
+                {
+                    "viewTitle": "entireView",
+                    "viewType": "[List]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomOpenChannel.ViewConverter.List.entireView"
+                },
+                {
+                    "viewTitle": "rowView",
+                    "viewType": "[List]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomOpenChannel.ViewConverter.List.rowView"
+                },
+                {
+                    "viewTitle": "senderProfileImage",
+                    "viewType": "[List]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomOpenChannel.ViewConverter.List.senderProfileImage"
+                },
+                {
+                    "viewTitle": "userMessageView",
+                    "viewType": "[List]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomOpenChannel.ViewConverter.List.userMessageView"
+                },
+                {
+                    "viewTitle": "fileMessageView",
+                    "viewType": "[List]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomOpenChannel.ViewConverter.List.fileMessageView"
+                },
+                {
+                    "viewTitle": "adminMessageView",
+                    "viewType": "[List]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomOpenChannel.ViewConverter.List.adminMessageView"
+                },
+                {
+                    "viewTitle": "scrollBottomView",
+                    "viewType": "[List]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomOpenChannel.ViewConverter.List.scrollBottomView"
+                },
+                {
+                    "viewTitle": "entireView",
+                    "viewType": "[Media]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomOpenChannel.ViewConverter.Media.entireView"
+                },
+                {
+                    "viewTitle": "entireView",
+                    "viewType": "[Input]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomOpenChannel.ViewConverter.Input.entireView"
+                },
+                {
+                    "viewTitle": "leftView",
+                    "viewType": "[Input]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomOpenChannel.ViewConverter.Input.leftView"
+                },
+                {
+                    "viewTitle": "addButton",
+                    "viewType": "[Input]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomOpenChannel.ViewConverter.Input.addButton"
+                },
+                {
+                    "viewTitle": "rightView",
+                    "viewType": "[Input]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomOpenChannel.ViewConverter.Input.rightView"
+                },
+                {
+                    "viewTitle": "sendButton",
+                    "viewType": "[Input]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomOpenChannel.ViewConverter.Input.sendButton"
+                }
+            ]
+        },
+        {
+            "name": "CreateGroupChannel",
+            "viewItems": [
+                {
+                    "viewTitle": "Main",
+                    "viewType": "[View]",
+                    "viewDesc": "SwiftUI",
+                    "viewFullPath": "CustomCreateGroupChannel.SwiftUI.View.Main"
+                },
+                {
+                    "viewTitle": "CustomMain",
+                    "viewType": "[View]",
+                    "viewDesc": "SwiftUI",
+                    "viewFullPath": "CustomCreateGroupChannel.SwiftUI.View.CustomMain"
+                },
+                {
+                    "viewTitle": "leftView",
+                    "viewType": "[Header]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomCreateGroupChannel.ViewConverter.Header.leftView"
+                },
+                {
+                    "viewTitle": "rightView",
+                    "viewType": "[Header]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomCreateGroupChannel.ViewConverter.Header.rightView"
+                },
+                {
+                    "viewTitle": "titleView",
+                    "viewType": "[Header]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomCreateGroupChannel.ViewConverter.Header.titleView"
+                },
+                {
+                    "viewTitle": "entireView",
+                    "viewType": "[List]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomCreateGroupChannel.ViewConverter.List.entireView"
+                },
+                {
+                    "viewTitle": "rowView",
+                    "viewType": "[List]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomCreateGroupChannel.ViewConverter.List.rowView"
+                },
+                {
+                    "viewTitle": "profileImage",
+                    "viewType": "[List]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomCreateGroupChannel.ViewConverter.List.profileImage"
+                },
+                {
+                    "viewTitle": "userNameLabel",
+                    "viewType": "[List]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomCreateGroupChannel.ViewConverter.List.userNameLabel"
+                },
+                {
+                    "viewTitle": "selectionButton",
+                    "viewType": "[List]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomCreateGroupChannel.ViewConverter.List.selectionButton"
+                }
+            ]
+        },
+        {
+            "name": "CreateOpenChannel",
+            "viewItems": [
+                {
+                    "viewTitle": "Main",
+                    "viewType": "[View]",
+                    "viewDesc": "SwiftUI",
+                    "viewFullPath": "CustomCreateOpenChannel.SwiftUI.View.Main"
+                },
+                {
+                    "viewTitle": "CustomMain",
+                    "viewType": "[View]",
+                    "viewDesc": "SwiftUI",
+                    "viewFullPath": "CustomCreateOpenChannel.SwiftUI.View.CustomMain"
+                },
+                {
+                    "viewTitle": "leftView",
+                    "viewType": "[Header]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomCreateOpenChannel.ViewConverter.Header.leftView"
+                },
+                {
+                    "viewTitle": "rightView",
+                    "viewType": "[Header]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomCreateOpenChannel.ViewConverter.Header.rightView"
+                },
+                {
+                    "viewTitle": "titleView",
+                    "viewType": "[Header]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomCreateOpenChannel.ViewConverter.Header.titleView"
+                },
+                {
+                    "viewTitle": "entireView",
+                    "viewType": "[List]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomCreateOpenChannel.ViewConverter.List.entireView"
+                },
+                {
+                    "viewTitle": "rowView",
+                    "viewType": "[List]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomCreateOpenChannel.ViewConverter.List.rowView"
+                },
+                {
+                    "viewTitle": "profileImage",
+                    "viewType": "[List]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomCreateOpenChannel.ViewConverter.List.profileImage"
+                },
+                {
+                    "viewTitle": "userNameLabel",
+                    "viewType": "[List]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomCreateOpenChannel.ViewConverter.List.userNameLabel"
+                },
+                {
+                    "viewTitle": "selectionButton",
+                    "viewType": "[List]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomCreateOpenChannel.ViewConverter.List.selectionButton"
+                }
+            ]
+        },
+        {
+            "name": "InviteUser",
+            "viewItems": [
+                {
+                    "viewTitle": "Main",
+                    "viewType": "[View]",
+                    "viewDesc": "SwiftUI",
+                    "viewFullPath": "CustomInviteUser.SwiftUI.View.Main"
+                },
+                {
+                    "viewTitle": "CustomMain",
+                    "viewType": "[View]",
+                    "viewDesc": "SwiftUI",
+                    "viewFullPath": "CustomInviteUser.SwiftUI.View.CustomMain"
+                },
+                {
+                    "viewTitle": "leftView",
+                    "viewType": "[Header]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomInviteUser.ViewConverter.Header.leftView"
+                },
+                {
+                    "viewTitle": "rightView",
+                    "viewType": "[Header]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomInviteUser.ViewConverter.Header.rightView"
+                },
+                {
+                    "viewTitle": "titleView",
+                    "viewType": "[Header]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomInviteUser.ViewConverter.Header.titleView"
+                },
+                {
+                    "viewTitle": "entireView",
+                    "viewType": "[List]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomInviteUser.ViewConverter.List.entireView"
+                },
+                {
+                    "viewTitle": "rowView",
+                    "viewType": "[List]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomInviteUser.ViewConverter.List.rowView"
+                },
+                {
+                    "viewTitle": "profileImage",
+                    "viewType": "[List]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomInviteUser.ViewConverter.List.profileImage"
+                },
+                {
+                    "viewTitle": "userNameLabel",
+                    "viewType": "[List]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomInviteUser.ViewConverter.List.userNameLabel"
+                },
+                {
+                    "viewTitle": "selectionButton",
+                    "viewType": "[List]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomInviteUser.ViewConverter.List.selectionButton"
+                }
+            ]
+        },
+        {
+            "name": "GroupChannelRegisterOperator",
+            "viewItems": [
+                {
+                    "viewTitle": "Main",
+                    "viewType": "[View]",
+                    "viewDesc": "SwiftUI",
+                    "viewFullPath": "CustomGroupChannelRegisterOperator.SwiftUI.View.Main"
+                },
+                {
+                    "viewTitle": "CustomMain",
+                    "viewType": "[View]",
+                    "viewDesc": "SwiftUI",
+                    "viewFullPath": "CustomGroupChannelRegisterOperator.SwiftUI.View.CustomMain"
+                },
+                {
+                    "viewTitle": "leftView",
+                    "viewType": "[Header]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomGroupChannelRegisterOperator.ViewConverter.Header.leftView"
+                },
+                {
+                    "viewTitle": "rightView",
+                    "viewType": "[Header]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomGroupChannelRegisterOperator.ViewConverter.Header.rightView"
+                },
+                {
+                    "viewTitle": "titleView",
+                    "viewType": "[Header]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomGroupChannelRegisterOperator.ViewConverter.Header.titleView"
+                },
+                {
+                    "viewTitle": "entireView",
+                    "viewType": "[List]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomGroupChannelRegisterOperator.ViewConverter.List.entireView"
+                }
+            ]
+        },
+        {
+            "name": "OpenChannelRegisterOperator",
+            "viewItems": [
+                {
+                    "viewTitle": "Main",
+                    "viewType": "[View]",
+                    "viewDesc": "SwiftUI",
+                    "viewFullPath": "CustomOpenChannelRegisterOperator.SwiftUI.View.Main"
+                },
+                {
+                    "viewTitle": "CustomMain",
+                    "viewType": "[View]",
+                    "viewDesc": "SwiftUI",
+                    "viewFullPath": "CustomOpenChannelRegisterOperator.SwiftUI.View.CustomMain"
+                },
+                {
+                    "viewTitle": "leftView",
+                    "viewType": "[Header]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomOpenChannelRegisterOperator.ViewConverter.Header.leftView"
+                },
+                {
+                    "viewTitle": "rightView",
+                    "viewType": "[Header]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomOpenChannelRegisterOperator.ViewConverter.Header.rightView"
+                },
+                {
+                    "viewTitle": "titleView",
+                    "viewType": "[Header]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomOpenChannelRegisterOperator.ViewConverter.Header.titleView"
+                },
+                {
+                    "viewTitle": "entireView",
+                    "viewType": "[List]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomOpenChannelRegisterOperator.ViewConverter.List.entireView"
+                }
+            ]
+        },
+        {
+            "name": "GroupMemberList",
+            "viewItems": [
+                {
+                    "viewTitle": "Main",
+                    "viewType": "[View]",
+                    "viewDesc": "SwiftUI",
+                    "viewFullPath": "CustomGroupMemberList.SwiftUI.View.Main"
+                },
+                {
+                    "viewTitle": "CustomMain",
+                    "viewType": "[View]",
+                    "viewDesc": "SwiftUI",
+                    "viewFullPath": "CustomGroupMemberList.SwiftUI.View.CustomMain"
+                },
+                {
+                    "viewTitle": "inviteUser",
+                    "viewType": "[Builder]",
+                    "viewDesc": "SubView",
+                    "viewFullPath": "CustomGroupMemberList.SubView.Builder.inviteUser"
+                },
+                {
+                    "viewTitle": "leftView",
+                    "viewType": "[Header]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomGroupMemberList.ViewConverter.Header.leftView"
+                },
+                {
+                    "viewTitle": "rightView",
+                    "viewType": "[Header]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomGroupMemberList.ViewConverter.Header.rightView"
+                },
+                {
+                    "viewTitle": "titleView",
+                    "viewType": "[Header]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomGroupMemberList.ViewConverter.Header.titleView"
+                },
+                {
+                    "viewTitle": "entireView",
+                    "viewType": "[List]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomGroupMemberList.ViewConverter.List.entireView"
+                },
+                {
+                    "viewTitle": "rowView",
+                    "viewType": "[List]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomGroupMemberList.ViewConverter.List.rowView"
+                },
+                {
+                    "viewTitle": "profileImage",
+                    "viewType": "[List]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomGroupMemberList.ViewConverter.List.profileImage"
+                },
+                {
+                    "viewTitle": "userNameLabel",
+                    "viewType": "[List]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomGroupMemberList.ViewConverter.List.userNameLabel"
+                },
+                {
+                    "viewTitle": "operatorStateView",
+                    "viewType": "[List]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomGroupMemberList.ViewConverter.List.operatorStateView"
+                },
+                {
+                    "viewTitle": "moreButton",
+                    "viewType": "[List]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomGroupMemberList.ViewConverter.List.moreButton"
+                }
+            ]
+        },
+        {
+            "name": "OpenParticipantList",
+            "viewItems": [
+                {
+                    "viewTitle": "Main",
+                    "viewType": "[View]",
+                    "viewDesc": "SwiftUI",
+                    "viewFullPath": "CustomOpenParticipantList.SwiftUI.View.Main"
+                },
+                {
+                    "viewTitle": "CustomMain",
+                    "viewType": "[View]",
+                    "viewDesc": "SwiftUI",
+                    "viewFullPath": "CustomOpenParticipantList.SwiftUI.View.CustomMain"
+                },
+                {
+                    "viewTitle": "leftView",
+                    "viewType": "[Header]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomOpenParticipantList.ViewConverter.Header.leftView"
+                },
+                {
+                    "viewTitle": "rightView",
+                    "viewType": "[Header]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomOpenParticipantList.ViewConverter.Header.rightView"
+                },
+                {
+                    "viewTitle": "titleView",
+                    "viewType": "[Header]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomOpenParticipantList.ViewConverter.Header.titleView"
+                },
+                {
+                    "viewTitle": "entireView",
+                    "viewType": "[List]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomOpenParticipantList.ViewConverter.List.entireView"
+                },
+                {
+                    "viewTitle": "rowView",
+                    "viewType": "[List]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomOpenParticipantList.ViewConverter.List.rowView"
+                },
+                {
+                    "viewTitle": "profileImage",
+                    "viewType": "[List]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomOpenParticipantList.ViewConverter.List.profileImage"
+                },
+                {
+                    "viewTitle": "userNameLabel",
+                    "viewType": "[List]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomOpenParticipantList.ViewConverter.List.userNameLabel"
+                },
+                {
+                    "viewTitle": "operatorStateView",
+                    "viewType": "[List]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomOpenParticipantList.ViewConverter.List.operatorStateView"
+                },
+                {
+                    "viewTitle": "moreButton",
+                    "viewType": "[List]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomOpenParticipantList.ViewConverter.List.moreButton"
+                }
+            ]
+        },
+        {
+            "name": "GroupChannelPushSettings",
+            "viewItems": [
+                {
+                    "viewTitle": "Main",
+                    "viewType": "[View]",
+                    "viewDesc": "SwiftUI",
+                    "viewFullPath": "CustomGroupChannelPushSettings.SwiftUI.View.Main"
+                },
+                {
+                    "viewTitle": "CustomMain",
+                    "viewType": "[View]",
+                    "viewDesc": "SwiftUI",
+                    "viewFullPath": "CustomGroupChannelPushSettings.SwiftUI.View.CustomMain"
+                },
+                {
+                    "viewTitle": "leftView",
+                    "viewType": "[Header]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomGroupChannelPushSettings.ViewConverter.Header.leftView"
+                },
+                {
+                    "viewTitle": "rightView",
+                    "viewType": "[Header]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomGroupChannelPushSettings.ViewConverter.Header.rightView"
+                },
+                {
+                    "viewTitle": "titleView",
+                    "viewType": "[Header]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomGroupChannelPushSettings.ViewConverter.Header.titleView"
+                },
+                {
+                    "viewTitle": "entireView",
+                    "viewType": "[List]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomGroupChannelPushSettings.ViewConverter.List.entireView"
+                }
+            ]
+        },
+        {
+            "name": "GroupChannelSettings",
+            "viewItems": [
+                {
+                    "viewTitle": "Main",
+                    "viewType": "[View]",
+                    "viewDesc": "SwiftUI",
+                    "viewFullPath": "CustomGroupChannelSettings.SwiftUI.View.Main"
+                },
+                {
+                    "viewTitle": "CustomMain",
+                    "viewType": "[View]",
+                    "viewDesc": "SwiftUI",
+                    "viewFullPath": "CustomGroupChannelSettings.SwiftUI.View.CustomMain"
+                },
+                {
+                    "viewTitle": "memberList",
+                    "viewType": "[Builder]",
+                    "viewDesc": "SubView",
+                    "viewFullPath": "CustomGroupChannelSettings.SubView.Builder.memberList"
+                },
+                {
+                    "viewTitle": "moderations",
+                    "viewType": "[Builder]",
+                    "viewDesc": "SubView",
+                    "viewFullPath": "CustomGroupChannelSettings.SubView.Builder.moderations"
+                },
+                {
+                    "viewTitle": "pushSettings",
+                    "viewType": "[Builder]",
+                    "viewDesc": "SubView",
+                    "viewFullPath": "CustomGroupChannelSettings.SubView.Builder.pushSettings"
+                },
+                {
+                    "viewTitle": "leftView",
+                    "viewType": "[Header]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomGroupChannelSettings.ViewConverter.Header.leftView"
+                },
+                {
+                    "viewTitle": "rightView",
+                    "viewType": "[Header]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomGroupChannelSettings.ViewConverter.Header.rightView"
+                },
+                {
+                    "viewTitle": "titleView",
+                    "viewType": "[Header]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomGroupChannelSettings.ViewConverter.Header.titleView"
+                },
+                {
+                    "viewTitle": "entireView",
+                    "viewType": "[List]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomGroupChannelSettings.ViewConverter.List.entireView"
+                },
+                {
+                    "viewTitle": "channelInfo",
+                    "viewType": "[List]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomGroupChannelSettings.ViewConverter.List.channelInfo"
+                },
+                {
+                    "viewTitle": "moderation",
+                    "viewType": "[List]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomGroupChannelSettings.ViewConverter.List.moderation"
+                },
+                {
+                    "viewTitle": "notification",
+                    "viewType": "[List]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomGroupChannelSettings.ViewConverter.List.notification"
+                },
+                {
+                    "viewTitle": "member",
+                    "viewType": "[List]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomGroupChannelSettings.ViewConverter.List.member"
+                },
+                {
+                    "viewTitle": "searchItem",
+                    "viewType": "[List]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomGroupChannelSettings.ViewConverter.List.searchItem"
+                },
+                {
+                    "viewTitle": "leaveChannel",
+                    "viewType": "[List]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomGroupChannelSettings.ViewConverter.List.leaveChannel"
+                }
+            ]
+        },
+        {
+            "name": "OpenChannelSettings",
+            "viewItems": [
+                {
+                    "viewTitle": "Main",
+                    "viewType": "[View]",
+                    "viewDesc": "SwiftUI",
+                    "viewFullPath": "CustomOpenChannelSettings.SwiftUI.View.Main"
+                },
+                {
+                    "viewTitle": "CustomMain",
+                    "viewType": "[View]",
+                    "viewDesc": "SwiftUI",
+                    "viewFullPath": "CustomOpenChannelSettings.SwiftUI.View.CustomMain"
+                },
+                {
+                    "viewTitle": "participantList",
+                    "viewType": "[Builder]",
+                    "viewDesc": "SubView",
+                    "viewFullPath": "CustomOpenChannelSettings.SubView.Builder.participantList"
+                },
+                {
+                    "viewTitle": "moderations",
+                    "viewType": "[Builder]",
+                    "viewDesc": "SubView",
+                    "viewFullPath": "CustomOpenChannelSettings.SubView.Builder.moderations"
+                },
+                {
+                    "viewTitle": "leftView",
+                    "viewType": "[Header]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomOpenChannelSettings.ViewConverter.Header.leftView"
+                },
+                {
+                    "viewTitle": "rightView",
+                    "viewType": "[Header]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomOpenChannelSettings.ViewConverter.Header.rightView"
+                },
+                {
+                    "viewTitle": "titleView",
+                    "viewType": "[Header]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomOpenChannelSettings.ViewConverter.Header.titleView"
+                },
+                {
+                    "viewTitle": "entireView",
+                    "viewType": "[List]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomOpenChannelSettings.ViewConverter.List.entireView"
+                }
+            ]
+        },
+        {
+            "name": "GroupModerations",
+            "viewItems": [
+                {
+                    "viewTitle": "Main",
+                    "viewType": "[View]",
+                    "viewDesc": "SwiftUI",
+                    "viewFullPath": "CustomGroupModerations.SwiftUI.View.Main"
+                },
+                {
+                    "viewTitle": "CustomMain",
+                    "viewType": "[View]",
+                    "viewDesc": "SwiftUI",
+                    "viewFullPath": "CustomGroupModerations.SwiftUI.View.CustomMain"
+                },
+                {
+                    "viewTitle": "leftView",
+                    "viewType": "[Header]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomGroupModerations.ViewConverter.Header.leftView"
+                },
+                {
+                    "viewTitle": "rightView",
+                    "viewType": "[Header]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomGroupModerations.ViewConverter.Header.rightView"
+                },
+                {
+                    "viewTitle": "titleView",
+                    "viewType": "[Header]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomGroupModerations.ViewConverter.Header.titleView"
+                },
+                {
+                    "viewTitle": "entireView",
+                    "viewType": "[List]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomGroupModerations.ViewConverter.List.entireView"
+                }
+            ]
+        },
+        {
+            "name": "OpenModerations",
+            "viewItems": [
+                {
+                    "viewTitle": "Main",
+                    "viewType": "[View]",
+                    "viewDesc": "SwiftUI",
+                    "viewFullPath": "CustomOpenModerations.SwiftUI.View.Main"
+                },
+                {
+                    "viewTitle": "CustomMain",
+                    "viewType": "[View]",
+                    "viewDesc": "SwiftUI",
+                    "viewFullPath": "CustomOpenModerations.SwiftUI.View.CustomMain"
+                },
+                {
+                    "viewTitle": "leftView",
+                    "viewType": "[Header]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomOpenModerations.ViewConverter.Header.leftView"
+                },
+                {
+                    "viewTitle": "rightView",
+                    "viewType": "[Header]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomOpenModerations.ViewConverter.Header.rightView"
+                },
+                {
+                    "viewTitle": "titleView",
+                    "viewType": "[Header]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomOpenModerations.ViewConverter.Header.titleView"
+                },
+                {
+                    "viewTitle": "entireView",
+                    "viewType": "[List]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomOpenModerations.ViewConverter.List.entireView"
+                }
+            ]
+        },
+        {
+            "name": "MessageSearch",
+            "viewItems": [
+                {
+                    "viewTitle": "Main",
+                    "viewType": "[View]",
+                    "viewDesc": "SwiftUI",
+                    "viewFullPath": "CustomMessageSearch.SwiftUI.View.Main"
+                },
+                {
+                    "viewTitle": "CustomMain",
+                    "viewType": "[View]",
+                    "viewDesc": "SwiftUI",
+                    "viewFullPath": "CustomMessageSearch.SwiftUI.View.CustomMain"
+                },
+                {
+                    "viewTitle": "groupChannel",
+                    "viewType": "[Builder]",
+                    "viewDesc": "SubView",
+                    "viewFullPath": "CustomMessageSearch.SubView.Builder.groupChannel"
+                },
+                {
+                    "viewTitle": "leftView",
+                    "viewType": "[Header]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomMessageSearch.ViewConverter.Header.leftView"
+                },
+                {
+                    "viewTitle": "rightView",
+                    "viewType": "[Header]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomMessageSearch.ViewConverter.Header.rightView"
+                },
+                {
+                    "viewTitle": "titleView",
+                    "viewType": "[Header]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomMessageSearch.ViewConverter.Header.titleView"
+                },
+                {
+                    "viewTitle": "entireView",
+                    "viewType": "[List]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomMessageSearch.ViewConverter.List.entireView"
+                }
+            ]
+        },
+        {
+            "name": "MessageThread",
+            "viewItems": [
+                {
+                    "viewTitle": "Main",
+                    "viewType": "[View]",
+                    "viewDesc": "SwiftUI",
+                    "viewFullPath": "CustomMessageThread.SwiftUI.View.Main"
+                },
+                {
+                    "viewTitle": "CustomMain",
+                    "viewType": "[View]",
+                    "viewDesc": "SwiftUI",
+                    "viewFullPath": "CustomMessageThread.SwiftUI.View.CustomMain"
+                },
+                {
+                    "viewTitle": "leftView",
+                    "viewType": "[Header]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomMessageThread.ViewConverter.Header.leftView"
+                },
+                {
+                    "viewTitle": "rightView",
+                    "viewType": "[Header]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomMessageThread.ViewConverter.Header.rightView"
+                },
+                {
+                    "viewTitle": "titleView",
+                    "viewType": "[Header]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomMessageThread.ViewConverter.Header.titleView"
+                },
+                {
+                    "viewTitle": "titleLabel",
+                    "viewType": "[Header]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomMessageThread.ViewConverter.Header.titleLabel"
+                },
+                {
+                    "viewTitle": "subtitleLabel",
+                    "viewType": "[Header]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomMessageThread.ViewConverter.Header.subtitleLabel"
+                },
+                {
+                    "viewTitle": "entireView",
+                    "viewType": "[List]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomMessageThread.ViewConverter.List.entireView"
+                },
+                {
+                    "viewTitle": "rowView",
+                    "viewType": "[List]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomMessageThread.ViewConverter.List.rowView"
+                },
+                {
+                    "viewTitle": "senderProfileImage",
+                    "viewType": "[List]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomMessageThread.ViewConverter.List.senderProfileImage"
+                },
+                {
+                    "viewTitle": "userMessageView",
+                    "viewType": "[List]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomMessageThread.ViewConverter.List.userMessageView"
+                },
+                {
+                    "viewTitle": "fileMessageView",
+                    "viewType": "[List]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomMessageThread.ViewConverter.List.fileMessageView"
+                },
+                {
+                    "viewTitle": "multipleFilesMessageView",
+                    "viewType": "[List]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomMessageThread.ViewConverter.List.multipleFilesMessageView"
+                },
+                {
+                    "viewTitle": "channelStateBanner",
+                    "viewType": "[List]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomMessageThread.ViewConverter.List.channelStateBanner"
+                },
+                {
+                    "viewTitle": "entireContent",
+                    "viewType": "[ParentInfo]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomMessageThread.ViewConverter.ParentInfo.entireContent"
+                },
+                {
+                    "viewTitle": "profileView",
+                    "viewType": "[ParentInfo]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomMessageThread.ViewConverter.ParentInfo.profileView"
+                },
+                {
+                    "viewTitle": "userNameLabel",
+                    "viewType": "[ParentInfo]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomMessageThread.ViewConverter.ParentInfo.userNameLabel"
+                },
+                {
+                    "viewTitle": "dateLabel",
+                    "viewType": "[ParentInfo]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomMessageThread.ViewConverter.ParentInfo.dateLabel"
+                },
+                {
+                    "viewTitle": "moreButton",
+                    "viewType": "[ParentInfo]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomMessageThread.ViewConverter.ParentInfo.moreButton"
+                },
+                {
+                    "viewTitle": "replyLabel",
+                    "viewType": "[ParentInfo]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomMessageThread.ViewConverter.ParentInfo.replyLabel"
+                },
+                {
+                    "viewTitle": "messageTextView",
+                    "viewType": "[ParentInfo]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomMessageThread.ViewConverter.ParentInfo.messageTextView"
+                },
+                {
+                    "viewTitle": "fileContentView",
+                    "viewType": "[ParentInfo]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomMessageThread.ViewConverter.ParentInfo.fileContentView"
+                },
+                {
+                    "viewTitle": "multipleFileContentView",
+                    "viewType": "[ParentInfo]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomMessageThread.ViewConverter.ParentInfo.multipleFileContentView"
+                },
+                {
+                    "viewTitle": "webView",
+                    "viewType": "[ParentInfo]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomMessageThread.ViewConverter.ParentInfo.webView"
+                },
+                {
+                    "viewTitle": "reactionView",
+                    "viewType": "[ParentInfo]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomMessageThread.ViewConverter.ParentInfo.reactionView"
+                },
+                {
+                    "viewTitle": "entireView",
+                    "viewType": "[Input]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomMessageThread.ViewConverter.Input.entireView"
+                },
+                {
+                    "viewTitle": "leftView",
+                    "viewType": "[Input]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomMessageThread.ViewConverter.Input.leftView"
+                },
+                {
+                    "viewTitle": "addButton",
+                    "viewType": "[Input]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomMessageThread.ViewConverter.Input.addButton"
+                },
+                {
+                    "viewTitle": "rightView",
+                    "viewType": "[Input]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomMessageThread.ViewConverter.Input.rightView"
+                },
+                {
+                    "viewTitle": "sendButton",
+                    "viewType": "[Input]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomMessageThread.ViewConverter.Input.sendButton"
+                },
+                {
+                    "viewTitle": "voiceButton",
+                    "viewType": "[Input]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomMessageThread.ViewConverter.Input.voiceButton"
+                }
+            ]
+        },
+        {
+            "name": "GroupMutedMemberList",
+            "viewItems": [
+                {
+                    "viewTitle": "Main",
+                    "viewType": "[View]",
+                    "viewDesc": "SwiftUI",
+                    "viewFullPath": "CustomGroupMutedMemberList.SwiftUI.View.Main"
+                },
+                {
+                    "viewTitle": "CustomMain",
+                    "viewType": "[View]",
+                    "viewDesc": "SwiftUI",
+                    "viewFullPath": "CustomGroupMutedMemberList.SwiftUI.View.CustomMain"
+                },
+                {
+                    "viewTitle": "leftView",
+                    "viewType": "[Header]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomGroupMutedMemberList.ViewConverter.Header.leftView"
+                },
+                {
+                    "viewTitle": "rightView",
+                    "viewType": "[Header]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomGroupMutedMemberList.ViewConverter.Header.rightView"
+                },
+                {
+                    "viewTitle": "titleView",
+                    "viewType": "[Header]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomGroupMutedMemberList.ViewConverter.Header.titleView"
+                },
+                {
+                    "viewTitle": "entireView",
+                    "viewType": "[List]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomGroupMutedMemberList.ViewConverter.List.entireView"
+                },
+                {
+                    "viewTitle": "rowView",
+                    "viewType": "[List]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomGroupMutedMemberList.ViewConverter.List.rowView"
+                },
+                {
+                    "viewTitle": "profileImage",
+                    "viewType": "[List]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomGroupMutedMemberList.ViewConverter.List.profileImage"
+                },
+                {
+                    "viewTitle": "userNameLabel",
+                    "viewType": "[List]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomGroupMutedMemberList.ViewConverter.List.userNameLabel"
+                },
+                {
+                    "viewTitle": "operatorStateView",
+                    "viewType": "[List]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomGroupMutedMemberList.ViewConverter.List.operatorStateView"
+                },
+                {
+                    "viewTitle": "moreButton",
+                    "viewType": "[List]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomGroupMutedMemberList.ViewConverter.List.moreButton"
+                }
+            ]
+        },
+        {
+            "name": "GroupBannedUserList",
+            "viewItems": [
+                {
+                    "viewTitle": "Main",
+                    "viewType": "[View]",
+                    "viewDesc": "SwiftUI",
+                    "viewFullPath": "CustomGroupBannedUserList.SwiftUI.View.Main"
+                },
+                {
+                    "viewTitle": "CustomMain",
+                    "viewType": "[View]",
+                    "viewDesc": "SwiftUI",
+                    "viewFullPath": "CustomGroupBannedUserList.SwiftUI.View.CustomMain"
+                },
+                {
+                    "viewTitle": "leftView",
+                    "viewType": "[Header]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomGroupBannedUserList.ViewConverter.Header.leftView"
+                },
+                {
+                    "viewTitle": "rightView",
+                    "viewType": "[Header]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomGroupBannedUserList.ViewConverter.Header.rightView"
+                },
+                {
+                    "viewTitle": "titleView",
+                    "viewType": "[Header]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomGroupBannedUserList.ViewConverter.Header.titleView"
+                },
+                {
+                    "viewTitle": "entireView",
+                    "viewType": "[List]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomGroupBannedUserList.ViewConverter.List.entireView"
+                },
+                {
+                    "viewTitle": "rowView",
+                    "viewType": "[List]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomGroupBannedUserList.ViewConverter.List.rowView"
+                },
+                {
+                    "viewTitle": "profileImage",
+                    "viewType": "[List]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomGroupBannedUserList.ViewConverter.List.profileImage"
+                },
+                {
+                    "viewTitle": "userNameLabel",
+                    "viewType": "[List]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomGroupBannedUserList.ViewConverter.List.userNameLabel"
+                },
+                {
+                    "viewTitle": "moreButton",
+                    "viewType": "[List]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomGroupBannedUserList.ViewConverter.List.moreButton"
+                }
+            ]
+        },
+        {
+            "name": "GroupOperatorList",
+            "viewItems": [
+                {
+                    "viewTitle": "Main",
+                    "viewType": "[View]",
+                    "viewDesc": "SwiftUI",
+                    "viewFullPath": "CustomGroupOperatorList.SwiftUI.View.Main"
+                },
+                {
+                    "viewTitle": "CustomMain",
+                    "viewType": "[View]",
+                    "viewDesc": "SwiftUI",
+                    "viewFullPath": "CustomGroupOperatorList.SwiftUI.View.CustomMain"
+                },
+                {
+                    "viewTitle": "registerOperator",
+                    "viewType": "[Builder]",
+                    "viewDesc": "SubView",
+                    "viewFullPath": "CustomGroupOperatorList.SubView.Builder.registerOperator"
+                },
+                {
+                    "viewTitle": "leftView",
+                    "viewType": "[Header]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomGroupOperatorList.ViewConverter.Header.leftView"
+                },
+                {
+                    "viewTitle": "rightView",
+                    "viewType": "[Header]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomGroupOperatorList.ViewConverter.Header.rightView"
+                },
+                {
+                    "viewTitle": "titleView",
+                    "viewType": "[Header]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomGroupOperatorList.ViewConverter.Header.titleView"
+                },
+                {
+                    "viewTitle": "entireView",
+                    "viewType": "[List]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomGroupOperatorList.ViewConverter.List.entireView"
+                },
+                {
+                    "viewTitle": "rowView",
+                    "viewType": "[List]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomGroupOperatorList.ViewConverter.List.rowView"
+                },
+                {
+                    "viewTitle": "profileImage",
+                    "viewType": "[List]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomGroupOperatorList.ViewConverter.List.profileImage"
+                },
+                {
+                    "viewTitle": "userNameLabel",
+                    "viewType": "[List]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomGroupOperatorList.ViewConverter.List.userNameLabel"
+                },
+                {
+                    "viewTitle": "moreButton",
+                    "viewType": "[List]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomGroupOperatorList.ViewConverter.List.moreButton"
+                }
+            ]
+        },
+        {
+            "name": "OpenMutedParticipantList",
+            "viewItems": [
+                {
+                    "viewTitle": "Main",
+                    "viewType": "[View]",
+                    "viewDesc": "SwiftUI",
+                    "viewFullPath": "CustomOpenMutedParticipantList.SwiftUI.View.Main"
+                },
+                {
+                    "viewTitle": "CustomMain",
+                    "viewType": "[View]",
+                    "viewDesc": "SwiftUI",
+                    "viewFullPath": "CustomOpenMutedParticipantList.SwiftUI.View.CustomMain"
+                },
+                {
+                    "viewTitle": "leftView",
+                    "viewType": "[Header]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomOpenMutedParticipantList.ViewConverter.Header.leftView"
+                },
+                {
+                    "viewTitle": "rightView",
+                    "viewType": "[Header]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomOpenMutedParticipantList.ViewConverter.Header.rightView"
+                },
+                {
+                    "viewTitle": "titleView",
+                    "viewType": "[Header]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomOpenMutedParticipantList.ViewConverter.Header.titleView"
+                },
+                {
+                    "viewTitle": "entireView",
+                    "viewType": "[List]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomOpenMutedParticipantList.ViewConverter.List.entireView"
+                },
+                {
+                    "viewTitle": "rowView",
+                    "viewType": "[List]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomOpenMutedParticipantList.ViewConverter.List.rowView"
+                },
+                {
+                    "viewTitle": "profileImage",
+                    "viewType": "[List]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomOpenMutedParticipantList.ViewConverter.List.profileImage"
+                },
+                {
+                    "viewTitle": "userNameLabel",
+                    "viewType": "[List]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomOpenMutedParticipantList.ViewConverter.List.userNameLabel"
+                },
+                {
+                    "viewTitle": "operatorStateView",
+                    "viewType": "[List]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomOpenMutedParticipantList.ViewConverter.List.operatorStateView"
+                },
+                {
+                    "viewTitle": "moreButton",
+                    "viewType": "[List]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomOpenMutedParticipantList.ViewConverter.List.moreButton"
+                }
+            ]
+        },
+        {
+            "name": "OpenBannedUserList",
+            "viewItems": [
+                {
+                    "viewTitle": "Main",
+                    "viewType": "[View]",
+                    "viewDesc": "SwiftUI",
+                    "viewFullPath": "CustomOpenBannedUserList.SwiftUI.View.Main"
+                },
+                {
+                    "viewTitle": "CustomMain",
+                    "viewType": "[View]",
+                    "viewDesc": "SwiftUI",
+                    "viewFullPath": "CustomOpenBannedUserList.SwiftUI.View.CustomMain"
+                },
+                {
+                    "viewTitle": "leftView",
+                    "viewType": "[Header]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomOpenBannedUserList.ViewConverter.Header.leftView"
+                },
+                {
+                    "viewTitle": "rightView",
+                    "viewType": "[Header]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomOpenBannedUserList.ViewConverter.Header.rightView"
+                },
+                {
+                    "viewTitle": "titleView",
+                    "viewType": "[Header]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomOpenBannedUserList.ViewConverter.Header.titleView"
+                },
+                {
+                    "viewTitle": "entireView",
+                    "viewType": "[List]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomOpenBannedUserList.ViewConverter.List.entireView"
+                },
+                {
+                    "viewTitle": "rowView",
+                    "viewType": "[List]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomOpenBannedUserList.ViewConverter.List.rowView"
+                },
+                {
+                    "viewTitle": "profileImage",
+                    "viewType": "[List]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomOpenBannedUserList.ViewConverter.List.profileImage"
+                },
+                {
+                    "viewTitle": "userNameLabel",
+                    "viewType": "[List]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomOpenBannedUserList.ViewConverter.List.userNameLabel"
+                },
+                {
+                    "viewTitle": "moreButton",
+                    "viewType": "[List]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomOpenBannedUserList.ViewConverter.List.moreButton"
+                }
+            ]
+        },
+        {
+            "name": "OpenOperatorList",
+            "viewItems": [
+                {
+                    "viewTitle": "Main",
+                    "viewType": "[View]",
+                    "viewDesc": "SwiftUI",
+                    "viewFullPath": "CustomOpenOperatorList.SwiftUI.View.Main"
+                },
+                {
+                    "viewTitle": "CustomMain",
+                    "viewType": "[View]",
+                    "viewDesc": "SwiftUI",
+                    "viewFullPath": "CustomOpenOperatorList.SwiftUI.View.CustomMain"
+                },
+                {
+                    "viewTitle": "leftView",
+                    "viewType": "[Header]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomOpenOperatorList.ViewConverter.Header.leftView"
+                },
+                {
+                    "viewTitle": "rightView",
+                    "viewType": "[Header]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomOpenOperatorList.ViewConverter.Header.rightView"
+                },
+                {
+                    "viewTitle": "titleView",
+                    "viewType": "[Header]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomOpenOperatorList.ViewConverter.Header.titleView"
+                },
+                {
+                    "viewTitle": "entireView",
+                    "viewType": "[List]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomOpenOperatorList.ViewConverter.List.entireView"
+                },
+                {
+                    "viewTitle": "rowView",
+                    "viewType": "[List]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomOpenOperatorList.ViewConverter.List.rowView"
+                },
+                {
+                    "viewTitle": "profileImage",
+                    "viewType": "[List]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomOpenOperatorList.ViewConverter.List.profileImage"
+                },
+                {
+                    "viewTitle": "userNameLabel",
+                    "viewType": "[List]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomOpenOperatorList.ViewConverter.List.userNameLabel"
+                },
+                {
+                    "viewTitle": "moreButton",
+                    "viewType": "[List]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomOpenOperatorList.ViewConverter.List.moreButton"
+                }
+            ]
+        }
+    ]
+}
