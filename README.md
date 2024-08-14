@@ -118,7 +118,7 @@ https://github.com/sendbird/sendbird-swiftui-ios.git
 
 ### CocoaPods
 
-1. Add `SendBirdSwiftUI` into your `Podfile` in Xcode as below:
+1. Add `SendbirdSwiftUI` into your `Podfile` in Xcode as below:
 
 ```bash,cs-katherine.kim-06aug24-002
 platform :ios, '15.0'
