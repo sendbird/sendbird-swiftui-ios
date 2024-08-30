@@ -12,11 +12,22 @@ import UIKit
 extension UIViewController {
     // Not using now
     func sbu_loadViewFromNib() {
-        guard let view = Bundle(identifier: SBUConstant.bundleIdentifier)?.loadNibNamed(
+        #if PROCESS_RESOURCE
+        let bundle = Bundle.module
+        let nib = bundle.loadNibNamed(
             String(describing: type(of: self)),
             owner: self,
             options: nil
-            )?.first as? UIView else { return }
+        )
+        #else
+        let bundle = Bundle(identifier: SBUConstant.bundleIdentifier)
+        let nib = bundle?.loadNibNamed(
+            String(describing: type(of: self)),
+            owner: self,
+            options: nil
+        )
+        #endif
+        guard let view = nib?.first as? UIView else { return }
         
         view.frame = self.view.bounds
         view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
