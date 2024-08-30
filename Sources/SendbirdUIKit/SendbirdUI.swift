@@ -599,8 +599,14 @@ public class SendbirdUI {
     /// - Notice: If there is a beta version, it will return version information with beta information. (e.g. 1.0.0-beta)
     /// - Since: 2.2.0
     public static var shortVersion: String {
-        if let bundle = Bundle(identifier: SBUConstant.bundleIdentifier),
-            let shortVersion = bundle.infoDictionary?[SBUConstant.sbuAppVersion] {
+        #if PROCESS_RESOURCE
+        let bundle = Bundle.module
+        let shortVersion = bundle.infoDictionary?[SBUConstant.sbuAppVersion]
+        #else
+        let bundle = Bundle(identifier: SBUConstant.bundleIdentifier)
+        let shortVersion = bundle?.infoDictionary?[SBUConstant.sbuAppVersion]
+        #endif
+        if let shortVersion = shortVersion{
             return "\(shortVersion)"
         } else {
             let bundle = Bundle(for: SendbirdUI.self)
@@ -617,7 +623,11 @@ public class SendbirdUI {
     /// - Notice: If there is a beta version, it will return version information without beta information. (e.g. 1.0.0)
     /// - Since: 3.8.0
     public static var bundleShortVersion: String {
+        #if PROCESS_RESOURCE
+        let bundle = Bundle.module
+        #else
         let bundle = Bundle(identifier: SBUConstant.bundleIdentifier) ??  Bundle(for: SendbirdUI.self)
+        #endif
         let shortVersion: String = bundle.infoDictionary?["CFBundleShortVersionString"] as? String ?? "0.0.0"
         return shortVersion
     }

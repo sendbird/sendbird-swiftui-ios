@@ -98,7 +98,11 @@ public enum SBUIconSetType: String, Hashable {
     
     // MARK: - Image handling
     
+    #if PROCESS_RESOURCE
+    private static let bundle = Bundle.module
+    #else
     private static let bundle = Bundle(identifier: SBUConstant.bundleIdentifier)
+    #endif
     
     func load(tintColor: UIColor? = nil) -> UIImage {
         let image = UIImage(named: self.rawValue, in: SBUIconSetType.bundle, compatibleWith: nil) ?? UIImage()
