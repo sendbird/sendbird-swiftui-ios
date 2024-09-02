@@ -1042,7 +1042,7 @@ open class SBUMessageInputView: SBUView, SBUActionSheetDelegate, UITextViewDeleg
         return Self.generateResourceItems(channelType: self.channelType)
     }
     
-    /// - Since: [NEXT_VERSION]
+    /// - Since: 3.26.0
     static func generateResourceItems(channelType: ChannelType) -> [SBUActionSheetItem] {
         var items: [SBUActionSheetItem] = []
         var inputConfig: SBUConfig.BaseInput?

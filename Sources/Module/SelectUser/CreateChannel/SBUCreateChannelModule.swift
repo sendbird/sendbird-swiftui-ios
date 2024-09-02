@@ -23,25 +23,25 @@ extension SBUCreateChannelModule {
 // MARK: Header
 extension SBUCreateChannelModule.Header {
     /// Represents the metatype of left bar button in ``SBUCreateChannelModule.Header``.
-    /// - Since: [NEXT_VERSION]
+    /// - Since: 3.26.0
     public static var LeftBarButton: SBUBarButtonItem.Type = SBUBarButtonItem.self
     
     /// Represents the metatype of title view in ``SBUCreateChannelModule.Header``.
-    /// - Since: [NEXT_VERSION]
+    /// - Since: 3.26.0
     public static var TitleView: SBUNavigationTitleView.Type = SBUNavigationTitleView.self
     
     /// Represents the metatype of right bar button in ``SBUCreateChannelModule.Header``.
-    /// - Since: [NEXT_VERSION]
+    /// - Since: 3.26.0
     public static var RightBarButton: SBUBarButtonItem.Type = SBUBarButtonItem.self
 }
 
 // MARK: List
 extension SBUCreateChannelModule.List {
     /// Represents the type of empty view on the create channel module.
-    /// - Since: [NEXT_VERSION]
+    /// - Since: 3.26.0
     public static var EmptyView: SBUEmptyView.Type = SBUEmptyView.self
     
     /// Represents the type of user cell on the create channel module.
-    /// - Since: [NEXT_VERSION]
+    /// - Since: 3.26.0
     public static var UserCell: SBUUserCell.Type = SBUUserCell.self
 }

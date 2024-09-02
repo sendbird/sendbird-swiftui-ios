@@ -32,14 +32,14 @@ public protocol SBUInviteUserModuleHeaderDelegate: SBUBaseSelectUserModuleHeader
     /// - Parameters:
     ///   - headerComponent: `SBUInviteUserModule.Header` object
     ///   - leftItem: Updated `leftBarButtons` object.
-    /// - Since: [NEXT_VERSION]
+    /// - Since: 3.26.0
     func inviteUserModule(_ headerComponent: SBUInviteUserModule.Header, didUpdateLeftItems leftItems: [UIBarButtonItem]?)
     
     /// Called when `rightBarButtons` was selected.
     /// - Parameters:
     ///   - headerComponent: `SBUInviteUserModule.Header` object
     ///   - rightItem: Updated `rightBarButtons` object.
-    /// - Since: [NEXT_VERSION]
+    /// - Since: 3.26.0
     func inviteUserModule(_ headerComponent: SBUInviteUserModule.Header, didUpdateRightItems rightItems: [UIBarButtonItem]?)
     
     /// Called when `leftBarButton` was selected.

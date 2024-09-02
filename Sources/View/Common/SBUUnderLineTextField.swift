@@ -12,7 +12,7 @@ open class SBUUnderLineTextField: UITextField {
 
     // MARK: - UI (Public)
     /// A layer that represents the border of the text field.
-    /// - Since: [NEXT_VERSION]
+    /// - Since: 3.26.0
     public let border = CALayer()
     
     // MARK: - Life cycle

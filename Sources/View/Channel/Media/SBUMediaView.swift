@@ -9,7 +9,7 @@
 import UIKit
 
 /// A view to shows media or other contents in the open channel.
-/// - Since: [NEXT_VERSION]
+/// - Since: 3.26.0
 open class SBUMediaView: SBUView {
     public required override init() {
         super.init(frame: .zero)

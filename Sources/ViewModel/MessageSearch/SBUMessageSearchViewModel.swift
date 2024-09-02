@@ -28,7 +28,7 @@ open class SBUMessageSearchViewModel {
     // MARK: - Property (Public)
     /// The channel that the search will be performed on.
     public private(set) var channel: BaseChannel?
-    /// The URL of the current channel. // [NEXT_VERSION]
+    /// The URL of the current channel. // 3.26.0
     public private(set) var channelURL: String?
 
     /// The list of search results.
@@ -70,7 +70,7 @@ open class SBUMessageSearchViewModel {
     ///   - channelURL: The URL of the channel.
     ///   - params: The `MessageSearchQueryParams` object that will be used for the search. Default is `nil`.
     ///   - delegate: The `SBUMessageSearchViewModelDelegate` object that will handle delegate methods. Default is `nil`.
-    /// - Since: [NEXT_VERSION]
+    /// - Since: 3.26.0
     required public init(
         channelURL: String,
         params: MessageSearchQueryParams? = nil,
@@ -87,7 +87,7 @@ open class SBUMessageSearchViewModel {
     /// - Parameters:
     ///   - channelURL: channel url
     ///   - type: channel type
-    /// - Since: [NEXT_VERSION]
+    /// - Since: 3.26.0
     public func loadChannel(channelURL: String) {
         self.delegate?.shouldUpdateLoadingState(true)
         

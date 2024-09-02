@@ -61,14 +61,14 @@ extension SBUBaseChannelSettingsModule {
         
         /// A view that represents a left `UIBarButtonItem` in navigation bar.
         /// - NOTE: When the value is updated, `didUpdateRightItem`is called.
-        /// - Since: [NEXT_VERSION]
+        /// - Since: 3.26.0
         public var leftBarButtons: [UIBarButtonItem]? {
             didSet { self.didUpdateLeftItems() }
         }
         
         /// A view that represents a right `UIBarButtonItem` in navigation bar.
         /// - NOTE: When the value is updated, `didUpdateRightItem`is called.
-        /// - Since: [NEXT_VERSION]
+        /// - Since: 3.26.0
         public var rightBarButtons: [UIBarButtonItem]? {
             didSet { self.didUpdateRightItems() }
         }

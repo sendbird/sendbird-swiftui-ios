@@ -33,14 +33,14 @@ public protocol SBUUserListModuleHeaderDelegate: SBUCommonDelegate {
     /// - Parameters:
     ///   - headerComponent: `SBUUserListModule.Header` object
     ///   - leftItems: Updated `leftBarButtons` object.
-    /// - Since: [NEXT_VERSION]
+    /// - Since: 3.26.0
     func userListModule(_ headerComponent: SBUUserListModule.Header, didUpdateLeftItems leftItems: [UIBarButtonItem]?)
     
     /// Called when `rightBarButtons` was updated.
     /// - Parameters:
     ///   - headerComponent: `SBUUserListModule.Header` object
     ///   - rightItems: Updated `rightBarButtons` object.
-    /// - Since: [NEXT_VERSION]
+    /// - Since: 3.26.0
     func userListModule(_ headerComponent: SBUUserListModule.Header, didUpdateRightItems rightItems: [UIBarButtonItem]?)
     
     /// Called when `leftBarButton` was selected.
@@ -109,7 +109,7 @@ extension SBUUserListModule {
         /// A view that represents a left `UIBarButtonItem` in navigation bar.
         /// - NOTE: When the value is updated, `userListModule(_:didUpdateLeftItems:)` delegate function is called.
         /// and when the value is tapped, `userListModule(_:didTapLeftItem:)` delegate function is called.
-        /// - Since: [NEXT_VERSION]
+        /// - Since: 3.26.0
         public var leftBarButtons: [UIBarButtonItem]? {
             didSet { self.delegate?.userListModule(self, didUpdateLeftItems: self.leftBarButtons) }
         }
@@ -117,7 +117,7 @@ extension SBUUserListModule {
         /// A view that represents a right `UIBarButtonItem` in navigation bar.
         /// - NOTE: When the value is updated, `userListModule(_:didUpdateRightItems:)` delegate function is called.
         /// and when the value is tapped, `userListModule(_:didTapRightItem:)` delegate function is called.
-        /// - Since: [NEXT_VERSION]
+        /// - Since: 3.26.0
         public var rightBarButtons: [UIBarButtonItem]? {
             didSet { self.delegate?.userListModule(self, didUpdateRightItems: self.rightBarButtons) }
         }

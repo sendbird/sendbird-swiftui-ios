@@ -72,7 +72,7 @@ public class SBUColorSet {
 
 extension SBUColorSet {
     /// Restore the default colors.
-    /// - Since: [NEXT_VERSION]
+    /// - Since: 3.26.0
     public static func restoreDefaultColors() {
         SBUColorSet.primaryExtraLight = UIColor(red: 219.0 / 255.0, green: 209.0 / 255.0, blue: 1.0, alpha: 1.0)
         SBUColorSet.primaryLight = UIColor(red: 194.0 / 255.0, green: 169.0 / 255.0, blue: 250.0 / 255.0, alpha: 1.0)

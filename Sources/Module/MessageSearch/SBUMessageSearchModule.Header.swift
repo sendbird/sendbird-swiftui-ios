@@ -237,7 +237,7 @@ extension SBUMessageSearchModule {
         }
         
         /// Cancels the search.
-        /// - Since: [NEXT_VERSION]
+        /// - Since: 3.26.0
         public func cancelSearch() {
             self.delegate?.messageSearchModuleDidTapCancel(self)
         }

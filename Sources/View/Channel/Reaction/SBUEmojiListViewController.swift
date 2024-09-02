@@ -13,7 +13,7 @@ import SendbirdChatSDK
 ///
 /// This class is responsible for managing and displaying a collection of emojis. It handles user interactions with the emojis and communicates with the bottom sheet controller.
 ///
-/// - Since: [NEXT_VERSION]
+/// - Since: 3.26.0
 open class SBUEmojiListViewController: SBUBaseViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, SBUBottomSheetControllerDelegate, UIGestureRecognizerDelegate {
 
     public private(set) lazy var collectionView = UICollectionView(frame: self.view.bounds, collectionViewLayout: layout)
@@ -41,7 +41,7 @@ open class SBUEmojiListViewController: SBUBaseViewController, UICollectionViewDe
     /// - Parameters:
     ///   - emojiKey: The key of the tapped emoji.
     ///   - setSelect: A boolean indicating whether the emoji should be selected.
-    /// - Since: [NEXT_VERSION]
+    /// - Since: 3.26.0
     public var emojiTapHandler: ((_ emojiKey: String, _ setSelect: Bool) -> Void)?
     
     // MARK: - Lifecycle
@@ -153,7 +153,7 @@ open class SBUEmojiListViewController: SBUBaseViewController, UICollectionViewDe
     /// Calculates the height of the collection view content based on the number of emojis.
     ///
     /// - Returns: The total height required to display all emojis in the collection view.
-    /// - Since: [NEXT_VERSION]
+    /// - Since: 3.26.0
     open func calculateCollectionViewContentHeight() -> CGFloat {
         let lineCount = CGFloat((emojiList.count + maxEmojiOneLine - 1) / maxEmojiOneLine)
         return lineCount * layout.itemSize.height
@@ -232,7 +232,7 @@ open class SBUEmojiListViewController: SBUBaseViewController, UICollectionViewDe
     // MARK: - SBUBottomSheetControllerDelegate
     
     /// This function is called when the bottom sheet moves to a specific position.
-    /// - Since: [NEXT_VERSION]
+    /// - Since: 3.26.0
     open func bottomSheet(moveTo position: SBUBottomSheetSnapPoint) {
         switch position {
         case .top:

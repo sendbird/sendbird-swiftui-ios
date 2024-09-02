@@ -33,14 +33,14 @@ public protocol SBUCreateChannelModuleHeaderDelegate: SBUBaseSelectUserModuleHea
     /// - Parameters:
     ///   - headerComponent: `SBUCreateChannelModule.Header` object
     ///   - leftItem: Updated `leftBarButtons` object.
-    /// - Since: [NEXT_VERSION]
+    /// - Since: 3.26.0
     func createChannelModule(_ headerComponent: SBUCreateChannelModule.Header, didUpdateLeftItems leftItems: [UIBarButtonItem]?)
     
     /// Called when `rightBarButtons` was selected.
     /// - Parameters:
     ///   - headerComponent: `SBUCreateChannelModule.Header` object
     ///   - rightItem: Updated `rightBarButtons` object.
-    /// - Since: [NEXT_VERSION]
+    /// - Since: 3.26.0
     func createChannelModule(_ headerComponent: SBUCreateChannelModule.Header, didUpdateRightItems rightItems: [UIBarButtonItem]?)
     
     /// Called when `leftBarButton` was selected.

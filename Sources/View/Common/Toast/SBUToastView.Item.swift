@@ -12,15 +12,15 @@ import UIKit
 /// - Since: 3.15.0
 public class SBUToastViewItem: SBUCommonItem {
     /// The position of the toast view.
-    /// - Since: [NEXT_VERSION]
+    /// - Since: 3.26.0
     public var position: Position
     
     /// The duration of the toast view.
-    /// - Since: [NEXT_VERSION]
+    /// - Since: 3.26.0
     public var duration: Double
     
     /// The completion handler of the toast view.
-    /// - Since: [NEXT_VERSION]
+    /// - Since: 3.26.0
     public var completionHandler: SBUToastViewHandler?
     
     /// This function initializes toast view item.

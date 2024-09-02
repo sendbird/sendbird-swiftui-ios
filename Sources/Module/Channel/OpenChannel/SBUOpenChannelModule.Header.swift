@@ -62,7 +62,7 @@ extension SBUOpenChannelModule {
         }
         
         /// A view that represents right bar items in navigation bar.
-        /// - Since: [NEXT_VERSION]
+        /// - Since: 3.26.0
         /// - NOTE: When the value is updated, `baseChannelModule(_:didUpdateRightItems:)` delegate function is called.
         override public var rightBarButtons: [UIBarButtonItem]? {
             get { self.internalRightBarButtons.item ?? nil }

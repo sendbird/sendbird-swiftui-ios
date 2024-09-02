@@ -705,7 +705,7 @@ open class SBUParentMessageInfoView: SBUView, SBUUserMessageTextViewDelegate {
         }
     }
     
-    /// - Since: [NEXT_VERSION]
+    /// - Since: 3.26.0
     public func onTapSelectFile(_ fileInfo: UploadedFileInfo, index: Int) {
         self.fileSelectHandler?(fileInfo, index)
     }

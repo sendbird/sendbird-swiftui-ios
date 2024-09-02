@@ -780,12 +780,12 @@ open class SBUBaseChannelViewController: SBUBaseViewController, SBUBaseChannelVi
         }
     }
     
-    /// - Since: [NEXT_VERSION]
+    /// - Since: 3.26.0
     public func baseChannelModule(_ headerComponent: SBUBaseChannelModule.Header, didUpdateLeftItems leftItems: [UIBarButtonItem]?) {
         self.navigationItem.leftBarButtonItems = leftItems
     }
     
-    /// - Since: [NEXT_VERSION]
+    /// - Since: 3.26.0
     public func baseChannelModule(_ headerComponent: SBUBaseChannelModule.Header, didUpdateRightItems rightItems: [UIBarButtonItem]?) {
         if useRightBarButtonItem {
             self.navigationItem.rightBarButtonItems = rightItems

@@ -32,14 +32,14 @@ public protocol SBURegisterOperatorModuleHeaderDelegate: SBUBaseSelectUserModule
     /// - Parameters:
     ///   - headerComponent: `SBURegisterOperatorModule.Header` object
     ///   - leftItems: Updated `leftBarButtons` object.
-    /// - Since: [NEXT_VERSION]
+    /// - Since: 3.26.0
     func registerOperatorModule(_ headerComponent: SBURegisterOperatorModule.Header, didUpdateLeftItems leftItems: [UIBarButtonItem]?)
     
     /// Called when `rightBarButtons` was selected.
     /// - Parameters:
     ///   - headerComponent: `SBURegisterOperatorModule.Header` object
     ///   - rightItems: Updated `rightBarButtons` object.
-    /// - Since: [NEXT_VERSION]
+    /// - Since: 3.26.0
     func registerOperatorModule(_ headerComponent: SBURegisterOperatorModule.Header, didUpdateRightItems rightItems: [UIBarButtonItem]?)
     
     /// Called when `leftBarButton` was selected.

@@ -188,6 +188,6 @@ extension SBUModuleSet {
     /// ```swift
     /// SBUModuleSet.CommonModule = SBUCommonModule.self
     /// ```
-    /// - Since: [NEXT_VERSION]
+    /// - Since: 3.26.0
     public static var CommonModule: SBUCommonModule.Type = SBUCommonModule.self
 }

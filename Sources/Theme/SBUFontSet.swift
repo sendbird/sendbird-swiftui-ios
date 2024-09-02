@@ -291,7 +291,7 @@ extension SBUFontSet {
 
 extension SBUFontSet {
     /// Restore default fonts
-    /// - Since: [NEXT_VERSION]
+    /// - Since: 3.26.0
     public static func restoreDefaultFonts() {
         SBUFontSet.h1 = UIFont.systemFont(ofSize: 18.0, weight: .bold)
         SBUFontSet.h2 = UIFont.systemFont(ofSize: 18.0, weight: .medium)

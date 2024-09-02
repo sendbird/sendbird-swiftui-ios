@@ -173,10 +173,10 @@ extension SBUBaseSelectUserModule {
         /// Called when the `rightBarButton` was updated.
         func didUpdateRightItem() { }
         /// Called when the `leftBarButtons` was updated.
-        /// - Since: [NEXT_VERSION]
+        /// - Since: 3.26.0
         func didUpdateLeftItems() { }
         /// Called when the `rightBarButtons` was updated.
-        /// - Since: [NEXT_VERSION]
+        /// - Since: 3.26.0
         func didUpdateRightItems() { }
         
         // MARK: - Actions

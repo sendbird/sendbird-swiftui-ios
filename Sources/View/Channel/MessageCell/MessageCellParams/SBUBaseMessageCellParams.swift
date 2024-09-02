@@ -50,7 +50,7 @@ public class SBUBaseMessageCellParams {
     /// - Since: 3.15.0
     public var shouldHideFeedback: Bool = true
     
-    /// - Since: [NEXT_VERSION]
+    /// - Since: 3.26.0
     var isThreadMessage: Bool = false
     
     /**

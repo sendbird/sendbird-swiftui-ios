@@ -215,7 +215,7 @@ open class SBUReactionsViewController: SBUBaseViewController, UITableViewDelegat
     // MARK: - Common
     
     /// Retrieves the index path for the currently selected reaction, if any.
-    /// - Since: [NEXT_VERSION]
+    /// - Since: 3.26.0
     public func getSelectedIndexPath() -> IndexPath? {
         guard let selectedReaction = self.selectedReaction else { return nil }
         
@@ -227,7 +227,7 @@ open class SBUReactionsViewController: SBUBaseViewController, UITableViewDelegat
     }
 
     /// This function retrieves the size of the cell based on the number of reactions.
-    /// - Since: [NEXT_VERSION]
+    /// - Since: 3.26.0
     public func getCellSize(count: Int) -> CGSize {
         switch count {
         case 0...9:
@@ -240,7 +240,7 @@ open class SBUReactionsViewController: SBUBaseViewController, UITableViewDelegat
     }
     
     /// This function retrieves the user for the specified index path.
-    /// - Since: [NEXT_VERSION]
+    /// - Since: 3.26.0
     public func getUser(with indexPath: IndexPath) -> SBUUser? {
         guard let selectedReaction = self.selectedReaction,
               indexPath.row < selectedReaction.userIds.count else { return nil }
@@ -351,7 +351,7 @@ open class SBUReactionsViewController: SBUBaseViewController, UITableViewDelegat
     // MARK: - SBUBottomSheetControllerDelegate
     
     /// This function is called when the bottom sheet moves to a specific position.
-    /// - Since: [NEXT_VERSION]
+    /// - Since: 3.26.0
     open func bottomSheet(moveTo position: SBUBottomSheetSnapPoint) {
         switch position {
         case .top:

@@ -11,11 +11,11 @@ import UIKit
 /// This class represents an item in an action sheet.
 public class SBUActionSheetItem: SBUCommonItem {
     /// The completion handler of the action sheet item.
-    /// - Since: [NEXT_VERSION]
+    /// - Since: 3.26.0
     public var completionHandler: SBUActionSheetHandler?
     
     /// This property indicates whether the text alignment is set.
-    /// - Since: [NEXT_VERSION]
+    /// - Since: 3.26.0
     public var isTextAlignmentSet = false
     
     /// initializer

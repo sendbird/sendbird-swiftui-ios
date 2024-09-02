@@ -23,15 +23,15 @@ extension SBUInviteUserModule {
 // MARK: Header
 extension SBUInviteUserModule.Header {
     /// Represents the metatype of left bar button in ``SBUInviteUserModule.Header``.
-    /// - Since: [NEXT_VERSION]
+    /// - Since: 3.26.0
     public static var LeftBarButton: SBUBarButtonItem.Type = SBUBarButtonItem.self
     
     /// Represents the metatype of title view in ``SBUInviteUserModule.Header``.
-    /// - Since: [NEXT_VERSION]
+    /// - Since: 3.26.0
     public static var TitleView: SBUNavigationTitleView.Type = SBUNavigationTitleView.self
     
     /// Represents the metatype of right bar button in ``SBUInviteUserModule.Header``.
-    /// - Since: [NEXT_VERSION]
+    /// - Since: 3.26.0
     public static var RightBarButton: SBUBarButtonItem.Type = SBUBarButtonItem.self
 }
 
@@ -39,10 +39,10 @@ extension SBUInviteUserModule.Header {
 extension SBUInviteUserModule.List {
     
     /// Represents the type of empty view on the invite user module.
-    /// - Since: [NEXT_VERSION]
+    /// - Since: 3.26.0
     public static var EmptyView: SBUEmptyView.Type = SBUEmptyView.self
     
     /// Represents the type of user cell on the invite user module.
-    /// - Since: [NEXT_VERSION]
+    /// - Since: 3.26.0
     public static var UserCell: SBUUserCell.Type = SBUUserCell.self
 }

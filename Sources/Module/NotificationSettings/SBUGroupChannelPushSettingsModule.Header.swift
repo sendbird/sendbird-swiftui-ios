@@ -44,7 +44,7 @@ public protocol SBUGroupChannelPushSettingsModuleHeaderDelegate: SBUCommonDelega
     /// - Parameters:
     ///   - headerComponent: `SBUGroupChannelPushSettingsModule.Header` object
     ///   - leftItems: Updated `leftBarButtons` object.
-    /// - Since: [NEXT_VERSION]
+    /// - Since: 3.26.0
     func groupChannelPushSettingsModule(
         _ headerComponent: SBUGroupChannelPushSettingsModule.Header,
         didUpdateLeftItems leftItems: [UIBarButtonItem]?
@@ -54,7 +54,7 @@ public protocol SBUGroupChannelPushSettingsModuleHeaderDelegate: SBUCommonDelega
     /// - Parameters:
     ///   - headerComponent: `SBUGroupChannelPushSettingsModule.Header` object
     ///   - rightItems: Updated `rightBarButtons` object.
-    /// - Since: [NEXT_VERSION]
+    /// - Since: 3.26.0
     func groupChannelPushSettingsModule(
         _ headerComponent: SBUGroupChannelPushSettingsModule.Header,
         didUpdateRightItems rightItems: [UIBarButtonItem]?
@@ -152,7 +152,7 @@ extension SBUGroupChannelPushSettingsModule {
         /// The default view type is ``[UIBarButtonItem]``.
         /// - NOTE: When the value is updated, `groupChannelPushSettingsModule(_:didUpdateLeftItems:)` delegate function is called.
         /// and when the default `leftBarButtons` is tapped, `groupChannelPushSettingsModule(_:didTapLeftItem:)` delegate function is called.
-        /// - Since: [NEXT_VERSION]
+        /// - Since: 3.26.0
         public var leftBarButtons: [UIBarButtonItem]? {
             didSet {
                 self.delegate?.groupChannelPushSettingsModule(
@@ -165,7 +165,7 @@ extension SBUGroupChannelPushSettingsModule {
         /// A view that represents the right `[UIBarButtonItem]` in navigation bar.
         /// - NOTE: When the value is updated, `groupChannelPushSettingsModule(_:didUpdateRightItems:)` delegate function is called.
         /// and when the default `rightBarButtons` is tapped, `groupChannelPushSettingsModule(_:didTapRightItem:)` delegate function is called.
-        /// - Since: [NEXT_VERSION]
+        /// - Since: 3.26.0
         public var rightBarButtons: [UIBarButtonItem]? {
             didSet {
                 self.delegate?.groupChannelPushSettingsModule(
