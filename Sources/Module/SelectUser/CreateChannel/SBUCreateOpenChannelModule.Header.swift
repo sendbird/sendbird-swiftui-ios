@@ -33,14 +33,14 @@ public protocol SBUCreateOpenChannelModuleHeaderDelegate: SBUCommonDelegate {
     /// - Parameters:
     ///   - headerComponent: `SBUCreateOpenChannelModule.Header` object
     ///   - leftItems: Updated `leftBarButtons` object.
-    /// - Since: 3.26.0
+    /// - Since: [NEXT_VERSION]
     func createOpenChannelModule(_ headerComponent: SBUCreateOpenChannelModule.Header, didUpdateLeftItems leftItems: [UIBarButtonItem]?)
     
     /// Called when `rightBarButton` was selected.
     /// - Parameters:
     ///   - headerComponent: `SBUCreateOpenChannelModule.Header` object
     ///   - rightItems: Updated `rightBarButtons` object.
-    /// - Since: 3.26.0
+    /// - Since: [NEXT_VERSION]
     func createOpenChannelModule(_ headerComponent: SBUCreateOpenChannelModule.Header, didUpdateRightItems rightItems: [UIBarButtonItem]?)
     
     /// Called when `leftBarButton` was selected.
@@ -107,14 +107,14 @@ extension SBUCreateOpenChannelModule {
         /// A view that represents the left `UIBarButtonItem`s in navigation bar.
         /// - NOTE: When the value is updated, `createOpenChannelModule(_:didUpdateLeftItems:)` delegate function is called.
         /// and when the value is tapped, `createOpenChannelModule(_:didTapLeftItems:)` delegate function is called.
-        /// - Since: 3.26.0
+        /// - Since: [NEXT_VERSION]
         public var leftBarButtons: [UIBarButtonItem]? {
             didSet { self.delegate?.createOpenChannelModule(self, didUpdateLeftItems: self.leftBarButtons) }
         }
 
         /// A view that represents the right `UIBarButtonItem`s in navigation bar.
         /// - NOTE: When the value is updated, `createOpenChannelModule(_:didUpdateRightItems:)` delegate function is called.
-        /// - Since: 3.26.0
+        /// - Since: [NEXT_VERSION]
         public var rightBarButtons: [UIBarButtonItem]? {
             didSet { self.delegate?.createOpenChannelModule(self, didUpdateRightItems: self.rightBarButtons) }
         }

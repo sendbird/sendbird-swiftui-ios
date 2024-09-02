@@ -10,7 +10,7 @@ import UIKit
 import SendbirdChatSDK
 
 /// ModerationCell class that inherits from BaseChannelSettingCell
-/// - Since: 3.26.0
+/// - Since: [NEXT_VERSION]
 open class SBUModerationCell: SBUBaseChannelSettingCell {
     /// This function configure a cell using moderation list information.
     /// - Parameter channel: channel object

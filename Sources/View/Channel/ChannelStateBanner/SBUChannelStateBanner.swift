@@ -10,7 +10,7 @@ import UIKit
 import SwiftUI
 
 /// Banner to show channel state
-/// - Since: 3.26.0
+/// - Since: [NEXT_VERSION]
 open class SBUChannelStateBanner: SBULabel {
     var isThreadMessage: Bool = false
     

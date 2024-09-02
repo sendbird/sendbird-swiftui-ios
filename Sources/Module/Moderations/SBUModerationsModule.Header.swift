@@ -33,14 +33,14 @@ public protocol SBUModerationsModuleHeaderDelegate: SBUCommonDelegate {
     /// - Parameters:
     ///   - headerComponent: `SBUModerationsModule.Header` object
     ///   - leftItems: Updated `leftBarButtons` object.
-    /// - Since: 3.26.0
+    /// - Since: [NEXT_VERSION]
     func moderationsModule(_ headerComponent: SBUModerationsModule.Header, didUpdateLeftItems leftItems: [UIBarButtonItem]?)
     
     /// Called when `rightBarButtons` value is updated.
     /// - Parameters:
     ///   - headerComponent: `SBUModerationsModule.Header` object
     ///   - rightItems: Updated `rightBarButtons` object.
-    /// - Since: 3.26.0
+    /// - Since: [NEXT_VERSION]
     func moderationsModule(_ headerComponent: SBUModerationsModule.Header, didUpdateRightItems rightItems: [UIBarButtonItem]?)
     
     /// Called when `leftBarButton` was selected.
@@ -101,14 +101,14 @@ extension SBUModerationsModule {
         /// A view that represents the left `UIBarButtonItem`s in navigation bar.
         /// - NOTE: When the value is updated, `moderationsModule(_:didUpdateLeftItem:)` delegate function is called.
         /// and when the value is tapped, `moderationsModule(_:didTapLeftItems:)` delegate function is called.
-        /// - Since: 3.26.0
+        /// - Since: [NEXT_VERSION]
         public var leftBarButtons: [UIBarButtonItem]? {
             didSet { self.delegate?.moderationsModule(self, didUpdateLeftItems: self.leftBarButtons) }
         }
 
         /// A view that represents the right `UIBarButtonItem`s in navigation bar.
         /// - NOTE: When the value is updated, `moderationsModule(_:didUpdateRightItems:)` delegate function is called.
-        /// - Since: 3.26.0
+        /// - Since: [NEXT_VERSION]
         public var rightBarButtons: [UIBarButtonItem]? {
             didSet { self.delegate?.moderationsModule(self, didUpdateRightItems: self.rightBarButtons) }
         }

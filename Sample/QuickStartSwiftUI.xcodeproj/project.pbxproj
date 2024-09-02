@@ -6295,56 +6295,56 @@
 			path = List;
 			sourceTree = "<group>";
 		};
-		"TEMP_2185EF23-F2A3-424B-9B8F-2FF16C31F40E" /* SubView */ = {
+		"TEMP_0C341D73-136A-49CB-A216-98A53F3B138D" /* SubView */ = {
 			isa = PBXGroup;
 			children = (
 			);
 			path = SubView;
 			sourceTree = "<group>";
 		};
-		"TEMP_273645DA-DF89-44A3-A28A-687F7261B187" /* SubView */ = {
+		"TEMP_4B1B69A4-AB15-4A00-BA15-935B9383F41F" /* SubView */ = {
 			isa = PBXGroup;
 			children = (
 			);
 			path = SubView;
 			sourceTree = "<group>";
 		};
-		"TEMP_3F042B2A-05ED-4E86-87BC-90017C10E7EB" /* SubView */ = {
+		"TEMP_802D4E33-5564-4A71-B2FE-0AE1E34D38BB" /* SubView */ = {
 			isa = PBXGroup;
 			children = (
 			);
 			path = SubView;
 			sourceTree = "<group>";
 		};
-		"TEMP_72303569-4405-4B79-9334-39FD298C1411" /* SubView */ = {
+		"TEMP_BDD8CDA9-590E-407A-94B6-6B8382BE6554" /* SubView */ = {
 			isa = PBXGroup;
 			children = (
 			);
 			path = SubView;
 			sourceTree = "<group>";
 		};
-		"TEMP_76B41441-A84B-4EBD-8CE6-E66B60AFC56D" /* SubView */ = {
+		"TEMP_C3F46338-6E1E-44A5-9BBF-E04508C01B44" /* SubView */ = {
 			isa = PBXGroup;
 			children = (
 			);
 			path = SubView;
 			sourceTree = "<group>";
 		};
-		"TEMP_8F30F6D3-0A92-4E02-8C52-070D0F9E73A1" /* SubView */ = {
+		"TEMP_CCB46433-9BEC-4863-BE9D-89B9BCA29AAA" /* SubView */ = {
 			isa = PBXGroup;
 			children = (
 			);
 			path = SubView;
 			sourceTree = "<group>";
 		};
-		"TEMP_C087A9E3-F659-498F-8EB2-E75D00FDCBF2" /* SubView */ = {
+		"TEMP_EA96858A-2424-4621-98A0-FA7F9580D51B" /* SubView */ = {
 			isa = PBXGroup;
 			children = (
 			);
 			path = SubView;
 			sourceTree = "<group>";
 		};
-		"TEMP_C1DE2362-DAEF-4680-AB42-9764BF76B87D" /* SubView */ = {
+		"TEMP_F908E83B-0A6B-4D9F-9C3B-E0D5A1A394CB" /* SubView */ = {
 			isa = PBXGroup;
 			children = (
 			);
@@ -7530,7 +7530,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = "1.0.0-beta.0";
+				MARKETING_VERSION = "1.0.0-beta.1";
 				PRODUCT_BUNDLE_IDENTIFIER = com.sendbird.swiftui.sample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -7563,7 +7563,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = "1.0.0-beta.0";
+				MARKETING_VERSION = "1.0.0-beta.1";
 				PRODUCT_BUNDLE_IDENTIFIER = com.sendbird.swiftui.sample.SwiftUINotificationService;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -7654,7 +7654,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = "1.0.0-beta.0";
+				MARKETING_VERSION = "1.0.0-beta.1";
 				PRODUCT_BUNDLE_IDENTIFIER = com.sendbird.swiftui.sample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -7742,7 +7742,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = "1.0.0-beta.0";
+				MARKETING_VERSION = "1.0.0-beta.1";
 				PRODUCT_BUNDLE_IDENTIFIER = com.sendbird.swiftui.sample.SwiftUINotificationService;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;

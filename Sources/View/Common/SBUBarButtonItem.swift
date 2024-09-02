@@ -9,7 +9,7 @@
 import UIKit
 
 /// A class that displays an bar button item in SendbirdUIKit.
-/// - Since: 3.26.0
+/// - Since: [NEXT_VERSION]
 open class SBUBarButtonItem: UIBarButtonItem {
     required public init?(coder: NSCoder) {
         super.init(coder: coder)

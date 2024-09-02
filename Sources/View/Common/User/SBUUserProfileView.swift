@@ -41,7 +41,7 @@ public protocol SBUUserProfileViewProtocol {
 }
 
 /// Default user profile view
-/// - Since: 3.26.0
+/// - Since: [NEXT_VERSION]
 open class SBUUserProfileView: UIView, SBUUserProfileViewProtocol {
     
     // MARK: - Property

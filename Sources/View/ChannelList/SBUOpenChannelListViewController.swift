@@ -229,7 +229,7 @@ open class SBUOpenChannelListViewController: SBUBaseChannelListViewController, S
         self.navigationItem.rightBarButtonItem = rightItem
     }
     
-    /// 3.26.0
+    /// [NEXT_VERSION]
     open func baseChannelListModule(
         _ headerComponent: SBUBaseChannelListModule.Header,
         didUpdateLeftItems leftItems: [UIBarButtonItem]?
@@ -237,7 +237,7 @@ open class SBUOpenChannelListViewController: SBUBaseChannelListViewController, S
         self.navigationItem.leftBarButtonItems = leftItems
     }
     
-    /// 3.26.0
+    /// [NEXT_VERSION]
     open func baseChannelListModule(
         _ headerComponent: SBUBaseChannelListModule.Header,
         didUpdateRightItems rightItems: [UIBarButtonItem]?

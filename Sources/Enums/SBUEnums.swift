@@ -439,7 +439,7 @@ public enum SBUChannelType {
 
 // - MARK: Internal
 
-/// - Since: 3.26.0
+/// - Since: [NEXT_VERSION]
 enum SBUItemUsageState<Item: Hashable> {
     case unused
     case usingDefault(Item)

@@ -9,7 +9,7 @@
 import UIKit
 
 /// Represents the snap points for the bottom sheet.
-/// - Since: 3.26.0
+/// - Since: [NEXT_VERSION]
 public enum SBUBottomSheetSnapPoint {
     /// The top position of the bottom sheet.
     case top
@@ -24,7 +24,7 @@ public protocol SBUBottomSheetControllerDelegate: AnyObject {
 }
 
 /// A controller that manages the presentation of a bottom sheet.
-/// - Since: 3.26.0
+/// - Since: [NEXT_VERSION]
 public class SBUBottomSheetController: UIPresentationController {
 
     /// The delegate that receives updates on the bottom sheet's position.

@@ -23,25 +23,25 @@ extension SBUMessageSearchModule {
 // MARK: Header
 extension SBUMessageSearchModule.Header {
     /// Represents the metatype of left bar button in ``SBUMessageSearchModule.Header``.
-    /// - Since: 3.26.0
+    /// - Since: [NEXT_VERSION]
     public static var LeftBarButton: SBUBarButtonItem.Type?
     
     /// Represents the metatype of title view in ``SBUMessageSearchModule.Header``.
-    /// - Since: 3.26.0
+    /// - Since: [NEXT_VERSION]
     public static var TitleView: SBUSearchBar.Type = SBUSearchBar.self
     
     /// Represents the metatype of right bar button in ``SBUMessageSearchModule.Header``.
-    /// - Since: 3.26.0
+    /// - Since: [NEXT_VERSION]
     public static var RightBarButton: SBUBarButtonItem.Type = SBUBarButtonItem.self
 }
 
 // MARK: List
 extension SBUMessageSearchModule.List {
     /// Represents the type of empty view on the message search module module.
-    /// - Since: 3.26.0
+    /// - Since: [NEXT_VERSION]
     public static var EmptyView: SBUEmptyView.Type = SBUEmptyView.self
     
     /// Represents the type of message search result cell on the message search module module.
-    /// - Since: 3.26.0
+    /// - Since: [NEXT_VERSION]
     public static var MessageSearchResultCell: SBUMessageSearchResultCell.Type = SBUMessageSearchResultCell.self
 }

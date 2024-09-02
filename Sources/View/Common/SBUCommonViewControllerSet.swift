@@ -21,18 +21,18 @@ public class SBUCommonViewControllerSet {
     // MOD TODO: Need to add CustomViewController sample
     
     /// The view controller that shows the selected accessible photos and videos.
-    /// - Since: 3.26.0
+    /// - Since: [NEXT_VERSION]
     public static var SelectablePhotoViewController: SBUSelectablePhotoViewController.Type = SBUSelectablePhotoViewController.self
     
     /// The view controller that shows the message menu sheet.
-    /// - Since: 3.26.0
+    /// - Since: [NEXT_VERSION]
     public static var MenuSheetViewController: SBUMenuSheetViewController.Type = SBUMenuSheetViewController.self
 
     /// The view controller that shows the reactions.
-    /// - Since: 3.26.0
+    /// - Since: [NEXT_VERSION]
     public static var ReactionsViewController: SBUReactionsViewController.Type = SBUReactionsViewController.self
     
     /// The view controller that shows the emojis.
-    /// - Since: 3.26.0
+    /// - Since: [NEXT_VERSION]
     public static var EmojiListViewController: SBUEmojiListViewController.Type = SBUEmojiListViewController.self
 }

@@ -34,7 +34,7 @@ extension UINavigationController {
     
     #if SWIFTUI
     /// Push view controller with hiding navigation bar. Method to hide and show navigationBar in swiftui (ui timing issue)
-    /// - Since: 3.26.0
+    /// - Since: [NEXT_VERSION]
     public func pushViewControllerNonFlickering<T>(
         _ viewController: UIHostingController<T>,
         animated: Bool

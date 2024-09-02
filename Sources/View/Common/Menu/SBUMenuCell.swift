@@ -9,7 +9,7 @@
 import UIKit
 
 /// This menu cell used in the MenuSheetViewController is the menu cell
-/// - Since: 3.26.0
+/// - Since: [NEXT_VERSION]
 open class SBUMenuCell: SBUTableViewCell {
     public lazy var containerView = {
         SBUStackView.init(axis: .horizontal, alignment: .fill, spacing: 30)

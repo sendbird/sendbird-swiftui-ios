@@ -10,7 +10,7 @@ import UIKit
 import SendbirdChatSDK
 
 /// Channel Push Setting cell class
-/// - Since: 3.26.0
+/// - Since: [NEXT_VERSION]
 open class SBUChannelPushSettingCell: SBUTableViewCell {
     /// base vertical stack view
     public lazy var baseStackView = SBUStackView(axis: .vertical, alignment: .fill, spacing: 16)

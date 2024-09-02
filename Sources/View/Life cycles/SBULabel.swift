@@ -9,7 +9,7 @@
 import UIKit
 
 /// The `UILabel` conforming to `SBUViewLifeCycle`
-/// - Since: 3.26.0
+/// - Since: [NEXT_VERSION]
 open class SBULabel: UILabel {
     
     /// Initializes `UILabel` and set up subviews, auto layouts and actions for SendbirdUIKit.

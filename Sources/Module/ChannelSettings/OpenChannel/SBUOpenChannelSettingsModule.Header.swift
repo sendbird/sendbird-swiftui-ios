@@ -46,14 +46,14 @@ public protocol SBUOpenChannelSettingsModuleHeaderDelegate: SBUBaseChannelSettin
     /// - Parameters:
     ///   - headerComponent: `SBUOpenChannelSettingsModule.Header` object
     ///   - leftItems: Updated `leftBarButtons` object.
-    /// - Since: 3.26.0
+    /// - Since: [NEXT_VERSION]
     func openChannelSettingsModule(_ headerComponent: SBUOpenChannelSettingsModule.Header, didUpdateLeftItems leftItems: [UIBarButtonItem]?)
     
     /// Called when `rightBarButtons` was updated.
     /// - Parameters:
     ///   - headerComponent: `SBUOpenChannelSettingsModule.Header` object
     ///   - rightItems: Updated `rightBarButtons` object.
-    /// - Since: 3.26.0
+    /// - Since: [NEXT_VERSION]
     func openChannelSettingsModule(_ headerComponent: SBUOpenChannelSettingsModule.Header, didUpdateRightItems rightItems: [UIBarButtonItem]?)
 }
 

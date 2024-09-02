@@ -9,11 +9,11 @@
 import UIKit
 
 /// This typealias is used for handling alert button actions. It takes an optional parameter of type `Any`.
-/// - Since: 3.26.0
+/// - Since: [NEXT_VERSION]
 public typealias SBUAlertButtonHandler = (_ info: Any?) -> Void
 
 /// This typealias is used for handling alert button actions. It takes an optional parameter of type `Any`.
-@available(*, deprecated, renamed: "SBUAlertButtonHandler") // 3.26.0
+@available(*, deprecated, renamed: "SBUAlertButtonHandler") // [NEXT_VERSION]
 public typealias AlertButtonHandler = SBUAlertButtonHandler
 
 /// SBUAlertViewDelegate is a delegate that defines methods for handling alert view events.
@@ -353,7 +353,7 @@ extension SBUAlertView {
     
     // MARK: Button action
     /// This function is called when the button is clicked.
-    /// - Since: 3.26.0
+    /// - Since: [NEXT_VERSION]
     @objc
     public func onClickAlertButton(sender: UIButton) {
         let index = sender.tag
@@ -604,7 +604,7 @@ extension SBUAlertView {
     
     // MARK: Create items
     /// This function creates a title label.
-    /// - Since: 3.26.0
+    /// - Since: [NEXT_VERSION]
     private func createTitleLabel() -> UILabel {
         let label = UILabel(frame: CGRect(
             origin: CGPoint(
@@ -618,7 +618,7 @@ extension SBUAlertView {
     }
     
     /// This function creates a message label.
-    /// - Since: 3.26.0
+    /// - Since: [NEXT_VERSION]
     private func createMessageLabel(originY: CGFloat) -> UILabel? {
         guard self.message != nil else { return nil }
         
@@ -634,7 +634,7 @@ extension SBUAlertView {
     }
     
     /// This function creates a inputFiled.
-    /// - Since: 3.26.0
+    /// - Since: [NEXT_VERSION]
     private func createInputField(originY: CGFloat) -> UITextField? {
         if self.needInputField {
             let textField = UITextField()
@@ -658,7 +658,7 @@ extension SBUAlertView {
     }
     
     /// This function creates a separator.
-    /// - Since: 3.26.0
+    /// - Since: [NEXT_VERSION]
     private func createSeparator(originY: CGFloat) -> UIView {
         let view = UIView(frame: CGRect(
             origin: CGPoint(x: 0, y: originY-0.5),
@@ -668,7 +668,7 @@ extension SBUAlertView {
     }
     
     /// This function creates a cancel button.
-    /// - Since: 3.26.0
+    /// - Since: [NEXT_VERSION]
     private func createCancelButton(
         originY: CGFloat,
         buttonOriginX: CGFloat = 0.0
@@ -700,7 +700,7 @@ extension SBUAlertView {
     }
     
     /// This function creates a confirm button.
-    /// - Since: 3.26.0
+    /// - Since: [NEXT_VERSION]
     private func createConfirmButton(
         originY: CGFloat,
         buttonOriginX: CGFloat = 0.0

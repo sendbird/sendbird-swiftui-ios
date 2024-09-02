@@ -10,7 +10,7 @@ import UIKit
 import SendbirdChatSDK
 
 /// ScrollBottomView used in the channel
-/// - Since: 3.26.0
+/// - Since: [NEXT_VERSION]
 open class SBUScrollBottomView: SBUView {
     var channelType: ChannelType = .group
     

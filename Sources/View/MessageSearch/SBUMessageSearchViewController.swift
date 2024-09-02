@@ -115,7 +115,7 @@ open class SBUMessageSearchViewController: SBUBaseViewController, SBUMessageSear
     }
     
     /// Create view model with channelURL
-    /// - Since: 3.26.0
+    /// - Since: [NEXT_VERSION]
     open func createViewModel(channelURL: String) {
         self.viewModel = SBUViewModelSet.MessageSearchViewModel.init(
             channelURL: channelURL,

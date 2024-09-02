@@ -9,7 +9,7 @@
 import UIKit
 
 /// A class that displays a search bar in SendbirdUIKit.
-/// - Since: 3.26.0
+/// - Since: [NEXT_VERSION]
 open class SBUSearchBar: UISearchBar, SBUViewLifeCycle {
     var theme: SBUMessageSearchTheme?
     

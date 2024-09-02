@@ -15,7 +15,7 @@ open class SBUCommonModule {
     /// ```swift
     /// SBUModuleSet.CommonModule.ToastView = SBUToastView.self
     /// ```
-    /// - Since: 3.26.0
+    /// - Since: [NEXT_VERSION]
     public static var ToastView: SBUToastView.Type = SBUToastView.self {
         didSet { SBUModuleSet.CommonModule.ToastView.resetInstance() }
     }
@@ -24,7 +24,7 @@ open class SBUCommonModule {
     /// ```swift
     /// SBUModuleSet.CommonModule.ActionSheet = SBUActionSheet.self
     /// ```
-    /// - Since: 3.26.0
+    /// - Since: [NEXT_VERSION]
     public static var ActionSheet: SBUActionSheet.Type = SBUActionSheet.self {
         didSet { SBUModuleSet.CommonModule.ActionSheet.resetInstance() }
     }
@@ -33,7 +33,7 @@ open class SBUCommonModule {
     /// ```swift
     /// SBUModuleSet.CommonModule.AlertView = SBUAlertView.self
     /// ```
-    /// - Since: 3.26.0
+    /// - Since: [NEXT_VERSION]
     public static var AlertView: SBUAlertView.Type = SBUAlertView.self {
         didSet { SBUModuleSet.CommonModule.AlertView.resetInstance() }
     }
@@ -42,7 +42,7 @@ open class SBUCommonModule {
     /// ```swift
     /// SBUModuleSet.CommonModule.Loading = SBULoading.self
     /// ```
-    /// - Since: 3.26.0
+    /// - Since: [NEXT_VERSION]
     public static var Loading: SBULoading.Type = SBULoading.self {
         didSet { SBUModuleSet.CommonModule.Loading.resetInstance() }
     }

@@ -10,7 +10,7 @@ import UIKit
 import SendbirdChatSDK
 
 /// Info view used in channel setting
-/// - Since: 3.26.0
+/// - Since: [NEXT_VERSION]
 open class SBUChannelSettingsChannelInfoView: SBUView {
     public lazy var stackView = UIStackView()
     public lazy var coverImage = SBUCoverImageView()

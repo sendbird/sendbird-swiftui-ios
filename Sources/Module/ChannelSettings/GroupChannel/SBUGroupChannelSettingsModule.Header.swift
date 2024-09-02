@@ -34,14 +34,14 @@ public protocol SBUGroupChannelSettingsModuleHeaderDelegate: SBUBaseChannelSetti
     /// - Parameters:
     ///   - headerComponent: `SBUGroupChannelSettingsModule.Header` object
     ///   - leftItem: Updated `leftBarButtons` object.
-    /// - Since: 3.26.0
+    /// - Since: [NEXT_VERSION]
     func groupChannelSettingsModule(_ headerComponent: SBUGroupChannelSettingsModule.Header, didUpdateLeftItems leftItems: [UIBarButtonItem]?)
     
     /// Called when `rightBarButtons` was selected.
     /// - Parameters:
     ///   - headerComponent: `SBUGroupChannelSettingsModule.Header` object
     ///   - rightItem: Updated `rightBarButtons` object.
-    /// - Since: 3.26.0
+    /// - Since: [NEXT_VERSION]
     func groupChannelSettingsModule(_ headerComponent: SBUGroupChannelSettingsModule.Header, didUpdateRightItems rightItems: [UIBarButtonItem]?)
     
     /// Called when `leftBarButton` was selected.

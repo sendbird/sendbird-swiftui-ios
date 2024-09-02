@@ -33,14 +33,14 @@ public protocol SBUBaseChannelModuleHeaderDelegate: SBUCommonDelegate {
     /// - Parameters:
     ///   - headerComponent: `SBUBaseChannelModule.Header` object
     ///   - rightItem: Updated `leftBarButtons` object.
-    /// - Since: 3.26.0
+    /// - Since: [NEXT_VERSION]
     func baseChannelModule(_ headerComponent: SBUBaseChannelModule.Header, didUpdateLeftItems leftItems: [UIBarButtonItem]?)
     
     /// Called when `rightBarButtons` value has been updated.
     /// - Parameters:
     ///   - headerComponent: `SBUBaseChannelModule.Header` object
     ///   - rightItem: Updated `rightBarButtons` object.
-    /// - Since: 3.26.0
+    /// - Since: [NEXT_VERSION]
     func baseChannelModule(_ headerComponent: SBUBaseChannelModule.Header, didUpdateRightItems rightItems: [UIBarButtonItem]?)
     
     /// Called when `titleView` was selected.
@@ -116,7 +116,7 @@ extension SBUBaseChannelModule {
         var internalRightBarButton: SBUItemUsageState<UIBarButtonItem?> = .unused
         
         /// A view that represents left bar items in navigation bar.
-        /// - Since: 3.26.0
+        /// - Since: [NEXT_VERSION]
         /// - NOTE: When the value is updated, `baseChannelModule(_:didUpdateLeftItems:)` delegate function is called.
         public var leftBarButtons: [UIBarButtonItem]? {
             didSet {
@@ -125,7 +125,7 @@ extension SBUBaseChannelModule {
         }
         
         /// A view that represents right bar items in navigation bar.
-        /// - Since: 3.26.0
+        /// - Since: [NEXT_VERSION]
         /// - NOTE: When the value is updated, `baseChannelModule(_:didUpdateRightItems:)` delegate function is called.
         public var rightBarButtons: [UIBarButtonItem]? {
             didSet {

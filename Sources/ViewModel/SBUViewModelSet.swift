@@ -9,7 +9,7 @@
 import UIKit
 
 /// A class that holds references to various view model types used in the Sendbird UIKit.
-/// - Since: 3.26.0
+/// - Since: [NEXT_VERSION]
 public class SBUViewModelSet {
     /// The view model for the group channel list.
     public static var GroupChannelListViewModel: SBUGroupChannelListViewModel.Type = SBUGroupChannelListViewModel.self
