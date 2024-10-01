@@ -1,5 +1,5 @@
 //
-//  SBUUserMessageCell.MessageTemplate.swift
+//  SBUMessageTemplateCell.MessageTemplateLayer.swift
 //  SendbirdUIKit
 //
 //  Created by Damon Park on 2024/02/19.
@@ -9,7 +9,7 @@
 import UIKit
 import SendbirdChatSDK
 
-extension SBUUserMessageCell {
+extension SBUMessageTemplateCell {
     class MessageTemplateLayer {
         static let downloadingHeight: CGFloat = 274.0
         
@@ -21,7 +21,6 @@ extension SBUUserMessageCell {
         }
         
         var templateContainerView = UIStackView()
-        var spaceArea = SpaceArea()
         
         var templateView: SBUMessageTemplate.Syntax.TemplateView?
         var messageTemplateRenderer: SBUMessageTemplate.Renderer.RendererType = .inProgress
@@ -35,37 +34,20 @@ extension SBUUserMessageCell {
             get { self.message?.templateImagesRetryStatus ?? .initialized }
             set { self.message?.templateImagesRetryStatus = newValue }
         }
-        
-        var containerSizeFactory: SBUMessageContainerSizeFactory = .default
-    }
-    
-    class SpaceArea {
-        var name = UIView()
-        var contents = UIView()
-        var time = UIView()
-        
-        init() {
-            self.name.backgroundColor = .clear
-            self.contents.backgroundColor = .clear
-            self.time.backgroundColor = .clear
-        }
     }
 }
 
-extension SBUUserMessageCell.MessageTemplateLayer {
+extension SBUMessageTemplateCell.MessageTemplateLayer {
     func renderError() {
         let renderer = SBUMessageTemplate.Renderer.errorRenderer(
-            type: .group,
-            message: self.message
+            type: .message,
+            message: self.message,
+            viewStyle: .init(
+                backgroundColor: SBUMessageTemplate.Renderer.defaultTheme.viewBackgroundColor.toHexString(),
+                radius: 16,
+                margin: .init(top: 0, bottom: 0, left: 50, right: 12)
+            )
         )
-        
-        if message?.asUiSettingContainerType != .full {
-            renderer.layer.cornerRadius = 16
-            renderer.layer.borderColor = UIColor.clear.cgColor
-            renderer.layer.borderWidth = 1
-            renderer.clipsToBounds = true
-            renderer.backgroundColor = SBUMessageTemplate.Renderer.defaultTheme.viewBackgroundColor
-        }
         
         self.messageTemplateRenderer = .error(renderer: renderer)
     }
@@ -73,16 +55,13 @@ extension SBUUserMessageCell.MessageTemplateLayer {
     func renderDownload() {
         let renderer = SBUMessageTemplate.Renderer.downloadingRenderer(
             messageId: message?.messageId,
-            downloadingHeight: Self.downloadingHeight
+            downloadingHeight: Self.downloadingHeight,
+            viewStyle: .init(
+                backgroundColor: SBUMessageTemplate.Renderer.defaultTheme.viewBackgroundColor.toHexString(),
+                radius: 16,
+                margin: .init(top: 0, bottom: 0, left: 50, right: 12)
+            )
         )
-        
-        if message?.asUiSettingContainerType != .full {
-            renderer.layer.cornerRadius = 16
-            renderer.layer.borderColor = UIColor.clear.cgColor
-            renderer.layer.borderWidth = 1
-            renderer.clipsToBounds = true
-            renderer.backgroundColor = SBUMessageTemplate.Renderer.defaultTheme.viewBackgroundColor
-        }
         
         self.messageTemplateRenderer = .downloading(renderer: renderer)
     }
@@ -97,20 +76,10 @@ extension SBUUserMessageCell.MessageTemplateLayer {
     
     func clear() {
         self.messageTemplateRenderer.clear()
-        self.containerSizeFactory = .default
     }
 }
 
-extension SBUUserMessageCell {
-    
-    func updateTemplateSizeFactory() {
-        self.messageTemplateLayer.containerSizeFactory = SBUMessageContainerSizeFactory(
-            type: self.message?.asUiSettingContainerType ?? .default,
-            profileWidth: (self.profileView as? SBUMessageProfileView)?.imageSize,
-            timpstampWidth: (self.stateView as? SBUMessageStateView)?.timeLabelCustomSize?.width
-        )
-    }
-    
+extension SBUMessageTemplateCell {
     func setupMessageTemplate() {
         guard let message = self.message else { return }
         guard let data = message.asMessageTemplate else { return }
@@ -128,10 +97,8 @@ extension SBUUserMessageCell {
             return
         }
         
-        self.updateTemplateSizeFactory()
-        
         let result = SBUMessageTemplate.Coordinator.execute(
-            type: .group,
+            type: .message,
             message: message,
             payloadJson: payloadJson,
             imageRetryStatus: self.messageTemplateLayer.imagesRetryStatus
@@ -167,17 +134,6 @@ extension SBUUserMessageCell {
                     self.reloadCell()
                 }
             }
-            
-        case .reload(.compositeType):
-            guard let prev = self.configuration else {
-                self.messageTemplateLayer.renderDownload()
-                self.reloadCell()
-                return
-            }
-            
-            self.isMessyViewHierarchy = true
-            self.prepareForReuse()
-            self.configure(with: prev)
 
         case .template(let key, let template):
             self.messageTemplateLayer.templateView = template
@@ -186,7 +142,7 @@ extension SBUUserMessageCell {
                 template: template,
                 delegate: self,
                 dataSource: self,
-                maxWidth: self.messageTemplateLayer.containerSizeFactory.getWidth(),
+                maxWidth: self.bounds.width,
                 actionHandler: { [weak self] in self?.messageTemplateActionHandler?($0) }
             ) {
                 self.messageTemplateLayer.messageTemplateRenderer = .loaded(key: key, renderer: renderer)
@@ -202,64 +158,20 @@ extension SBUUserMessageCell {
     func setupMessageTemplateLayouts() {
         guard let renderer = self.messageTemplateLayer.validRenderer else { return }
         
-        switch self.containerType {
-        case .`default`:
-            self.messageTextView.removeFromSuperview()
-            self.messageTemplateLayer.templateContainerView.setVStack([renderer])
-            
-        case .wide:
-            self.messageTextView.removeFromSuperview()
-            self.messageTemplateLayer.templateContainerView.setVStack([renderer])
-            
-        case .full:
-            self.messageTextView.removeFromSuperview()
-            
-            self.fullSizeMessageContainerView.setVStack([
-                self.messageTemplateLayer.spaceArea.name,
-                renderer,
-                self.messageTemplateLayer.spaceArea.time,
-            ])
-            self.messageTemplateLayer.templateContainerView.setVStack([self.messageTemplateLayer.spaceArea.contents])
-            self.messageTemplateLayer.spaceArea.name.setHeightConstraints(with: userNameView)
-            self.messageTemplateLayer.spaceArea.contents.setHeightConstraints(with: renderer)
-            self.messageTemplateLayer.spaceArea.time.setHeightConstraints(with: wideSizeStateContainerView)
-        }
-        
-        self.isMessyViewHierarchy = true
+        self.messageTemplateLayer.templateContainerView.setVStack([renderer])
     }
     
     func updateMessageTemplateLayouts() {
-        guard let renderer = self.messageTemplateLayer.validRenderer else {
-            NSLayoutConstraint.deactivate(self.fullSizeMessageConstraints)
-            return
-        }
-        
-        if self.containerType == .full {
-            NSLayoutConstraint.activate(self.fullSizeMessageConstraints)
-        } else {
-            NSLayoutConstraint.deactivate(self.fullSizeMessageConstraints)
-        }
+        guard let renderer = self.messageTemplateLayer.validRenderer else { return }
         
         renderer.sbu_constraint(
-            width: self.messageTemplateLayer.containerSizeFactory.getWidth(),
-            priority: self.messageTemplateLayer.messageTemplateRenderer.isError ? .defaultLow : UILayoutPriority(rawValue: 1000)
+            width: self.bounds.width,
+            priority: self.messageTemplateLayer.messageTemplateRenderer.isError ? .defaultLow : .required
         )
-    }
-    
-    func setupMesageTemplateStyles() {
-        guard self.messageTemplateLayer.hasValidRenderer == true else { return }
-        
-        self.mainContainerView.layer.cornerRadius = 0.0
-        self.mainContainerView.layer.borderWidth = 0.0
-        self.mainContainerView.setTransparentBackgroundColor()
-    }
-    
-    func clearMessageTemplateLayouts() {
-        NSLayoutConstraint.deactivate(self.fullSizeMessageConstraints)
     }
 }
 
-extension SBUUserMessageCell: MessageTemplateRendererDelegate {
+extension SBUMessageTemplateCell: MessageTemplateRendererDelegate {
     func messageTemplateRender(_ renderer: SBUMessageTemplate.Renderer, didFinishLoadingImage imageView: UIImageView) {
         guard self.messageTemplateLayer.hasValidRenderer == true else { return }
         self.reloadCell()
@@ -275,28 +187,19 @@ extension SBUUserMessageCell: MessageTemplateRendererDelegate {
         case .carouselRestoreView:
             guard let carouselView = value as? SBUBaseCarouselView else { return }
             self.message?.messageTemplateCarouselView = carouselView
-        default: break
+        default: 
+            break
         }
     }
 }
 
-extension SBUUserMessageCell: MessageTemplateRendererDataSource {
+extension SBUMessageTemplateCell: MessageTemplateRendererDataSource {
     func messageTemplateRender(_ renderer: SBUMessageTemplate.Renderer, valueFor key: SBUMessageTemplate.Renderer.EventSourceKeys) -> Any? {
         switch key {
         case .carouselRestoreView:
             return self.message?.messageTemplateCarouselView
-        case .carouselProfileAreaSize:
-            return self.messageTemplateLayer.containerSizeFactory.getProfileArea()
         case .templateFactory:
             return self.messageTemplateLayer.templateView?.identifierFactory
         }
-    }
-}
-
-fileprivate extension UIView {
-    func setHeightConstraints(with target: UIView) {
-        self.translatesAutoresizingMaskIntoConstraints = false
-        self.widthAnchor.constraint(equalToConstant: 0).isActive = true
-        self.heightAnchor.constraint(equalTo: target.heightAnchor, multiplier: 1).isActive = true
     }
 }

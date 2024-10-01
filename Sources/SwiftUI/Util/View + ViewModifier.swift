@@ -27,5 +27,6 @@ extension View {
             .ignoresSafeArea()
             .navigationBarTitleDisplayMode(.inline)
             .navigationBarBackButtonHidden()
+            .navigationBarHidden(true)
     }
 }

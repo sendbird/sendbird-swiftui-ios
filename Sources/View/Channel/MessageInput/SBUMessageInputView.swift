@@ -737,6 +737,15 @@ open class SBUMessageInputView: SBUView, SBUActionSheetDelegate, UITextViewDeleg
         self.textView?.layer.borderColor = theme.textFieldBorderColor.cgColor
         self.textView?.typingAttributes = defaultAttributes
         
+        // support rtl layout
+        if self.currentLayoutDirection == .rightToLeft {
+            if SBUUtils.isRTLCharacter(with: self.placeholderLabel.text) {
+                self.placeholderLabel.textAlignment = .right
+            } else {
+                self.placeholderLabel.textAlignment = .left
+            }
+        }
+        
         // addButton
         let iconAdd = SBUIconSetType.iconAdd
             .image(with: (self.isFrozen || self.isMuted || self.isDisabledByServer || self.isDisabled)
@@ -854,20 +863,12 @@ open class SBUMessageInputView: SBUView, SBUActionSheetDelegate, UITextViewDeleg
     public func setFrozenModeState(_ isFrozen: Bool) {
         self.isFrozen = isFrozen
         
-        self.textView?.isEditable = !self.isFrozen
-        self.textView?.isUserInteractionEnabled = !self.isFrozen
-        self.addButton?.isEnabled = !self.isFrozen
-        self.voiceMessageButton?.isEnabled = !self.isFrozen
-        
         // SwiftUI
         #if SWIFTUI
         self.setFrozenModeStateForSwiftUI(isFrozen)
         #endif
-        
-        if self.isFrozen {
-            self.endTypingMode()
-        }
-        self.setupStyles()
+
+        self.updateInputState()
     }
     
     /// Sets frozen mode state.
@@ -875,41 +876,40 @@ open class SBUMessageInputView: SBUView, SBUActionSheetDelegate, UITextViewDeleg
     public func setMutedModeState(_ isMuted: Bool) {
         self.isMuted = isMuted
         
-        self.textView?.isEditable = !self.isMuted
-        self.textView?.isUserInteractionEnabled = !self.isMuted
-        self.addButton?.isEnabled = !self.isMuted
-        self.voiceMessageButton?.isEnabled = !self.isMuted
-        
         // SwiftUI
         #if SWIFTUI
         self.setMutedModeStateForSwiftUI(isMuted)
         #endif
-        
-        if self.isMuted {
-            self.endTypingMode()
-        }
-        self.setupStyles()
+
+        self.updateInputState()
     }
     
     /// Sets disable chat input value
     /// - Parameter isDisable: `true` is disable mode, `false` is available mode
     func setDisableChatInputState(_ isDisabledByServer: Bool) {
-        if SendbirdUI.config.groupChannel.channel.isSuggestedRepliesEnabled == false { return }
         if self.isMuted || self.isFrozen { return }
-        
-        self.isDisabledByServer = isDisabledByServer
-        
-        self.textView?.isEditable = !self.isDisabledByServer
-        self.textView?.isUserInteractionEnabled = !self.isDisabledByServer
-        self.addButton?.isEnabled = !self.isDisabledByServer
-        self.voiceMessageButton?.isEnabled = !self.isDisabledByServer
         
         // SwiftUI
         #if SWIFTUI
         self.setDisableChatInputStateForSwiftUI(isDisabledByServer)
         #endif
         
-        if self.isDisabledByServer {
+        self.isDisabledByServer = isDisabledByServer
+        
+        self.updateInputState()
+    }
+    
+    /// Methods to update the inputView's input-enabled state by looking at all states
+    /// - Since: 3.27.0
+    func updateInputState() {
+        let isDisabled = self.isDisabledByServer || self.isMuted || self.isFrozen
+        
+        self.textView?.isEditable = !isDisabled
+        self.textView?.isUserInteractionEnabled = !isDisabled
+        self.addButton?.isEnabled = !isDisabled
+        self.voiceMessageButton?.isEnabled = !isDisabled
+        
+        if isDisabled {
             self.endTypingMode()
         }
         self.setupStyles()
@@ -1124,6 +1124,15 @@ open class SBUMessageInputView: SBUView, SBUActionSheetDelegate, UITextViewDeleg
             self.textViewDidChangeForSwiftUI(text)
             #endif
             self.layoutIfNeeded()
+        }
+        
+        // support rtl layout
+        if self.currentLayoutDirection == .rightToLeft {
+            if SBUUtils.isRTLCharacter(with: text) {
+                self.textView?.textAlignment = .right
+            } else {
+                self.textView?.textAlignment = .left
+            }
         }
         
         self.delegate?.messageInputView(self, didChangeText: text)

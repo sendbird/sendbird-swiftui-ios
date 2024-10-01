@@ -24,7 +24,7 @@ open class SBUMenuSheetViewController: SBUBaseViewController, UITableViewDelegat
     public private(set) var tableView = UITableView()
     public let message: BaseMessage?
     public let items: [SBUMenuItem]
-    public let emojiList: [Emoji] = SBUEmojiManager.getAllEmojis()
+    public let emojiList: [Emoji]
     public private(set) var useReaction: Bool
 
     public let maxEmojiOneLine = 6
@@ -43,6 +43,7 @@ open class SBUMenuSheetViewController: SBUBaseViewController, UITableViewDelegat
         self.message = nil
         self.items = []
         self.useReaction = false
+        self.emojiList = SBUEmojiManager.getAllEmojis()
         super.init(coder: coder)
     }
 
@@ -52,6 +53,10 @@ open class SBUMenuSheetViewController: SBUBaseViewController, UITableViewDelegat
         self.message = message
         self.items = items
         self.useReaction = useReaction
+        
+        // Filter emojis if custom `SBUGlobals.emojiCategoryFilter` is defined.
+        emojiList = SBUEmojiManager.getAvailableEmojis(message: message)
+        
         super.init(nibName: nil, bundle: nil)
     }
 

@@ -81,9 +81,23 @@ extension SwiftUIViewController: UIViewControllerRepresentable {
     private func findNavigationController() -> Bool {
         if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
             for window in windowScene.windows {
-                if let navigationController = window.rootViewController as? UINavigationController {
+                if window.rootViewController is UINavigationController {
                     return true
                 } else if let rootViewController = window.rootViewController {
+                    if rootViewController.findNavigationControllerFromResponder() != nil {
+                        return true
+                    }
+                    
+                    // Check for modally presented view controllers (e.g., UIHostingController opened with sheet)
+                    if let presentedViewController = rootViewController.presentedViewController {
+                        return findNavigationController(from: presentedViewController)
+                    }
+                    
+                    // Check if the current view controller is a UITabBarController
+                    if let tabBarController = rootViewController as? UITabBarController {
+                        return findNavigationController(in: tabBarController)
+                    }
+                    
                     return findNavigationController(from: rootViewController)
                 }
             }
@@ -104,10 +118,45 @@ extension SwiftUIViewController: UIViewControllerRepresentable {
             }
         }
         
+        // Check for modally presented view controllers (e.g., UIHostingController opened with sheet)
+        if let presentedViewController = viewController.presentedViewController {
+            return findNavigationController(from: presentedViewController)
+        }
+        
+        // Check if the current view controller is a UITabBarController
+        if let tabBarController = viewController as? UITabBarController {
+            return findNavigationController(in: tabBarController)
+        }
+        
+        // Search the children of the current view controller
         for child in viewController.children {
             return findNavigationController(from: child)
         }
         return false
+    }
+    
+    private func findNavigationController(in tabBarController: UITabBarController) -> Bool {
+        // Check each tab within the UITabBarController
+        if let viewControllers = tabBarController.viewControllers {
+            for viewController in viewControllers {
+                // Search the UINavigationController in each tab
+                return findNavigationController(from: viewController)
+            }
+        }
+        return false
+    }
+}
+
+extension UIResponder {
+    func findNavigationControllerFromResponder() -> UINavigationController? {
+        var nextResponder: UIResponder? = self
+        while let responder = nextResponder {
+            if let navigationController = responder as? UINavigationController {
+                return navigationController
+            }
+            nextResponder = responder.next
+        }
+        return nil
     }
 }
 

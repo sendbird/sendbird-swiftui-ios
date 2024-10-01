@@ -11,6 +11,7 @@ import SendbirdChatSDK
 
 /// The data model used for configuring ``SBUFormView``.
 /// - Since: 3.11.0
+@available(*, deprecated, message: "This method is deprecated in 3.27.0")
 public struct SBUFormViewParams {
     // MARK: - Properties
     /// The ID of the message that provides form.

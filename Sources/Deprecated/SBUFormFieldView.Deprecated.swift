@@ -10,6 +10,7 @@ import UIKit
 import SendbirdChatSDK
 
 /// - Since: 3.11.0
+@available(*, deprecated, message: "This method is deprecated in 3.27.0")
 public protocol SBUFormFieldViewDelegate: AnyObject {
     /// Called when `SBUForm.Field` is updated.
     /// - Parameters:
@@ -19,6 +20,7 @@ public protocol SBUFormFieldViewDelegate: AnyObject {
 }
 
 /// - Since: 3.11.0
+@available(*, deprecated, message: "This method is deprecated in 3.27.0", renamed: "SBUMessageFormItemView")
 public class SBUFormFieldView: SBUView, UITextFieldDelegate {
     // MARK: - Properties
     
@@ -68,6 +70,7 @@ public class SBUFormFieldView: SBUView, UITextFieldDelegate {
 }
 
 /// - Since: 3.11.0
+@available(*, deprecated, message: "This method is deprecated in 3.27.0", renamed: "SBUMessageFormItemView")
 public class SBUSimpleFormFieldView: SBUFormFieldView {
     
     /// A vertical stack view to configure layouts of the fields.
@@ -156,7 +159,7 @@ public class SBUSimpleFormFieldView: SBUFormFieldView {
         
         self.errorTitleView.sbu_constraint(height: 12)
 
-        self.topSpaceView.sbu_constraint(width: 1, height: 8)
+        self.topSpaceView.sbu_constraint(width: 1, height: 6)
         self.bottomSpaceView.sbu_constraint(width: 1, height: 4)
 
         self.inputFieldView
@@ -261,9 +264,11 @@ public class SBUSimpleFormFieldView: SBUFormFieldView {
 
 }
 
+@available(*, deprecated, message: "This method is deprecated in 3.27.0")
 extension SBUFormFieldView {
     /// Enum model to indicate the status of the value in the currently entered field.
     /// - Since: 3.11.0
+    @available(*, deprecated, message: "This method is deprecated in 3.27.0")
     public enum StatusType {
         /// Represents a completed form field with a value.
         case done(value: String)
@@ -341,6 +346,7 @@ extension SBUFormFieldView {
 /// Indicates the input type of the field.
 /// Can be used to specify the keyboard type.
 /// - Since: 3.16.0
+@available(*, deprecated, message: "This method is deprecated in 3.27.0")
 public enum SBUFormFieldInputType: String, Codable {
     case text // default value.
     case phone

@@ -69,8 +69,9 @@ extension Array where Element: BaseMessage {
         guard message.updatedAt == 0 else { return  nil }
         guard message.sendingStatus == .succeeded else { return nil }
         guard message.sender?.userId != SBUGlobals.currentUser?.userId else { return nil }
-        
-        return message
+        if message.isStreamMessage == true { return message }
+        if latestMessage.isStreamMessage == true { return message }
+        return nil
     }
 }
 
@@ -112,5 +113,37 @@ public extension NSArray {
 extension Array {
     subscript(safe index: Int) -> Element? {
         return indices.contains(index) ? self[index] : nil
+    }
+}
+
+extension Array where Element == String {
+    func toggle(_ value: String) -> [String] {
+        var copy = self
+        if let index = copy.firstIndex(of: value) {
+            copy.remove(at: index)
+        } else {
+            copy.append(value)
+        }
+        return copy
+    }
+}
+
+extension Array where Element == BaseMessage {
+    /// A value that determines whether to disable the MessageInputView.
+    /// The values of sequential messages with `disable_chat_input` enabled are reviewed internally.
+    /// - Since: 3.27.2
+    public func getChatInputDisableState(hasNext: Bool?) -> Bool {
+        if hasNext == true { return false }
+        
+        var types = [BaseMessage.ChatInputDisableType]()
+        
+        for element in self {
+            let type = element.getChatInputDisableType(hasNext: hasNext)
+            if type == .none { break }
+            types.append(type)
+        }
+        
+        // Component type must be included to exit the disable_chat_input state.
+        return types.contains(where: { $0 == .component })
     }
 }
