@@ -61,7 +61,7 @@ open class SBUBaseChannelViewController: SBUBaseViewController, SBUBaseChannelVi
     
     var isTransformedList: Bool = true
     
-    var isDisableChatInputState: Bool = false
+    var isChatInputDisabled: Bool = false
     
     // MARK: - Lifecycle
     @available(*, unavailable)
@@ -682,8 +682,10 @@ open class SBUBaseChannelViewController: SBUBaseViewController, SBUBaseChannelVi
             }
         }
         
-        self.isDisableChatInputState =  messages.first?.asExtendedMessagePayload?.getDisabledChatInputState(hasNext: self.baseViewModel?.hasNext()) ?? false
-        
+        self.isChatInputDisabled = messages.getChatInputDisableState(
+            hasNext: self.baseViewModel?.hasNext()
+        )
+            
         guard needsToReload else { return }
         
         // Verify that the UIViewController is currently visible on the screen

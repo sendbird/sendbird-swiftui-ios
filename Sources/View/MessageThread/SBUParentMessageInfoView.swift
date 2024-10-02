@@ -151,6 +151,8 @@ open class SBUParentMessageInfoView: SBUView, SBUUserMessageTextViewDelegate {
     /// The handler that set the logic to be called when a mention is tapped.
     public var mentionTapHandler: ((_ user: SBUUser) -> Void)?
     
+    var errorHandler: ((_ error: SBError) -> Void)?
+    
     // MARK: - LifeCycle
     @available(*, unavailable, renamed: "SBUParentMessageInfoView(frame:)")
     required convenience public init?(coder: NSCoder) {
@@ -597,6 +599,15 @@ open class SBUParentMessageInfoView: SBUView, SBUUserMessageTextViewDelegate {
         // MARK: Configure reaction view
         let isReactionEnabled = self.isReactionAvailable && self.enablesReaction
         
+        let params = SBUMessageReactionViewParams(
+            maxWidth: SBUConstant.imageSize.width,
+            useReaction: isReactionEnabled,
+            reactions: message.reactions,
+            enableEmojiLongPress: enableEmojiLongPress,
+            message: message
+        )
+        self.reactionView.configure(configuration: params)
+        
         var didApplyReactionViewViewConverter = false
         #if SWIFTUI
         didApplyReactionViewViewConverter = self.applyViewConverter(.reactionView)
@@ -609,7 +620,6 @@ open class SBUParentMessageInfoView: SBUView, SBUUserMessageTextViewDelegate {
                 enableEmojiLongPress: enableEmojiLongPress
             )
         }
-        
         
         #if SWIFTUI
         self.applyViewConverter(.replyLabel)
@@ -675,6 +685,11 @@ open class SBUParentMessageInfoView: SBUView, SBUUserMessageTextViewDelegate {
         self.reactionView.moreEmojiTapHandler = { [weak self] in
             guard let self = self else { return }
             self.moreEmojiTapHandler?()
+        }
+        
+        self.reactionView.errorHandler = { [weak self] error in
+            guard let self = self else { return }
+            self.errorHandler?(error)
         }
     }
     

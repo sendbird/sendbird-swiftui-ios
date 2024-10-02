@@ -18,7 +18,7 @@ open class SBUEmojiListViewController: SBUBaseViewController, UICollectionViewDe
 
     public private(set) lazy var collectionView = UICollectionView(frame: self.view.bounds, collectionViewLayout: layout)
     public let layout: UICollectionViewFlowLayout = SBUCollectionViewFlowLayout()
-    public let emojiList: [Emoji] = SBUEmojiManager.getAllEmojis()
+    public let emojiList: [Emoji]
     public let message: BaseMessage?
     
     @SBUThemeWrapper(theme: SBUTheme.componentTheme)
@@ -48,6 +48,7 @@ open class SBUEmojiListViewController: SBUBaseViewController, UICollectionViewDe
     @available(*, unavailable, renamed: "SBUEmojiListViewController.init(message:)")
     required public init?(coder: NSCoder) {
         self.message = nil
+        self.emojiList = SBUEmojiManager.getAllEmojis()
         super.init(coder: coder)
     }
 
@@ -55,6 +56,10 @@ open class SBUEmojiListViewController: SBUBaseViewController, UICollectionViewDe
     /// - Parameter message: BaseMessage
     required public init(message: BaseMessage) {
         self.message = message
+        
+        // Filter emojis if custom `SBUGlobals.emojiCategoryFilter` is defined.
+        emojiList = SBUEmojiManager.getAvailableEmojis(message: message)
+        
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -181,16 +186,21 @@ open class SBUEmojiListViewController: SBUBaseViewController, UICollectionViewDe
         guard let cell = collectionView.dequeueReusableCell(
             withReuseIdentifier: SBUReactionCollectionViewCell.sbu_className,
             for: indexPath
-            ) as? SBUReactionCollectionViewCell else { return .init() }
+        ) as? SBUReactionCollectionViewCell else {
+            return .init()
+        }
 
         let emoji = emojiList[indexPath.row]
         cell.configure(type: .messageMenu, url: emoji.url)
 
-        guard let currentUesr = SBUGlobals.currentUser else { return cell }
+        guard let currentUesr = SBUGlobals.currentUser else {
+            return cell
+        }
         let didSelect = self.message?.reactions
             .first { $0.key == emoji.key }?
             .userIds.contains(currentUesr.userId) ?? false
         cell.isSelected = didSelect
+        
         return cell
     }
 

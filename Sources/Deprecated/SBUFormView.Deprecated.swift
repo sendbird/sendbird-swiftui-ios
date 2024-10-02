@@ -10,6 +10,7 @@ import UIKit
 import SendbirdChatSDK
 
 /// - Since: 3.11.0
+@available(*, deprecated, message: "This method is deprecated in 3.27.0")
 public protocol SBUFormViewDelegate: AnyObject {
     /// Called when `form` is submitted.
     /// - Parameters:
@@ -20,6 +21,7 @@ public protocol SBUFormViewDelegate: AnyObject {
 }
 
 /// - Since: 3.11.0
+@available(*, deprecated, message: "This method is deprecated in 3.27.0", renamed: "SBUMessageFormView")
 open class SBUFormView: SBUView, SBUFormFieldViewDelegate {
     public var theme: SBUMessageCellTheme = SBUTheme.messageCellTheme
     
@@ -83,6 +85,7 @@ open class SBUFormView: SBUView, SBUFormFieldViewDelegate {
 }
 
 /// - Since: 3.11.0
+@available(*, deprecated, message: "This method is deprecated in 3.27.0", renamed: "SBUMessageFormView")
 open class SBUSimpleFormView: SBUFormView {
     // views
     

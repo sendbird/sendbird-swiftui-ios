@@ -436,7 +436,7 @@ public class SendbirdUI {
             return
         }
         
-        SBUMessageTemplateManager.loadTemplateList(type: .group) { success in
+        SBUMessageTemplateManager.loadTemplateList(type: .message) { success in
             if !success { SBULog.error("[Failed] Load group message template list") }
             completionHandler(success)
         }

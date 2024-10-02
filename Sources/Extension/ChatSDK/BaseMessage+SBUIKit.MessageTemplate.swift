@@ -9,27 +9,9 @@
 import UIKit
 import SendbirdChatSDK
 
-// only internal
-fileprivate extension BaseMessage {
-    func setInMemoryUserInfo<Element>(key: String, data: Element) {
-        var memory = self.inMemoryUserInfo ?? [:]
-        memory[key] = data
-        self.inMemoryUserInfo = memory
-    }
-    
-    func getInMemoryUserInfo<Element>(key: String) -> Element? {
-        self.inMemoryUserInfo?[key] as? Element
-    }
-    
-    func getInMemoryUserInfo<Element>(key: String, defaultValue: Element) -> Element {
-        self.inMemoryUserInfo?[key] as? Element ?? defaultValue
-    }
-}
-
 extension BaseMessage {
     static let messageTemplateRetryStatusKey = "messageTemplateRetryStatusKey"
     static let messageTemplateImageRetryStatusKey = "messageTemplateImageRetryStatusKey"
-    static let messageTemplateHasCompositeType = "messageTemplateHasCompositeType"
     static let messageTemplateCarouselView = "messageTemplateCarouselView"
 }
 
@@ -43,12 +25,7 @@ extension BaseMessage {
         get { self.getInMemoryUserInfo(key: Self.messageTemplateImageRetryStatusKey, defaultValue: .initialized) }
         set { self.setInMemoryUserInfo(key: Self.messageTemplateImageRetryStatusKey, data: newValue) }
     }
-    
-    var hasMessageTemplateCompositeType: Bool {
-        get { self.getInMemoryUserInfo(key: Self.messageTemplateHasCompositeType, defaultValue: false) }
-        set { self.setInMemoryUserInfo(key: Self.messageTemplateHasCompositeType, data: newValue) }
-    }
-    
+        
     var messageTemplateCarouselView: UIView? {
         get { self.getInMemoryUserInfo(key: Self.messageTemplateCarouselView, defaultValue: nil) }
         set { self.setInMemoryUserInfo(key: Self.messageTemplateCarouselView, data: newValue) }

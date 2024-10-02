@@ -70,7 +70,16 @@ public protocol SBUGroupChannelModuleListDelegate: SBUBaseChannelModuleListDeleg
     ///   - form: `SendbirdChatSDK.Form` object.
     ///   - messageCell: Message cell object
     /// - Since: 3.16.0
+    @available(*, deprecated, message: "This method is deprecated in 3.27.0.")
     func groupChannelModule(_ listComponent: SBUGroupChannelModule.List, didSubmit form: SendbirdChatSDK.Form, messageCell: SBUBaseMessageCell)
+    
+    /// Called when submit the messageForm.
+    /// - Parameters:
+    ///   - listComponent: `SBUGroupChannelModule.List` object.
+    ///   - messageForm: Message Form object
+    ///   - messageCell: Message cell object
+    /// - Since: 3.27.0
+    func groupChannelModule(_ listComponent: SBUGroupChannelModule.List, didSubmitMessageForm messageForm: MessageForm, messageCell: SBUBaseMessageCell)
     
     /// Called when updated the feedback answer.
     /// - Parameters:
@@ -167,6 +176,11 @@ extension SBUGroupChannelModule {
         /// Use `register(typingIndicatorMessageCell:nib:)` to update.
         /// - Since: 3.12.0
         public private(set) var typingIndicatorMessageCell: SBUBaseMessageCell?
+        
+        /// The message cell for `MessageTemplate` data in `extendedMessagePayload`.
+        /// Use `register(messageTemplateCell:nib:)` to update.
+        /// - Since: 3.27.2
+        public private(set) var messageTemplateCell: SBUMessageTemplateCell?
         
         /// The message cell for some unknown message which is not a type of `AdminMessage` | `UserMessage` | ` FileMessage`. Use `register(unknownMessageCell:nib:)` to update.
         public private(set) var unknownMessageCell: SBUBaseMessageCell?
@@ -288,7 +302,9 @@ extension SBUGroupChannelModule {
             if self.unknownMessageCell == nil {
                 self.register(unknownMessageCell: Self.UnknownMessageCell.init())
             }
-            
+            if self.messageTemplateCell == nil {
+                self.register(messageTemplateCell: SBUMessageTemplateCell())
+            }
             if let cellType = Self.CustomMessageCell {
                 self.register(customMessageCell: cellType.init())
             }
@@ -528,6 +544,21 @@ extension SBUGroupChannelModule {
             self.register(messageCell: typingIndicatorMessageCell, nib: nib)
         }
         
+        /// Registers a custom cell as a message template cell based on `SBUMessageTemplateCell`.
+        /// - Parameters:
+        ///     - messageTemplateCell: Customized message template cell
+        ///     - nib: nib information. If the value is nil, the nib file is not used.
+        /// - Important: To register custom message cell, please use this function before calling `configure(delegate:dataSource:theme:)`
+        /// ```swift
+        /// listComponent.register(messageTemplateCell: MyMessageTemplateCell)
+        /// listComponent.configure(delegate: self, dataSource: self, theme: theme)
+        /// ```
+        /// - Since: 3.27.2
+        open func register(messageTemplateCell: SBUMessageTemplateCell, nib: UINib? = nil) {
+            self.messageTemplateCell = messageTemplateCell
+            self.register(messageCell: messageTemplateCell, nib: nib)
+        }
+        
         /// Registers a custom cell as a unknown message cell based on `SBUBaseMessageCell`.
         /// - Parameters:
         ///   - unknownMessageCell: Customized unknown message cell
@@ -698,6 +729,21 @@ extension SBUGroupChannelModule {
                 )
                 typingMessageCell.configure(with: configuration)
                 
+            // message template cell
+            case let (message, templateCell) as (BaseMessage, SBUMessageTemplateCell):
+                let shouldHideSuggestedReplies =  
+                SendbirdUI.config.groupChannel.channel.showSuggestedRepliesFor
+                    .shouldHideSuggestedReplies(
+                        message: message,
+                        fullMessageList: fullMessageList
+                    )
+                
+                let configuration = SBUMessageTemplateCellParams(
+                    message: message,
+                    shouldHideSuggestedReplies: shouldHideSuggestedReplies
+                )
+                templateCell.configure(with: configuration)
+                
             default:
                 let configuration = SBUBaseMessageCellParams(
                     message: message,
@@ -750,9 +796,10 @@ extension SBUGroupChannelModule {
                 self.delegate?.groupChannelModule(self, didSelect: optionView)
             }
             
-            messageCell.submitFormHandler = { [weak self] form, cell in
+            messageCell.submitMessageFormHandler = { [weak self] form, cell in
                 guard let self = self else { return }
-                self.delegate?.groupChannelModule(self, didSubmit: form, messageCell: cell)
+                guard let form = message.messageForm else { return }
+                self.delegate?.groupChannelModule(self, didSubmitMessageForm: form, messageCell: cell)
             }
             
             messageCell.updateFeedbackHandler = { [weak self] answer, cell in
@@ -811,6 +858,11 @@ extension SBUGroupChannelModule {
                     messageCell: messageCell
                 )
             }
+            
+            messageCell.errorHandler = { [weak self] error in
+                guard let self = self else { return }
+                self.delegate?.didReceiveError(error, isBlocker: false)
+            }
         }
         
         open override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -857,6 +909,15 @@ extension SBUGroupChannelModule {
         /// - Parameter message: Message object
         /// - Returns: The identifier of message cell.
         open func generateCellIdentifier(by message: BaseMessage) -> String {
+            if let template = message.asMessageTemplate {
+                if SBUMessageTemplate.Container.ContainerType.isValidType(with: template) == true {
+                    return messageTemplateCell?.sbu_className ?? SBUMessageTemplateCell.sbu_className
+                } else {
+                    SBULog.warning("Invalid `extended_message_paylod.template.type` of message template")
+                    return unknownMessageCell?.sbu_className ?? SBUUnknownMessageCell.sbu_className
+                }
+            }
+            
             switch message {
             case is SBUTypingIndicatorMessage:
                 return typingIndicatorMessageCell?.sbu_className ?? SBUTypingIndicatorMessageCell.sbu_className

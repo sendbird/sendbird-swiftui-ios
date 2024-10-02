@@ -104,7 +104,7 @@ open class SBUUserMessageTextView: SBUView {
         if !self.needsToRemoveMargin {
             self.widthConstraint?.isActive = false
             self.widthConstraint = self.widthAnchor.constraint(
-                lessThanOrEqualToConstant: containerType.isWide ? containerType.maxWidth : Metric.textMaxWidth
+                lessThanOrEqualToConstant: Metric.textMaxWidth
             )
             self.widthConstraint?.priority = .init(999)
             self.widthConstraint?.isActive = true
@@ -181,6 +181,15 @@ open class SBUUserMessageTextView: SBUView {
             with: model.attributedText,
             isEnabled: model.isMarkdownEnabled
         )        
+        
+        if self.currentLayoutDirection == .rightToLeft {
+            if SBUUtils.isRTLCharacter(with: self.textView.attributedText.string) {
+                self.textView.textAlignment = .right
+            } else {
+                self.textView.textAlignment = .left
+            }            
+        }
+        
         self.textView.linkTextAttributes = [
             .foregroundColor: model.textColor,
             .underlineStyle: NSUnderlineStyle.single.rawValue
