@@ -23,8 +23,8 @@ let package = Package(
     targets: [
         .binaryTarget(
             name: "SendbirdSwiftUI",
-            url: "https://github.com/sendbird/sendbird-swiftui-ios/releases/download/1.0.0-beta.2/SendbirdSwiftUI.xcframework.zip",
-            checksum: "097139b0498cf40ad4840f62a6366cd6eea7ffc0683995c03152dd19131e9913"
+            url: "https://github.com/sendbird/sendbird-swiftui-ios/releases/download/1.0.0-beta.3/SendbirdSwiftUI.xcframework.zip",
+            checksum: "4aad0185e8ebf1b305cfbf984e29312faf4084925c40e774d77b8328477fc4a4"
             
         ),
         .target(
