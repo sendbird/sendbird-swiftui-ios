@@ -6351,802 +6351,802 @@
 			path = List;
 			sourceTree = "<group>";
 		};
-		"TEMP_00C1DC87-BEB4-4D0B-9289-B424A4AC28A2" /* ViewModel */ = {
+		"TEMP_0199B5F1-040F-467E-9BBF-D07A22B8B4BB" /* Header */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Header;
+			sourceTree = "<group>";
+		};
+		"TEMP_02471739-5B3C-4EE8-9E12-720C18E60858" /* Module */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Module;
+			sourceTree = "<group>";
+		};
+		"TEMP_025CB36A-A91B-48FA-AE9F-46EA0F538835" /* List */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = List;
+			sourceTree = "<group>";
+		};
+		"TEMP_08C46386-8870-42CC-A83B-552ECBF79B43" /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
-		"TEMP_0404CB60-76F7-439A-8B2A-DA7F12636F93" /* Common */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Common;
-			sourceTree = "<group>";
-		};
-		"TEMP_04FCD1AD-6A23-4FF7-A3E3-35E5CD230391" /* Header */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Header;
-			sourceTree = "<group>";
-		};
-		"TEMP_05FD2283-B64E-405D-92DC-C939B84672AF" /* Header */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Header;
-			sourceTree = "<group>";
-		};
-		"TEMP_08DE343F-BAF9-40A1-BF6D-228FC4BD3648" /* Module */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Module;
-			sourceTree = "<group>";
-		};
-		"TEMP_0A029107-6939-432B-906A-AB34D86DEEFF" /* ViewController */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewController;
-			sourceTree = "<group>";
-		};
-		"TEMP_0AA039BD-811C-45E1-A472-274C89A41632" /* Media */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Media;
-			sourceTree = "<group>";
-		};
-		"TEMP_10D1428C-6681-4961-BFAD-FAD7DA5DAC8F" /* Header */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Header;
-			sourceTree = "<group>";
-		};
-		"TEMP_144D84CD-8E3A-49AD-A83D-85B5B44E701E" /* List */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = List;
-			sourceTree = "<group>";
-		};
-		"TEMP_1662EB54-C9CC-4AA4-8965-D861FF82E761" /* List */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = List;
-			sourceTree = "<group>";
-		};
-		"TEMP_1818B6C0-765F-42B9-9F02-2A58FB44B89E" /* SubView */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = SubView;
-			sourceTree = "<group>";
-		};
-		"TEMP_1E0BDA61-6E72-4B19-8280-D6CF545098D0" /* OpenUserList */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = OpenUserList;
-			sourceTree = "<group>";
-		};
-		"TEMP_245B285A-BE8F-4282-8434-8216E81C8308" /* Common */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Common;
-			sourceTree = "<group>";
-		};
-		"TEMP_296D61AF-FE5D-4CFC-80FF-009795641A5F" /* Module */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Module;
-			sourceTree = "<group>";
-		};
-		"TEMP_2AD70795-29AA-4FB1-AB50-FDC8AE092B4A" /* Module */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Module;
-			sourceTree = "<group>";
-		};
-		"TEMP_2B60769F-A272-4C6C-8D4C-E0CC8AC33817" /* Module */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Module;
-			sourceTree = "<group>";
-		};
-		"TEMP_2C51EA66-D974-47EC-B57C-9C2F3A1DCC54" /* ViewController */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewController;
-			sourceTree = "<group>";
-		};
-		"TEMP_2DC9408B-D809-4797-AB73-F40775722A8B" /* GroupUserList */ = {
+		"TEMP_0E6F7619-AC35-491D-8953-CE585F92331D" /* GroupUserList */ = {
 			isa = PBXGroup;
 			children = (
 			);
 			path = GroupUserList;
 			sourceTree = "<group>";
 		};
-		"TEMP_2E7536C1-72FC-4084-B589-C6D0C7C904B6" /* ViewController */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewController;
-			sourceTree = "<group>";
-		};
-		"TEMP_2F15C2BA-5E57-445D-A776-8F9966E7C302" /* Module */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Module;
-			sourceTree = "<group>";
-		};
-		"TEMP_30050B9F-2AF2-4B30-824E-2B5A4A1C1DED" /* SubView */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = SubView;
-			sourceTree = "<group>";
-		};
-		"TEMP_31D20EF7-4E0F-4402-B728-C181900551BD" /* SubView */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = SubView;
-			sourceTree = "<group>";
-		};
-		"TEMP_383E9268-41D2-4EE9-85C2-FBE797E3D292" /* SubView */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = SubView;
-			sourceTree = "<group>";
-		};
-		"TEMP_3C8D6724-A1A3-465E-9652-020FEBD9E866" /* List */ = {
+		"TEMP_0E808DED-0F45-48CD-9E84-71456EB389AE" /* List */ = {
 			isa = PBXGroup;
 			children = (
 			);
 			path = List;
 			sourceTree = "<group>";
 		};
-		"TEMP_3D1585FA-B322-40D7-87AD-AE2F92F4423F" /* ViewController */ = {
+		"TEMP_0EA3F4BB-5C99-41CF-BD7B-18E4E82507FE" /* Module */ = {
 			isa = PBXGroup;
 			children = (
 			);
-			path = ViewController;
+			path = Module;
 			sourceTree = "<group>";
 		};
-		"TEMP_4184736E-FCF8-4EA1-ACA3-FE2DCEF0ED34" /* SubView */ = {
+		"TEMP_1635A3B3-0010-4387-A333-2CECD376033C" /* SubView */ = {
 			isa = PBXGroup;
 			children = (
 			);
 			path = SubView;
 			sourceTree = "<group>";
 		};
-		"TEMP_42051311-2B6D-4EC0-8F23-0F7FD688C814" /* Common */ = {
+		"TEMP_173BD294-DE94-4EE0-A484-FA8FF4A19684" /* List */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = List;
+			sourceTree = "<group>";
+		};
+		"TEMP_1A7D443A-C9A5-4EDA-9512-CAE6DA3F284B" /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		"TEMP_1AC9A899-BA16-4651-925D-DAA1E579F23D" /* Header */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Header;
+			sourceTree = "<group>";
+		};
+		"TEMP_20BC6BFD-0DA0-42A5-B3E0-1A34C6156F11" /* Media */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Media;
+			sourceTree = "<group>";
+		};
+		"TEMP_225881CC-0747-416B-8DB2-2AB9B51856AB" /* Common */ = {
 			isa = PBXGroup;
 			children = (
 			);
 			path = Common;
 			sourceTree = "<group>";
 		};
-		"TEMP_42CC7C17-D9E1-47A7-9377-4930F330536C" /* ViewModel */ = {
+		"TEMP_2339DD66-3A1B-4124-B1E1-B8C9AA5B6990" /* SubView */ = {
 			isa = PBXGroup;
 			children = (
 			);
-			path = ViewModel;
+			path = SubView;
 			sourceTree = "<group>";
 		};
-		"TEMP_49112FA1-1995-45C3-8B9B-229141A85527" /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		"TEMP_4AAF17E7-4293-4C8B-AAE4-81EC771000C1" /* Module */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Module;
-			sourceTree = "<group>";
-		};
-		"TEMP_4AAF3B6E-2757-4758-88E9-5AD52BA5AC4F" /* List */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = List;
-			sourceTree = "<group>";
-		};
-		"TEMP_52EA991C-5361-46C1-A221-6BE439B52F8F" /* ViewController */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewController;
-			sourceTree = "<group>";
-		};
-		"TEMP_54AA0A9E-47D5-4C41-8557-3FF0D4984346" /* Header */ = {
+		"TEMP_23451FB0-253D-42AC-A699-687DB3C7B57F" /* Header */ = {
 			isa = PBXGroup;
 			children = (
 			);
 			path = Header;
 			sourceTree = "<group>";
 		};
-		"TEMP_5577CA23-D791-45FB-8327-758BC0A8C58C" /* ViewModel */ = {
+		"TEMP_2415A6A8-8956-41F7-9CE5-B29AA8D10BE7" /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
-		"TEMP_562E31C6-43CD-46ED-868D-B0615600AE38" /* SubView */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = SubView;
-			sourceTree = "<group>";
-		};
-		"TEMP_576453DE-77A7-4D7E-986A-9FA77959D1B3" /* SubView */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = SubView;
-			sourceTree = "<group>";
-		};
-		"TEMP_5CA73E82-B314-4C57-A5D7-6F1AE722873F" /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		"TEMP_5CBD6818-0609-47FC-AC91-5F8714EC3111" /* SubView */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = SubView;
-			sourceTree = "<group>";
-		};
-		"TEMP_5D21DAEA-4BC5-4FF4-A0E7-4AA36D6B6C29" /* ViewController */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewController;
-			sourceTree = "<group>";
-		};
-		"TEMP_5E8266E8-FDD5-4886-A471-240A51A63F36" /* Module */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Module;
-			sourceTree = "<group>";
-		};
-		"TEMP_5F861CE4-1D33-4C88-A34D-00196944137A" /* ViewController */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewController;
-			sourceTree = "<group>";
-		};
-		"TEMP_6104823B-E019-4458-81EA-F4206F19CD5B" /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		"TEMP_62E49CFE-50C3-420B-8B76-8662D0A1A788" /* SubView */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = SubView;
-			sourceTree = "<group>";
-		};
-		"TEMP_661D5A7F-D4E2-4412-B17C-2608708337B7" /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		"TEMP_68C201DB-B03D-4770-B360-E34917A3F113" /* SubView */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = SubView;
-			sourceTree = "<group>";
-		};
-		"TEMP_6BEA445B-3AF8-49C4-8AC3-7D38FCFC8383" /* ViewController */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewController;
-			sourceTree = "<group>";
-		};
-		"TEMP_6CF9F235-DAA3-41C4-AD13-0DA026ADE66E" /* Common */ = {
+		"TEMP_27D39984-FAB5-4BDA-9BE2-489F32B0909C" /* Common */ = {
 			isa = PBXGroup;
 			children = (
 			);
 			path = Common;
 			sourceTree = "<group>";
 		};
-		"TEMP_72157775-FA81-49FA-80E2-054E8BBBE81C" /* Header */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Header;
-			sourceTree = "<group>";
-		};
-		"TEMP_74ABE359-6AA8-498B-91A2-C69F8CE3FA54" /* List */ = {
+		"TEMP_3143116A-FB64-4E48-8C7B-6FB2F7B6C0F5" /* List */ = {
 			isa = PBXGroup;
 			children = (
 			);
 			path = List;
 			sourceTree = "<group>";
 		};
-		"TEMP_74FCEFC7-D168-4601-98D7-7C9E949DAA1A" /* Theme */ = {
+		"TEMP_317F1320-F30C-418A-A756-5FF374B96BFC" /* Header */ = {
 			isa = PBXGroup;
 			children = (
 			);
-			path = Theme;
+			path = Header;
 			sourceTree = "<group>";
 		};
-		"TEMP_74FF0044-1511-47B3-8DD2-EBAF64765221" /* Common */ = {
+		"TEMP_3819E504-C8F3-40E0-8387-B8F509DE722B" /* Common */ = {
 			isa = PBXGroup;
 			children = (
 			);
 			path = Common;
 			sourceTree = "<group>";
 		};
-		"TEMP_76A41946-8088-45F8-B4EA-9AA5228DA3C7" /* ViewController */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewController;
-			sourceTree = "<group>";
-		};
-		"TEMP_76CBE126-EB17-42B0-BD92-430B3560779F" /* Header */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Header;
-			sourceTree = "<group>";
-		};
-		"TEMP_76FE897C-1762-4E70-AF43-1CAD37F7ED69" /* Module */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Module;
-			sourceTree = "<group>";
-		};
-		"TEMP_7A9EDAA3-83F4-499E-81EA-BE4AA08E69A6" /* Module */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Module;
-			sourceTree = "<group>";
-		};
-		"TEMP_815C82E3-1D63-4D60-99CD-69828F21EE4C" /* ViewController */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewController;
-			sourceTree = "<group>";
-		};
-		"TEMP_82455EB7-5123-4E9B-839E-C2F31EC35436" /* Header */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Header;
-			sourceTree = "<group>";
-		};
-		"TEMP_87DA4E5E-7FBB-40D6-BD08-2FD66F01B001" /* List */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = List;
-			sourceTree = "<group>";
-		};
-		"TEMP_87E95E60-B55D-4826-AF8A-59BF1F9916C3" /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		"TEMP_8A9C3F53-96CB-4140-8D00-AC6CC09832A1" /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		"TEMP_8D892819-8345-49B0-BDD0-8387309A46A1" /* ViewController */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewController;
-			sourceTree = "<group>";
-		};
-		"TEMP_90F9FCB1-D88B-40FF-8A19-63E36CEF714E" /* Module */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Module;
-			sourceTree = "<group>";
-		};
-		"TEMP_91D842A5-8B13-494C-A8B1-BA66068AB790" /* Header */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Header;
-			sourceTree = "<group>";
-		};
-		"TEMP_95C8899C-ABD6-434B-B6F4-F4EBF49A506E" /* ProfileInput */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ProfileInput;
-			sourceTree = "<group>";
-		};
-		"TEMP_98020E12-E744-460C-850B-3184CFDDEB58" /* SubView */ = {
+		"TEMP_3873B46D-D627-4064-B8BF-DFF8DD1D1415" /* SubView */ = {
 			isa = PBXGroup;
 			children = (
 			);
 			path = SubView;
 			sourceTree = "<group>";
 		};
-		"TEMP_992CFAA0-56DA-4CB2-9397-4E1F4C1A4EFC" /* Module */ = {
+		"TEMP_3A5F639C-1FE5-4433-BF7B-30013C5A33B7" /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		"TEMP_3BDF53DC-56D5-4ADF-81A4-400FF1513B21" /* Module */ = {
 			isa = PBXGroup;
 			children = (
 			);
 			path = Module;
 			sourceTree = "<group>";
 		};
-		"TEMP_997F9278-80B4-47FB-A24F-33FE46F51BF7" /* Header */ = {
+		"TEMP_3DF712FB-CD7B-48F5-8B47-95E82BA3034E" /* Common */ = {
 			isa = PBXGroup;
 			children = (
 			);
-			path = Header;
+			path = Common;
 			sourceTree = "<group>";
 		};
-		"TEMP_9B11E5C4-9BEA-45FC-AC31-55B9F69CDBC8" /* Input */ = {
+		"TEMP_3F7FFB37-90BF-4742-92A3-5F425BEDE932" /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
 			);
-			path = Input;
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
-		"TEMP_9C11B0D7-B44B-4D95-88FA-5A777A879584" /* Module */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Module;
-			sourceTree = "<group>";
-		};
-		"TEMP_9F9F2020-08A0-4791-9EC0-99B3585A3E1F" /* Input */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Input;
-			sourceTree = "<group>";
-		};
-		"TEMP_A31DB68B-4D46-42DD-9E04-28B53A258799" /* ChannelList */ = {
+		"TEMP_409F7DDC-5808-4BB0-B0CD-446D9E956D86" /* ChannelList */ = {
 			isa = PBXGroup;
 			children = (
 			);
 			path = ChannelList;
 			sourceTree = "<group>";
 		};
-		"TEMP_A5BA7361-190C-419F-8D31-FABE40024911" /* List */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = List;
-			sourceTree = "<group>";
-		};
-		"TEMP_A7214DC0-2F84-4F5E-9E31-880BE8FFBDF3" /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		"TEMP_AA64EDA0-2EDF-4D87-98AB-5C932F126677" /* Module */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Module;
-			sourceTree = "<group>";
-		};
-		"TEMP_ACD89950-FCEF-4A25-BE9A-0D5DB219DFA7" /* ViewController */ = {
+		"TEMP_41072BFA-9CCD-487F-A37C-6368077922B1" /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
 			);
 			path = ViewController;
 			sourceTree = "<group>";
 		};
-		"TEMP_AEB6E47A-78E6-40BD-B081-2CB837E44F6A" /* ViewModel */ = {
+		"TEMP_4193D5DF-380D-4EBA-B351-8F17A3848133" /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
-		"TEMP_AFF5B430-C45B-4F00-B439-79BEDBB840E0" /* Header */ = {
+		"TEMP_41B9DFCC-2E02-4168-A4E4-37880B2352DB" /* Header */ = {
 			isa = PBXGroup;
 			children = (
 			);
 			path = Header;
 			sourceTree = "<group>";
 		};
-		"TEMP_B2FD5813-91EC-4DA4-B00E-B49ADF33142A" /* Module */ = {
+		"TEMP_44C6D2F6-F195-4E4A-BFC9-CEB560293156" /* Header */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Header;
+			sourceTree = "<group>";
+		};
+		"TEMP_46838470-23E6-4052-964D-67A9FD971B25" /* Module */ = {
 			isa = PBXGroup;
 			children = (
 			);
 			path = Module;
 			sourceTree = "<group>";
 		};
-		"TEMP_B890AC70-9D31-4535-BECD-EB6D7BF74AB2" /* ViewModel */ = {
+		"TEMP_4A97F98C-D4CA-4C22-810A-D3C8C661F022" /* Module */ = {
 			isa = PBXGroup;
 			children = (
 			);
-			path = ViewModel;
+			path = Module;
 			sourceTree = "<group>";
 		};
-		"TEMP_B9D481C6-FDA3-41CC-949A-850C1B67B0A7" /* SubView */ = {
+		"TEMP_4C282AB2-5EFA-45F7-B9BC-6F0E750D584D" /* SubView */ = {
 			isa = PBXGroup;
 			children = (
 			);
 			path = SubView;
 			sourceTree = "<group>";
 		};
-		"TEMP_BB57748F-09BF-4D90-8D67-39DE285DBA13" /* List */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = List;
-			sourceTree = "<group>";
-		};
-		"TEMP_BBBAC5A0-F3FB-4656-AA23-2245498622DB" /* ViewController */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewController;
-			sourceTree = "<group>";
-		};
-		"TEMP_BEDC1B44-6E2B-4882-8A75-4C30CA414909" /* Module */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Module;
-			sourceTree = "<group>";
-		};
-		"TEMP_C1E947F7-CFDA-4D91-B9A3-E7C3E4B9FE15" /* List */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = List;
-			sourceTree = "<group>";
-		};
-		"TEMP_C1F8D1E0-CAC1-4DE9-9014-B21D0B178E53" /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		"TEMP_C4A63F1F-73FB-4F40-8F24-51DF96378203" /* List */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = List;
-			sourceTree = "<group>";
-		};
-		"TEMP_C9C5B29B-8BA6-4B56-9809-A14933C51F1D" /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		"TEMP_CAE1A252-0C53-43B4-80A5-FAFF6ADD2533" /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		"TEMP_CD5F7C5E-A92C-4C91-BC19-CC19F35A30E7" /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		"TEMP_CE286E35-2931-4AE4-8988-0672735D0E6F" /* ViewController */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewController;
-			sourceTree = "<group>";
-		};
-		"TEMP_CE4C14FB-9E46-4180-8E3C-B86847A15AB1" /* Header */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Header;
-			sourceTree = "<group>";
-		};
-		"TEMP_CEBDB265-CD75-4D34-9D25-B03A7A4181A2" /* Common */ = {
+		"TEMP_55682535-79CB-4B36-9E3A-97C18594274C" /* Common */ = {
 			isa = PBXGroup;
 			children = (
 			);
 			path = Common;
 			sourceTree = "<group>";
 		};
-		"TEMP_CF7607DC-BE68-443C-9B13-A6E79F58C11B" /* List */ = {
+		"TEMP_5973BC32-3460-4505-A32A-1B1D0B5F48FB" /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
 			);
-			path = List;
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
-		"TEMP_D2F3675A-11E2-4EA6-A47F-F677AF8CEADE" /* SubView */ = {
+		"TEMP_5F5D8D9D-A99B-4630-9102-6EF268E35078" /* SubView */ = {
 			isa = PBXGroup;
 			children = (
 			);
 			path = SubView;
 			sourceTree = "<group>";
 		};
-		"TEMP_D3CD6D21-252C-43F3-A1CC-307975E53164" /* Header */ = {
+		"TEMP_5FE9C742-07F6-455A-821C-F4E832501F64" /* List */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = List;
+			sourceTree = "<group>";
+		};
+		"TEMP_61098632-2EB5-41D4-AC74-C4811BAAA4CA" /* SubView */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = SubView;
+			sourceTree = "<group>";
+		};
+		"TEMP_613D22F3-BAAC-4B81-A273-94838ACC3FA5" /* Module */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Module;
+			sourceTree = "<group>";
+		};
+		"TEMP_62812BF7-CAC2-4D5C-9351-105E1BB1B510" /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		"TEMP_62B4B2A7-8317-4894-9407-DCF65384B1F0" /* Module */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Module;
+			sourceTree = "<group>";
+		};
+		"TEMP_646E2CE9-8651-46EF-8856-ACE526DCDC14" /* List */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = List;
+			sourceTree = "<group>";
+		};
+		"TEMP_65DC2D1E-5E26-48D8-983A-1290BEF4DB79" /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		"TEMP_65FFD230-27C6-4F4B-8E8E-18CE96E9E866" /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		"TEMP_689FFFB8-ED79-4C22-B83A-E1485B296F3F" /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		"TEMP_6B2C9AD2-30A1-4923-90EB-7DE8DC995446" /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		"TEMP_6CA16752-E00B-479C-85EA-15533B718A8E" /* Header */ = {
 			isa = PBXGroup;
 			children = (
 			);
 			path = Header;
 			sourceTree = "<group>";
 		};
-		"TEMP_D705BD99-C526-4B92-BFDF-268A4DAE2347" /* Input */ = {
+		"TEMP_6F2B3EC9-B20A-498A-AC07-378DCC9630C3" /* Module */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Module;
+			sourceTree = "<group>";
+		};
+		"TEMP_70F419A9-1C40-4D0C-AF24-0EDB0776F4E8" /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		"TEMP_74318616-CE6D-4A28-B86E-115D1D27B66F" /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		"TEMP_74D04BEE-7157-43C8-B20F-6BF1128ED36D" /* Module */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Module;
+			sourceTree = "<group>";
+		};
+		"TEMP_79B5EB14-03C9-4F3C-ACB1-150B217E95AD" /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		"TEMP_7EC57E55-73F0-4DAD-BC14-4E8B30A9BB36" /* ProfileInput */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ProfileInput;
+			sourceTree = "<group>";
+		};
+		"TEMP_7F7AADE2-391B-4EC8-9A54-D16E81D80F94" /* Header */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Header;
+			sourceTree = "<group>";
+		};
+		"TEMP_81161FA1-8713-4F4A-8FBC-3848C6C62AD5" /* List */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = List;
+			sourceTree = "<group>";
+		};
+		"TEMP_811BC954-4657-4F0D-BF09-58890F3F3AFD" /* Common */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		"TEMP_814AEAD3-DDDC-4955-A6AC-F71DD7372C5F" /* SubView */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = SubView;
+			sourceTree = "<group>";
+		};
+		"TEMP_81CDE4E6-FFD3-4DA7-BDA9-70E709AAA2AF" /* SubView */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = SubView;
+			sourceTree = "<group>";
+		};
+		"TEMP_82376388-4A67-49E4-9431-8C72A30E0B0A" /* Header */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Header;
+			sourceTree = "<group>";
+		};
+		"TEMP_848C092D-913D-4594-A402-7CBA82F7876E" /* Header */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Header;
+			sourceTree = "<group>";
+		};
+		"TEMP_870C7ADF-175E-460A-B5F1-44CAEA3D6929" /* Theme */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Theme;
+			sourceTree = "<group>";
+		};
+		"TEMP_88670E69-660A-4F09-A7EA-8E8C4CB5B989" /* OpenUserList */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = OpenUserList;
+			sourceTree = "<group>";
+		};
+		"TEMP_8BD0971F-FE5B-42AF-B7ED-B1A2C2ADB84A" /* SubView */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = SubView;
+			sourceTree = "<group>";
+		};
+		"TEMP_8CF6B64B-BA6F-406D-989A-55F7E9836569" /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		"TEMP_91EADA65-D21F-4A8B-B042-1BEC1BAE377B" /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		"TEMP_94ABD6DC-B3E2-4D22-8B43-44660EC50089" /* Module */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Module;
+			sourceTree = "<group>";
+		};
+		"TEMP_9571C300-FC8F-4242-A8CB-EA8180724E52" /* Input */ = {
 			isa = PBXGroup;
 			children = (
 			);
 			path = Input;
 			sourceTree = "<group>";
 		};
-		"TEMP_D72F90F8-9E1E-4E7D-B70A-6F163CC32998" /* Module */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Module;
-			sourceTree = "<group>";
-		};
-		"TEMP_D8BECCFD-2E13-49D8-81B7-70BF9399A7AD" /* List */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = List;
-			sourceTree = "<group>";
-		};
-		"TEMP_DA459AC6-F863-4A10-B472-9545CEBF223E" /* Common */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Common;
-			sourceTree = "<group>";
-		};
-		"TEMP_DB46A9B5-D084-481F-9935-E6008406818B" /* List */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = List;
-			sourceTree = "<group>";
-		};
-		"TEMP_DFDE67C1-992D-4682-887A-83E6000A99F3" /* ViewController */ = {
+		"TEMP_9A1ECB13-443D-482C-BB54-CA2996793289" /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
 			);
 			path = ViewController;
 			sourceTree = "<group>";
 		};
-		"TEMP_E06E2802-B917-467D-B37C-BD3DFE1E6595" /* List */ = {
+		"TEMP_A0759ACE-4384-4F60-ABF6-9D9C5D872068" /* List */ = {
 			isa = PBXGroup;
 			children = (
 			);
 			path = List;
 			sourceTree = "<group>";
 		};
-		"TEMP_EBA5522C-DFFB-4B3A-8D9E-9A36D1A0A70D" /* Header */ = {
+		"TEMP_A1BB9F1A-5F94-4933-B9AD-FBA51704E77C" /* Input */ = {
 			isa = PBXGroup;
 			children = (
 			);
-			path = Header;
+			path = Input;
 			sourceTree = "<group>";
 		};
-		"TEMP_ECB16E58-F71D-4A6F-9FE1-836981F07517" /* List */ = {
+		"TEMP_A5E191D8-310A-473E-BA94-C8BC293E62AE" /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		"TEMP_A644B64E-AF07-43A1-B5A4-57AD21B3D4C5" /* Module */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Module;
+			sourceTree = "<group>";
+		};
+		"TEMP_B0BE5BB2-4F31-484B-A36A-843B3DBBA68D" /* List */ = {
 			isa = PBXGroup;
 			children = (
 			);
 			path = List;
 			sourceTree = "<group>";
 		};
-		"TEMP_ED85BD6B-C46D-4D54-A76E-F76CE4AE04EE" /* List */ = {
+		"TEMP_B0CB75D5-5643-4AA6-A762-52FF0E894239" /* SubView */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = SubView;
+			sourceTree = "<group>";
+		};
+		"TEMP_B1AE3BE0-63F0-4023-ACB7-5FFD8ACE1584" /* List */ = {
 			isa = PBXGroup;
 			children = (
 			);
 			path = List;
 			sourceTree = "<group>";
 		};
-		"TEMP_EEEA0B52-7595-4F45-AF5F-DCEFAC655449" /* ViewModel */ = {
+		"TEMP_B4035116-9032-4B5F-A12F-084F4B885B5B" /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		"TEMP_B40BAED1-EABE-455C-B2E1-A96BD60CC351" /* Module */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Module;
+			sourceTree = "<group>";
+		};
+		"TEMP_B6783EA1-5281-4E38-86BD-8650F87D4516" /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		"TEMP_B79DA308-D60E-468F-9ABD-3E20620233DC" /* SubView */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = SubView;
+			sourceTree = "<group>";
+		};
+		"TEMP_B95FC551-0CA3-4BF5-9953-69BD94EBD154" /* SubView */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = SubView;
+			sourceTree = "<group>";
+		};
+		"TEMP_BCE54956-A4EA-4CA9-AA3C-FCC3392C3679" /* List */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = List;
+			sourceTree = "<group>";
+		};
+		"TEMP_BD5785B0-37EB-415D-8F3B-98F66FB02A16" /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
-		"TEMP_EEEAA7B8-D9A7-4CAC-BF27-76FA5D32D828" /* Header */ = {
+		"TEMP_BE362144-282E-40CF-A021-965A21688A74" /* Header */ = {
 			isa = PBXGroup;
 			children = (
 			);
 			path = Header;
 			sourceTree = "<group>";
 		};
-		"TEMP_F15543C3-0193-4D63-B680-50D27B11E587" /* ViewController */ = {
+		"TEMP_BF3996B5-27FA-4CC6-8F3D-01219BE1DB83" /* List */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = List;
+			sourceTree = "<group>";
+		};
+		"TEMP_C1446A09-9ED1-4070-BCEE-3E1C6E8B8300" /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
 			);
 			path = ViewController;
 			sourceTree = "<group>";
 		};
-		"TEMP_F7CEC51D-0645-419A-BA55-CCC773953347" /* Header */ = {
+		"TEMP_C3F2CD73-0F3E-4475-9C63-0AB401C3BFA8" /* List */ = {
 			isa = PBXGroup;
 			children = (
 			);
-			path = Header;
+			path = List;
 			sourceTree = "<group>";
 		};
-		"TEMP_F95CAD70-2D58-476B-851E-9C1F0101A56A" /* Header */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Header;
-			sourceTree = "<group>";
-		};
-		"TEMP_FA22DEAA-20DC-4EC3-9D18-748081664003" /* ViewController */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewController;
-			sourceTree = "<group>";
-		};
-		"TEMP_FC549662-1520-4980-8389-D3022EB5909D" /* Common */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Common;
-			sourceTree = "<group>";
-		};
-		"TEMP_FCE49633-B863-468D-B9F8-376555B50B1D" /* Module */ = {
+		"TEMP_C5CB1645-8EA9-49BD-9804-5D9348DCE957" /* Module */ = {
 			isa = PBXGroup;
 			children = (
 			);
 			path = Module;
 			sourceTree = "<group>";
 		};
-		"TEMP_FE50123F-8117-47C9-9E01-4CB5FFA63591" /* Header */ = {
+		"TEMP_C7E365B6-F62A-4594-9C0C-48D88188CC16" /* Header */ = {
 			isa = PBXGroup;
 			children = (
 			);
 			path = Header;
+			sourceTree = "<group>";
+		};
+		"TEMP_CCA76708-002C-45B9-8F50-3493229AEF97" /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		"TEMP_D02561DF-BF3E-4DAF-A783-9CAC1EAA6DE0" /* SubView */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = SubView;
+			sourceTree = "<group>";
+		};
+		"TEMP_D1553DF1-3694-436D-B3F6-74D060F4F762" /* Header */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Header;
+			sourceTree = "<group>";
+		};
+		"TEMP_D5EE2F71-F5AC-4BB7-AD9B-C0B72220A0AC" /* Input */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Input;
+			sourceTree = "<group>";
+		};
+		"TEMP_D65C69CD-8778-4190-AB8D-AE7B3A643D13" /* Common */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		"TEMP_D82F5679-6247-42F2-A125-E009CC61CAE2" /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		"TEMP_D9C94377-5DB5-4F30-BA1D-A6C1AC80E705" /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		"TEMP_DD4153B7-4646-4619-8490-29D6AF720D52" /* Header */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Header;
+			sourceTree = "<group>";
+		};
+		"TEMP_DE818E13-A7AA-4187-9764-D82EFE4A5100" /* Header */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Header;
+			sourceTree = "<group>";
+		};
+		"TEMP_E3343F39-CA75-4F83-BE91-26AFA69356F4" /* List */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = List;
+			sourceTree = "<group>";
+		};
+		"TEMP_E5C50754-0F13-4365-9663-7085B6CE45F6" /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		"TEMP_E5CDBDA4-96E5-48DD-906D-D67F27668D7B" /* Header */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Header;
+			sourceTree = "<group>";
+		};
+		"TEMP_E6DD23CE-2223-4A2D-A2ED-FDCF36B3FD6B" /* List */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = List;
+			sourceTree = "<group>";
+		};
+		"TEMP_E88BD22A-CFA5-4EA0-9DBB-8803B7F676A1" /* Module */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Module;
+			sourceTree = "<group>";
+		};
+		"TEMP_EA7D23C3-A3A5-4AAE-A1A4-F226B89A01FE" /* List */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = List;
+			sourceTree = "<group>";
+		};
+		"TEMP_EA8C9BA0-D7E9-4AF9-BCA0-20E952B6972D" /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		"TEMP_EAF0CC42-EA53-456B-8A79-DBC12B7F7C90" /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		"TEMP_EBF5A73E-9835-4D7D-B3E0-DB4CAE645342" /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		"TEMP_EDADB98C-8C00-4A47-AF42-476D7433A3E8" /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		"TEMP_EE4480FF-D685-4A2A-BF63-350ECE0087A2" /* Common */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		"TEMP_F06B3F5E-9713-445B-A84F-FA7A4458C10B" /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		"TEMP_F3D901A5-BB5B-4293-84BC-B3862C66DAF2" /* Module */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Module;
+			sourceTree = "<group>";
+		};
+		"TEMP_F7E86B88-BA0A-4753-B8FD-CC5EBC0A1A13" /* Module */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Module;
+			sourceTree = "<group>";
+		};
+		"TEMP_F82E4BAB-ECD9-4647-B0D8-801B30547DA0" /* Header */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Header;
+			sourceTree = "<group>";
+		};
+		"TEMP_FD0B8116-03BF-4B92-A45E-B87CC957B40A" /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		"TEMP_FFE1E3EC-FD58-4BA0-9EFB-BAF17B0B75E4" /* Module */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Module;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -8344,7 +8344,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = "1.0.0-beta.2";
+				MARKETING_VERSION = "1.0.0-beta.3";
 				PRODUCT_BUNDLE_IDENTIFIER = com.sendbird.swiftui.sample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -8377,7 +8377,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = "1.0.0-beta.2";
+				MARKETING_VERSION = "1.0.0-beta.3";
 				PRODUCT_BUNDLE_IDENTIFIER = com.sendbird.swiftui.sample.SwiftUINotificationService;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -8468,7 +8468,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = "1.0.0-beta.2";
+				MARKETING_VERSION = "1.0.0-beta.3";
 				PRODUCT_BUNDLE_IDENTIFIER = com.sendbird.swiftui.sample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -8556,7 +8556,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = "1.0.0-beta.2";
+				MARKETING_VERSION = "1.0.0-beta.3";
 				PRODUCT_BUNDLE_IDENTIFIER = com.sendbird.swiftui.sample.SwiftUINotificationService;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
