@@ -1,4 +1,7 @@
 import SwiftUI
+#if canImport(SendbirdSwiftUI)
+import SendbirdSwiftUI
+#endif
 
 extension CustomGroupChannel.ViewConverter.List {
     struct adminMessageView: View {
@@ -20,7 +23,7 @@ extension CustomGroupChannel.ViewConverter.List {
             if let channelURL = viewModel.groupChannel?.channelURL {
                 VStack {
                     GroupChannelView(
-                        channelURL: channelURL,
+                        provider: GroupChannelViewProvider(channelURL: channelURL),
                         listItem: {
                             .init()
                             .adminMessageView { config in

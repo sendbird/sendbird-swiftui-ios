@@ -1,4 +1,7 @@
 import SwiftUI
+#if canImport(SendbirdSwiftUI)
+import SendbirdSwiftUI
+#endif
 
 extension CustomOpenOperatorList.ViewConverter.List {
     struct profileImage: View {
@@ -17,7 +20,7 @@ extension CustomOpenOperatorList.ViewConverter.List {
         
         var body: some View {
             OpenOperatorListView(
-                channelURL: TestURL.openChannel,
+                provider: OpenOperatorListViewProvider(channelURL: TestURL.openChannel),
                 listItem: {
                     .init()
                     .profileImage { config in

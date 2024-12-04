@@ -16,14 +16,28 @@ public struct OpenChannelRegisterOperatorView: View {
     
     var configurations: [(SBURegisterOperatorViewController) -> Void] = []
     
-    private var channelURL: String
-    private var users: [SBUUser]?
+    // Non-optional since `channelURL` is required.
+    @ObservedObject private var provider: OpenChannelRegisterOperatorViewProvider
     
-    // MARK: - Methods
+    init(provider: OpenChannelRegisterOperatorViewProvider) {
+        self.provider = provider
+    }
+    
     public var body: some View {
         SBUViewControllerSet.OpenChannelRegisterOperatorViewController
             .swiftUI {
                 createViewController()
+            }
+            .injectData { viewController in
+                if self.shouldUpdateData(viewController: viewController) {
+                    // Inject data into view model and load
+                    viewController.viewModel?.initializeAndLoad(
+                        channelURL: self.provider.channelURL,
+                        channelType: .open,
+                        users: self.provider.customUsers,
+                        inviteListType: .operators
+                    )
+                }
             }
             .configure { viewController in
                 viewController.dismissAction = {
@@ -39,15 +53,29 @@ public struct OpenChannelRegisterOperatorView: View {
                 viewConverter.applyViewUpdates(to: viewController)
             }
             .switchUIKitNavigationBar()
+            .onDisappear {
+                SBViewConverterSet.OpenChannelRegisterOperator = OpenChannelRegisterOperatorViewConverter()
+            }
     }
     
+    // MARK: - Methods
     private func createViewController() -> SBURegisterOperatorViewController {
         let viewController = SBUViewControllerSet.OpenChannelRegisterOperatorViewController.init(
-            channelURL: self.channelURL,
+            channelURL: self.provider.channelURL,
             channelType: .open,
-            users: self.users
+            users: self.provider.customUsers
         )
+        
+        // hook up VC, VM into provider
+        self.provider.bind(viewController: viewController)
+        
         return viewController
+    }
+    
+    private func shouldUpdateData(viewController: SBURegisterOperatorViewController) -> Bool {
+        let shouldUpdateChannelURL = viewController.viewModel?.channelURL == "" && self.provider.channelURL != ""
+        let shouldUpdateCustomUsers = viewController.viewModel?.customizedUsers == nil && self.provider.customUsers != nil
+        return shouldUpdateChannelURL || shouldUpdateCustomUsers
     }
 }
 
@@ -55,24 +83,13 @@ public struct OpenChannelRegisterOperatorView: View {
 /// OpenChannelRegisterOperatorView initializers
 public extension OpenChannelRegisterOperatorView {
     // MARK: - typealias
-    // TODO: Initializer 에서 필요하면 구현
     // typealias ListContent = OpenChannelRegisterOperatorViewConverter.List
     
     init(
-        channelURL: String,
-        users: [SBUUser]? = nil
-    ) {
-        self.channelURL = channelURL
-        self.users = users
-    }
-// (↓↓ example ↓↓)
-    init(
-        channelURL: String,
-        users: [SBUUser]? = nil,
+        provider: OpenChannelRegisterOperatorViewProvider,
         headerItem: (() -> OpenChannelRegisterOperatorType.HeaderItem)? = nil
     ) {
-        self.channelURL = channelURL
-        self.users = users
+        self.provider = provider
 
         if let headerItem { _ = headerItem() }
 //        if let listItem { _ = listItem() }
@@ -80,8 +97,9 @@ public extension OpenChannelRegisterOperatorView {
         // Apply view converter in viewConverterSet.
         self.applyViewConverterSet()
     }
-//
-//    init<Content: View>(
+
+    // TODO: After entire content is implemented
+//    internal init<Content: View>(
 //        channelListQuery: GroupChannelListQuery? = nil,
 //        headerItem: (() -> Sendbird.View.GroupChannel.ChannelList.HeaderItem)? = nil,
 //        list: @escaping (ListContent.ViewConfig) -> Content
@@ -105,6 +123,6 @@ public extension OpenChannelRegisterOperatorView {
 
 #Preview {
     NavigationView {
-        OpenChannelRegisterOperatorView(channelURL: "")
+        OpenChannelRegisterOperatorView(provider: .init(channelURL: ""))
     }
 }

@@ -1,4 +1,7 @@
 import SwiftUI
+#if canImport(SendbirdSwiftUI)
+import SendbirdSwiftUI
+#endif
 struct CustomTheme: View {
     var body: some View {
         GroupChannelListView()

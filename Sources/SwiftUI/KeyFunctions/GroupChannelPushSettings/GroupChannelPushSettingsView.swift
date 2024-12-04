@@ -16,13 +16,24 @@ public struct GroupChannelPushSettingsView: View {
     
     var configurations: [(SBUGroupChannelPushSettingsViewController) -> Void] = []
     
-    private var channelURL: String
+    @ObservedObject var provider: GroupChannelPushSettingsViewProvider
     
-    // MARK: - Methods
+    public init(provider: GroupChannelPushSettingsViewProvider) {
+        self.provider = provider  // Default provider
+    }
+    
     public var body: some View {
         SBUViewControllerSet.GroupChannelPushSettingsViewController
             .swiftUI {
                 createViewController()
+            }
+            .injectData { viewController in
+                if self.shouldUpdateData(viewController: viewController) {
+                    // Inject data into view model and load
+                    viewController.viewModel?.initializeAndLoad(
+                        channelURL: self.provider.channelURL
+                    )
+                }
             }
             .configure { viewController in
                 viewController.dismissAction = {
@@ -38,13 +49,23 @@ public struct GroupChannelPushSettingsView: View {
                 viewConverter.applyViewUpdates(to: viewController)
             }
             .switchUIKitNavigationBar()
+            .onDisappear {
+                SBViewConverterSet.GroupChannelPushSettings = GroupChannelPushSettingsViewConverter()
+            }
     }
     
+    // MARK: - Methods
     private func createViewController() -> SBUGroupChannelPushSettingsViewController {
         let viewController = SBUViewControllerSet.GroupChannelPushSettingsViewController.init(
-            channelURL: channelURL
+            channelURL: self.provider.channelURL
         )
+        self.provider.bind(viewController: viewController)
         return viewController
+    }
+    
+    private func shouldUpdateData(viewController: SBUGroupChannelPushSettingsViewController) -> Bool {
+        let shouldUpdateChannelURL = viewController.viewModel?.channelURL == "" && self.provider.channelURL != ""
+        return shouldUpdateChannelURL
     }
 }
 
@@ -55,16 +76,12 @@ public extension GroupChannelPushSettingsView {
     // TODO: Initializer 에서 필요하면 구현
     // typealias ListContent = GroupChannelPushSettingsViewConverter.List
 
-    init(channelURL: String) {
-        self.channelURL = channelURL
-    }
-    
 // (↓↓ example ↓↓)
     init(
-        channelURL: String,
+        provider: GroupChannelPushSettingsViewProvider,
         headerItem: (() -> GroupChannelPushSettingsType.HeaderItem)? = nil
     ) {
-        self.channelURL = channelURL
+        self.provider = provider
 
         if let headerItem { _ = headerItem() }
 //        if let listItem { _ = listItem() }
@@ -72,8 +89,9 @@ public extension GroupChannelPushSettingsView {
         // Apply view converter in viewConverterSet.
         self.applyViewConverterSet()
     }
-//
-//    init<Content: View>(
+
+    // TODO: After entire content is implemented
+//    internal init<Content: View>(
 //        channelListQuery: GroupChannelListQuery? = nil,
 //        headerItem: (() -> Sendbird.View.GroupChannel.ChannelList.HeaderItem)? = nil,
 //        list: @escaping (ListContent.ViewConfig) -> Content
@@ -97,6 +115,6 @@ public extension GroupChannelPushSettingsView {
 
 #Preview {
     NavigationView {
-        GroupChannelPushSettingsView(channelURL: "")
+        GroupChannelPushSettingsView(provider: .init(channelURL: ""))
     }
 }

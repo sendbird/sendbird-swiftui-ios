@@ -16,15 +16,27 @@ public struct OpenChannelView: View {
     
     var configurations: [(SBUOpenChannelViewController) -> Void] = []
     
-    private var channelURL: String
-    private var startingPoint: Int64?
-    private var messageListParams: MessageListParams?
+    // Non-optional since `channelURL` is required.
+    @ObservedObject var provider: OpenChannelViewProvider
     
-    // MARK: - Methods
+    init(provider: OpenChannelViewProvider) {
+        self.provider = provider  // Default
+    }
+    
     public var body: some View {
         SBUViewControllerSet.OpenChannelViewController
             .swiftUI {
                 createViewController()
+            }
+            .injectData { viewController in
+                if self.shouldUpdateData(viewController: viewController) {
+                    // Inject data into view model and load
+                    viewController.viewModel?.initializeAndLoad(
+                        channelURL: self.provider.channelURL,
+                        messageListParams: self.provider.messageListParams,
+                        startingPoint: self.provider.startingPoint
+                    )
+                }
             }
             .configure { viewController in
                 viewController.dismissAction = {
@@ -40,15 +52,38 @@ public struct OpenChannelView: View {
                 viewConverter.applyViewUpdates(to: viewController)
             }
             .switchUIKitNavigationBar()
+            .onDisappear {
+                SBViewConverterSet.OpenChannel = OpenChannelViewConverter()
+            }
     }
     
+    // MARK: - Methods
     private func createViewController() -> SBUOpenChannelViewController {
-        let viewController = SBUViewControllerSet.OpenChannelViewController.init(
-            channelURL: self.channelURL,
-            startingPoint: self.startingPoint,
-            messageListParams: self.messageListParams
+        SBULog.info(
+            """
+            [\(Self.self).\(#function)] provider
+            channelURL = \(provider.channelURL)
+            startingPoint = \(String(describing: provider.startingPoint))
+            messageListParams = \(String(describing: provider.messageListParams))
+            """
         )
+        
+        let viewController = SBUViewControllerSet.OpenChannelViewController.init(
+            channelURL: self.provider.channelURL,
+            startingPoint: self.provider.startingPoint,
+            messageListParams: self.provider.messageListParams
+        )
+        
+        self.provider.bind(viewController: viewController)
+        
         return viewController
+    }
+    
+    private func shouldUpdateData(viewController: SBUOpenChannelViewController) -> Bool {
+        let shouldUpdateChannelURL = viewController.viewModel?.channelURL == "" && self.provider.channelURL != ""
+        let shouldUpdateMessageListParams = viewController.viewModel?.customizedMessageListParams == nil && self.provider.messageListParams != nil
+        let shouldUpdateStartingPoint = viewController.viewModel?.startingPoint == nil && self.provider.startingPoint != nil
+        return shouldUpdateChannelURL || shouldUpdateMessageListParams || shouldUpdateStartingPoint
     }
 }
 
@@ -60,31 +95,12 @@ public extension OpenChannelView {
     typealias InputContent = OpenChannelViewConverter.Input
     
     init(
-        channelURL: String,
-        startingPoint: Int64? = nil,
-        messageListParams: MessageListParams? = nil
-    ) {
-        self.channelURL = channelURL
-        self.startingPoint = startingPoint
-        self.messageListParams = messageListParams
-        
-        // Apply view converter in viewConverterSet.
-        self.applyViewConverterSet()
-    }
-
-    init(
-        channelURL: String,
-        startingPoint: Int64? = nil,
-        messageListParams: MessageListParams? = nil,
+        provider: OpenChannelViewProvider,
         headerItem: (() -> OpenChannelType.HeaderItem)? = nil,
         listItem: (() -> OpenChannelType.ListItem)? = nil,
         inputItem: (() -> OpenChannelType.InputItem)? = nil
     ) {
-        self.init(
-            channelURL: channelURL,
-            startingPoint: startingPoint,
-            messageListParams: messageListParams
-        )
+        self.init(provider: provider)
         
         if let headerItem { _ = headerItem() }
         if let listItem { _ = listItem() }
@@ -93,18 +109,15 @@ public extension OpenChannelView {
         self.applyViewConverterSet()
     }
     
-    init<Content: View>(
-        channelURL: String,
-        startingPoint: Int64? = nil,
-        messageListParams: MessageListParams? = nil,
+    // TODO: After entire content is implemented
+    internal init<Content: View>(
+        provider: OpenChannelViewProvider,
         headerItem: (() -> OpenChannelType.HeaderItem)? = nil,
         list: @escaping (ListContent.TableView.ViewConfig) -> Content,
         inputItem: (() -> OpenChannelType.InputItem)? = nil
     ) {
         self.init(
-            channelURL: channelURL,
-            startingPoint: startingPoint,
-            messageListParams: messageListParams,
+            provider: provider,
             headerItem: headerItem,
             inputItem: inputItem
         )
@@ -122,17 +135,13 @@ public extension OpenChannelView {
     
     // NOTE: This interface has been temporarily closed.
     private init<Content: View>(
-        channelURL: String,
-        startingPoint: Int64? = nil,
-        messageListParams: MessageListParams? = nil,
+        provider: OpenChannelViewProvider,
         headerItem: (() -> OpenChannelType.HeaderItem)? = nil,
         listItem: (() -> OpenChannelType.ListItem)? = nil,
         input: @escaping (InputContent.ViewConfig) -> Content
     ) {
         self.init(
-            channelURL: channelURL,
-            startingPoint: startingPoint,
-            messageListParams: messageListParams,
+            provider: provider,
             headerItem: headerItem,
             listItem: listItem
         )
@@ -152,17 +161,13 @@ public extension OpenChannelView {
     
     // NOTE: This interface has been temporarily closed.
     private init<Content: View>(
-        channelURL: String,
-        startingPoint: Int64? = nil,
-        messageListParams: MessageListParams? = nil,
+        provider: OpenChannelViewProvider,
         headerItem: (() -> OpenChannelType.HeaderItem)? = nil,
         list: @escaping (ListContent.TableView.ViewConfig) -> Content,
         input: @escaping (InputContent.ViewConfig) -> Content
     ) {
         self.init(
-            channelURL: channelURL,
-            startingPoint: startingPoint,
-            messageListParams: messageListParams,
+            provider: provider,
             headerItem: headerItem
         )
         
@@ -189,6 +194,6 @@ public extension OpenChannelView {
 
 #Preview {
     NavigationView {
-        OpenChannelView(channelURL: "")
+        OpenChannelView(provider: .init(channelURL: ""))
     }
 }

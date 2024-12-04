@@ -1,4 +1,7 @@
 import SwiftUI
+#if canImport(SendbirdSwiftUI)
+import SendbirdSwiftUI
+#endif
 
 extension CustomOpenModerations.ViewConverter.Header {
     struct titleView: View {
@@ -19,7 +22,7 @@ extension CustomOpenModerations.ViewConverter.Header {
         var body: some View {
             if let channelURL = viewModel.openChannel?.channelURL {
                 OpenModerationsView(
-                    channelURL: channelURL,
+                    provider: .init(channelURL: channelURL),
                     headerItem: {
                         .init()
                         .titleView { config in

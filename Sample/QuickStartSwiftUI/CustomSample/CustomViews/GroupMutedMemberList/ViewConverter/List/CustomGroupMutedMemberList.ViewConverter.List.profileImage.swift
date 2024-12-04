@@ -1,4 +1,7 @@
 import SwiftUI
+#if canImport(SendbirdSwiftUI)
+import SendbirdSwiftUI
+#endif
 
 extension CustomGroupMutedMemberList.ViewConverter.List {
     struct profileImage: View {
@@ -19,7 +22,7 @@ extension CustomGroupMutedMemberList.ViewConverter.List {
         var body: some View {
             if let channelURL = viewModel.groupChannel?.channelURL {
                 GroupMutedMemberListView(
-                    channelURL: channelURL,
+                    provider: GroupMutedMemberListViewProvider(channelURL: channelURL),
                     listItem: {
                         .init()
                         .profileImage { config in

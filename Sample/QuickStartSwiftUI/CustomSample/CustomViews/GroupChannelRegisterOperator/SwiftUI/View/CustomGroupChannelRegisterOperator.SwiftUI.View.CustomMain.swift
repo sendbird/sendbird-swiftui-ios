@@ -1,4 +1,7 @@
 import SwiftUI
+#if canImport(SendbirdSwiftUI)
+import SendbirdSwiftUI
+#endif
 import SendbirdChatSDK
 
 extension CustomGroupChannelRegisterOperator.SwiftUI.View {
@@ -21,7 +24,7 @@ extension CustomGroupChannelRegisterOperator.SwiftUI.View {
             // Currently only header is tested
             if let channelURL = viewModel.groupChannel?.channelURL {
                 GroupChannelRegisterOperatorView(
-                    channelURL: channelURL,
+                    provider: .init(channelURL: channelURL),
                     headerItem: {
                         .init()
                         .leftView { config in

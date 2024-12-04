@@ -26,10 +26,7 @@ extension SBUUserListModule.List {
             let users = self.userList
             if let tableViewConverter = self.viewConverter.tableView.entireContent,
                let hostingView = tableViewConverter(
-                .init(
-                    parentView: self,
-                    users: users
-                )
+                .init()
                ) {
             
                 // remove UITableView

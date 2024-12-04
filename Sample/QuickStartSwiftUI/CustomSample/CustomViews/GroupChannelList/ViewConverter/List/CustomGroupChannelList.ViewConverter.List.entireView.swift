@@ -1,4 +1,7 @@
 import SwiftUI
+#if canImport(SendbirdSwiftUI)
+import SendbirdSwiftUI
+#endif
 
 extension CustomGroupChannelList.ViewConverter.List {
     struct entireView: View {
@@ -16,19 +19,7 @@ extension CustomGroupChannelList.ViewConverter.List {
         }
         
         var body: some View {
-            GroupChannelListView(
-                list: { config in
-                    ScrollView {
-                        ForEach(config.channels) { channel in
-                            VStack {
-                                Text("Channel entire view: \(customFlag ? "ON" : "OFF")")
-                                Text("\(channel.name)")
-                            }
-                        }
-                    }
-                }
-            )
-            
+            GroupChannelListView()
             CustomButton()
         }
     }

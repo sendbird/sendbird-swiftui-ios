@@ -1,4 +1,7 @@
 import SwiftUI
+#if canImport(SendbirdSwiftUI)
+import SendbirdSwiftUI
+#endif
 
 extension CustomGroupMemberList.ViewConverter.Header {
     struct leftView: View {
@@ -19,7 +22,7 @@ extension CustomGroupMemberList.ViewConverter.Header {
         var body: some View {
             if let channelURL = viewModel.groupChannel?.channelURL {
                 GroupMemberListView(
-                    channelURL: channelURL,
+                    provider: GroupMemberListViewProvider(channelURL: channelURL),
                     headerItem: {
                         .init()
                         .leftView { config in

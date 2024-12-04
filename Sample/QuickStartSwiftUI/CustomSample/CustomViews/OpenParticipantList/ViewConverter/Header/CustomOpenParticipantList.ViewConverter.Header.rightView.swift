@@ -1,4 +1,7 @@
 import SwiftUI
+#if canImport(SendbirdSwiftUI)
+import SendbirdSwiftUI
+#endif
 
 extension CustomOpenParticipantList.ViewConverter.Header {
     struct rightView: View {
@@ -17,7 +20,7 @@ extension CustomOpenParticipantList.ViewConverter.Header {
         
         var body: some View {
             OpenParticipantListView(
-                channelURL: TestURL.openChannel,
+                provider: OpenParticipantListViewProvider(channelURL: TestURL.openChannel),
                 headerItem: {
                     .init()
                     .rightView { config in

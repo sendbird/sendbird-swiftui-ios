@@ -1,4 +1,7 @@
 import SwiftUI
+#if canImport(SendbirdSwiftUI)
+import SendbirdSwiftUI
+#endif
 
 extension CustomGroupChannel.ViewConverter.Input {
     struct addButton: View {
@@ -19,7 +22,7 @@ extension CustomGroupChannel.ViewConverter.Input {
         var body: some View {
             if let channelURL = viewModel.groupChannel?.channelURL {
                 GroupChannelView(
-                    channelURL: channelURL,
+                    provider: GroupChannelViewProvider(channelURL: channelURL),
                     inputItem: {
                         .init()
                         .addButton { viewConfig in

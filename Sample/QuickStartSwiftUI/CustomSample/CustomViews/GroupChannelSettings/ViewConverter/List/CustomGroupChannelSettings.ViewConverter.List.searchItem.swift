@@ -1,4 +1,7 @@
 import SwiftUI
+#if canImport(SendbirdSwiftUI)
+import SendbirdSwiftUI
+#endif
 
 extension CustomGroupChannelSettings.ViewConverter.List {
     struct searchItem: View {
@@ -19,7 +22,7 @@ extension CustomGroupChannelSettings.ViewConverter.List {
         var body: some View {
             if let channelURL = viewModel.groupChannel?.channelURL {
                 GroupChannelSettingsView(
-                    channelURL: channelURL,
+                    provider: GroupChannelSettingsViewProvider(channelURL: channelURL),
                     listItem: {
                         .init()
                         .searchRow { config in

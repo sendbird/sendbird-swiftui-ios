@@ -1,4 +1,7 @@
 import SwiftUI
+#if canImport(SendbirdSwiftUI)
+import SendbirdSwiftUI
+#endif
 
 extension CustomMessageSearch.SubView.Builder {
     struct groupChannel: View {
@@ -6,13 +9,17 @@ extension CustomMessageSearch.SubView.Builder {
         
         var body: some View {
             if let channelURL = viewModel.groupChannel?.channelURL {
-                MessageSearchView(channelURL: channelURL)
+                MessageSearchView(
+                    provider: MessageSearchViewProvider(channelURL: channelURL)
+                )
                     .groupChannelView { channelURL, startingPoint, messageListParams in
-                        GroupChannelView(
-                            channelURL: channelURL,
-                            startingPoint: startingPoint,
-                            messageListParams: messageListParams)
-                    }
+                        GroupChannelView(provider: GroupChannelViewProvider(
+                                channelURL: channelURL,
+                                startingPoint: startingPoint,
+                                messageListParams: messageListParams
+                            )
+                        )
+                }
             }
         }
     }

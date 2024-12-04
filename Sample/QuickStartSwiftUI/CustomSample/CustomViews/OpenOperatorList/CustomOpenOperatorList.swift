@@ -1,7 +1,12 @@
 import SwiftUI
+#if canImport(SendbirdSwiftUI)
+import SendbirdSwiftUI
+#endif
 struct CustomOpenOperatorList: View {
     var body: some View {
-        OpenOperatorListView(channelURL: TestURL.openChannel)
+        OpenOperatorListView(
+            provider: OpenOperatorListViewProvider(channelURL: TestURL.openChannel)
+        )
     }
 }
 

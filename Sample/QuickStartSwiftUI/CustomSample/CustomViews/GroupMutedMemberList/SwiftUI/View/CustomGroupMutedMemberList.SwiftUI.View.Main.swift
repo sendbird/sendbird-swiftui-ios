@@ -1,4 +1,7 @@
 import SwiftUI
+#if canImport(SendbirdSwiftUI)
+import SendbirdSwiftUI
+#endif
 
 extension CustomGroupMutedMemberList.SwiftUI.View {
     struct Main: View {
@@ -6,7 +9,9 @@ extension CustomGroupMutedMemberList.SwiftUI.View {
         
         var body: some View {
             if let channelURL = viewModel.groupChannel?.channelURL {
-                GroupMutedMemberListView(channelURL: channelURL)
+                GroupMutedMemberListView(
+                    provider: GroupMutedMemberListViewProvider(channelURL: channelURL)
+                )
             }
         }
     }

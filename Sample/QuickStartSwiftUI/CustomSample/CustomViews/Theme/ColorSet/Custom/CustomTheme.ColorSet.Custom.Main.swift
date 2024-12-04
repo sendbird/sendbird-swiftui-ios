@@ -1,4 +1,7 @@
 import SwiftUI
+#if canImport(SendbirdSwiftUI)
+import SendbirdSwiftUI
+#endif
 
 /// WARNING: `FontSet`, `ColorSet` must be set before `SendbirdSwiftUI` initialization, and if you change them at runtime, you must call `SBUTheme.set(theme:)'` to reflect them in the generated theme.
 extension CustomTheme.ColorSet.Custom {

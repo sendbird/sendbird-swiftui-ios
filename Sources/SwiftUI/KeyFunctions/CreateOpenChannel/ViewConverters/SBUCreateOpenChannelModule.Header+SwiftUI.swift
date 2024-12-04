@@ -46,6 +46,7 @@ extension SBUCreateOpenChannelModule.Header {
                 return true
             } else {
                 self.rightBarButton = self.defaultRightBarButton
+                self.rightBarButton?.isEnabled = false
                 return false
             }
         case .titleView:

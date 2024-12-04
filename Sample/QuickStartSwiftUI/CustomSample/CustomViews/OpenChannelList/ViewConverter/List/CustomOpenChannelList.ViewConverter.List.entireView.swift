@@ -1,4 +1,7 @@
 import SwiftUI
+#if canImport(SendbirdSwiftUI)
+import SendbirdSwiftUI
+#endif
 
 extension CustomOpenChannelList.ViewConverter.List {
     struct entireView: View {
@@ -16,22 +19,7 @@ extension CustomOpenChannelList.ViewConverter.List {
         }
         
         var body: some View {
-            OpenChannelListView(
-                list: { config in
-                    if config.channels.isEmpty {
-                        Text("No channels")
-                    } else {
-                        ScrollView {
-                            ForEach(config.channels) { channel in
-                                VStack {
-                                    Text("Channel entire view: \(customFlag ? "ON" : "OFF")")
-                                    Text("\(channel.name)")
-                                }
-                            }
-                        }
-                    }
-                }
-            )
+            OpenChannelListView()
             
             CustomButton()
         }

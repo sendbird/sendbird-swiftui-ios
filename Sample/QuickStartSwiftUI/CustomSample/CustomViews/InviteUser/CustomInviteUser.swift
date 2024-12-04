@@ -1,10 +1,13 @@
 import SwiftUI
+#if canImport(SendbirdSwiftUI)
+import SendbirdSwiftUI
+#endif
 struct CustomInviteUser: View {
     @EnvironmentObject var viewModel: CustomSampleSubViewModel
     
     var body: some View {
         if let channelURL = viewModel.groupChannel?.channelURL {
-            InviteUserView(channelURL: channelURL)
+            InviteUserView(provider: InviteUserViewProvider(channelURL: channelURL))
         }
     }
 }

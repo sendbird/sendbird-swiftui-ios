@@ -1,4 +1,7 @@
 import SwiftUI
+#if canImport(SendbirdSwiftUI)
+import SendbirdSwiftUI
+#endif
 
 extension CustomOpenMutedParticipantList.ViewConverter.List {
     struct moreButton: View {
@@ -19,7 +22,7 @@ extension CustomOpenMutedParticipantList.ViewConverter.List {
         var body: some View {
             if let channelURL = viewModel.openChannel?.channelURL {
                 OpenMutedParticipantListView(
-                    channelURL: channelURL,
+                    provider: OpenMutedParticipantListViewProvider(channelURL: channelURL),
                     listItem: {
                         .init()
                         .moreButton { config in

@@ -1,4 +1,7 @@
 import SwiftUI
+#if canImport(SendbirdSwiftUI)
+import SendbirdSwiftUI
+#endif
 
 extension CustomGroupChannelPushSettings.ViewConverter.List {
     struct entireView: View {
@@ -6,7 +9,9 @@ extension CustomGroupChannelPushSettings.ViewConverter.List {
         
         var body: some View {
             if let channelURL = viewModel.groupChannel?.channelURL {
-                GroupChannelPushSettingsView(channelURL: channelURL)
+                GroupChannelPushSettingsView(
+                    provider: GroupChannelPushSettingsViewProvider(channelURL: channelURL)
+                )
             }
         }
     }

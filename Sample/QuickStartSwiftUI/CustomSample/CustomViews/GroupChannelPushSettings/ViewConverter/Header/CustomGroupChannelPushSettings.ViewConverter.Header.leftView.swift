@@ -1,4 +1,7 @@
 import SwiftUI
+#if canImport(SendbirdSwiftUI)
+import SendbirdSwiftUI
+#endif
 extension CustomGroupChannelPushSettings.ViewConverter.Header {
     struct leftView: View {
         @EnvironmentObject var viewModel: CustomSampleSubViewModel
@@ -18,7 +21,7 @@ extension CustomGroupChannelPushSettings.ViewConverter.Header {
         var body: some View {
             if let channelURL = viewModel.groupChannel?.channelURL {
                 GroupChannelPushSettingsView(
-                    channelURL: channelURL,
+                    provider: GroupChannelPushSettingsViewProvider(channelURL: channelURL),
                     headerItem: {
                         .init()
                         .leftView { config in

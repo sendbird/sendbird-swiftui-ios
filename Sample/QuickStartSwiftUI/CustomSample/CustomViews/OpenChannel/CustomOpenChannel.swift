@@ -1,10 +1,13 @@
 import SwiftUI
+#if canImport(SendbirdSwiftUI)
+import SendbirdSwiftUI
+#endif
 struct CustomOpenChannel: View {
     @EnvironmentObject var viewModel: CustomSampleSubViewModel
     
     var body: some View {
         if let channelURL = viewModel.openChannel?.channelURL {
-            OpenChannelView(channelURL: channelURL)
+            OpenChannelView(provider: OpenChannelViewProvider(channelURL: channelURL))
         }
     }
 }

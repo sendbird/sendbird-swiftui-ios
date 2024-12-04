@@ -16,13 +16,25 @@ public struct GroupModerationsView: View {
     
     var configurations: [(SBUModerationsViewController) -> Void] = []
     
-    private var channelURL: String
+    // Non-optional since `channelURL` is required.
+    @ObservedObject private var provider: GroupModerationsViewProvider
     
-    // MARK: - Methods
+    init(provider: GroupModerationsViewProvider) {
+        self.provider = provider
+    }
+    
     public var body: some View {
         SBUViewControllerSet.GroupModerationsViewController
             .swiftUI {
                 createViewController()
+            }
+            .injectData { viewController in
+                if self.shouldUpdateData(viewController: viewController) {
+                    // Inject data into view model and load
+                    viewController.viewModel?.initializeAndLoad(
+                        channelURL: self.provider.channelURL
+                    )
+                }
             }
             .configure { viewController in
                 viewController.dismissAction = {
@@ -38,14 +50,27 @@ public struct GroupModerationsView: View {
                 viewConverter.applyViewUpdates(to: viewController)
             }
             .switchUIKitNavigationBar()
+            .onDisappear {
+                SBViewConverterSet.GroupModerations = GroupModerationsViewConverter()
+            }
     }
     
+    // MARK: - Methods
     private func createViewController() -> SBUModerationsViewController {
         let viewController = SBUViewControllerSet.GroupModerationsViewController.init(
-            channelURL: self.channelURL,
+            channelURL: self.provider.channelURL,
             channelType: .group
         )
+        
+        // hook up VC, VM into provider
+        self.provider.bind(viewController: viewController)
+        
         return viewController
+    }
+    
+    private func shouldUpdateData(viewController: SBUModerationsViewController) -> Bool {
+        let shouldUpdateChannelURL = viewController.viewModel?.channelURL == "" && self.provider.channelURL != ""
+        return shouldUpdateChannelURL
     }
 }
 
@@ -53,18 +78,13 @@ public struct GroupModerationsView: View {
 /// GroupModerationsView initializers
 public extension GroupModerationsView {
     // MARK: - typealias
-    // TODO: Initializer 에서 필요하면 구현
     // typealias ListContent = GroupModerationsViewConverter.List
     
-    init(channelURL: String) {
-        self.channelURL = channelURL
-    }
-// (↓↓ example ↓↓)
     init(
-        channelURL: String,
+        provider: GroupModerationsViewProvider,
         headerItem: (() -> GroupModerationsType.HeaderItem)? = nil
     ) {
-        self.channelURL = channelURL
+        self.provider = provider
 
         if let headerItem { _ = headerItem() }
 //        if let listItem { _ = listItem() }
@@ -72,8 +92,9 @@ public extension GroupModerationsView {
         // Apply view converter in viewConverterSet.
         self.applyViewConverterSet()
     }
-//
-//    init<Content: View>(
+
+    // TODO: After entire content is implemented
+//    internal init<Content: View>(
 //        channelListQuery: GroupChannelListQuery? = nil,
 //        headerItem: (() -> Sendbird.View.GroupChannel.ChannelList.HeaderItem)? = nil,
 //        list: @escaping (ListContent.ViewConfig) -> Content
@@ -97,6 +118,6 @@ public extension GroupModerationsView {
 
 #Preview {
     NavigationView {
-        GroupModerationsView(channelURL: "")
+        GroupModerationsView(provider: .init(channelURL: ""))
     }
 }

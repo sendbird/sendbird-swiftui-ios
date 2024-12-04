@@ -1,4 +1,7 @@
 import SwiftUI
+#if canImport(SendbirdSwiftUI)
+import SendbirdSwiftUI
+#endif
 
 extension CustomGroupChannelSettings.ViewConverter.List {
     struct leaveChannel: View {
@@ -17,7 +20,7 @@ extension CustomGroupChannelSettings.ViewConverter.List {
         
         var body: some View {
             GroupChannelSettingsView(
-                channelURL: TestURL.leaveGroupChannel,
+                provider: GroupChannelSettingsViewProvider(channelURL: TestURL.leaveGroupChannel),
                 listItem: {
                     .init()
                     .leaveChannelRow { config in

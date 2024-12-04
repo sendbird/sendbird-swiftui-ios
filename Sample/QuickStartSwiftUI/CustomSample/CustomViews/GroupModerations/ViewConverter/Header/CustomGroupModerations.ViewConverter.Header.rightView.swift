@@ -1,4 +1,7 @@
 import SwiftUI
+#if canImport(SendbirdSwiftUI)
+import SendbirdSwiftUI
+#endif
 
 extension CustomGroupModerations.ViewConverter.Header {
     struct rightView: View {
@@ -19,7 +22,7 @@ extension CustomGroupModerations.ViewConverter.Header {
         var body: some View {
             if let channelURL = viewModel.groupChannel?.channelURL {
                 GroupModerationsView(
-                    channelURL: channelURL,
+                    provider: .init(channelURL: channelURL),
                     headerItem: {
                         .init()
                         .rightView { config in

@@ -1,4 +1,7 @@
 import SwiftUI
+#if canImport(SendbirdSwiftUI)
+import SendbirdSwiftUI
+#endif
 
 extension CustomGroupBannedUserList.ViewConverter.List {
     struct moreButton: View {
@@ -19,7 +22,7 @@ extension CustomGroupBannedUserList.ViewConverter.List {
         var body: some View {
             if let channelURL = viewModel.groupChannel?.channelURL {
                 GroupBannedUserListView(
-                    channelURL: channelURL,
+                    provider: GroupBannedUserListViewProvider(channelURL: channelURL),
                     listItem: {
                         .init()
                         .moreButton { config in

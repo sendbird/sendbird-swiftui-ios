@@ -15,15 +15,29 @@ public struct OpenMutedParticipantListView: View {
     private var dismiss
     
     var configurations: [(SBUUserListViewController) -> Void] = []
+     
+    // Non-optional since `channelURL` is required.
+    @ObservedObject private var provider: OpenMutedParticipantListViewProvider
     
-    private var channelURL: String
-    private var users: [SBUUser]?
+    init(provider: OpenMutedParticipantListViewProvider) {
+        self.provider = provider
+    }
     
-    // MARK: - Methods
     public var body: some View {
         SBUViewControllerSet.OpenUserListViewController
             .swiftUI {
                 createViewController()
+            }
+            .injectData { viewController in
+                if self.shouldUpdateData(viewController: viewController) {
+                    // Inject data into view model and load
+                    viewController.viewModel?.initializeAndLoad(
+                        channelURL: self.provider.channelURL,
+                        channelType: .open,
+                        users: self.provider.customUsers,
+                        userListType: .muted
+                    )
+                }
             }
             .configure { viewController in
                 viewController.dismissAction = {
@@ -39,16 +53,30 @@ public struct OpenMutedParticipantListView: View {
                 viewConverter.applyViewUpdates(to: viewController)
             }
             .switchUIKitNavigationBar()
+            .onDisappear {
+                SBViewConverterSet.OpenMutedParticipantList = OpenMutedParticipantListViewConverter()
+            }
     }
     
+    // MARK: - Methods
     private func createViewController() -> SBUUserListViewController {
         let viewController = SBUViewControllerSet.OpenUserListViewController.init(
-            channelURL: self.channelURL,
+            channelURL: self.provider.channelURL,
             channelType: .open,
-            users: self.users,
+            users: self.provider.customUsers,
             userListType: .muted
         )
+        
+        // hook up VC, VM into provider
+        self.provider.bind(viewController: viewController)
+        
         return viewController
+    }
+    
+    private func shouldUpdateData(viewController: SBUUserListViewController) -> Bool {
+        let shouldUpdateChannelURL = viewController.viewModel?.channelURL == "" && self.provider.channelURL != ""
+        let shouldUpdateCustomUsers = viewController.viewModel?.customizedUsers == nil && self.provider.customUsers != nil
+        return shouldUpdateChannelURL || shouldUpdateCustomUsers
     }
 }
 
@@ -59,21 +87,11 @@ public extension OpenMutedParticipantListView {
     typealias ListContent = OpenMutedParticipantListViewConverter.List
     
     init(
-        channelURL: String,
-        users: [SBUUser]? = nil
-    ) {
-        self.channelURL = channelURL
-        self.users = users
-    }
-
-    init(
-        channelURL: String,
-        users: [SBUUser]? = nil,
+        provider: OpenMutedParticipantListViewProvider,
         headerItem: (() -> OpenMutedParticipantType.HeaderItem)? = nil,
         listItem: (() -> OpenMutedParticipantType.ListItem)? = nil
     ) {
-        self.channelURL = channelURL
-        self.users = users
+        self.provider = provider
 
         if let headerItem { _ = headerItem() }
         if let listItem { _ = listItem() }
@@ -82,14 +100,13 @@ public extension OpenMutedParticipantListView {
         self.applyViewConverterSet()
     }
     
-    init<Content: View>(
-        channelURL: String,
-        users: [SBUUser]? = nil,
+    // TODO: After entire content is implemented
+    internal init<Content: View>(
+        provider: OpenMutedParticipantListViewProvider,
         headerItem: (() -> OpenMutedParticipantType.HeaderItem)? = nil,
         list: @escaping (ListContent.TableView.ViewConfig) -> Content
     ) {
-        self.channelURL = channelURL
-        self.users = users
+        self.provider = provider
         
         typealias ViewConverterType = ViewConverter<ListContent.TableView.ViewConfig>
         let listViewConverter: ViewConverterType = ViewConverter { listConfig in
@@ -106,8 +123,23 @@ public extension OpenMutedParticipantListView {
     }
 }
 
+// MARK: Event handler interfaces
+public extension OpenMutedParticipantListView {
+    func onSendbirdSelectRow(_ selectRowHandler: @escaping ((_ indexPath: IndexPath) -> Void)) -> Self {
+        let copy = self
+        copy.provider.eventHandlers.selectRowHandler = selectRowHandler
+        return copy
+    }
+    
+    func onSendbirdError(_ errorHandler: @escaping ((_ error: SBError?) -> Void)) -> Self {
+        let copy = self
+        copy.provider.eventHandlers.errorHandler = errorHandler
+        return copy
+    }
+}
+
 #Preview {
     NavigationView {
-        OpenMutedParticipantListView(channelURL: "")
+        OpenMutedParticipantListView(provider: .init(channelURL: ""))
     }
 }

@@ -1,4 +1,7 @@
 import SwiftUI
+#if canImport(SendbirdSwiftUI)
+import SendbirdSwiftUI
+#endif
 
 extension CustomOpenChannel.ViewConverter.List {
     struct scrollBottomView: View {
@@ -19,7 +22,7 @@ extension CustomOpenChannel.ViewConverter.List {
         var body: some View {
             if let channelURL = viewModel.openChannel?.channelURL {
                 OpenChannelView(
-                    channelURL: channelURL,
+                    provider: OpenChannelViewProvider(channelURL: channelURL),
                     listItem: {
                         .init()
                         .scrollBottomView { viewConfig in

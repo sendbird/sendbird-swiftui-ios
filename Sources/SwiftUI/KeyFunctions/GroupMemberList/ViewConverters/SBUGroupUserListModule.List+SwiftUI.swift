@@ -19,20 +19,20 @@ extension SBUUserListModule.List {
 extension SBUUserListModule.List {
     func applyViewConverter(_ viewType: ViewConverter.ViewType) -> Bool {
         let tag = viewType.tag
-        
         switch viewType {
         case .entireContent:
-            let users = self.userList
+            // TODO: EntireContent
+            if self.viewWithTag(tag) != nil {
+                return true
+            }
+            
             if let tableViewConverter = self.viewConverter.tableView.entireContent,
-               let hostingView = tableViewConverter(
-                .init(
-                    parentView: self,
-                    users: users
-                )
-               ) {
+               let hostingView = tableViewConverter(.init()) {
+                hostingView.backgroundColor = .blue
             
                 // remove UITableView
                 self.tableView.removeFromSuperview()
+                self.viewWithTag(tag)?.removeFromSuperview()
                 
                 // add hostingView as subview of List
                 hostingView.tag = tag
@@ -46,5 +46,9 @@ extension SBUUserListModule.List {
             }
             return false
         }
+    }
+    
+    private func updateHostingViewData(users: [SBUUser]) {
+        // 여기서 hostingView 내부의 SwiftUI view에 userList와 관련된 데이터를 업데이트합니다.
     }
 }

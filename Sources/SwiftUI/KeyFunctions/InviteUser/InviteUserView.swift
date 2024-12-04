@@ -16,14 +16,27 @@ public struct InviteUserView: View {
     
     var configurations: [(SBUInviteUserViewController) -> Void] = []
     
-    private var channelURL: String
-    private var users: [SBUUser]?
+    @ObservedObject private var provider: InviteUserViewProvider
     
-    // MARK: - Methods
+    init(provider: InviteUserViewProvider) {
+        self.provider = provider  // Default
+    }
+    
     public var body: some View {
         SBUViewControllerSet.InviteUserViewController
             .swiftUI {
                 createViewController()
+            }
+            .injectData { viewController in
+                if self.shouldUpdateData(viewController: viewController) {
+                    // Inject data into view model and load
+                    viewController.viewModel?.initializeAndLoad(
+                        channelURL: self.provider.channelURL,
+                        channelType: .group,
+                        users: self.provider.customUsers,
+                        inviteListType: .users
+                    )
+                }
             }
             .configure { viewController in
                 viewController.dismissAction = {
@@ -39,14 +52,25 @@ public struct InviteUserView: View {
                 viewConverter.applyViewUpdates(to: viewController)
             }
             .switchUIKitNavigationBar()
+            .onDisappear {
+                SBViewConverterSet.InviteUser = InviteUserViewConverter()
+            }
     }
     
+    // MARK: - Methods
     private func createViewController() -> SBUInviteUserViewController {
         let viewController = SBUViewControllerSet.InviteUserViewController.init(
-            channelURL: self.channelURL,
-            users: self.users
+            channelURL: self.provider.channelURL,
+            users: self.provider.customUsers
         )
+        self.provider.bind(viewController: viewController)
         return viewController
+    }
+    
+    private func shouldUpdateData(viewController: SBUInviteUserViewController) -> Bool {
+        let shouldUpdateChannelURL = viewController.viewModel?.channelURL == "" && self.provider.channelURL != ""
+        let shouldUpdateCustomUsers = viewController.viewModel?.customizedUsers == nil && self.provider.customUsers != nil
+        return shouldUpdateChannelURL || shouldUpdateCustomUsers
     }
 }
 
@@ -55,24 +79,14 @@ public struct InviteUserView: View {
 public extension InviteUserView {
     // MARK: - typealias
     typealias ListContent = InviteUserViewConverter.List
-    
-    init(
-        channelURL: String,
-        users: [SBUUser]? = nil
-    ) {
-        self.channelURL = channelURL
-        self.users = users
-    }
 
     init(
-        channelURL: String,
-        users: [SBUUser]? = nil,
+        provider: InviteUserViewProvider,
         headerItem: (() -> InviteUserType.HeaderItem)? = nil,
         listItem: (() -> InviteUserType.ListItem)? = nil
     ) {
-        self.channelURL = channelURL
-        self.users = users
-
+        self.provider = provider
+        
         if let headerItem { _ = headerItem() }
         if let listItem { _ = listItem() }
 
@@ -80,14 +94,13 @@ public extension InviteUserView {
         self.applyViewConverterSet()
     }
 
-    init<Content: View>(
-        channelURL: String,
-        users: [SBUUser]? = nil,
+    // TODO: After entire content is implemented
+    internal init<Content: View>(
+        provider: InviteUserViewProvider,
         headerItem: (() -> InviteUserType.HeaderItem)? = nil,
         list: @escaping (ListContent.TableView.ViewConfig) -> Content
     ) {
-        self.channelURL = channelURL
-        self.users = users
+        self.provider = provider
         
         typealias ViewConverterType = ViewConverter<ListContent.TableView.ViewConfig>
         let listViewConverter: ViewConverterType = ViewConverter { listConfig in
@@ -106,6 +119,6 @@ public extension InviteUserView {
 
 #Preview {
     NavigationView {
-        InviteUserView(channelURL: "")
+        InviteUserView(provider: .init(channelURL:""))
     }
 }

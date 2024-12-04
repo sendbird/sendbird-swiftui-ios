@@ -1,4 +1,7 @@
 import SwiftUI
+#if canImport(SendbirdSwiftUI)
+import SendbirdSwiftUI
+#endif
 extension CustomGroupChannel.ViewConverter.Input {
     struct rightView: View {
         @EnvironmentObject var viewModel: CustomSampleSubViewModel
@@ -18,7 +21,7 @@ extension CustomGroupChannel.ViewConverter.Input {
         var body: some View {
             if let channelURL = viewModel.groupChannel?.channelURL {
                 GroupChannelView(
-                    channelURL: channelURL,
+                    provider: GroupChannelViewProvider(channelURL: channelURL),
                     inputItem: {
                         .init()
                         .rightView(content: { viewConfig in

@@ -1,4 +1,7 @@
 import SwiftUI
+#if canImport(SendbirdSwiftUI)
+import SendbirdSwiftUI
+#endif
 
 extension CustomOpenMutedParticipantList.SwiftUI.View {
     struct CustomMain: View {
@@ -20,7 +23,7 @@ extension CustomOpenMutedParticipantList.SwiftUI.View {
             if let channelURL = viewModel.openChannel?.channelURL {
                 // Currently only header is tested
                 OpenMutedParticipantListView(
-                    channelURL: channelURL,
+                    provider: OpenMutedParticipantListViewProvider(channelURL: channelURL),
                     headerItem: {
                         .init()
                         .leftView { config in

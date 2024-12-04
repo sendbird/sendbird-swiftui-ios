@@ -11,27 +11,34 @@ struct OpenChannelsView: View {
     var body: some View {
         OpenChannelListView()
             .openChannelView { channelURL, messageListParams in
-                OpenChannelView(channelURL: channelURL, messageListParams: messageListParams)
+                OpenChannelView(
+                    provider: OpenChannelViewProvider(
+                        channelURL: channelURL,
+                        messageListParams: messageListParams
+                    )
+                )
                     .channelSettingsView { channelURL in
-                        OpenChannelSettingsView(channelURL: channelURL)
+                        OpenChannelSettingsView(
+                            provider: OpenChannelSettingsViewProvider(channelURL: channelURL)
+                        )
                             .moderationsView { channelURL in
-                                OpenModerationsView(channelURL: channelURL)
+                                OpenModerationsView(provider: OpenModerationsViewProvider(channelURL: channelURL))
                                     .bannedUserListView { channelURL in
-                                        OpenBannedUserListView(channelURL: channelURL)
+                                        OpenBannedUserListView(provider: OpenBannedUserListViewProvider(channelURL: channelURL))
                                     }
                                     .mutedParticipantListView { channelURL in
-                                        OpenMutedParticipantListView(channelURL: channelURL)
+                                        OpenMutedParticipantListView(provider: OpenMutedParticipantListViewProvider(channelURL: channelURL))
                                     }
                                     .operatorListView { channelURL in
-                                        OpenOperatorListView(channelURL: channelURL)
+                                        OpenOperatorListView(provider: OpenOperatorListViewProvider(channelURL: channelURL))
                                     }
                             }
                             .participantListView { channelURL in
-                                OpenParticipantListView(channelURL: channelURL)
+                                OpenParticipantListView(provider: OpenParticipantListViewProvider(channelURL: channelURL))
                             }
                     }
                     .participantListView { channelURL in
-                        OpenParticipantListView(channelURL: channelURL)
+                        OpenParticipantListView(provider: OpenParticipantListViewProvider(channelURL: channelURL))
                     }
             }
             .createChannelView {

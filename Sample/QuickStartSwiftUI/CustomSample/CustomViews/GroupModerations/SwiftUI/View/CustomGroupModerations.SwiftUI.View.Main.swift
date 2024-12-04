@@ -1,4 +1,7 @@
 import SwiftUI
+#if canImport(SendbirdSwiftUI)
+import SendbirdSwiftUI
+#endif
 
 extension CustomGroupModerations.SwiftUI.View {
     struct Main: View {
@@ -6,7 +9,7 @@ extension CustomGroupModerations.SwiftUI.View {
         
         var body: some View {
             if let channelURL = viewModel.groupChannel?.channelURL {
-                GroupModerationsView(channelURL: channelURL)
+                GroupModerationsView(provider: .init(channelURL: channelURL))
             }
         }
     }

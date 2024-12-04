@@ -1,0 +1,149 @@
+//
+//  GroupMutedMemberListViewProvider.swift
+//  SendbirdUIKit
+//
+//  Created by Tez Park on 10/22/24.
+//
+
+import Foundation
+import SwiftUI
+import SendbirdChatSDK
+
+// MARK: ViewEventHandlers
+public struct GroupMutedMemberListViewEventHandlers {
+    // Blocks for handling for user inputs.
+    var selectRowHandler: ((_ indexPath: IndexPath) -> Void)?
+    
+    // Blocks for handling for internal events.
+    var errorHandler: ((_ error: SBError?) -> Void)?
+}
+
+// MARK: - GroupMutedMemberListViewProvider
+public class GroupMutedMemberListViewProvider: SendbirdUIProvider {
+    // MARK: - Init properties
+    public var channelURL: String
+    var customUsers: [SBUUser]?
+    
+    // MARK: - Internal properties
+    weak var viewController: SBUUserListViewController?
+    var eventHandlers = GroupMutedMemberListViewEventHandlers()
+    
+    // MARK: Public Data Properties
+    /// Muted member list
+    @Published public var mutedMembers: [SBUUser] = []
+    
+    /// Channel object
+    @Published public var channel: GroupChannel?
+    
+    /// Loading state
+    @Published public var isLoading: Bool = false
+    
+    // MARK: Public UI Properties
+
+    // MARK: Methods
+    public init(
+        channelURL: String,
+        customUsers: [SBUUser]? = nil
+    ) {
+        self.channelURL = channelURL
+        self.customUsers = customUsers
+    }
+    
+    /// This function sets up the provider.
+    @discardableResult
+    public func setup(
+        channelURL: String,
+        customUsers: [SBUUser]? = nil
+    ) -> Self {
+        self.channelURL = channelURL
+        if let customUsers { self.customUsers = customUsers }
+        return self
+    }
+    
+    func bind(viewController: SBUUserListViewController) {
+        viewController.swiftUIDelegate = self
+        self.viewController = viewController
+    }
+    
+    // MARK: UIKit method wrappers
+
+    /// This function shows the user profile
+    /// - Parameter user: `SBUUser` object used for user profile configuration
+    public func showUserProfile(user: SBUUser) {
+        self.viewController?.showUserProfile(with: user)
+    }
+    
+    /// This function shows the more menu
+    public func showMoreMenu(user: SBUUser) {
+        self.viewController?.showMoreMenu(with: user)
+    }
+    
+    /// This function loads the muted member list.
+    public func loadNextMutedMemberList(customUsers: [SBUUser]? = nil) {
+        self.viewController?.viewModel?.loadNextUserList(reset: false, users: customUsers)
+    }
+    
+    /// This function resets the muted member list.
+    public func resetMutedMemberList(customUsers: [SBUUser]? = nil) {
+        self.viewController?.viewModel?.loadNextUserList(reset: true, users: customUsers)
+    }
+
+    /// This function mutes the user.
+    public func mute(user: SBUUser) {
+        self.viewController?.viewModel?.mute(user: user)
+    }
+
+    /// This function unmutes the user.
+    public func unmute(user: SBUUser) {
+        self.viewController?.viewModel?.unmute(user: user)
+    }
+}
+
+// MARK: - ViewEventDelegate
+extension GroupMutedMemberListViewProvider: UserListViewEventDelegate {
+    func userListView(didSelectRowAt indexPath: IndexPath) {
+        self.eventHandlers.selectRowHandler?(indexPath)
+    }
+}
+
+// MARK: - ViewModelDelegate
+extension GroupMutedMemberListViewProvider: SBUUserListViewModelDelegate {
+    public func userListViewModel(
+        _ viewModel: SBUUserListViewModel,
+        didChangeUsers users: [SBUUser],
+        needsToReload: Bool
+    ) {
+        StateImpactHandler.safeExecute { [weak self] in
+            self?.mutedMembers = users
+        }
+    }
+    
+    public func userListViewModel(
+        _ viewModel: SBUUserListViewModel,
+        didChangeChannel channel: SendbirdChatSDK.BaseChannel?,
+        withContext context: SendbirdChatSDK.MessageContext
+    ) {
+        StateImpactHandler.safeExecute { [weak self] in
+            self?.channel = channel as? GroupChannel
+        }
+    }
+    
+    public func userListViewModel(
+        _ viewModel: SBUUserListViewModel,
+        shouldDismissForUserList channel: SendbirdChatSDK.BaseChannel?
+    ) {
+        // TODO:
+    }
+}
+
+extension GroupMutedMemberListViewProvider: SBUCommonViewModelDelegate {
+    public func shouldUpdateLoadingState(_ isLoading: Bool) {
+        StateImpactHandler.safeExecute { [weak self] in
+            self?.isLoading = isLoading
+        }
+    }
+    
+    public func didReceiveError(_ error: SendbirdChatSDK.SBError?, isBlocker: Bool) {
+        self.eventHandlers.errorHandler?(error)
+    }
+}

@@ -90,7 +90,7 @@ extension SBUBaseMessageCell {
             hostingView.addGestureRecognizer(userMessageCell.contentLongPressRecognizer)
             hostingView.addGestureRecognizer(userMessageCell.contentTapRecognizer)
             
-            userMessageCell.mainContainerView.insertArrangedSubview(hostingView, at: 1)
+            userMessageCell.mainContainerView.insertArrangedSubview(hostingView, at: 0)
             return true
             
         case .fileMessage:

@@ -1,4 +1,7 @@
 import SwiftUI
+#if canImport(SendbirdSwiftUI)
+import SendbirdSwiftUI
+#endif
 
 extension CustomGroupOperatorList.SwiftUI.View {
     struct CustomMain: View {
@@ -20,7 +23,7 @@ extension CustomGroupOperatorList.SwiftUI.View {
             if let channelURL = viewModel.groupChannel?.channelURL {
                 // Currently only header is tested
                 GroupOperatorListView(
-                    channelURL: channelURL,
+                    provider: GroupOperatorListViewProvider(channelURL: channelURL),
                     headerItem: {
                         .init()
                         .leftView { config in

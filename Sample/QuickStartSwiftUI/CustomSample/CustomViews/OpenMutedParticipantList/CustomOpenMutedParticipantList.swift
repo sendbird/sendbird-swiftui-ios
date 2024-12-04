@@ -1,10 +1,15 @@
 import SwiftUI
+#if canImport(SendbirdSwiftUI)
+import SendbirdSwiftUI
+#endif
 struct CustomOpenMutedParticipantList: View {
     @EnvironmentObject var viewModel: CustomSampleSubViewModel
     
     var body: some View {
         if let channelURL = viewModel.openChannel?.channelURL {
-            OpenMutedParticipantListView(channelURL: channelURL)
+            OpenMutedParticipantListView(
+                provider: OpenMutedParticipantListViewProvider(channelURL: channelURL)
+            )
         }
     }
 }

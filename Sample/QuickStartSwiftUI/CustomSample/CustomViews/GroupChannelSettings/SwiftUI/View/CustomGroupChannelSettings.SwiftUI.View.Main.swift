@@ -1,4 +1,7 @@
 import SwiftUI
+#if canImport(SendbirdSwiftUI)
+import SendbirdSwiftUI
+#endif
 
 extension CustomGroupChannelSettings.SwiftUI.View {
     struct Main: View {
@@ -6,7 +9,7 @@ extension CustomGroupChannelSettings.SwiftUI.View {
         
         var body: some View {
             if let channelURL = viewModel.groupChannel?.channelURL {
-                GroupChannelSettingsView(channelURL: channelURL)
+                GroupChannelSettingsView(provider: GroupChannelSettingsViewProvider(channelURL: channelURL))
             }
         }
     }

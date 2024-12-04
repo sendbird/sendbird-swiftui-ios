@@ -1,4 +1,7 @@
 import SwiftUI
+#if canImport(SendbirdSwiftUI)
+import SendbirdSwiftUI
+#endif
 
 extension CustomOpenChannelSettings.ViewConverter.List {
     struct entireView: View {
@@ -6,7 +9,9 @@ extension CustomOpenChannelSettings.ViewConverter.List {
         
         var body: some View {
             if let channelURL = viewModel.openChannel?.channelURL {
-                OpenChannelSettingsView(channelURL: channelURL)
+                OpenChannelSettingsView(
+                    provider: OpenChannelSettingsViewProvider(channelURL: channelURL)
+                )
             }
         }
     }

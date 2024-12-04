@@ -1,4 +1,7 @@
 import SwiftUI
+#if canImport(SendbirdSwiftUI)
+import SendbirdSwiftUI
+#endif
 
 extension CustomOpenOperatorList.ViewConverter.Header {
     struct titleView: View {
@@ -17,7 +20,7 @@ extension CustomOpenOperatorList.ViewConverter.Header {
         
         var body: some View {
             OpenOperatorListView(
-                channelURL: TestURL.openChannel,
+                provider: OpenOperatorListViewProvider(channelURL: TestURL.openChannel),
                 headerItem: {
                     .init()
                     .titleView { config in

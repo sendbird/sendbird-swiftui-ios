@@ -1,4 +1,7 @@
 import SwiftUI
+#if canImport(SendbirdSwiftUI)
+import SendbirdSwiftUI
+#endif
 
 extension CustomGroupChannelSettings.SwiftUI.View {
     struct CustomMain: View {
@@ -19,7 +22,8 @@ extension CustomGroupChannelSettings.SwiftUI.View {
         var body: some View {
             if let channelURL = viewModel.groupChannel?.channelURL {
                 GroupChannelSettingsView(
-                    channelURL: channelURL) {
+                    provider: GroupChannelSettingsViewProvider(channelURL: channelURL)
+                ) {
                         .init()
                         .leftView { viewConfig in
                             Image(systemName: "arrowshape.backward.circle")

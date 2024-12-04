@@ -1,4 +1,7 @@
 import SwiftUI
+#if canImport(SendbirdSwiftUI)
+import SendbirdSwiftUI
+#endif
 
 extension CustomOpenChannel.ViewConverter.Media {
     struct entireView: View {
@@ -6,7 +9,7 @@ extension CustomOpenChannel.ViewConverter.Media {
         
         var body: some View {
             if let channelURL = viewModel.openChannel?.channelURL {
-                OpenChannelView(channelURL: channelURL)
+                OpenChannelView(provider: OpenChannelViewProvider(channelURL: channelURL))
             }
         }
     }

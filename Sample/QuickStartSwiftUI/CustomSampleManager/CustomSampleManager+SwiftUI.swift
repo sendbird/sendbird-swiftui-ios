@@ -20,6 +20,8 @@ extension CustomSampleManager {
             CustomGroupChannelList.SwiftUI.View.Main()
 		case "CustomGroupChannelList.SwiftUI.View.CustomMain":
             CustomGroupChannelList.SwiftUI.View.CustomMain()
+        case "CustomGroupChannelList.SwiftUI.View.ViewProvider":
+            CustomGroupChannelList.SwiftUI.View.ViewProvider()
 		case "CustomGroupChannelList.SubView.Builder.groupChannel":
             CustomGroupChannelList.SubView.Builder.groupChannel()
 		case "CustomGroupChannelList.SubView.Builder.createChannel":
@@ -30,8 +32,8 @@ extension CustomSampleManager {
             CustomGroupChannelList.ViewConverter.Header.rightView()
 		case "CustomGroupChannelList.ViewConverter.Header.titleView":
             CustomGroupChannelList.ViewConverter.Header.titleView()
-		case "CustomGroupChannelList.ViewConverter.List.entireView":
-            CustomGroupChannelList.ViewConverter.List.entireView()
+//		case "CustomGroupChannelList.ViewConverter.List.entireView":
+//            CustomGroupChannelList.ViewConverter.List.entireView()
 		case "CustomGroupChannelList.ViewConverter.List.rowView":
             CustomGroupChannelList.ViewConverter.List.rowView()
 		case "CustomGroupChannelList.ViewConverter.List.coverImage":
@@ -56,8 +58,8 @@ extension CustomSampleManager {
             CustomOpenChannelList.ViewConverter.Header.rightView()
 		case "CustomOpenChannelList.ViewConverter.Header.titleView":
             CustomOpenChannelList.ViewConverter.Header.titleView()
-		case "CustomOpenChannelList.ViewConverter.List.entireView":
-            CustomOpenChannelList.ViewConverter.List.entireView()
+//		case "CustomOpenChannelList.ViewConverter.List.entireView":
+//            CustomOpenChannelList.ViewConverter.List.entireView()
 		case "CustomOpenChannelList.ViewConverter.List.rowView":
             CustomOpenChannelList.ViewConverter.List.rowView()
 		case "CustomOpenChannelList.ViewConverter.List.coverImage":
@@ -70,6 +72,8 @@ extension CustomSampleManager {
             CustomGroupChannel.SwiftUI.View.Main()
 		case "CustomGroupChannel.SwiftUI.View.CustomMain":
             CustomGroupChannel.SwiftUI.View.CustomMain()
+        case "CustomGroupChannel.SwiftUI.View.ViewProvider":
+            CustomGroupChannel.SwiftUI.View.ViewProvider()
 		case "CustomGroupChannel.SubView.Builder.channelSettings":
             CustomGroupChannel.SubView.Builder.channelSettings()
 		case "CustomGroupChannel.SubView.Builder.messageThread":
@@ -86,8 +90,8 @@ extension CustomSampleManager {
             CustomGroupChannel.ViewConverter.Header.titleLabel()
 		case "CustomGroupChannel.ViewConverter.Header.typingStatusView":
             CustomGroupChannel.ViewConverter.Header.typingStatusView()
-		case "CustomGroupChannel.ViewConverter.List.entireView":
-            CustomGroupChannel.ViewConverter.List.entireView()
+//		case "CustomGroupChannel.ViewConverter.List.entireView":
+//            CustomGroupChannel.ViewConverter.List.entireView()
 		case "CustomGroupChannel.ViewConverter.List.rowView":
             CustomGroupChannel.ViewConverter.List.rowView()
 		case "CustomGroupChannel.ViewConverter.List.senderProfileImage":
@@ -109,8 +113,8 @@ extension CustomSampleManager {
 		case "CustomGroupChannel.ViewConverter.List.channelStateBanner":
             CustomGroupChannel.ViewConverter.List.channelStateBanner()
 		case "CustomGroupChannel.ViewConverter.Input.entireView":
-            CustomGroupChannel.ViewConverter.Input.entireView()
-		case "CustomGroupChannel.ViewConverter.Input.leftView":
+//            CustomGroupChannel.ViewConverter.Input.entireView()
+//		case "CustomGroupChannel.ViewConverter.Input.leftView":
             CustomGroupChannel.ViewConverter.Input.leftView()
 		case "CustomGroupChannel.ViewConverter.Input.addButton":
             CustomGroupChannel.ViewConverter.Input.addButton()
@@ -140,8 +144,8 @@ extension CustomSampleManager {
             CustomOpenChannel.ViewConverter.Header.titleLabel()
 		case "CustomOpenChannel.ViewConverter.Header.subtitleLabel":
             CustomOpenChannel.ViewConverter.Header.subtitleLabel()
-		case "CustomOpenChannel.ViewConverter.List.entireView":
-            CustomOpenChannel.ViewConverter.List.entireView()
+//		case "CustomOpenChannel.ViewConverter.List.entireView":
+//            CustomOpenChannel.ViewConverter.List.entireView()
 		case "CustomOpenChannel.ViewConverter.List.rowView":
             CustomOpenChannel.ViewConverter.List.rowView()
 		case "CustomOpenChannel.ViewConverter.List.senderProfileImage":
@@ -155,10 +159,10 @@ extension CustomSampleManager {
 		case "CustomOpenChannel.ViewConverter.List.scrollBottomView":
             CustomOpenChannel.ViewConverter.List.scrollBottomView()
 		case "CustomOpenChannel.ViewConverter.Media.entireView":
-            CustomOpenChannel.ViewConverter.Media.entireView()
-		case "CustomOpenChannel.ViewConverter.Input.entireView":
-            CustomOpenChannel.ViewConverter.Input.entireView()
-		case "CustomOpenChannel.ViewConverter.Input.leftView":
+//            CustomOpenChannel.ViewConverter.Media.entireView()
+//		case "CustomOpenChannel.ViewConverter.Input.entireView":
+//            CustomOpenChannel.ViewConverter.Input.entireView()
+//		case "CustomOpenChannel.ViewConverter.Input.leftView":
             CustomOpenChannel.ViewConverter.Input.leftView()
 		case "CustomOpenChannel.ViewConverter.Input.addButton":
             CustomOpenChannel.ViewConverter.Input.addButton()
@@ -176,8 +180,8 @@ extension CustomSampleManager {
             CustomCreateGroupChannel.ViewConverter.Header.rightView()
 		case "CustomCreateGroupChannel.ViewConverter.Header.titleView":
             CustomCreateGroupChannel.ViewConverter.Header.titleView()
-		case "CustomCreateGroupChannel.ViewConverter.List.entireView":
-            CustomCreateGroupChannel.ViewConverter.List.entireView()
+//		case "CustomCreateGroupChannel.ViewConverter.List.entireView":
+//            CustomCreateGroupChannel.ViewConverter.List.entireView()
 		case "CustomCreateGroupChannel.ViewConverter.List.rowView":
             CustomCreateGroupChannel.ViewConverter.List.rowView()
 		case "CustomCreateGroupChannel.ViewConverter.List.profileImage":
@@ -196,8 +200,8 @@ extension CustomSampleManager {
             CustomCreateOpenChannel.ViewConverter.Header.rightView()
 		case "CustomCreateOpenChannel.ViewConverter.Header.titleView":
             CustomCreateOpenChannel.ViewConverter.Header.titleView()
-		case "CustomCreateOpenChannel.ViewConverter.List.entireView":
-            CustomCreateOpenChannel.ViewConverter.List.entireView()
+//		case "CustomCreateOpenChannel.ViewConverter.List.entireView":
+//            CustomCreateOpenChannel.ViewConverter.List.entireView()
 		case "CustomCreateOpenChannel.ViewConverter.List.rowView":
             CustomCreateOpenChannel.ViewConverter.List.rowView()
 		case "CustomCreateOpenChannel.ViewConverter.List.profileImage":
@@ -216,8 +220,8 @@ extension CustomSampleManager {
             CustomInviteUser.ViewConverter.Header.rightView()
 		case "CustomInviteUser.ViewConverter.Header.titleView":
             CustomInviteUser.ViewConverter.Header.titleView()
-		case "CustomInviteUser.ViewConverter.List.entireView":
-            CustomInviteUser.ViewConverter.List.entireView()
+//		case "CustomInviteUser.ViewConverter.List.entireView":
+//            CustomInviteUser.ViewConverter.List.entireView()
 		case "CustomInviteUser.ViewConverter.List.rowView":
             CustomInviteUser.ViewConverter.List.rowView()
 		case "CustomInviteUser.ViewConverter.List.profileImage":
@@ -236,8 +240,8 @@ extension CustomSampleManager {
             CustomGroupChannelRegisterOperator.ViewConverter.Header.rightView()
 		case "CustomGroupChannelRegisterOperator.ViewConverter.Header.titleView":
             CustomGroupChannelRegisterOperator.ViewConverter.Header.titleView()
-		case "CustomGroupChannelRegisterOperator.ViewConverter.List.entireView":
-            CustomGroupChannelRegisterOperator.ViewConverter.List.entireView()
+//		case "CustomGroupChannelRegisterOperator.ViewConverter.List.entireView":
+//            CustomGroupChannelRegisterOperator.ViewConverter.List.entireView()
 		case "CustomOpenChannelRegisterOperator.SwiftUI.View.Main":
             CustomOpenChannelRegisterOperator.SwiftUI.View.Main()
 		case "CustomOpenChannelRegisterOperator.SwiftUI.View.CustomMain":
@@ -248,8 +252,8 @@ extension CustomSampleManager {
             CustomOpenChannelRegisterOperator.ViewConverter.Header.rightView()
 		case "CustomOpenChannelRegisterOperator.ViewConverter.Header.titleView":
             CustomOpenChannelRegisterOperator.ViewConverter.Header.titleView()
-		case "CustomOpenChannelRegisterOperator.ViewConverter.List.entireView":
-            CustomOpenChannelRegisterOperator.ViewConverter.List.entireView()
+//		case "CustomOpenChannelRegisterOperator.ViewConverter.List.entireView":
+//            CustomOpenChannelRegisterOperator.ViewConverter.List.entireView()
 		case "CustomGroupMemberList.SwiftUI.View.Main":
             CustomGroupMemberList.SwiftUI.View.Main()
 		case "CustomGroupMemberList.SwiftUI.View.CustomMain":
@@ -262,8 +266,8 @@ extension CustomSampleManager {
             CustomGroupMemberList.ViewConverter.Header.rightView()
 		case "CustomGroupMemberList.ViewConverter.Header.titleView":
             CustomGroupMemberList.ViewConverter.Header.titleView()
-		case "CustomGroupMemberList.ViewConverter.List.entireView":
-            CustomGroupMemberList.ViewConverter.List.entireView()
+//		case "CustomGroupMemberList.ViewConverter.List.entireView":
+//            CustomGroupMemberList.ViewConverter.List.entireView(provider: .init(channelURL: ""))
 		case "CustomGroupMemberList.ViewConverter.List.rowView":
             CustomGroupMemberList.ViewConverter.List.rowView()
 		case "CustomGroupMemberList.ViewConverter.List.profileImage":
@@ -284,8 +288,8 @@ extension CustomSampleManager {
             CustomOpenParticipantList.ViewConverter.Header.rightView()
 		case "CustomOpenParticipantList.ViewConverter.Header.titleView":
             CustomOpenParticipantList.ViewConverter.Header.titleView()
-		case "CustomOpenParticipantList.ViewConverter.List.entireView":
-            CustomOpenParticipantList.ViewConverter.List.entireView()
+//		case "CustomOpenParticipantList.ViewConverter.List.entireView":
+//            CustomOpenParticipantList.ViewConverter.List.entireView()
 		case "CustomOpenParticipantList.ViewConverter.List.rowView":
             CustomOpenParticipantList.ViewConverter.List.rowView()
 		case "CustomOpenParticipantList.ViewConverter.List.profileImage":
@@ -306,8 +310,8 @@ extension CustomSampleManager {
             CustomGroupChannelPushSettings.ViewConverter.Header.rightView()
 		case "CustomGroupChannelPushSettings.ViewConverter.Header.titleView":
             CustomGroupChannelPushSettings.ViewConverter.Header.titleView()
-		case "CustomGroupChannelPushSettings.ViewConverter.List.entireView":
-            CustomGroupChannelPushSettings.ViewConverter.List.entireView()
+//		case "CustomGroupChannelPushSettings.ViewConverter.List.entireView":
+//            CustomGroupChannelPushSettings.ViewConverter.List.entireView()
 		case "CustomGroupChannelSettings.SwiftUI.View.Main":
             CustomGroupChannelSettings.SwiftUI.View.Main()
 		case "CustomGroupChannelSettings.SwiftUI.View.CustomMain":
@@ -324,8 +328,8 @@ extension CustomSampleManager {
             CustomGroupChannelSettings.ViewConverter.Header.rightView()
 		case "CustomGroupChannelSettings.ViewConverter.Header.titleView":
             CustomGroupChannelSettings.ViewConverter.Header.titleView()
-		case "CustomGroupChannelSettings.ViewConverter.List.entireView":
-            CustomGroupChannelSettings.ViewConverter.List.entireView()
+//		case "CustomGroupChannelSettings.ViewConverter.List.entireView":
+//            CustomGroupChannelSettings.ViewConverter.List.entireView()
 		case "CustomGroupChannelSettings.ViewConverter.List.channelInfo":
             CustomGroupChannelSettings.ViewConverter.List.channelInfo()
 		case "CustomGroupChannelSettings.ViewConverter.List.moderation":
@@ -352,8 +356,8 @@ extension CustomSampleManager {
             CustomOpenChannelSettings.ViewConverter.Header.rightView()
 		case "CustomOpenChannelSettings.ViewConverter.Header.titleView":
             CustomOpenChannelSettings.ViewConverter.Header.titleView()
-		case "CustomOpenChannelSettings.ViewConverter.List.entireView":
-            CustomOpenChannelSettings.ViewConverter.List.entireView()
+//		case "CustomOpenChannelSettings.ViewConverter.List.entireView":
+//            CustomOpenChannelSettings.ViewConverter.List.entireView()
 		case "CustomGroupModerations.SwiftUI.View.Main":
             CustomGroupModerations.SwiftUI.View.Main()
 		case "CustomGroupModerations.SwiftUI.View.CustomMain":
@@ -364,8 +368,8 @@ extension CustomSampleManager {
             CustomGroupModerations.ViewConverter.Header.rightView()
 		case "CustomGroupModerations.ViewConverter.Header.titleView":
             CustomGroupModerations.ViewConverter.Header.titleView()
-		case "CustomGroupModerations.ViewConverter.List.entireView":
-            CustomGroupModerations.ViewConverter.List.entireView()
+//		case "CustomGroupModerations.ViewConverter.List.entireView":
+//            CustomGroupModerations.ViewConverter.List.entireView()
 		case "CustomOpenModerations.SwiftUI.View.Main":
             CustomOpenModerations.SwiftUI.View.Main()
 		case "CustomOpenModerations.SwiftUI.View.CustomMain":
@@ -376,8 +380,8 @@ extension CustomSampleManager {
             CustomOpenModerations.ViewConverter.Header.rightView()
 		case "CustomOpenModerations.ViewConverter.Header.titleView":
             CustomOpenModerations.ViewConverter.Header.titleView()
-		case "CustomOpenModerations.ViewConverter.List.entireView":
-            CustomOpenModerations.ViewConverter.List.entireView()
+//		case "CustomOpenModerations.ViewConverter.List.entireView":
+//            CustomOpenModerations.ViewConverter.List.entireView()
 		case "CustomMessageSearch.SwiftUI.View.Main":
             CustomMessageSearch.SwiftUI.View.Main()
 		case "CustomMessageSearch.SwiftUI.View.CustomMain":
@@ -390,8 +394,8 @@ extension CustomSampleManager {
             CustomMessageSearch.ViewConverter.Header.rightView()
 		case "CustomMessageSearch.ViewConverter.Header.titleView":
             CustomMessageSearch.ViewConverter.Header.titleView()
-		case "CustomMessageSearch.ViewConverter.List.entireView":
-            CustomMessageSearch.ViewConverter.List.entireView()
+//		case "CustomMessageSearch.ViewConverter.List.entireView":
+//            CustomMessageSearch.ViewConverter.List.entireView()
 		case "CustomMessageThread.SwiftUI.View.Main":
             CustomMessageThread.SwiftUI.View.Main()
 		case "CustomMessageThread.SwiftUI.View.CustomMain":
@@ -406,8 +410,8 @@ extension CustomSampleManager {
             CustomMessageThread.ViewConverter.Header.titleLabel()
 		case "CustomMessageThread.ViewConverter.Header.subtitleLabel":
             CustomMessageThread.ViewConverter.Header.subtitleLabel()
-		case "CustomMessageThread.ViewConverter.List.entireView":
-            CustomMessageThread.ViewConverter.List.entireView()
+//		case "CustomMessageThread.ViewConverter.List.entireView":
+//            CustomMessageThread.ViewConverter.List.entireView()
 		case "CustomMessageThread.ViewConverter.List.rowView":
             CustomMessageThread.ViewConverter.List.rowView()
 		case "CustomMessageThread.ViewConverter.List.senderProfileImage":
@@ -443,8 +447,8 @@ extension CustomSampleManager {
 		case "CustomMessageThread.ViewConverter.ParentInfo.reactionView":
             CustomMessageThread.ViewConverter.ParentInfo.reactionView()
 		case "CustomMessageThread.ViewConverter.Input.entireView":
-            CustomMessageThread.ViewConverter.Input.entireView()
-		case "CustomMessageThread.ViewConverter.Input.leftView":
+//            CustomMessageThread.ViewConverter.Input.entireView()
+//		case "CustomMessageThread.ViewConverter.Input.leftView":
             CustomMessageThread.ViewConverter.Input.leftView()
 		case "CustomMessageThread.ViewConverter.Input.addButton":
             CustomMessageThread.ViewConverter.Input.addButton()
@@ -464,8 +468,8 @@ extension CustomSampleManager {
             CustomGroupMutedMemberList.ViewConverter.Header.rightView()
 		case "CustomGroupMutedMemberList.ViewConverter.Header.titleView":
             CustomGroupMutedMemberList.ViewConverter.Header.titleView()
-		case "CustomGroupMutedMemberList.ViewConverter.List.entireView":
-            CustomGroupMutedMemberList.ViewConverter.List.entireView()
+//		case "CustomGroupMutedMemberList.ViewConverter.List.entireView":
+//            CustomGroupMutedMemberList.ViewConverter.List.entireView()
 		case "CustomGroupMutedMemberList.ViewConverter.List.rowView":
             CustomGroupMutedMemberList.ViewConverter.List.rowView()
 		case "CustomGroupMutedMemberList.ViewConverter.List.profileImage":
@@ -486,8 +490,8 @@ extension CustomSampleManager {
             CustomGroupBannedUserList.ViewConverter.Header.rightView()
 		case "CustomGroupBannedUserList.ViewConverter.Header.titleView":
             CustomGroupBannedUserList.ViewConverter.Header.titleView()
-		case "CustomGroupBannedUserList.ViewConverter.List.entireView":
-            CustomGroupBannedUserList.ViewConverter.List.entireView()
+//		case "CustomGroupBannedUserList.ViewConverter.List.entireView":
+//            CustomGroupBannedUserList.ViewConverter.List.entireView()
 		case "CustomGroupBannedUserList.ViewConverter.List.rowView":
             CustomGroupBannedUserList.ViewConverter.List.rowView()
 		case "CustomGroupBannedUserList.ViewConverter.List.profileImage":
@@ -508,8 +512,8 @@ extension CustomSampleManager {
             CustomGroupOperatorList.ViewConverter.Header.rightView()
 		case "CustomGroupOperatorList.ViewConverter.Header.titleView":
             CustomGroupOperatorList.ViewConverter.Header.titleView()
-		case "CustomGroupOperatorList.ViewConverter.List.entireView":
-            CustomGroupOperatorList.ViewConverter.List.entireView()
+//		case "CustomGroupOperatorList.ViewConverter.List.entireView":
+//            CustomGroupOperatorList.ViewConverter.List.entireView()
 		case "CustomGroupOperatorList.ViewConverter.List.rowView":
             CustomGroupOperatorList.ViewConverter.List.rowView()
 		case "CustomGroupOperatorList.ViewConverter.List.profileImage":
@@ -528,8 +532,8 @@ extension CustomSampleManager {
             CustomOpenMutedParticipantList.ViewConverter.Header.rightView()
 		case "CustomOpenMutedParticipantList.ViewConverter.Header.titleView":
             CustomOpenMutedParticipantList.ViewConverter.Header.titleView()
-		case "CustomOpenMutedParticipantList.ViewConverter.List.entireView":
-            CustomOpenMutedParticipantList.ViewConverter.List.entireView()
+//		case "CustomOpenMutedParticipantList.ViewConverter.List.entireView":
+//            CustomOpenMutedParticipantList.ViewConverter.List.entireView()
 		case "CustomOpenMutedParticipantList.ViewConverter.List.rowView":
             CustomOpenMutedParticipantList.ViewConverter.List.rowView()
 		case "CustomOpenMutedParticipantList.ViewConverter.List.profileImage":
@@ -550,8 +554,8 @@ extension CustomSampleManager {
             CustomOpenBannedUserList.ViewConverter.Header.rightView()
 		case "CustomOpenBannedUserList.ViewConverter.Header.titleView":
             CustomOpenBannedUserList.ViewConverter.Header.titleView()
-		case "CustomOpenBannedUserList.ViewConverter.List.entireView":
-            CustomOpenBannedUserList.ViewConverter.List.entireView()
+//		case "CustomOpenBannedUserList.ViewConverter.List.entireView":
+//            CustomOpenBannedUserList.ViewConverter.List.entireView()
 		case "CustomOpenBannedUserList.ViewConverter.List.rowView":
             CustomOpenBannedUserList.ViewConverter.List.rowView()
 		case "CustomOpenBannedUserList.ViewConverter.List.profileImage":
@@ -570,8 +574,8 @@ extension CustomSampleManager {
             CustomOpenOperatorList.ViewConverter.Header.rightView()
 		case "CustomOpenOperatorList.ViewConverter.Header.titleView":
             CustomOpenOperatorList.ViewConverter.Header.titleView()
-		case "CustomOpenOperatorList.ViewConverter.List.entireView":
-            CustomOpenOperatorList.ViewConverter.List.entireView()
+//		case "CustomOpenOperatorList.ViewConverter.List.entireView":
+//            CustomOpenOperatorList.ViewConverter.List.entireView()
 		case "CustomOpenOperatorList.ViewConverter.List.rowView":
             CustomOpenOperatorList.ViewConverter.List.rowView()
 		case "CustomOpenOperatorList.ViewConverter.List.profileImage":

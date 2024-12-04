@@ -12,46 +12,61 @@ struct GroupChannelsView: View {
         GroupChannelListView()
             .groupChannelView { channelURL, startingPoint, messageListParams in
                 GroupChannelView(
-                    channelURL: channelURL,
-                    startingPoint: startingPoint,
-                    messageListParams: messageListParams
+                    provider: GroupChannelViewProvider(
+                        channelURL: channelURL,
+                        startingPoint: startingPoint,
+                        messageListParams: messageListParams
+                    )
                 )
                     .messageThreadView { channelURL, parentMessageId in
-                        MessageThreadView(channelURL: channelURL, parentMessageId: parentMessageId)
+                        MessageThreadView(
+                            provider: MessageThreadViewProvider(
+                                channelURL: channelURL,
+                                parentMessageId: parentMessageId
+                            )
+                        )
                     }
                     .channelSettingsView { channelURL in
-                        GroupChannelSettingsView(channelURL: channelURL)
+                        GroupChannelSettingsView(provider: GroupChannelSettingsViewProvider(channelURL: channelURL))
                             .moderationsView { channelURL in
-                                GroupModerationsView(channelURL: channelURL)
+                                GroupModerationsView(provider: GroupModerationsViewProvider(channelURL: channelURL))
                                     .bannedUserListView { channelURL in
-                                        GroupBannedUserListView(channelURL: channelURL)
+                                        GroupBannedUserListView(provider: GroupBannedUserListViewProvider(channelURL: channelURL))
                                     }
                                     .mutedMemberListView { channelURL in
-                                        GroupMutedMemberListView(channelURL: channelURL)
+                                        GroupMutedMemberListView(provider: GroupMutedMemberListViewProvider(channelURL: channelURL))
                                     }
                                     .operatorListView { channelURL in
-                                        GroupOperatorListView(channelURL: channelURL)
+                                        GroupOperatorListView(provider: GroupOperatorListViewProvider(channelURL: channelURL))
                                             .registerOperatorView { channelURL in
-                                                GroupChannelRegisterOperatorView(channelURL: channelURL)
+                                                GroupChannelRegisterOperatorView(
+                                                    provider: GroupChannelRegisterOperatorViewProvider(channelURL: channelURL)
+                                                )
                                             }
                                     }
                             }
                             .pushSettingsView { channelURL in
-                                GroupChannelPushSettingsView(channelURL: channelURL)
+                                GroupChannelPushSettingsView(
+                                    provider: GroupChannelPushSettingsViewProvider(channelURL: channelURL)
+                                )
                             }
                             .memberListView { channelURL in
-                                GroupMemberListView(channelURL: channelURL)
+                                GroupMemberListView(provider: GroupMemberListViewProvider(channelURL: channelURL))
                                     .inviteUserView { channelURL in
-                                        InviteUserView(channelURL: channelURL)
+                                        InviteUserView(provider: InviteUserViewProvider(channelURL: channelURL))
                                     }
                             }
                             .messageSearchView { channelURL in
-                                MessageSearchView(channelURL: channelURL)
+                                MessageSearchView(
+                                    provider: MessageSearchViewProvider(channelURL: channelURL)
+                                )
                             }
                     }
             }
             .createChannelView { users, type in
-                CreateGroupChannelView(users: users, type: type)
+                CreateGroupChannelView(
+                    provider: CreateGroupChannelViewProvider(customUsers: users, type: type)
+                )
             }
     }
 }

@@ -1,4 +1,7 @@
 import SwiftUI
+#if canImport(SendbirdSwiftUI)
+import SendbirdSwiftUI
+#endif
 
 extension CustomMessageThread.ViewConverter.List {
     struct entireView: View {
@@ -18,18 +21,10 @@ extension CustomMessageThread.ViewConverter.List {
         
         var body: some View {
             MessageThreadView(
-                channelURL: TestURL.threadMessageChannel, 
-                parentMessageId: TestMessageId.threadMessageId,
-                list: { config in
-                    List(config.messages) { message in
-                        HStack {
-                            Circle()
-                                .frame(width: 12, height: 12)
-                                .foregroundStyle(customFlag ? .green : .red)
-                            Text(message.message)
-                        }
-                    }
-                }
+                provider: MessageThreadViewProvider(
+                    channelURL: TestURL.threadMessageChannel,
+                    parentMessageId: TestMessageId.threadMessageId
+                )
             )
             
             CustomButton()

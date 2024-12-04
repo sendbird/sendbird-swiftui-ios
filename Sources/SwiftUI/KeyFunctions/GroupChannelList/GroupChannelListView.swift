@@ -19,11 +19,24 @@ public struct GroupChannelListView: View {
     var configurations: [(SBUGroupChannelListViewController) -> Void] = []
     private var channelListQuery: GroupChannelListQuery?
     
-    // MARK: - Methods
+    @ObservedObject private var provider: GroupChannelListViewProvider
+    
+    public init() {
+        self.provider = GroupChannelListViewProvider() // Default
+    }
+    
     public var body: some View {
         SBUViewControllerSet.GroupChannelListViewController
             .swiftUI {
                 createViewController()
+            }
+            .injectData { viewController in
+                if self.shouldUpdateData(viewController: viewController) {
+                    // Inject data into view model and load
+                    viewController.viewModel?.initializeAndLoad(
+                        channelListQuery: self.provider.channelListQuery
+                    )
+                }
             }
             .configure { viewController in
                 viewController.dismissAction = {
@@ -41,13 +54,26 @@ public struct GroupChannelListView: View {
                 moveToChannelIfNeeded(payloadManager.channelURL)
             }
             .switchUIKitNavigationBar()
+            .onDisappear {
+                SBViewConverterSet.GroupChannelList = GroupChannelListViewConverter()
+            }
     }
     
+    // MARK: - Methods
     private func createViewController() -> SBUGroupChannelListViewController {
         let viewController = SBUViewControllerSet.GroupChannelListViewController.init(
             channelListQuery: self.channelListQuery
         )
+
+        // connect VC, VM <-> provider
+        self.provider.bind(viewController: viewController)
+        
         return viewController
+    }
+    
+    private func shouldUpdateData(viewController: SBUGroupChannelListViewController) -> Bool {
+        let shouldUpdateChannelListQuery = viewController.viewModel?.channelListQuery == nil && self.provider.channelListQuery != nil
+        return shouldUpdateChannelListQuery
     }
     
     private func moveToChannelIfNeeded(_ channelURL: String?) {
@@ -67,11 +93,12 @@ public extension GroupChannelListView {
     typealias ListContent = GroupChannelListViewConverter.List
     
     init(
-        channelListQuery: GroupChannelListQuery? = nil,
+        provider: GroupChannelListViewProvider? = nil,
         headerItem: (() -> GroupChannelListType.HeaderItem)? = nil,
         listItem: (() -> GroupChannelListType.ListItem)? = nil
     ) {
-        self.channelListQuery = channelListQuery
+        self.provider = provider ?? GroupChannelListViewProvider()
+        self.channelListQuery = self.provider.channelListQuery
         
         if let headerItem { _ = headerItem() }
         if let listItem { _ = listItem() }
@@ -80,12 +107,17 @@ public extension GroupChannelListView {
         self.applyViewConverterSet()
     }
     
-    init<Content: View>(
-        channelListQuery: GroupChannelListQuery? = nil,
+    // TODO: After entire content is implemented
+    internal init<Content: View>(
+        provider: GroupChannelListViewProvider? = nil,
         headerItem: (() -> GroupChannelListType.HeaderItem)? = nil,
         list: @escaping (ListContent.TableView.ViewConfig) -> Content
     ) {
-        self.init(channelListQuery: channelListQuery, headerItem: headerItem, listItem: nil)
+        self.init(
+            provider: provider,
+            headerItem: headerItem,
+            listItem: nil
+        )
         
         typealias ViewConverterType = ViewConverter<ListContent.TableView.ViewConfig>
         let listViewConverter: ViewConverterType = ViewConverter { listConfig in
@@ -102,11 +134,51 @@ public extension GroupChannelListView {
     }
 }
 
+// MARK: Event handler interfaces
+public extension GroupChannelListView {
+    func onSendbirdSelectRow(_ selectRowHandler: @escaping (_ indexPath: IndexPath) -> Void) -> Self {
+        let copy = self
+        copy.provider.eventHandlers.selectRowHandler = selectRowHandler
+        return copy
+    }
+    
+    func onSendbirdSelectLeaveChannel(_ selectLeaveChannelHandler: @escaping (_ channel: GroupChannel) -> Void) -> Self {
+        let copy = self
+        copy.provider.eventHandlers.selectLeaveChannelHandler = selectLeaveChannelHandler
+        return copy
+    }
+    
+    func onSendbirdChangePushTriggerOption(_ changePushTriggerOptionHandler: @escaping (_ channel: GroupChannel) -> Void) -> Self {
+        let copy = self
+        copy.provider.eventHandlers.changePushTriggerOptionHandler = changePushTriggerOptionHandler
+        return copy
+    }
+    
+    func onSendbirdConnectionStateChange(_ connectionStateChangeHandler: @escaping SendbirdConnectionStateChangeHandler) -> Self {
+        let copy = self
+        copy.provider.eventHandlers.connectionStateChangeHandler = connectionStateChangeHandler
+        return copy
+    }
+    
+    func onSendbirdError(_ errorHandler: @escaping SendbirdErrorHandler) -> Self {
+        let copy = self
+        copy.provider.eventHandlers.errorHandler = errorHandler
+        return copy
+    }
+    
+    // Note: Events from Chat SDK are not be available in SendbirdSwiftUI.
+//    func onUpdatedChannels(_ handler: @escaping GroupChannelListUpdatedChannelsHandler) -> Self {
+//        let copy = self
+//        copy.manager?.eventHandlers.updatedChannelsHandler = handler
+//        return copy
+//    }
+}
+
 #Preview {
     NavigationView {
         GroupChannelListView()
             .groupChannelView { channelURL, _, _ in
-                GroupChannelView(channelURL: channelURL)
+                GroupChannelView(provider: .init(channelURL: channelURL))
             }
     }
 }

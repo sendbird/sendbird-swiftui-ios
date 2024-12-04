@@ -1,4 +1,7 @@
 import SwiftUI
+#if canImport(SendbirdSwiftUI)
+import SendbirdSwiftUI
+#endif
 extension CustomMessageSearch.SwiftUI.View {
     struct CustomMain: View {
         @EnvironmentObject var viewModel: CustomSampleSubViewModel
