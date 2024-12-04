@@ -1,4 +1,7 @@
 import SwiftUI
+#if canImport(SendbirdSwiftUI)
+import SendbirdSwiftUI
+#endif
 
 extension CustomOpenChannel.ViewConverter.List {
     struct adminMessageView: View {
@@ -20,7 +23,7 @@ extension CustomOpenChannel.ViewConverter.List {
             if let channelURL = viewModel.openChannel?.channelURL {
                 VStack {
                     OpenChannelView(
-                        channelURL: channelURL,
+                        provider: OpenChannelViewProvider(channelURL: channelURL),
                         listItem: {
                             .init()
                             .adminMessageView { config in

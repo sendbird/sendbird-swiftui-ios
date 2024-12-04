@@ -1,4 +1,7 @@
 import SwiftUI
+#if canImport(SendbirdSwiftUI)
+import SendbirdSwiftUI
+#endif
 
 extension CustomOpenChannel.ViewConverter.List {
     struct entireView: View {
@@ -19,17 +22,7 @@ extension CustomOpenChannel.ViewConverter.List {
         var body: some View {
             if let channelURL = viewModel.openChannel?.channelURL {
                 OpenChannelView(
-                    channelURL: channelURL,
-                    list: { config in
-                        List(config.messages) { message in
-                            HStack {
-                                Circle()
-                                    .frame(width: 12, height: 12)
-                                    .foregroundStyle(customFlag ? .green : .red)
-                                Text(message.message)
-                            }
-                        }
-                    }
+                    provider: OpenChannelViewProvider(channelURL: channelURL)
                 )
                 CustomButton()
             }

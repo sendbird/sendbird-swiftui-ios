@@ -1,4 +1,7 @@
 import SwiftUI
+#if canImport(SendbirdSwiftUI)
+import SendbirdSwiftUI
+#endif
 
 extension CustomGroupBannedUserList.SwiftUI.View {
     struct Main: View {
@@ -6,7 +9,9 @@ extension CustomGroupBannedUserList.SwiftUI.View {
         
         var body: some View {
             if let channelURL = viewModel.groupChannel?.channelURL {
-                GroupBannedUserListView(channelURL: channelURL)
+                GroupBannedUserListView(
+                    provider: GroupBannedUserListViewProvider(channelURL: channelURL)
+                )
             }
         }
     }

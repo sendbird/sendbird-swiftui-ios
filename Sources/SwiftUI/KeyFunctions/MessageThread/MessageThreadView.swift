@@ -16,18 +16,32 @@ public struct MessageThreadView: View {
     
     var configurations: [(SBUMessageThreadViewController) -> Void] = []
     
-    private var channelURL: String
-    private var parentMessageId: Int64
-    private var delegate: SBUMessageThreadViewControllerDelegate?
-    private var threadedMessageListParams: ThreadedMessageListParams?
-    private var startingPoint: Int64? = .max
-    private var voiceFileInfos: [String: SBUVoiceFileInfo]? = nil
+    // Non-optional since `channelURL`, `parentMessageId` are required.
+    @ObservedObject private var provider: MessageThreadViewProvider
+
+    init(provider: MessageThreadViewProvider) {
+        self.provider = provider  // Default
+    }
     
-    // MARK: - Methods
     public var body: some View {
         SBUViewControllerSet.MessageThreadViewController
             .swiftUI {
                 createViewController()
+            }
+            .injectData { viewController in
+                if self.shouldUpdateData(viewController: viewController) {
+                    // Inject data into view model and load
+                    if let voiceFileInfos = provider.voiceFileInfos {
+                        viewController.voiceFileInfos = voiceFileInfos
+                    }
+                    
+                    viewController.viewModel?.initializeAndLoad(
+                        channelURL: self.provider.channelURL,
+                        parentMessageId: self.provider.parentMessageId,
+                        threadedMessageListParams: self.provider.threadedMessageListParams,
+                        startingPoint: self.provider.startingPoint
+                    )
+                }
             }
             .configure { viewController in
                 viewController.dismissAction = {
@@ -43,18 +57,34 @@ public struct MessageThreadView: View {
                 viewConverter.applyViewUpdates(to: viewController)
             }
             .switchUIKitNavigationBar()
+            .onDisappear {
+                SBViewConverterSet.MessageThread = MessageThreadViewConverter()
+            }
     }
     
+    // MARK: - Methods
     private func createViewController() -> SBUMessageThreadViewController {
         let viewController = SBUViewControllerSet.MessageThreadViewController.init(
-            channelURL: self.channelURL,
-            parentMessageId: self.parentMessageId,
-            delegate: self.delegate,
-            threadedMessageListParams: self.threadedMessageListParams,
-            startingPoint: self.startingPoint,
-            voiceFileInfos: self.voiceFileInfos
+            channelURL: self.provider.channelURL,
+            parentMessageId: self.provider.parentMessageId,
+            threadedMessageListParams: self.provider.threadedMessageListParams,
+            startingPoint: self.provider.startingPoint,
+            voiceFileInfos: self.provider.voiceFileInfos
         )
+        
+        // connect VC, VM <-> provider
+        self.provider.bind(viewController: viewController)
         return viewController
+    }
+    
+    private func shouldUpdateData(viewController: SBUMessageThreadViewController) -> Bool {
+        let shouldUpdateChannelURL = viewController.viewModel?.channelURL == "" && self.provider.channelURL != ""
+        let shouldUpdateParentMessageId = viewController.viewModel?.parentMessageId == nil && self.provider.parentMessageId != 0
+        let shouldUpdateStartingPoint = viewController.viewModel?.startingPoint == nil && self.provider.startingPoint != 0
+        let shouldUpdateVoiceFileInfos = viewController.voiceFileInfos == nil && self.provider.voiceFileInfos != nil
+        let shouldUpdateThreadMessageParams = viewController.viewModel?.threadedMessageListParams == nil && self.provider.threadedMessageListParams != nil
+        
+        return shouldUpdateChannelURL || shouldUpdateParentMessageId || shouldUpdateStartingPoint || shouldUpdateVoiceFileInfos || shouldUpdateThreadMessageParams
     }
 }
 
@@ -66,44 +96,13 @@ public extension MessageThreadView {
     typealias InputContent = MessageThreadViewConverter.Input
     
     init(
-        channelURL: String,
-        parentMessageId: Int64,
-        delegate: SBUMessageThreadViewControllerDelegate? = nil,
-        threadedMessageListParams: ThreadedMessageListParams? = nil,
-        startingPoint: Int64? = .max,
-        voiceFileInfos: [String: SBUVoiceFileInfo]? = nil
-    ) {
-        self.channelURL = channelURL
-        self.parentMessageId = parentMessageId
-        self.delegate = delegate
-        self.threadedMessageListParams = threadedMessageListParams
-        self.startingPoint = startingPoint
-        self.voiceFileInfos = voiceFileInfos
-        
-        // Apply view converter in viewConverterSet.
-        self.applyViewConverterSet()
-    }
-    
-    init(
-        channelURL: String,
-        parentMessageId: Int64,
-        delegate: SBUMessageThreadViewControllerDelegate? = nil,
-        threadedMessageListParams: ThreadedMessageListParams? = nil,
-        startingPoint: Int64? = .max,
-        voiceFileInfos: [String: SBUVoiceFileInfo]? = nil,
+        provider: MessageThreadViewProvider,
         headerItem: (() -> MessageThreadType.HeaderItem)? = nil,
         parentInfoItem: (() -> MessageThreadType.ParentInfoItem)? = nil,
         listItem: (() -> MessageThreadType.ListItem)? = nil,
         inputItem: (() -> MessageThreadType.InputItem)? = nil
     ) {
-        self.init(
-            channelURL: channelURL,
-            parentMessageId: parentMessageId,
-            delegate: delegate,
-            threadedMessageListParams: threadedMessageListParams,
-            startingPoint: startingPoint,
-            voiceFileInfos: voiceFileInfos
-        )
+        self.init(provider: provider)
 
         if let headerItem { _ = headerItem() }
         if let parentInfoItem { _ = parentInfoItem() }
@@ -114,27 +113,14 @@ public extension MessageThreadView {
         self.applyViewConverterSet()
     }
 
-    init<Content: View>(
-        channelURL: String,
-        parentMessageId: Int64,
-        delegate: SBUMessageThreadViewControllerDelegate? = nil,
-        threadedMessageListParams: ThreadedMessageListParams? = nil,
-        startingPoint: Int64? = .max,
-        voiceFileInfos: [String: SBUVoiceFileInfo]? = nil,
+    // TODO: After entire content is implemented
+    internal init<Content: View>(
+        provider: MessageThreadViewProvider,
         headerItem: (() -> MessageThreadType.HeaderItem)? = nil,
         list: @escaping (ListContent.TableView.ViewConfig) -> Content,
         inputItem: (() -> MessageThreadType.InputItem)? = nil
     ) {
-        self.init(
-            channelURL: channelURL,
-            parentMessageId: parentMessageId,
-            delegate: delegate,
-            threadedMessageListParams: threadedMessageListParams,
-            startingPoint: startingPoint,
-            voiceFileInfos: voiceFileInfos,
-            headerItem: headerItem,
-            inputItem: inputItem
-        )
+        self.init(provider: provider)
 
         self.viewConverter.list.tableView.entireContent = ViewConverter { tableViewConfig in
             UIHostingController(rootView: list(tableViewConfig)).view
@@ -148,24 +134,14 @@ public extension MessageThreadView {
     
     // NOTE: This interface has been temporarily closed.
     private init<Content: View>(
-        channelURL: String,
-        parentMessageId: Int64,
-        delegate: SBUMessageThreadViewControllerDelegate? = nil,
-        threadedMessageListParams: ThreadedMessageListParams? = nil,
-        startingPoint: Int64? = .max,
-        voiceFileInfos: [String: SBUVoiceFileInfo]? = nil,
+        provider: MessageThreadViewProvider,
         headerItem: (() -> MessageThreadType.HeaderItem)? = nil,
         parentInfoItem: (() -> MessageThreadType.ParentInfoItem)? = nil,
         listItem: (() -> MessageThreadType.ListItem)? = nil,
         input: @escaping (InputContent.ViewConfig) -> Content
     ) {
         self.init(
-            channelURL: channelURL,
-            parentMessageId: parentMessageId,
-            delegate: delegate,
-            threadedMessageListParams: threadedMessageListParams,
-            startingPoint: startingPoint,
-            voiceFileInfos: voiceFileInfos,
+            provider: provider,
             headerItem: headerItem,
             parentInfoItem: parentInfoItem,
             listItem: listItem
@@ -186,23 +162,13 @@ public extension MessageThreadView {
     
     // NOTE: This interface has been temporarily closed.
     private init<Content: View>(
-        channelURL: String,
-        parentMessageId: Int64,
-        delegate: SBUMessageThreadViewControllerDelegate? = nil,
-        threadedMessageListParams: ThreadedMessageListParams? = nil,
-        startingPoint: Int64? = .max,
-        voiceFileInfos: [String: SBUVoiceFileInfo]? = nil,
+        provider: MessageThreadViewProvider,
         headerItem: (() -> MessageThreadType.HeaderItem)? = nil,
         list: @escaping (ListContent.TableView.ViewConfig) -> Content,
         input: @escaping (InputContent.ViewConfig) -> Content
     ) {
         self.init(
-            channelURL: channelURL,
-            parentMessageId: parentMessageId,
-            delegate: delegate,
-            threadedMessageListParams: threadedMessageListParams,
-            startingPoint: startingPoint,
-            voiceFileInfos: voiceFileInfos,
+            provider: provider,
             headerItem: headerItem
         )
 
@@ -229,6 +195,11 @@ public extension MessageThreadView {
 
 #Preview {
     NavigationView {
-        MessageThreadView(channelURL: "", parentMessageId: -1)
+        MessageThreadView(
+            provider: .init(
+                channelURL: "",
+                parentMessageId: -1
+            )
+        )
     }
 }

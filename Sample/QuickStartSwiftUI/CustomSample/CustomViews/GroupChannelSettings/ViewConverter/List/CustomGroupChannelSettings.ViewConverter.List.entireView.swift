@@ -1,4 +1,7 @@
 import SwiftUI
+#if canImport(SendbirdSwiftUI)
+import SendbirdSwiftUI
+#endif
 
 extension CustomGroupChannelSettings.ViewConverter.List {
     struct entireView: View {
@@ -19,14 +22,7 @@ extension CustomGroupChannelSettings.ViewConverter.List {
         var body: some View {
             if let channelURL = viewModel.groupChannel?.channelURL {
                 GroupChannelSettingsView(
-                    channelURL: channelURL,
-                    list: { config in
-                        VStack {
-                            Text(config.channel.name.replaceWhenIsEmpty())
-                            Text("\(config.channel.memberCount)")
-                            Text("Flag: \(customFlag ? "ON" : "OFF")")
-                        }
-                    }
+                    provider: GroupChannelSettingsViewProvider(channelURL: channelURL)
                 )
                 
                 CustomButton()

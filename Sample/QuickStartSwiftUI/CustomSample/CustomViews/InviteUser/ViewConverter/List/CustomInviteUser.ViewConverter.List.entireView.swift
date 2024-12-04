@@ -1,4 +1,7 @@
 import SwiftUI
+#if canImport(SendbirdSwiftUI)
+import SendbirdSwiftUI
+#endif
 
 extension CustomInviteUser.ViewConverter.List {
     struct entireView: View {
@@ -19,23 +22,7 @@ extension CustomInviteUser.ViewConverter.List {
         var body: some View {
             if let channelURL = viewModel.groupChannel?.channelURL {
                 InviteUserView(
-                    channelURL: channelURL,
-                    list: { config in
-                        List(config.users, id: \.self) { user in
-                            Button {
-                                config.parentView.onSelectUser(user)
-                            } label: {
-                                HStack {
-                                    Circle()
-                                        .frame(width: 12, height: 12)
-                                        .foregroundStyle(config.selectedUsers.contains(user) ? .green : .red)
-                                    Text("\(user.refinedNickname()) - \(customFlag ? "ON" : "OFF")")
-                                        .foregroundStyle(.black)
-                                }
-                                .contentShape(Rectangle()) // HStack 전체를 터치 가능한 영역으로 확장
-                            }
-                        }
-                    }
+                    provider: InviteUserViewProvider(channelURL: channelURL)
                 )
                 CustomButton()
             }

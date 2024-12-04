@@ -16,13 +16,24 @@ public struct OpenChannelListView: View {
 
     var configurations: [(SBUOpenChannelListViewController) -> Void] = []
 
-    private var channelListQuery: OpenChannelListQuery?
+    @ObservedObject var provider: OpenChannelListViewProvider
+    
+    public init() {
+        self.provider = OpenChannelListViewProvider()  // Default provider
+    }
 
-    // MARK: - Methods
     public var body: some View {
         SBUViewControllerSet.OpenChannelListViewController
             .swiftUI {
                 createViewController()
+            }
+            .injectData { viewController in
+                if self.shouldUpdateData(viewController: viewController) {
+                    // Inject data into view model and load
+                    viewController.viewModel?.initializeAndLoad(
+                        channelListQuery: self.provider.channelListQuery
+                    )
+                }
             }
             .configure { viewController in
                 viewController.dismissAction = {
@@ -38,13 +49,26 @@ public struct OpenChannelListView: View {
                 viewConverter.applyViewUpdates(to: viewController)
             }
             .switchUIKitNavigationBar()
+            .onDisappear {
+                SBViewConverterSet.OpenChannelList = OpenChannelListViewConverter()
+            }
     }
     
+    // MARK: - Methods
     private func createViewController() -> SBUOpenChannelListViewController {
         let viewController = SBUViewControllerSet.OpenChannelListViewController.init(
-            channelListQuery: self.channelListQuery
+            channelListQuery: self.provider.channelListQuery
         )
+        
+        // connect VC, VM <-> provider
+        self.provider.bind(viewController: viewController)
+        
         return viewController
+    }
+
+    private func shouldUpdateData(viewController: SBUOpenChannelListViewController) -> Bool {
+        let shouldUpdateChannelListQuery = viewController.viewModel?.channelListQuery == nil && self.provider.channelListQuery != nil
+        return shouldUpdateChannelListQuery
     }
 }
 
@@ -54,16 +78,12 @@ public extension OpenChannelListView {
     // MARK: - typealias
     typealias ListContent = OpenChannelListViewConverter.List
     
-    init(channelListQuery: OpenChannelListQuery? = nil) {
-        self.channelListQuery = channelListQuery
-    }
-    
     init(
-        channelListQuery: OpenChannelListQuery? = nil,
+        provider: OpenChannelListViewProvider? = nil,
         headerItem: (() -> OpenChannelListType.HeaderItem)? = nil,
         listItem: (() -> OpenChannelListType.ListItem)? = nil
     ) {
-        self.channelListQuery = channelListQuery
+        self.provider = provider ?? OpenChannelListViewProvider()  // Default provider
 
         if let headerItem { _ = headerItem() }
         if let listItem { _ = listItem() }
@@ -72,12 +92,13 @@ public extension OpenChannelListView {
         self.applyViewConverterSet()
     }
 
-    init<Content: View>(
-        channelListQuery: OpenChannelListQuery? = nil,
+    // TODO: After entire content is implemented
+    internal init<Content: View>(
+        provider: OpenChannelListViewProvider? = nil,
         headerItem: (() -> OpenChannelListType.HeaderItem)? = nil,
         @ViewBuilder list: @escaping (ListContent.TableView.ViewConfig) -> Content
     ) {
-        self.init(channelListQuery: channelListQuery, headerItem: headerItem, listItem: nil)
+        self.init(provider: provider, headerItem: headerItem, listItem: nil)
 
         typealias ViewConverterType = ViewConverter<ListContent.TableView.ViewConfig>
         let listViewConverter: ViewConverterType = ViewConverter { listConfig in
@@ -91,6 +112,29 @@ public extension OpenChannelListView {
         
         // Apply view converter in viewConverterSet.
         self.applyViewConverterSet()
+    }
+}
+
+// MARK: Event handler interfaces
+public extension OpenChannelListView {
+    func onSendbirdSelectRow(
+        _ selectRowHandler: @escaping (_ indexPath: IndexPath) -> Void
+    ) -> Self {
+        let copy = self
+        copy.provider.eventHandlers.selectRowHandler = selectRowHandler
+        return copy
+    }
+    
+    func onSendbirdConnectionStateChange(_ connectionStateChangeHandler: @escaping SendbirdConnectionStateChangeHandler) -> Self {
+        let copy = self
+        copy.provider.eventHandlers.connectionStateChangeHandler = connectionStateChangeHandler
+        return copy
+    }
+    
+    func onSendbirdError(_ errorHandler: @escaping SendbirdErrorHandler) -> Self {
+        let copy = self
+        copy.provider.eventHandlers.errorHandler = errorHandler
+        return copy
     }
 }
 

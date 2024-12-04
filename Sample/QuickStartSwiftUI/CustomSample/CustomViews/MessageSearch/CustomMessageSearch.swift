@@ -1,10 +1,15 @@
 import SwiftUI
+#if canImport(SendbirdSwiftUI)
+import SendbirdSwiftUI
+#endif
 struct CustomMessageSearch: View {
     @EnvironmentObject var viewModel: CustomSampleSubViewModel
     
     var body: some View {
         if let channelURL = viewModel.groupChannel?.channelURL {
-            MessageSearchView(channelURL: channelURL)
+            MessageSearchView(
+                provider: MessageSearchViewProvider(channelURL: channelURL)
+            )
         }
     }
 }

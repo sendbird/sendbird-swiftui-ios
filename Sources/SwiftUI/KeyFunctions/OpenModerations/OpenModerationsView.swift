@@ -16,13 +16,25 @@ public struct OpenModerationsView: View {
     
     var configurations: [(SBUModerationsViewController) -> Void] = []
 
-    private var channelURL: String
+    // Non-optional since `channelURL` is required.
+    @ObservedObject private var provider: OpenModerationsViewProvider
     
-    // MARK: - Methods
+    init(provider: OpenModerationsViewProvider) {
+        self.provider = provider
+    }
+    
     public var body: some View {
         SBUViewControllerSet.OpenModerationsViewController
             .swiftUI {
                 createViewController()
+            }
+            .injectData { viewController in
+                if self.shouldUpdateData(viewController: viewController) {
+                    // Inject data into view model and load
+                    viewController.viewModel?.initializeAndLoad(
+                        channelURL: self.provider.channelURL
+                    )
+                }
             }
             .configure { viewController in
                 viewController.dismissAction = {
@@ -38,14 +50,27 @@ public struct OpenModerationsView: View {
                 viewConverter.applyViewUpdates(to: viewController)
             }
             .switchUIKitNavigationBar()
+            .onDisappear {
+                SBViewConverterSet.OpenModerations = OpenModerationsViewConverter()
+            }
     }
     
+    // MARK: - Methods
     private func createViewController() -> SBUModerationsViewController {
         let viewController = SBUViewControllerSet.OpenModerationsViewController.init(
-            channelURL: self.channelURL,
+            channelURL: self.provider.channelURL,
             channelType: .open
         )
+        
+        // hook up VC, VM into provider
+        self.provider.bind(viewController: viewController)
+        
         return viewController
+    }
+    
+    private func shouldUpdateData(viewController: SBUModerationsViewController) -> Bool {
+        let shouldUpdateChannelURL = viewController.viewModel?.channelURL == "" && self.provider.channelURL != ""
+        return shouldUpdateChannelURL
     }
 }
 
@@ -53,18 +78,13 @@ public struct OpenModerationsView: View {
 /// OpenModerationsView initializers
 public extension OpenModerationsView {
     // MARK: - typealias
-    // TODO: Initializer 에서 필요하면 구현
     // typealias ListContent = OpenModerationsViewConverter.List
     
-    init(channelURL: String) {
-        self.channelURL = channelURL
-    }
-// (↓↓ example ↓↓)
     init(
-        channelURL: String,
+        provider: OpenModerationsViewProvider,
         headerItem: (() -> OpenModerationsType.HeaderItem)? = nil
     ) {
-        self.channelURL = channelURL
+        self.provider = provider
 
         if let headerItem { _ = headerItem() }
 //        if let listItem { _ = listItem() }
@@ -72,8 +92,9 @@ public extension OpenModerationsView {
         // Apply view converter in viewConverterSet.
         self.applyViewConverterSet()
     }
-//
-//    init<Content: View>(
+
+    // TODO: After entire content is implemented
+//    internal init<Content: View>(
 //        channelListQuery: GroupChannelListQuery? = nil,
 //        headerItem: (() -> Sendbird.View.GroupChannel.ChannelList.HeaderItem)? = nil,
 //        list: @escaping (ListContent.ViewConfig) -> Content
@@ -97,6 +118,6 @@ public extension OpenModerationsView {
 
 #Preview {
     NavigationView {
-        OpenModerationsView(channelURL: "")
+        OpenModerationsView(provider: .init(channelURL: ""))
     }
 }

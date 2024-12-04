@@ -16,16 +16,24 @@ public struct CreateGroupChannelView: View {
     
     var configurations: [(SBUCreateChannelViewController) -> Void] = []
     
-    private var users: [SBUUser]?
-    private var type: ChannelCreationType = .group
+    @ObservedObject private var provider: CreateGroupChannelViewProvider
     
-    // MARK: - Methods
-    public init() {}
+    public init() {
+        self.provider = CreateGroupChannelViewProvider()
+    }
     
     public var body: some View {
         SBUViewControllerSet.CreateChannelViewController
             .swiftUI {
                 createViewController()
+            }
+            .injectData { viewController in
+                if self.shouldUpdateData(viewController: viewController) {
+                    // Inject data into view model and load
+                    viewController.viewModel?.initializeAndLoad(
+                        users: self.provider.customUsers
+                    )
+                }
             }
             .configure { viewController in
                 viewController.dismissAction = {
@@ -41,14 +49,24 @@ public struct CreateGroupChannelView: View {
                 viewConverter.applyViewUpdates(to: viewController)
             }
             .switchUIKitNavigationBar()
+            .onDisappear {
+                SBViewConverterSet.CreateGroupChannel = CreateGroupChannelViewConverter()
+            }
     }
-    
+
+    // MARK: - Methods
     private func createViewController() -> SBUCreateChannelViewController {
         let viewController = SBUViewControllerSet.CreateChannelViewController.init(
-            users: self.users,
-            type: self.type
+            users: self.provider.customUsers,
+            type: self.provider.type
         )
+        self.provider.bind(viewController: viewController)
         return viewController
+    }
+    
+    private func shouldUpdateData(viewController: SBUCreateChannelViewController) -> Bool {
+        let shouldUpdateCustomUsers = viewController.viewModel?.customizedUsers == nil && self.provider.customUsers != nil
+        return shouldUpdateCustomUsers
     }
 }
 
@@ -59,13 +77,11 @@ public extension CreateGroupChannelView {
     typealias ListContent = CreateGroupChannelViewConverter.List
     
     init(
-        users: [SBUUser]? = nil,
-        type: ChannelCreationType = .group,
+        provider: CreateGroupChannelViewProvider? = nil,
         headerItem: (() -> CreateGroupChannelType.HeaderItem)? = nil,
         listItem: (() -> CreateGroupChannelType.ListItem)? = nil
     ) {
-        self.users = users
-        self.type = type
+        self.provider = provider ?? CreateGroupChannelViewProvider()
 
         if let headerItem { _ = headerItem() }
         if let listItem { _ = listItem() }
@@ -74,14 +90,13 @@ public extension CreateGroupChannelView {
         self.applyViewConverterSet()
     }
 
-    init<Content: View>(
-        users: [SBUUser]? = nil,
-        type: ChannelCreationType = .group,
+    // TODO: After entire content is implemented
+    internal init<Content: View>(
+        provider: CreateGroupChannelViewProvider? = nil,
         headerItem: (() -> CreateGroupChannelType.HeaderItem)? = nil,
         list: @escaping (ListContent.TableView.ViewConfig) -> Content
-    ) {
-        self.users = users
-        self.type = type
+    ) { 
+        self.provider = provider ?? CreateGroupChannelViewProvider()
         
         typealias ViewConverterType = ViewConverter<ListContent.TableView.ViewConfig>
         let listViewConverter: ViewConverterType = ViewConverter { listConfig in
@@ -95,6 +110,21 @@ public extension CreateGroupChannelView {
 
         // Apply view converter in viewConverterSet.
         self.applyViewConverterSet()
+    }
+}
+
+// MARK: Event handler interfaces
+public extension CreateGroupChannelView {
+    func onSendbirdSelectRow(_ selectRowHandler: @escaping ((_ indexPath: IndexPath) -> Void)) -> Self {
+        let copy = self
+        copy.provider.eventHandlers.selectRowHandler = selectRowHandler
+        return copy
+    }
+    
+    func onSendbirdError(_ errorHandler: @escaping ((_ error: SBError?) -> Void)) -> Self {
+        let copy = self
+        copy.provider.eventHandlers.errorHandler = errorHandler
+        return copy
     }
 }
 

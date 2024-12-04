@@ -1,4 +1,7 @@
 import SwiftUI
+#if canImport(SendbirdSwiftUI)
+import SendbirdSwiftUI
+#endif
 
 extension CustomGroupMemberList.ViewConverter.List {
     struct operatorStateView: View {
@@ -19,7 +22,7 @@ extension CustomGroupMemberList.ViewConverter.List {
         var body: some View {
             if let channelURL = viewModel.groupChannel?.channelURL {
                 GroupMemberListView(
-                    channelURL: channelURL,
+                    provider: GroupMemberListViewProvider(channelURL: channelURL),
                     listItem: {
                         .init()
                         .operatorStateView { config in

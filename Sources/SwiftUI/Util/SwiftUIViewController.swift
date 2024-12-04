@@ -22,6 +22,7 @@ struct SwiftUIViewController<Content: UIViewController> {
     /// A closure that's invoked to construct the represented content view.
     var makeContent: () -> Content
     var configuration: Configuration?
+    private var injectionHandler: ((Content) -> Void)?
 }
 
 // MARK: - UIViewControllerRepresentable
@@ -45,6 +46,7 @@ extension SwiftUIViewController: UIViewControllerRepresentable {
     func updateUIViewController(_ viewController: UIViewController, context: Context) {
         if let navigationController = viewController as? UINavigationController,
            let uiViewController = navigationController.viewControllers.first as? Content {
+            injectionHandler?(uiViewController)
             configuration?(uiViewController)
         } else {
             context.coordinator.parentObserver = viewController.observe(\.parent, changeHandler: { viewController, _ in
@@ -58,6 +60,7 @@ extension SwiftUIViewController: UIViewControllerRepresentable {
             })
             
             if let viewController = viewController as? Content {
+                injectionHandler?(viewController)
                 configuration?(viewController)
             }
         }
@@ -161,8 +164,15 @@ extension UIResponder {
 }
 
 extension SwiftUIViewController {
-    /// Returns a copy of this view updated to have the given closure applied to its represented view
-    /// whenever it is updated via the `updateUIView(…)` method.
+    /// Injects data into view controller or view model with data provided after the view controller init was finished.
+    func injectData(injectionHandler: @escaping (Content) -> Void) -> Self {
+        var copy = self
+        copy.injectionHandler = injectionHandler
+        return copy
+    }
+    
+    /// Returns a copy of this view controller updated to have the given closure applied to its represented view controller
+    /// whenever it is updated via the `updateUIViewController(…)` method.
     func configure(_ configure: @escaping Configuration) -> Self {
         var copy = self
         copy.configuration = configure

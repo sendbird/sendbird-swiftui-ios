@@ -1,4 +1,7 @@
 import SwiftUI
+#if canImport(SendbirdSwiftUI)
+import SendbirdSwiftUI
+#endif
 
 extension CustomOpenChannel.ViewConverter.Input {
     struct rightView: View {
@@ -19,7 +22,7 @@ extension CustomOpenChannel.ViewConverter.Input {
         var body: some View {
             if let channelURL = viewModel.openChannel?.channelURL {
                 OpenChannelView(
-                    channelURL: channelURL,
+                    provider: OpenChannelViewProvider(channelURL: channelURL),
                     inputItem: {
                         .init()
                         .rightView(content: { viewConfig in

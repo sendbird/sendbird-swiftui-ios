@@ -1,4 +1,7 @@
 import SwiftUI
+#if canImport(SendbirdSwiftUI)
+import SendbirdSwiftUI
+#endif
 
 extension CustomGroupChannel.ViewConverter.List {
     struct entireView: View {
@@ -19,17 +22,7 @@ extension CustomGroupChannel.ViewConverter.List {
         var body: some View {
             if let channelURL = viewModel.groupChannel?.channelURL {
                 GroupChannelView(
-                    channelURL: channelURL,
-                    list: { config in
-                        List(config.messages) { message in
-                            HStack {
-                                Circle()
-                                    .frame(width: 12, height: 12)
-                                    .foregroundStyle(customFlag ? .green : .red)
-                                Text(message.message)
-                            }
-                        }
-                    }
+                    provider: GroupChannelViewProvider(channelURL: channelURL)
                 )
                 CustomButton()
             }

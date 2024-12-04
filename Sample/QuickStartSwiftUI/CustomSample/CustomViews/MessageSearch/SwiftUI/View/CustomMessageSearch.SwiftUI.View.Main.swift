@@ -1,4 +1,7 @@
 import SwiftUI
+#if canImport(SendbirdSwiftUI)
+import SendbirdSwiftUI
+#endif
 
 extension CustomMessageSearch.SwiftUI.View {
     struct Main: View {
@@ -6,7 +9,9 @@ extension CustomMessageSearch.SwiftUI.View {
         
         var body: some View {
             if let channelURL = viewModel.groupChannel?.channelURL {
-                MessageSearchView(channelURL: channelURL)
+                MessageSearchView(
+                    provider: MessageSearchViewProvider(channelURL: channelURL)
+                )
             }
         }
     }

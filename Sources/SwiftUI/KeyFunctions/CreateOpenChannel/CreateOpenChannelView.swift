@@ -16,13 +16,22 @@ public struct CreateOpenChannelView: View {
     
     var configurations: [(SBUCreateOpenChannelViewController) -> Void] = []
     
-    // MARK: - Methods
-    public init() {}
+    @ObservedObject private var provider: CreateOpenChannelViewProvider
+    
+    public init() {
+        self.provider = CreateOpenChannelViewProvider()  // Default provider
+    }
     
     public var body: some View {
         SBUViewControllerSet.CreateOpenChannelViewController
             .swiftUI {
                 createViewController()
+            }
+            .injectData { viewController in
+                if self.shouldUpdateData(viewController: viewController) {
+                    // Inject data into view model and load
+                    //  Nothing to load
+                }
             }
             .configure { viewController in
                 viewController.dismissAction = {
@@ -38,12 +47,21 @@ public struct CreateOpenChannelView: View {
                 viewConverter.applyViewUpdates(to: viewController)
             }
             .switchUIKitNavigationBar()
+            .onDisappear {
+                SBViewConverterSet.CreateOpenChannel = CreateOpenChannelViewConverter()
+            }
     }
     
+    // MARK: - Methods
     private func createViewController() -> SBUCreateOpenChannelViewController {
-        let viewController = SBUViewControllerSet.CreateOpenChannelViewController.init(
-        )
+        let viewController = SBUViewControllerSet.CreateOpenChannelViewController.init()
+        // Connect provider <-> VC, VM
+        self.provider.bind(viewController: viewController)
         return viewController
+    }
+    
+    private func shouldUpdateData(viewController: SBUCreateOpenChannelViewController) -> Bool {
+        return true
     }
 }
 
@@ -56,16 +74,20 @@ public extension CreateOpenChannelView {
     
 // (↓↓ example ↓↓)
     init(
+        provider: CreateOpenChannelViewProvider? = nil,
         headerItem: (() -> CreateOpenChannelType.HeaderItem)? = nil
     ) {
+        self.provider = provider ?? CreateOpenChannelViewProvider()  // Default provider
+        
         if let headerItem { _ = headerItem() }
         // TODO: SwiftUI - header 외 요소 추가 필요
 
         // Apply view converter in viewConverterSet.
         self.applyViewConverterSet()
     }
-//
-//    init<Content: View>(
+
+    // TODO: After entire content is implemented
+//    internal init<Content: View>(
 //        channelListQuery: GroupChannelListQuery? = nil,
 //        headerItem: (() -> Sendbird.View.GroupChannel.ChannelList.HeaderItem)? = nil,
 //        list: @escaping (ListContent.ViewConfig) -> Content
@@ -86,6 +108,16 @@ public extension CreateOpenChannelView {
 //        self.applyViewConverterSet()
 //    }
 }
+
+// MARK: Event handler interfaces
+public extension CreateOpenChannelView {
+    func onSendbirdError(_ errorHandler: @escaping ((_ error: SBError?) -> Void)) -> Self {
+        let copy = self
+        copy.provider.eventHandlers.errorHandler = errorHandler
+        return copy
+    }
+}
+
 
 #Preview {
     NavigationView {

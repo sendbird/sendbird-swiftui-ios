@@ -1,4 +1,7 @@
 import SwiftUI
+#if canImport(SendbirdSwiftUI)
+import SendbirdSwiftUI
+#endif
 
 extension CustomInviteUser.ViewConverter.List {
     struct userNameLabel: View {
@@ -19,7 +22,7 @@ extension CustomInviteUser.ViewConverter.List {
         var body: some View {
             if let channelURL = viewModel.groupChannel?.channelURL {
                 InviteUserView(
-                    channelURL: channelURL,
+                    provider: InviteUserViewProvider(channelURL: channelURL),
                     listItem: {
                         .init()
                         .userName { config in

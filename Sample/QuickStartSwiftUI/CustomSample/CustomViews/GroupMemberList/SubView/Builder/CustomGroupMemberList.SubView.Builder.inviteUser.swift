@@ -1,4 +1,7 @@
 import SwiftUI
+#if canImport(SendbirdSwiftUI)
+import SendbirdSwiftUI
+#endif
 
 extension CustomGroupMemberList.SubView.Builder {
     struct inviteUser: View {
@@ -6,9 +9,11 @@ extension CustomGroupMemberList.SubView.Builder {
         
         var body: some View {
             if let channelURL = viewModel.groupChannel?.channelURL {
-                GroupMemberListView(channelURL: channelURL)
+                GroupMemberListView(
+                    provider: GroupMemberListViewProvider(channelURL: channelURL)
+                )
                     .inviteUserView { channelURL in
-                        InviteUserView(channelURL: channelURL)
+                        InviteUserView(provider: InviteUserViewProvider(channelURL: channelURL))
                     }
             }
         }

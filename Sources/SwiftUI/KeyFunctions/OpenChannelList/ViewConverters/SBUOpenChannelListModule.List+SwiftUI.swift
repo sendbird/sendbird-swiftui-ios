@@ -35,7 +35,7 @@ extension SBUOpenChannelListModule.List {
                 // add hostingView as subview of List
                 hostingView.tag = tag
                 self.addSubview(hostingView)
-                
+
                 hostingView
                     .sbu_constraint_fill(equalTo: self)
                     .sbu_constraint(height: self.frame.height)

@@ -1,9 +1,14 @@
 import SwiftUI
+#if canImport(SendbirdSwiftUI)
+import SendbirdSwiftUI
+#endif
 
 extension CustomOpenParticipantList.SwiftUI.View {
     struct Main: View {
         var body: some View {
-            OpenParticipantListView(channelURL: TestURL.openChannel)
+            OpenParticipantListView(
+                provider: OpenParticipantListViewProvider(channelURL: TestURL.openChannel)
+            )
         }
     }
 }

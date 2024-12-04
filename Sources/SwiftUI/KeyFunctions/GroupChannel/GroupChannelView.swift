@@ -15,20 +15,33 @@ public struct GroupChannelView: View {
     private var dismiss
     
     var configurations: [(SBUGroupChannelViewController) -> Void] = []
-    
-    private var channelURL: String
-    private var startingPoint: Int64?
-    private var messageListParams: MessageListParams?
 
     // for message search
     var highlightInfo: SBUHighlightMessageInfo?
     var useRightBarButtonItem: Bool = true
     
-    // MARK: - Methods
+    // Non-optional since `channelURL` is required.
+    @ObservedObject private var provider: GroupChannelViewProvider
+    
+    init(provider: GroupChannelViewProvider) {
+        self.provider = provider  // Default
+    }
+    
     public var body: some View {
         SBUViewControllerSet.GroupChannelViewController
             .swiftUI {
                 createViewController()
+            }
+            .injectData { viewController in
+                if self.shouldUpdateData(viewController: viewController) {
+                    // Inject data into view model and load
+                    viewController.viewModel?.initializeAndLoad(
+                        channelURL: self.provider.channelURL,
+                        messageListParams: self.provider.messageListParams,
+                        startingPoint: self.provider.startingPoint,
+                        displaysLocalCachedListFirst: true
+                    )
+                }
             }
             .configure { viewController in
                 viewController.dismissAction = {
@@ -44,18 +57,42 @@ public struct GroupChannelView: View {
                 viewConverter.applyViewUpdates(to: viewController)
             }
             .switchUIKitNavigationBar()
+            .onDisappear {
+                SBViewConverterSet.GroupChannel = GroupChannelViewConverter()
+            }
     }
     
     private func createViewController() -> SBUGroupChannelViewController {
+        SBULog.info(
+            """
+            [\(Self.self).\(#function)] provider
+            channelURL = \(provider.channelURL)
+            startingPoint = \(String(describing: provider.startingPoint))
+            messageListParams = \(String(describing: provider.messageListParams))
+            """
+        )
+        
         let viewController = SBUViewControllerSet.GroupChannelViewController.init(
-            channelURL: self.channelURL,
-            startingPoint: self.startingPoint,
-            messageListParams: self.messageListParams
+            channelURL: self.provider.channelURL,
+            startingPoint: self.provider.startingPoint,
+            messageListParams: self.provider.messageListParams
         )
         viewController.highlightInfo = self.highlightInfo
         viewController.useRightBarButtonItem = self.useRightBarButtonItem
         
+        // connect VC, VM <-> provider
+        self.provider.bind(viewController: viewController)
+        
         return viewController
+    }
+    
+    // MARK: - Methods
+    // TODO: 이후에 필요하다면, 값 변화에 대해서 새로 그릴 수 있도록 처리
+    private func shouldUpdateData(viewController: SBUGroupChannelViewController) -> Bool {
+        let shouldUpdateChannelURL = viewController.viewModel?.channelURL == "" && self.provider.channelURL != ""
+        let shouldUpdateMessageListParams = viewController.viewModel?.customizedMessageListParams == nil && self.provider.messageListParams != nil
+        let shouldUpdateStartingPoint = viewController.viewModel?.startingPoint == nil && self.provider.startingPoint != nil
+        return shouldUpdateChannelURL || shouldUpdateMessageListParams || shouldUpdateStartingPoint
     }
 }
 
@@ -65,33 +102,14 @@ public extension GroupChannelView {
     // MARK: - typealias
     typealias ListContent = GroupChannelViewConverter.List
     typealias InputContent = GroupChannelViewConverter.Input
-    
-    init(
-        channelURL: String,
-        startingPoint: Int64? = nil,
-        messageListParams: MessageListParams? = nil
-    ) {
-        self.channelURL = channelURL
-        self.startingPoint = startingPoint
-        self.messageListParams = messageListParams
         
-        // Apply view converter in viewConverterSet.
-        self.applyViewConverterSet()
-    }
-    
     init(
-        channelURL: String,
-        startingPoint: Int64? = nil,
-        messageListParams: MessageListParams? = nil,
+        provider: GroupChannelViewProvider,
         headerItem: (() -> GroupChannelType.HeaderItem)? = nil,
         listItem: (() -> GroupChannelType.ListItem)? = nil,
         inputItem: (() -> GroupChannelType.InputItem)? = nil
     ) {
-        self.init(
-            channelURL: channelURL,
-            startingPoint: startingPoint,
-            messageListParams: messageListParams
-        )
+        self.provider = provider
         
         if let headerItem { _ = headerItem() }
         if let listItem { _ = listItem() }
@@ -100,18 +118,15 @@ public extension GroupChannelView {
         self.applyViewConverterSet()
     }
     
-    init<Content: View>(
-        channelURL: String,
-        startingPoint: Int64? = nil,
-        messageListParams: MessageListParams? = nil,
+    // TODO: After entire content is implemented
+    internal init<Content: View>(
+        provider: GroupChannelViewProvider,
         headerItem: (() -> GroupChannelType.HeaderItem)? = nil,
         list: @escaping (ListContent.TableView.ViewConfig) -> Content,
         inputItem: (() -> GroupChannelType.InputItem)? = nil
     ) {
         self.init(
-            channelURL: channelURL,
-            startingPoint: startingPoint,
-            messageListParams: messageListParams,
+            provider: provider,
             headerItem: headerItem,
             inputItem: inputItem
         )
@@ -129,17 +144,13 @@ public extension GroupChannelView {
     
     // NOTE: This interface has been temporarily closed.
     private init<Content: View>(
-        channelURL: String,
-        startingPoint: Int64? = nil,
-        messageListParams: MessageListParams? = nil,
+        provider: GroupChannelViewProvider,
         headerItem: (() -> GroupChannelType.HeaderItem)? = nil,
         listItem: (() -> GroupChannelType.ListItem)? = nil,
         input: @escaping (InputContent.ViewConfig) -> Content
     ) {
         self.init(
-            channelURL: channelURL,
-            startingPoint: startingPoint,
-            messageListParams: messageListParams,
+            provider: provider,
             headerItem: headerItem,
             listItem: listItem
         )
@@ -158,18 +169,14 @@ public extension GroupChannelView {
     }
     
     // NOTE: This interface has been temporarily closed.
-    private init<Content: View>(
-        channelURL: String,
-        startingPoint: Int64? = nil,
-        messageListParams: MessageListParams? = nil,
+    internal init<Content: View>(
+        provider: GroupChannelViewProvider,
         headerItem: (() -> GroupChannelType.HeaderItem)? = nil,
         list: @escaping (ListContent.TableView.ViewConfig) -> Content,
         input: @escaping (InputContent.ViewConfig) -> Content
     ) {
         self.init(
-            channelURL: channelURL,
-            startingPoint: startingPoint,
-            messageListParams: messageListParams,
+            provider: provider,
             headerItem: headerItem
         )
         
@@ -194,8 +201,17 @@ public extension GroupChannelView {
     }
 }
 
+// MARK: Event handler interfaces
+public extension GroupChannelView {
+    func onSendbirdError(_ errorHandler: @escaping SendbirdErrorHandler) -> Self {
+        let copy = self
+        copy.provider.eventHandlers.errorHandler = errorHandler
+        return copy
+    }
+}
+
 #Preview {
     NavigationView {
-        GroupChannelView(channelURL: "")
+        GroupChannelView(provider: .init(channelURL: ""))
     }
 }

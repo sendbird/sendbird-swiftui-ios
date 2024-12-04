@@ -1,4 +1,7 @@
 import SwiftUI
+#if canImport(SendbirdSwiftUI)
+import SendbirdSwiftUI
+#endif
 extension CustomMessageThread.SwiftUI.View {
     struct CustomMain: View {
         @EnvironmentObject var viewModel: CustomSampleSubViewModel
@@ -19,7 +22,10 @@ extension CustomMessageThread.SwiftUI.View {
             if let channelURL = viewModel.groupChannel?.channelURL,
                let parentMessageId = viewModel.parentMessage?.messageId {
                 MessageThreadView(
-                    channelURL: channelURL, parentMessageId: parentMessageId,
+                    provider: MessageThreadViewProvider(
+                        channelURL: channelURL,
+                        parentMessageId: parentMessageId
+                    ),
                     headerItem: {
                         .init()
                         .leftView { config in

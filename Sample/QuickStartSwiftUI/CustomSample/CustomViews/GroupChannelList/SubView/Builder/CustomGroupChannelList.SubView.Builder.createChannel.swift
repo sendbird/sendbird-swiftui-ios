@@ -1,11 +1,18 @@
 import SwiftUI
+#if canImport(SendbirdSwiftUI)
+import SendbirdSwiftUI
+#endif
 
 extension CustomGroupChannelList.SubView.Builder {
     struct createChannel: View {
         var body: some View {
             GroupChannelListView()
                 .createChannelView { users, type in
-                    CreateGroupChannelView(users: users, type: type)
+                    CreateGroupChannelView(
+                        provider: CreateGroupChannelViewProvider(
+                            customUsers: users
+                        )
+                    )
                 }
         }
     }

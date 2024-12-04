@@ -1,4 +1,7 @@
 import SwiftUI
+#if canImport(SendbirdSwiftUI)
+import SendbirdSwiftUI
+#endif
 
 extension CustomOpenChannel.SwiftUI.View {
     struct CustomMain: View {
@@ -7,7 +10,7 @@ extension CustomOpenChannel.SwiftUI.View {
         var body: some View {
             if let channelURL = viewModel.openChannel?.channelURL {
                 OpenChannelView(
-                    channelURL: channelURL,
+                    provider: OpenChannelViewProvider(channelURL: channelURL),
                     headerItem: {
                         .init()
                         .coverImage { config in

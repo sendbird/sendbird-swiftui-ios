@@ -1,4 +1,7 @@
 import SwiftUI
+#if canImport(SendbirdSwiftUI)
+import SendbirdSwiftUI
+#endif
 extension CustomOpenModerations.ViewConverter.Header {
     struct leftView: View {
         @EnvironmentObject var viewModel: CustomSampleSubViewModel
@@ -18,7 +21,7 @@ extension CustomOpenModerations.ViewConverter.Header {
         var body: some View {
             if let channelURL = viewModel.openChannel?.channelURL {
                 OpenModerationsView(
-                    channelURL: channelURL,
+                    provider: .init(channelURL: channelURL),
                     headerItem: {
                         .init()
                         .leftView { config in

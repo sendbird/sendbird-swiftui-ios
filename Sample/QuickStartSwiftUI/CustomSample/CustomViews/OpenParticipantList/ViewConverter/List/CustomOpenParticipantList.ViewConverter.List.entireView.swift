@@ -1,4 +1,7 @@
 import SwiftUI
+#if canImport(SendbirdSwiftUI)
+import SendbirdSwiftUI
+#endif
 
 extension CustomOpenParticipantList.ViewConverter.List {
     struct entireView: View {
@@ -17,19 +20,7 @@ extension CustomOpenParticipantList.ViewConverter.List {
         
         var body: some View {
             OpenParticipantListView(
-                channelURL: TestURL.openChannel,
-                list: { config in
-                    List(config.users, id: \.self) { user in
-                        HStack {
-                            Circle()
-                                .frame(width: 12, height: 12)
-                                .foregroundStyle(user.isOperator ? .green : .red)
-                            Text("\(user.refinedNickname()) - \(customFlag ? "ON" : "OFF")")
-                                .foregroundStyle(.black)
-                        }
-                        .contentShape(Rectangle()) // HStack 전체를 터치 가능한 영역으로 확장
-                    }
-                }
+                provider: OpenParticipantListViewProvider(channelURL: TestURL.openChannel)
             )
             CustomButton()
         }

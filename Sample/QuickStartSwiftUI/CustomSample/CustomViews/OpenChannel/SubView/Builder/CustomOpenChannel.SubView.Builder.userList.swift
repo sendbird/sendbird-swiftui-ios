@@ -1,4 +1,7 @@
 import SwiftUI
+#if canImport(SendbirdSwiftUI)
+import SendbirdSwiftUI
+#endif
 
 extension CustomOpenChannel.SubView.Builder {
     struct userList: View {
@@ -6,9 +9,9 @@ extension CustomOpenChannel.SubView.Builder {
         
         var body: some View {
             if let channelURL = viewModel.openChannel?.channelURL {
-                OpenChannelView(channelURL: channelURL)
+                OpenChannelView(provider: OpenChannelViewProvider(channelURL: channelURL))
                     .participantListView { channelURL in
-                        OpenParticipantListView(channelURL: channelURL)
+                        OpenParticipantListView(provider: OpenParticipantListViewProvider(channelURL: channelURL))
                     }
             }
         }

@@ -45,6 +45,12 @@
                     "viewFullPath": "CustomGroupChannelList.SwiftUI.View.CustomMain"
                 },
                 {
+                    "viewTitle": "Provider Examples",
+                    "viewType": "[View]",
+                    "viewDesc": "ViewProvider",
+                    "viewFullPath": "CustomGroupChannelList.SwiftUI.View.ViewProvider"
+                },
+                {
                     "viewTitle": "groupChannel",
                     "viewType": "[Builder]",
                     "viewDesc": "SubView",
@@ -73,12 +79,6 @@
                     "viewType": "[Header]",
                     "viewDesc": "ViewConverter",
                     "viewFullPath": "CustomGroupChannelList.ViewConverter.Header.titleView"
-                },
-                {
-                    "viewTitle": "entireView",
-                    "viewType": "[List]",
-                    "viewDesc": "ViewConverter",
-                    "viewFullPath": "CustomGroupChannelList.ViewConverter.List.entireView"
                 },
                 {
                     "viewTitle": "rowView",
@@ -158,12 +158,6 @@
                     "viewFullPath": "CustomOpenChannelList.ViewConverter.Header.titleView"
                 },
                 {
-                    "viewTitle": "entireView",
-                    "viewType": "[List]",
-                    "viewDesc": "ViewConverter",
-                    "viewFullPath": "CustomOpenChannelList.ViewConverter.List.entireView"
-                },
-                {
                     "viewTitle": "rowView",
                     "viewType": "[List]",
                     "viewDesc": "ViewConverter",
@@ -203,6 +197,12 @@
                     "viewType": "[View]",
                     "viewDesc": "SwiftUI",
                     "viewFullPath": "CustomGroupChannel.SwiftUI.View.CustomMain"
+                },
+                {
+                    "viewTitle": "Provider Examples",
+                    "viewType": "[View]",
+                    "viewDesc": "ViewProvider",
+                    "viewFullPath": "CustomGroupChannel.SwiftUI.View.ViewProvider"
                 },
                 {
                     "viewTitle": "channelSettings",
@@ -251,12 +251,6 @@
                     "viewType": "[Header]",
                     "viewDesc": "ViewConverter",
                     "viewFullPath": "CustomGroupChannel.ViewConverter.Header.typingStatusView"
-                },
-                {
-                    "viewTitle": "entireView",
-                    "viewType": "[List]",
-                    "viewDesc": "ViewConverter",
-                    "viewFullPath": "CustomGroupChannel.ViewConverter.List.entireView"
                 },
                 {
                     "viewTitle": "rowView",
@@ -317,12 +311,6 @@
                     "viewType": "[List]",
                     "viewDesc": "ViewConverter",
                     "viewFullPath": "CustomGroupChannel.ViewConverter.List.channelStateBanner"
-                },
-                {
-                    "viewTitle": "entireView",
-                    "viewType": "[Input]",
-                    "viewDesc": "ViewConverter",
-                    "viewFullPath": "CustomGroupChannel.ViewConverter.Input.entireView"
                 },
                 {
                     "viewTitle": "leftView",
@@ -420,12 +408,6 @@
                     "viewFullPath": "CustomOpenChannel.ViewConverter.Header.subtitleLabel"
                 },
                 {
-                    "viewTitle": "entireView",
-                    "viewType": "[List]",
-                    "viewDesc": "ViewConverter",
-                    "viewFullPath": "CustomOpenChannel.ViewConverter.List.entireView"
-                },
-                {
                     "viewTitle": "rowView",
                     "viewType": "[List]",
                     "viewDesc": "ViewConverter",
@@ -460,18 +442,6 @@
                     "viewType": "[List]",
                     "viewDesc": "ViewConverter",
                     "viewFullPath": "CustomOpenChannel.ViewConverter.List.scrollBottomView"
-                },
-                {
-                    "viewTitle": "entireView",
-                    "viewType": "[Media]",
-                    "viewDesc": "ViewConverter",
-                    "viewFullPath": "CustomOpenChannel.ViewConverter.Media.entireView"
-                },
-                {
-                    "viewTitle": "entireView",
-                    "viewType": "[Input]",
-                    "viewDesc": "ViewConverter",
-                    "viewFullPath": "CustomOpenChannel.ViewConverter.Input.entireView"
                 },
                 {
                     "viewTitle": "leftView",
@@ -533,12 +503,6 @@
                     "viewFullPath": "CustomCreateGroupChannel.ViewConverter.Header.titleView"
                 },
                 {
-                    "viewTitle": "entireView",
-                    "viewType": "[List]",
-                    "viewDesc": "ViewConverter",
-                    "viewFullPath": "CustomCreateGroupChannel.ViewConverter.List.entireView"
-                },
-                {
                     "viewTitle": "rowView",
                     "viewType": "[List]",
                     "viewDesc": "ViewConverter",
@@ -596,12 +560,6 @@
                     "viewType": "[Header]",
                     "viewDesc": "ViewConverter",
                     "viewFullPath": "CustomCreateOpenChannel.ViewConverter.Header.titleView"
-                },
-                {
-                    "viewTitle": "entireView",
-                    "viewType": "[List]",
-                    "viewDesc": "ViewConverter",
-                    "viewFullPath": "CustomCreateOpenChannel.ViewConverter.List.entireView"
                 },
                 {
                     "viewTitle": "rowView",
@@ -663,12 +621,6 @@
                     "viewFullPath": "CustomInviteUser.ViewConverter.Header.titleView"
                 },
                 {
-                    "viewTitle": "entireView",
-                    "viewType": "[List]",
-                    "viewDesc": "ViewConverter",
-                    "viewFullPath": "CustomInviteUser.ViewConverter.List.entireView"
-                },
-                {
                     "viewTitle": "rowView",
                     "viewType": "[List]",
                     "viewDesc": "ViewConverter",
@@ -727,12 +679,6 @@
                     "viewDesc": "ViewConverter",
                     "viewFullPath": "CustomGroupChannelRegisterOperator.ViewConverter.Header.titleView"
                 },
-                {
-                    "viewTitle": "entireView",
-                    "viewType": "[List]",
-                    "viewDesc": "ViewConverter",
-                    "viewFullPath": "CustomGroupChannelRegisterOperator.ViewConverter.List.entireView"
-                }
             ]
         },
         {
@@ -767,12 +713,6 @@
                     "viewType": "[Header]",
                     "viewDesc": "ViewConverter",
                     "viewFullPath": "CustomOpenChannelRegisterOperator.ViewConverter.Header.titleView"
-                },
-                {
-                    "viewTitle": "entireView",
-                    "viewType": "[List]",
-                    "viewDesc": "ViewConverter",
-                    "viewFullPath": "CustomOpenChannelRegisterOperator.ViewConverter.List.entireView"
                 }
             ]
         },
@@ -814,12 +754,6 @@
                     "viewType": "[Header]",
                     "viewDesc": "ViewConverter",
                     "viewFullPath": "CustomGroupMemberList.ViewConverter.Header.titleView"
-                },
-                {
-                    "viewTitle": "entireView",
-                    "viewType": "[List]",
-                    "viewDesc": "ViewConverter",
-                    "viewFullPath": "CustomGroupMemberList.ViewConverter.List.entireView"
                 },
                 {
                     "viewTitle": "rowView",
@@ -887,12 +821,6 @@
                     "viewFullPath": "CustomOpenParticipantList.ViewConverter.Header.titleView"
                 },
                 {
-                    "viewTitle": "entireView",
-                    "viewType": "[List]",
-                    "viewDesc": "ViewConverter",
-                    "viewFullPath": "CustomOpenParticipantList.ViewConverter.List.entireView"
-                },
-                {
                     "viewTitle": "rowView",
                     "viewType": "[List]",
                     "viewDesc": "ViewConverter",
@@ -956,12 +884,6 @@
                     "viewType": "[Header]",
                     "viewDesc": "ViewConverter",
                     "viewFullPath": "CustomGroupChannelPushSettings.ViewConverter.Header.titleView"
-                },
-                {
-                    "viewTitle": "entireView",
-                    "viewType": "[List]",
-                    "viewDesc": "ViewConverter",
-                    "viewFullPath": "CustomGroupChannelPushSettings.ViewConverter.List.entireView"
                 }
             ]
         },
@@ -1015,12 +937,6 @@
                     "viewType": "[Header]",
                     "viewDesc": "ViewConverter",
                     "viewFullPath": "CustomGroupChannelSettings.ViewConverter.Header.titleView"
-                },
-                {
-                    "viewTitle": "entireView",
-                    "viewType": "[List]",
-                    "viewDesc": "ViewConverter",
-                    "viewFullPath": "CustomGroupChannelSettings.ViewConverter.List.entireView"
                 },
                 {
                     "viewTitle": "channelInfo",
@@ -1104,12 +1020,6 @@
                     "viewType": "[Header]",
                     "viewDesc": "ViewConverter",
                     "viewFullPath": "CustomOpenChannelSettings.ViewConverter.Header.titleView"
-                },
-                {
-                    "viewTitle": "entireView",
-                    "viewType": "[List]",
-                    "viewDesc": "ViewConverter",
-                    "viewFullPath": "CustomOpenChannelSettings.ViewConverter.List.entireView"
                 }
             ]
         },
@@ -1145,12 +1055,6 @@
                     "viewType": "[Header]",
                     "viewDesc": "ViewConverter",
                     "viewFullPath": "CustomGroupModerations.ViewConverter.Header.titleView"
-                },
-                {
-                    "viewTitle": "entireView",
-                    "viewType": "[List]",
-                    "viewDesc": "ViewConverter",
-                    "viewFullPath": "CustomGroupModerations.ViewConverter.List.entireView"
                 }
             ]
         },
@@ -1186,12 +1090,6 @@
                     "viewType": "[Header]",
                     "viewDesc": "ViewConverter",
                     "viewFullPath": "CustomOpenModerations.ViewConverter.Header.titleView"
-                },
-                {
-                    "viewTitle": "entireView",
-                    "viewType": "[List]",
-                    "viewDesc": "ViewConverter",
-                    "viewFullPath": "CustomOpenModerations.ViewConverter.List.entireView"
                 }
             ]
         },
@@ -1233,12 +1131,6 @@
                     "viewType": "[Header]",
                     "viewDesc": "ViewConverter",
                     "viewFullPath": "CustomMessageSearch.ViewConverter.Header.titleView"
-                },
-                {
-                    "viewTitle": "entireView",
-                    "viewType": "[List]",
-                    "viewDesc": "ViewConverter",
-                    "viewFullPath": "CustomMessageSearch.ViewConverter.List.entireView"
                 }
             ]
         },
@@ -1286,12 +1178,6 @@
                     "viewType": "[Header]",
                     "viewDesc": "ViewConverter",
                     "viewFullPath": "CustomMessageThread.ViewConverter.Header.subtitleLabel"
-                },
-                {
-                    "viewTitle": "entireView",
-                    "viewType": "[List]",
-                    "viewDesc": "ViewConverter",
-                    "viewFullPath": "CustomMessageThread.ViewConverter.List.entireView"
                 },
                 {
                     "viewTitle": "rowView",
@@ -1396,12 +1282,6 @@
                     "viewFullPath": "CustomMessageThread.ViewConverter.ParentInfo.reactionView"
                 },
                 {
-                    "viewTitle": "entireView",
-                    "viewType": "[Input]",
-                    "viewDesc": "ViewConverter",
-                    "viewFullPath": "CustomMessageThread.ViewConverter.Input.entireView"
-                },
-                {
                     "viewTitle": "leftView",
                     "viewType": "[Input]",
                     "viewDesc": "ViewConverter",
@@ -1465,12 +1345,6 @@
                     "viewType": "[Header]",
                     "viewDesc": "ViewConverter",
                     "viewFullPath": "CustomGroupMutedMemberList.ViewConverter.Header.titleView"
-                },
-                {
-                    "viewTitle": "entireView",
-                    "viewType": "[List]",
-                    "viewDesc": "ViewConverter",
-                    "viewFullPath": "CustomGroupMutedMemberList.ViewConverter.List.entireView"
                 },
                 {
                     "viewTitle": "rowView",
@@ -1538,12 +1412,6 @@
                     "viewFullPath": "CustomGroupBannedUserList.ViewConverter.Header.titleView"
                 },
                 {
-                    "viewTitle": "entireView",
-                    "viewType": "[List]",
-                    "viewDesc": "ViewConverter",
-                    "viewFullPath": "CustomGroupBannedUserList.ViewConverter.List.entireView"
-                },
-                {
                     "viewTitle": "rowView",
                     "viewType": "[List]",
                     "viewDesc": "ViewConverter",
@@ -1609,12 +1477,6 @@
                     "viewFullPath": "CustomGroupOperatorList.ViewConverter.Header.titleView"
                 },
                 {
-                    "viewTitle": "entireView",
-                    "viewType": "[List]",
-                    "viewDesc": "ViewConverter",
-                    "viewFullPath": "CustomGroupOperatorList.ViewConverter.List.entireView"
-                },
-                {
                     "viewTitle": "rowView",
                     "viewType": "[List]",
                     "viewDesc": "ViewConverter",
@@ -1672,12 +1534,6 @@
                     "viewType": "[Header]",
                     "viewDesc": "ViewConverter",
                     "viewFullPath": "CustomOpenMutedParticipantList.ViewConverter.Header.titleView"
-                },
-                {
-                    "viewTitle": "entireView",
-                    "viewType": "[List]",
-                    "viewDesc": "ViewConverter",
-                    "viewFullPath": "CustomOpenMutedParticipantList.ViewConverter.List.entireView"
                 },
                 {
                     "viewTitle": "rowView",
@@ -1745,12 +1601,6 @@
                     "viewFullPath": "CustomOpenBannedUserList.ViewConverter.Header.titleView"
                 },
                 {
-                    "viewTitle": "entireView",
-                    "viewType": "[List]",
-                    "viewDesc": "ViewConverter",
-                    "viewFullPath": "CustomOpenBannedUserList.ViewConverter.List.entireView"
-                },
-                {
                     "viewTitle": "rowView",
                     "viewType": "[List]",
                     "viewDesc": "ViewConverter",
@@ -1808,12 +1658,6 @@
                     "viewType": "[Header]",
                     "viewDesc": "ViewConverter",
                     "viewFullPath": "CustomOpenOperatorList.ViewConverter.Header.titleView"
-                },
-                {
-                    "viewTitle": "entireView",
-                    "viewType": "[List]",
-                    "viewDesc": "ViewConverter",
-                    "viewFullPath": "CustomOpenOperatorList.ViewConverter.List.entireView"
                 },
                 {
                     "viewTitle": "rowView",

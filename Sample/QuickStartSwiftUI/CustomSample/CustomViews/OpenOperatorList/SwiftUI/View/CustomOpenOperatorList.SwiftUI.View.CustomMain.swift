@@ -1,4 +1,7 @@
 import SwiftUI
+#if canImport(SendbirdSwiftUI)
+import SendbirdSwiftUI
+#endif
 
 extension CustomOpenOperatorList.SwiftUI.View {
     struct CustomMain: View {
@@ -18,7 +21,7 @@ extension CustomOpenOperatorList.SwiftUI.View {
         var body: some View {
             // Currently only header is tested
             OpenOperatorListView(
-                channelURL: TestURL.openChannel,
+                provider: OpenOperatorListViewProvider(channelURL: TestURL.openChannel),
                 headerItem: {
                     .init()
                     .leftView { config in

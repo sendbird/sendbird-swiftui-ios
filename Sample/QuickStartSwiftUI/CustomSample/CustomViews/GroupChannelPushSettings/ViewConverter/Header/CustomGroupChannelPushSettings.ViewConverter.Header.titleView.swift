@@ -1,4 +1,7 @@
 import SwiftUI
+#if canImport(SendbirdSwiftUI)
+import SendbirdSwiftUI
+#endif
 
 extension CustomGroupChannelPushSettings.ViewConverter.Header {
     struct titleView: View {
@@ -19,7 +22,7 @@ extension CustomGroupChannelPushSettings.ViewConverter.Header {
         var body: some View {
             if let channelURL = viewModel.groupChannel?.channelURL {
                 GroupChannelPushSettingsView(
-                    channelURL: channelURL,
+                    provider: GroupChannelPushSettingsViewProvider(channelURL: channelURL),
                     headerItem: {
                         .init()
                         .titleView { config in

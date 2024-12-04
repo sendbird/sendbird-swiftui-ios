@@ -1,4 +1,7 @@
 import SwiftUI
+#if canImport(SendbirdSwiftUI)
+import SendbirdSwiftUI
+#endif
 
 extension CustomGroupMutedMemberList.ViewConverter.Header {
     struct titleView: View {
@@ -19,7 +22,7 @@ extension CustomGroupMutedMemberList.ViewConverter.Header {
         var body: some View {
             if let channelURL = viewModel.groupChannel?.channelURL {
                 GroupMutedMemberListView(
-                    channelURL: channelURL,
+                    provider: GroupMutedMemberListViewProvider(channelURL: channelURL),
                     headerItem: {
                         .init()
                         .titleView { config in

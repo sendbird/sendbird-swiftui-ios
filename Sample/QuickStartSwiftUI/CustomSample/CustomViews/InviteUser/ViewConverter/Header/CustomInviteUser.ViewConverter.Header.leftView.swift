@@ -1,4 +1,7 @@
 import SwiftUI
+#if canImport(SendbirdSwiftUI)
+import SendbirdSwiftUI
+#endif
 extension CustomInviteUser.ViewConverter.Header {
     struct leftView: View {
         @EnvironmentObject var viewModel: CustomSampleSubViewModel
@@ -18,7 +21,7 @@ extension CustomInviteUser.ViewConverter.Header {
         var body: some View {
             if let channelURL = viewModel.groupChannel?.channelURL {
                 InviteUserView(
-                    channelURL: channelURL,
+                    provider: InviteUserViewProvider(channelURL: channelURL),
                     headerItem: {
                         .init()
                         .leftView { config in

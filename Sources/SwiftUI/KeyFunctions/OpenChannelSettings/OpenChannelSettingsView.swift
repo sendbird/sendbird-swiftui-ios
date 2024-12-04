@@ -16,13 +16,25 @@ public struct OpenChannelSettingsView: View {
     
     var configurations: [(SBUOpenChannelSettingsViewController) -> Void] = []
     
-    private var channelURL: String
+    @ObservedObject var provider: OpenChannelSettingsViewProvider
     
+    init(provider: OpenChannelSettingsViewProvider) {
+        self.provider = provider
+    }
+        
     // MARK: - Methods
     public var body: some View {
         SBUViewControllerSet.OpenChannelSettingsViewController
             .swiftUI {
                 createViewController()
+            }
+            .injectData { viewController in
+                if self.shouldUpdateData(viewController: viewController) {
+                    // Inject data into view model and load
+                    viewController.viewModel?.initializeAndLoad(
+                        channelURL: self.provider.channelURL
+                    )
+                }
             }
             .configure { viewController in
                 viewController.dismissAction = {
@@ -38,13 +50,24 @@ public struct OpenChannelSettingsView: View {
                 viewConverter.applyViewUpdates(to: viewController)
             }
             .switchUIKitNavigationBar()
+            .onDisappear {
+                SBViewConverterSet.OpenChannelSettings = OpenChannelSettingsViewConverter()
+            }
+        
     }
     
+    // MARK: - Methods
     private func createViewController() -> SBUOpenChannelSettingsViewController {
         let viewController = SBUViewControllerSet.OpenChannelSettingsViewController.init(
-            channelURL: self.channelURL
+            channelURL: self.provider.channelURL
         )
+        provider.bind(viewController: viewController)
         return viewController
+    }
+    
+    private func shouldUpdateData(viewController: SBUOpenChannelSettingsViewController) -> Bool {
+        let shouldUpdateChannelURL = viewController.viewModel?.channelURL == "" && self.provider.channelURL != ""
+        return shouldUpdateChannelURL
     }
 }
 
@@ -55,15 +78,12 @@ public extension OpenChannelSettingsView {
     // TODO: Initializer 에서 필요하면 구현
     // typealias ListContent = OpenChannelSettingsViewConverter.List
     
-    init(channelURL: String) {
-        self.channelURL = channelURL
-    }
 // (↓↓ example ↓↓)
     init(
-        channelURL: String,
+        provider: OpenChannelSettingsViewProvider,
         headerItem: (() -> OpenChannelSettingsType.HeaderItem)? = nil
     ) {
-        self.channelURL = channelURL
+        self.provider = provider
 
         if let headerItem { _ = headerItem() }
 //        if let listItem { _ = listItem() }
@@ -71,8 +91,9 @@ public extension OpenChannelSettingsView {
         // Apply view converter in viewConverterSet.
         self.applyViewConverterSet()
     }
-//
-//    init<Content: View>(
+
+    // TODO: After entire content is implemented
+//    internal init<Content: View>(
 //        channelListQuery: GroupChannelListQuery? = nil,
 //        headerItem: (() -> Sendbird.View.GroupChannel.ChannelList.HeaderItem)? = nil,
 //        list: @escaping (ListContent.ViewConfig) -> Content
@@ -96,6 +117,6 @@ public extension OpenChannelSettingsView {
 
 #Preview {
     NavigationView {
-        OpenChannelSettingsView(channelURL: "")
+        OpenChannelSettingsView(provider: .init(channelURL: ""))
     }
 }

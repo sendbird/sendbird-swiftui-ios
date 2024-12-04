@@ -15,15 +15,29 @@ public struct GroupOperatorListView: View {
     private var dismiss
     
     var configurations: [(SBUUserListViewController) -> Void] = []
+     
+    // Non-optional since `channelURL` is required.
+    @ObservedObject private var provider: GroupOperatorListViewProvider
     
-    private var channelURL: String
-    private var users: [SBUUser]?
+    init(provider: GroupOperatorListViewProvider) {
+        self.provider = provider
+    }
     
-    // MARK: - Methods
     public var body: some View {
         SBUViewControllerSet.GroupUserListViewController
             .swiftUI {
                 createViewController()
+            }
+            .injectData { viewController in
+                if self.shouldUpdateData(viewController: viewController) {
+                    // Inject data into view model and load
+                    viewController.viewModel?.initializeAndLoad(
+                        channelURL: self.provider.channelURL,
+                        channelType: .group,
+                        users: self.provider.customUsers,
+                        userListType: .operators
+                    )
+                }
             }
             .configure { viewController in
                 viewController.dismissAction = {
@@ -39,16 +53,30 @@ public struct GroupOperatorListView: View {
                 viewConverter.applyViewUpdates(to: viewController)
             }
             .switchUIKitNavigationBar()
+            .onDisappear {
+                SBViewConverterSet.GroupOperatorList = GroupOperatorListViewConverter()
+            }
     }
     
+    // MARK: - Methods
     private func createViewController() -> SBUUserListViewController {
         let viewController = SBUViewControllerSet.GroupUserListViewController.init(
-            channelURL: self.channelURL,
+            channelURL: self.provider.channelURL,
             channelType: .group,
-            users: self.users,
+            users: self.provider.customUsers,
             userListType: .operators
         )
+        
+        // hook up VC, VM into provider
+        self.provider.bind(viewController: viewController)
+        
         return viewController
+    }
+    
+    private func shouldUpdateData(viewController: SBUUserListViewController) -> Bool {
+        let shouldUpdateChannelURL = viewController.viewModel?.channelURL == "" && self.provider.channelURL != ""
+        let shouldUpdateCustomUsers = viewController.viewModel?.customizedUsers == nil && self.provider.customUsers != nil
+        return shouldUpdateChannelURL || shouldUpdateCustomUsers
     }
 }
 
@@ -59,21 +87,11 @@ public extension GroupOperatorListView {
     typealias ListContent = GroupOperatorListViewConverter.List
     
     init(
-        channelURL: String,
-        users: [SBUUser]? = nil
-    ) {
-        self.channelURL = channelURL
-        self.users = users
-    }
-
-    init(
-        channelURL: String,
-        users: [SBUUser]? = nil,
+        provider: GroupOperatorListViewProvider,
         headerItem: (() -> GroupOperatorListType.HeaderItem)? = nil,
         listItem: (() -> GroupOperatorListType.ListItem)? = nil
     ) {
-        self.channelURL = channelURL
-        self.users = users
+        self.provider = provider
 
         if let headerItem { _ = headerItem() }
         if let listItem { _ = listItem() }
@@ -82,14 +100,13 @@ public extension GroupOperatorListView {
         self.applyViewConverterSet()
     }
     
-    init<Content: View>(
-        channelURL: String,
-        users: [SBUUser]? = nil,
+    // TODO: After entire content is implemented
+    internal init<Content: View>(
+        provider: GroupOperatorListViewProvider,
         headerItem: (() -> GroupOperatorListType.HeaderItem)? = nil,
         list: @escaping (ListContent.TableView.ViewConfig) -> Content
     ) {
-        self.channelURL = channelURL
-        self.users = users
+        self.provider = provider
         
         typealias ViewConverterType = ViewConverter<ListContent.TableView.ViewConfig>
         let listViewConverter: ViewConverterType = ViewConverter { listConfig in
@@ -106,8 +123,23 @@ public extension GroupOperatorListView {
     }
 }
 
+// MARK: Event handler interfaces
+public extension GroupOperatorListView {
+    func onSendbirdSelectRow(_ selectRowHandler: @escaping ((_ indexPath: IndexPath) -> Void)) -> Self {
+        let copy = self
+        copy.provider.eventHandlers.selectRowHandler = selectRowHandler
+        return copy
+    }
+    
+    func onSendbirdError(_ errorHandler: @escaping ((_ error: SBError?) -> Void)) -> Self {
+        let copy = self
+        copy.provider.eventHandlers.errorHandler = errorHandler
+        return copy
+    }
+}
+
 #Preview {
     NavigationView {
-        GroupOperatorListView(channelURL: "")
+        GroupOperatorListView(provider: .init(channelURL: ""))
     }
 }

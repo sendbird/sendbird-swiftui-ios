@@ -9,7 +9,7 @@
 import SwiftUI
 
 // MARK: - ViewControllerType
-/// A protocol that all `UIView`s conform to, enabling extensions that have a `Self` reference.
+/// A protocol that all `UIViewController`s conform to, enabling extensions that have a `Self` reference.
 protocol ViewControllerType: UIViewController {}
 
 // MARK: - ViewType + ViewTypeProtocol
@@ -30,5 +30,5 @@ extension ViewControllerType {
     /// ```
     static func swiftUI(makeView: @escaping () -> Self) -> SwiftUIViewController<Self> {
         SwiftUIViewController(makeContent: makeView)
-  }
+    }
 }

@@ -1,4 +1,7 @@
 import SwiftUI
+#if canImport(SendbirdSwiftUI)
+import SendbirdSwiftUI
+#endif
 
 extension CustomMessageThread.ViewConverter.List {
     struct multipleFilesMessageView: View {
@@ -20,8 +23,10 @@ extension CustomMessageThread.ViewConverter.List {
             if let channelURL = viewModel.groupChannel?.channelURL,
                let parentMessageId = viewModel.parentMessage?.messageId {
                 MessageThreadView(
-                    channelURL: channelURL,
-                    parentMessageId: parentMessageId,
+                    provider: MessageThreadViewProvider(
+                        channelURL: channelURL,
+                        parentMessageId: parentMessageId
+                    ),
                     listItem: {
                         .init()
                         .multipleFilesMessageView { config  in

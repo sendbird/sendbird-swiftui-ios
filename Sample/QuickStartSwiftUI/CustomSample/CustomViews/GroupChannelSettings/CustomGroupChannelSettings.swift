@@ -1,10 +1,13 @@
 import SwiftUI
+#if canImport(SendbirdSwiftUI)
+import SendbirdSwiftUI
+#endif
 struct CustomGroupChannelSettings: View {
     @EnvironmentObject var viewModel: CustomSampleSubViewModel
     
     var body: some View {
         if let channelURL = viewModel.groupChannel?.channelURL {
-            GroupChannelSettingsView(channelURL: channelURL)
+            GroupChannelSettingsView(provider: GroupChannelSettingsViewProvider(channelURL: channelURL))
         }
     }
 }

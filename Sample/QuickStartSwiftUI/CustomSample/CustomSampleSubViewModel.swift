@@ -8,6 +8,9 @@
 
 import SwiftUI
 import SendbirdChatSDK
+#if canImport(SendbirdSwiftUI)
+import SendbirdSwiftUI
+#endif
 
 class CustomSampleSubViewModel: ObservableObject {
     @Published var groupChannel: GroupChannel?

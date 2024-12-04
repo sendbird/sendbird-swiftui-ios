@@ -15,14 +15,25 @@ public struct GroupChannelSettingsView: View {
     private var dismiss
     
     var configurations: [(SBUGroupChannelSettingsViewController) -> Void] = []
+
+    @ObservedObject var provider: GroupChannelSettingsViewProvider
     
-    private var channelURL: String
+    init(provider: GroupChannelSettingsViewProvider) {
+        self.provider = provider  // Default
+    }
     
-    // MARK: - Methods
     public var body: some View {
         SBUViewControllerSet.GroupChannelSettingsViewController
             .swiftUI {
                 createViewController()
+            }
+            .injectData { viewController in
+                if self.shouldUpdateData(viewController: viewController) {
+                    // Inject data into view model and load
+                    viewController.viewModel?.initializeAndLoad(
+                        channelURL: self.provider.channelURL
+                    )
+                }
             }
             .configure { viewController in
                 viewController.dismissAction = {
@@ -38,10 +49,21 @@ public struct GroupChannelSettingsView: View {
                 viewConverter.applyViewUpdates(to: viewController)
             }
             .switchUIKitNavigationBar()
+            .onDisappear {
+                SBViewConverterSet.GroupChannelSettings = GroupChannelSettingsViewConverter()
+            }
     }
     
+    // MARK: - Methods
     private func createViewController() -> SBUGroupChannelSettingsViewController {
-        SBUViewControllerSet.GroupChannelSettingsViewController.init(channelURL: channelURL)
+        let viewController = SBUViewControllerSet.GroupChannelSettingsViewController.init(channelURL: self.provider.channelURL)
+        self.provider.bind(viewController: viewController)
+        return viewController
+    }
+    
+    private func shouldUpdateData(viewController: SBUGroupChannelSettingsViewController) -> Bool {
+        let shouldUpdateChannelURL = viewController.viewModel?.channelURL == "" && self.provider.channelURL != ""
+        return shouldUpdateChannelURL
     }
 }
 
@@ -52,11 +74,11 @@ public extension GroupChannelSettingsView {
     typealias ListContent = GroupChannelSettingsViewConverter.List
     
     init(
-        channelURL: String,
+        provider: GroupChannelSettingsViewProvider,
         headerItem: (() -> GroupChannelSettingsType.HeaderItem)? = nil,
         listItem: (() -> GroupChannelSettingsType.ListItem)? = nil
     ) {
-        self.channelURL = channelURL
+        self.provider = provider
         
         if let headerItem { _ = headerItem() }
         if let listItem { _ = listItem() }
@@ -65,12 +87,13 @@ public extension GroupChannelSettingsView {
         self.applyViewConverterSet()
     }
     
-    init<Content: View>(
-        channelURL: String,
+    // TODO: After entire content is implemented
+    internal init<Content: View>(
+        provider: GroupChannelSettingsViewProvider,
         headerItem: (() -> GroupChannelSettingsType.HeaderItem)? = nil,
         list: @escaping (ListContent.TableView.ViewConfig) -> Content
     ) {
-        self.init(channelURL: channelURL, headerItem: headerItem, listItem: nil)
+        self.init(provider: provider, headerItem: headerItem, listItem: nil)
         
         typealias ViewConverterType = ViewConverter<ListContent.TableView.ViewConfig>
         let listViewConverter: ViewConverterType = ViewConverter { listConfig in
@@ -89,6 +112,10 @@ public extension GroupChannelSettingsView {
 
 #Preview {
     NavigationView {
-        GroupChannelSettingsView(channelURL: DefaultViewConfigSet.groupChannel.channelURL)
+        GroupChannelSettingsView(
+            provider: .init(
+                channelURL: DefaultViewConfigSet.groupChannel.channelURL
+            )
+        )
     }
 }

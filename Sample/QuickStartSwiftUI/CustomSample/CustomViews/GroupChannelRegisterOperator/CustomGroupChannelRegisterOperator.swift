@@ -1,10 +1,13 @@
 import SwiftUI
+#if canImport(SendbirdSwiftUI)
+import SendbirdSwiftUI
+#endif
 struct CustomGroupChannelRegisterOperator: View {
     @EnvironmentObject var viewModel: CustomSampleSubViewModel
     
     var body: some View {
         if let channelURL = viewModel.groupChannel?.channelURL {
-            GroupChannelRegisterOperatorView(channelURL: channelURL)
+            GroupChannelRegisterOperatorView(provider: .init(channelURL: channelURL))
         }
     }
 }

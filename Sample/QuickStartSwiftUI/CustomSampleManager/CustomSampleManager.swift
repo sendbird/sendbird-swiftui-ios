@@ -7,13 +7,18 @@
 //
 
 import UIKit
-#if !SWIFTUI
+#if !SWIFTUI && canImport(SendbirdUIKit)
 import SendbirdUIKit
+#elseif canImport(SendbirdSwiftUI)
+import SendbirdSwiftUI
 #endif
 import SendbirdChatSDK
 
 // MARK: Common
 class CustomSampleManager {
+    private static var groupChannelListQuery: GroupChannelListQuery?
+    private static var openChannelListQuery: OpenChannelListQuery?
+    
     /// (async) Gets the current user's latest group channel.
     @available(iOS 13.0, *)
     static func connectIfNeeded() async throws -> User {
@@ -45,8 +50,8 @@ class CustomSampleManager {
         params.limit = 10
         params.includeEmptyChannel = true
         
-        let channelListQuery = GroupChannel.createMyGroupChannelListQuery(params: params)
-        channelListQuery.loadNextPage { channels, error in
+        groupChannelListQuery = GroupChannel.createMyGroupChannelListQuery(params: params)
+        groupChannelListQuery?.loadNextPage { channels, error in
             guard error == nil else {
                 print("Group channel list query error. \(error!.localizedDescription)")
                 return
@@ -132,8 +137,8 @@ class CustomSampleManager {
         let params = OpenChannelListQueryParams()
         params.limit = 10
         
-        let channelListQuery = OpenChannel.createOpenChannelListQuery(params: params)
-        channelListQuery.loadNextPage { channels, error in
+        openChannelListQuery = OpenChannel.createOpenChannelListQuery(params: params)
+        openChannelListQuery?.loadNextPage { channels, error in
             guard error == nil else {
                 print("Open channel list query error. \(error!.localizedDescription)")
                 return

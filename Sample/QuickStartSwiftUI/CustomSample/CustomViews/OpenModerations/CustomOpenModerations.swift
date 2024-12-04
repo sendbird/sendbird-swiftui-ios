@@ -1,10 +1,13 @@
 import SwiftUI
+#if canImport(SendbirdSwiftUI)
+import SendbirdSwiftUI
+#endif
 struct CustomOpenModerations: View {
     @EnvironmentObject var viewModel: CustomSampleSubViewModel
     
     var body: some View {
         if let channelURL = viewModel.openChannel?.channelURL {
-            OpenModerationsView(channelURL: channelURL)
+            OpenModerationsView(provider: .init(channelURL: channelURL))
         }
     }
 }

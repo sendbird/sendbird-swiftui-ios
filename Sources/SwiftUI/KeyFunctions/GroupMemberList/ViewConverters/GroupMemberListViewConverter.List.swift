@@ -56,8 +56,8 @@ extension GroupMemberListViewConverter.List {
         
         // MARK: ViewConfigurations
         public struct ViewConfig: ViewConfigurations {
-            public var parentView: ContentBaseArg
-            public var users: [SBUUser] = []
+//            public var parentView: ContentBaseArg
+//            public var users: [SBUUser] = []
         }
         
         // MARK: View updater
