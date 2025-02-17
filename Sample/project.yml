@@ -40,7 +40,6 @@ settingGroups:
   preset_generic:
     CODE_SIGN_STYLE: Automatic
     CURRENT_PROJECT_VERSION: '1'
-    DEVELOPMENT_TEAM: RM4A5PXTUX
     FRAMEWORK_SEARCH_PATHS: ''
     IPHONEOS_DEPLOYMENT_TARGET: '15.0'
     LD_RUNPATH_SEARCH_PATHS: ["$(inherited)", "@executable_path/Frameworks", "@loader_path/Frameworks"]
