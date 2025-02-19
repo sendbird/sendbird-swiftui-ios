@@ -13,6 +13,9 @@ packages:
   SendbirdChatSDK:
     url: https://github.com/sendbird/sendbird-chat-sdk-ios
     from: 4.23.1
+  SendbirdUIKit:
+    url: https://github.com/sendbird/sendbird-uikit-ios-spm
+    from: 3.29.2
     
 schemes:
   QuickStartSwiftUI:
@@ -37,7 +40,6 @@ settingGroups:
   preset_generic:
     CODE_SIGN_STYLE: Automatic
     CURRENT_PROJECT_VERSION: '1'
-    DEVELOPMENT_TEAM: RM4A5PXTUX
     FRAMEWORK_SEARCH_PATHS: ''
     IPHONEOS_DEPLOYMENT_TARGET: '15.0'
     LD_RUNPATH_SEARCH_PATHS: ["$(inherited)", "@executable_path/Frameworks", "@loader_path/Frameworks"]
@@ -56,6 +58,9 @@ targets:
     dependencies:
     - target: NotificationService
     - package: SendbirdChatSDK
+    - package: SendbirdUIKit
+      products: 
+        - SendbirdUIMessageTemplate
     - sdk: UserNotifications.framework
     platform: iOS
     productName: QuickStartSwiftUI
