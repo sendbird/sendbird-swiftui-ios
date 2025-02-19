@@ -143,7 +143,9 @@ extension SwiftUIViewController: UIViewControllerRepresentable {
         if let viewControllers = tabBarController.viewControllers {
             for viewController in viewControllers {
                 // Search the UINavigationController in each tab
-                return findNavigationController(from: viewController)
+                if findNavigationController(from: viewController) {
+                    return true
+                }
             }
         }
         return false
