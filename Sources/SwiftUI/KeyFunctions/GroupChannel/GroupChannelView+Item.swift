@@ -181,6 +181,7 @@ extension Sendbird.View.GroupChannel.Channel {
             return copy
         }
         
+        /// Customizes the MultipleFilesMessageView's file content area.
         public func multipleFilesMessageView<Content: View>(
             @ViewBuilder content: @escaping (ListItemContent.MultipleFilesMessage.ViewConfig) -> Content
         ) -> Self {
@@ -192,6 +193,7 @@ extension Sendbird.View.GroupChannel.Channel {
             return copy
         }
         
+        /// Customizes the AdminMessageView's content area.
         public func adminMessageView<Content: View>(
             @ViewBuilder content: @escaping (ListItemContent.AdminMessage.ViewConfig) -> Content
         ) -> Self {
@@ -203,6 +205,33 @@ extension Sendbird.View.GroupChannel.Channel {
             return copy
         }
         
+        /// Customizes the QuotedFileMessageView's file content area.
+        /// - Since: 1.0.2
+        public func quotedFileMessageView<Content: View>(
+            @ViewBuilder content: @escaping (ListItemContent.QuotedFileMessage.ViewConfig) -> Content
+        ) -> Self {
+            var copy = self
+            copy.viewConverter.tableView.rowView.quotedFileMessage.entireContent = createViewConverter(content: content)
+            copy.viewConverter.tableView.viewUpdateHandlers[.entireContent] = { viewController in
+                viewController.listComponent?.reloadTableView()
+            }
+            return copy
+        }
+        
+        /// Customizes the QuotedMultipleFilesMessageView's file content area.
+        /// - Since: 1.0.2
+        public func quotedMultipleFilesMessageView<Content: View>(
+            @ViewBuilder content: @escaping (ListItemContent.QuotedMultipleFilesMessage.ViewConfig) -> Content
+        ) -> Self {
+            var copy = self
+            copy.viewConverter.tableView.rowView.quotedMultipleFilesMessage.entireContent = createViewConverter(content: content)
+            copy.viewConverter.tableView.viewUpdateHandlers[.entireContent] = { viewController in
+                viewController.listComponent?.reloadTableView()
+            }
+            return copy
+        }
+        
+        /// Customizes the TypingIndicatorView's content area.
         public func typingIndicatorView<Content: View>(
             @ViewBuilder content: @escaping (ListItemContent.TypingIndicator.ViewConfig) -> Content
         ) -> Self {
@@ -214,6 +243,7 @@ extension Sendbird.View.GroupChannel.Channel {
             return copy
         }
         
+        /// Customizes the NewMessageInfoView's content area.
         public func newMessageInfoView<Content: View>(
             @ViewBuilder content: @escaping (ViewContent.NewMessageInfoView.ViewConfig) -> Content
         ) -> Self {

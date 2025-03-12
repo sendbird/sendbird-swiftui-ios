@@ -295,6 +295,18 @@
                     "viewFullPath": "CustomGroupChannel.ViewConverter.List.typingIndicatorView"
                 },
                 {
+                    "viewTitle": "quotedFileMessageView",
+                    "viewType": "[List]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomGroupChannel.ViewConverter.List.quotedFileMessageView"
+                },
+                {
+                    "viewTitle": "quotedMultipleFilesMessageView",
+                    "viewType": "[List]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomGroupChannel.ViewConverter.List.quotedMultipleFilesMessageView"
+                },
+                {
                     "viewTitle": "newMessageInfoView",
                     "viewType": "[List]",
                     "viewDesc": "ViewConverter",
