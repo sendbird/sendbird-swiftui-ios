@@ -62,6 +62,8 @@ extension DefaultViewConfigSet {
             static let coverImageSize: CGFloat = 34.0
             static let typingBubbleSize: CGSize = CGSize(width: 60.0, height: 34.0)
             static let stateBannerHeight: CGFloat = 24.0
+            static let quotedMessageThumbnailSize: CGSize = SBUConstant.quotedMessageThumbnailSize
+            static let quotedMessageIconSize: CGSize = SBUConstant.quotedMessageIconSize
         }
         
         struct Thread {

@@ -11,6 +11,7 @@
 		00C85B54DEAAFA517FA0D50B /* GroupMutedMemberListView+SubViewBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2769D3BC0129E975B6946A2C /* GroupMutedMemberListView+SubViewBuilder.swift */; };
 		00ED5EE1868FFCCBA2C7AD8D /* CustomOpenOperatorList.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66A9356D0027AF606372658 /* CustomOpenOperatorList.swift */; };
 		00EF5904E2CC8C1CA8E7CDC7 /* CustomOpenOperatorList.ViewConverter.List.moreButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA429B863A8ED037889380A4 /* CustomOpenOperatorList.ViewConverter.List.moreButton.swift */; };
+		01376191FCB2B64236F4714A /* CustomGroupChannel.ViewConverter.List.quotedFileMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 839277B8B1BAD993DF9D4E91 /* CustomGroupChannel.ViewConverter.List.quotedFileMessageView.swift */; };
 		0152DA39617EFC76210E6B13 /* CustomGroupChannelList.SwiftUI.View.CustomMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EA9A722A74690B1FE0DA8E9 /* CustomGroupChannelList.SwiftUI.View.CustomMain.swift */; };
 		016DE4771424BCB5E36BD8A0 /* GroupBannedUserListViewConverter.Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AECC85EB8D47720009CB4A /* GroupBannedUserListViewConverter.Header.swift */; };
 		01A64DE1989F69381E0E3B02 /* SBUScrollBottomView+SwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5D3AAD48890B67F36BEE43 /* SBUScrollBottomView+SwiftUI.swift */; };
@@ -336,6 +337,7 @@
 		4DEBBC6C537F17808B683CE0 /* SBUCreateOpenChannelModule.Header+SwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B7EBE9547D711DC04841C63 /* SBUCreateOpenChannelModule.Header+SwiftUI.swift */; };
 		4E007D3C096B3D2701B98E02 /* GroupChannelRegisterOperatorViewConverter.Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DF8E970CDDD209431757EE9 /* GroupChannelRegisterOperatorViewConverter.Header.swift */; };
 		4E2A62BFF5497BBDA4C1FFAE /* GroupChannelView+ViewConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F02C24F1081B38C6BBB9B3A /* GroupChannelView+ViewConverter.swift */; };
+		4EAE7743B6594C7A45EC8669 /* CustomGroupChannel.ViewConverter.List.quotedMultipleFilesMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95EDFE2D453B2BC70E9293E /* CustomGroupChannel.ViewConverter.List.quotedMultipleFilesMessageView.swift */; };
 		4EAFF36AA2B114BDBFD37BCC /* SBUOpenChannelModule.List.swift in Sources */ = {isa = PBXBuildFile; fileRef = 666D5EED292A8388ADBD01E3 /* SBUOpenChannelModule.List.swift */; };
 		4EF20EB7151A235007A8811F /* SBUOpenChannelSettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4355FC0431F98C7660BB7AAB /* SBUOpenChannelSettingCell.swift */; };
 		4F42716E2D6DCE99C0BE8662 /* OpenOperatorListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77A22D8FCAD422A90844DC4C /* OpenOperatorListView.swift */; };
@@ -489,6 +491,7 @@
 		733E5B71D657B2031C69DFF0 /* SBUChannelSettingsChannelInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C327FC68584CFA626021FF /* SBUChannelSettingsChannelInfoView.swift */; };
 		73A87006FCAEFD7C0359D93E /* SBUGroupBannedUserListModule.Header+SwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E96A78E503C25F929F51F29 /* SBUGroupBannedUserListModule.Header+SwiftUI.swift */; };
 		73B6B5337FF2FC877DBDB6B5 /* CustomOpenBannedUserList.ViewConverter.List.userNameLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC7C6EE71D9C0203FB5FB1A /* CustomOpenBannedUserList.ViewConverter.List.userNameLabel.swift */; };
+		73E1858523070FE7411AFFD9 /* SBUQuotedBaseMessageView+SwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC12094D92BC2545FC4E1955 /* SBUQuotedBaseMessageView+SwiftUI.swift */; };
 		73EA7261CCF151971AF20878 /* CustomOpenChannel.SubView.Builder.userList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EF0CBE3236AA5C29F96124D /* CustomOpenChannel.SubView.Builder.userList.swift */; };
 		73EC1909319017A4B8CDC78A /* CustomGroupChannelList.ViewConverter.List.unreadCount.swift in Sources */ = {isa = PBXBuildFile; fileRef = B62DDB5AEADE552713948729 /* CustomGroupChannelList.ViewConverter.List.unreadCount.swift */; };
 		741EDEF887C5D26B6EC6A07F /* CustomOpenModerations.ViewConverter.List.entireView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04561764A6EDAA5F1B379364 /* CustomOpenModerations.ViewConverter.List.entireView.swift */; };
@@ -1685,6 +1688,7 @@
 		832AD74C612CBA95BB6080A9 /* CustomCreateOpenChannel.ViewConverter.List.entireView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCreateOpenChannel.ViewConverter.List.entireView.swift; sourceTree = "<group>"; };
 		83337608204FE94776C542A4 /* SBUVoiceFileInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SBUVoiceFileInfo.swift; sourceTree = "<group>"; };
 		83402211DD8882C43D58382D /* CustomOpenBannedUserList.SwiftUI.View.CustomMain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomOpenBannedUserList.SwiftUI.View.CustomMain.swift; sourceTree = "<group>"; };
+		839277B8B1BAD993DF9D4E91 /* CustomGroupChannel.ViewConverter.List.quotedFileMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomGroupChannel.ViewConverter.List.quotedFileMessageView.swift; sourceTree = "<group>"; };
 		83D46A1142AC3CC4D1396719 /* SBUSuggestedReplyOptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SBUSuggestedReplyOptionView.swift; sourceTree = "<group>"; };
 		83E21DEE99C27C67B4374E32 /* CustomGroupChannelSettings.ViewConverter.Header.rightView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomGroupChannelSettings.ViewConverter.Header.rightView.swift; sourceTree = "<group>"; };
 		850E1D213D3EC098A580B835 /* CustomOpenChannelSettings.ViewConverter.List.entireView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomOpenChannelSettings.ViewConverter.List.entireView.swift; sourceTree = "<group>"; };
@@ -1928,6 +1932,7 @@
 		BB75D9350081AF38A4FAA594 /* UserDefaults+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Ext.swift"; sourceTree = "<group>"; };
 		BB8E79F86C80CC2DD59FCC04 /* OpenChannelSettingsView+ViewConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OpenChannelSettingsView+ViewConverter.swift"; sourceTree = "<group>"; };
 		BBF13F185407274DA4BAFF25 /* SBUPendingMessageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SBUPendingMessageManager.swift; sourceTree = "<group>"; };
+		BC12094D92BC2545FC4E1955 /* SBUQuotedBaseMessageView+SwiftUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SBUQuotedBaseMessageView+SwiftUI.swift"; sourceTree = "<group>"; };
 		BC87A02119141F2A3B9F2390 /* SBUGroupOperatorListModule.List+SwiftUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SBUGroupOperatorListModule.List+SwiftUI.swift"; sourceTree = "<group>"; };
 		BCDE756FB020AB19ECBB9189 /* InviteUserViewConverter.Header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteUserViewConverter.Header.swift; sourceTree = "<group>"; };
 		BD855DB89F085210FBDAF07E /* SBUCacheManager.PathType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SBUCacheManager.PathType.swift; sourceTree = "<group>"; };
@@ -2054,6 +2059,7 @@
 		D8EA593C614B0BDD8E1FA2C8 /* SBUChatNotificationChannelModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SBUChatNotificationChannelModule.swift; sourceTree = "<group>"; };
 		D91401F0CEDB5A733BE00C20 /* SBUGroupChannelModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SBUGroupChannelModule.swift; sourceTree = "<group>"; };
 		D95DA4F7F43B4408328A06B2 /* SBURegisterOperatorModule.Deprecated.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SBURegisterOperatorModule.Deprecated.swift; sourceTree = "<group>"; };
+		D95EDFE2D453B2BC70E9293E /* CustomGroupChannel.ViewConverter.List.quotedMultipleFilesMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomGroupChannel.ViewConverter.List.quotedMultipleFilesMessageView.swift; sourceTree = "<group>"; };
 		D96FF4DECC16108247C2B05F /* MethodOverridable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MethodOverridable.swift; sourceTree = "<group>"; };
 		D9735294E73DAE6D3E1FDB33 /* SBUOpenChannelCommonContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SBUOpenChannelCommonContentView.swift; sourceTree = "<group>"; };
 		D9AC164247B4ADF8D79CF790 /* SBUContentBaseMessageCell.Deprecated.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SBUContentBaseMessageCell.Deprecated.swift; sourceTree = "<group>"; };
@@ -4186,6 +4192,8 @@
 				53346E81604409C68486DBB2 /* CustomGroupChannel.ViewConverter.List.fileMessageView.swift */,
 				F0F5806465F7C6A9458CFA95 /* CustomGroupChannel.ViewConverter.List.multipleFilesMessageView.swift */,
 				A3A24FE5B77BFB32E7FC600B /* CustomGroupChannel.ViewConverter.List.newMessageInfoView.swift */,
+				839277B8B1BAD993DF9D4E91 /* CustomGroupChannel.ViewConverter.List.quotedFileMessageView.swift */,
+				D95EDFE2D453B2BC70E9293E /* CustomGroupChannel.ViewConverter.List.quotedMultipleFilesMessageView.swift */,
 				9E90127DF72AC51AA2AE0001 /* CustomGroupChannel.ViewConverter.List.rowView.swift */,
 				9E325565C4F113CEBD8DBA04 /* CustomGroupChannel.ViewConverter.List.scrollBottomView.swift */,
 				21145BF3F3E645DAC712F358 /* CustomGroupChannel.ViewConverter.List.senderProfileImage.swift */,
@@ -6385,6 +6393,7 @@
 				3FFC8EB13F480E8BEAFC5E6A /* SBUGroupChannelViewController+SwiftUI.swift */,
 				887FB1AF021C77AE2658CF59 /* SBUMessageInputView+SwiftUI.swift */,
 				3C1EBEBB49DB9D9129545F68 /* SBUNewMessageInfo+SwiftUI.swift */,
+				BC12094D92BC2545FC4E1955 /* SBUQuotedBaseMessageView+SwiftUI.swift */,
 				8A5D3AAD48890B67F36BEE43 /* SBUScrollBottomView+SwiftUI.swift */,
 			);
 			path = ViewConverters;
@@ -6583,6 +6592,8 @@
 				DAE23D983347E184AB62CE6A /* CustomGroupChannel.ViewConverter.List.fileMessageView.swift in Sources */,
 				D57118BC69FAEA9F2DA17FDA /* CustomGroupChannel.ViewConverter.List.multipleFilesMessageView.swift in Sources */,
 				0461AACD27520C00D39871A8 /* CustomGroupChannel.ViewConverter.List.newMessageInfoView.swift in Sources */,
+				01376191FCB2B64236F4714A /* CustomGroupChannel.ViewConverter.List.quotedFileMessageView.swift in Sources */,
+				4EAE7743B6594C7A45EC8669 /* CustomGroupChannel.ViewConverter.List.quotedMultipleFilesMessageView.swift in Sources */,
 				6F5EDDDB302028D0FE8790D7 /* CustomGroupChannel.ViewConverter.List.rowView.swift in Sources */,
 				5128416924F60A8B7B824AAF /* CustomGroupChannel.ViewConverter.List.scrollBottomView.swift in Sources */,
 				D1ECE51EB97035BAAF2ED355 /* CustomGroupChannel.ViewConverter.List.senderProfileImage.swift in Sources */,
@@ -7446,6 +7457,7 @@
 				CBEC8D8DCCF1A458603C7671 /* SBUQuoteMessageInputView.swift in Sources */,
 				A59B5B7C75731CCA2E7667B0 /* SBUQuoteMessageInputViewParams.swift in Sources */,
 				FA9FA573FEDB0E7119C5254D /* SBUQuoteMessageInputViewProtocol.swift in Sources */,
+				73E1858523070FE7411AFFD9 /* SBUQuotedBaseMessageView+SwiftUI.swift in Sources */,
 				BC7B461A310DEE879E224D85 /* SBUQuotedBaseMessageView.swift in Sources */,
 				72C5014A5F3EF9F3C54EE23C /* SBUQuotedBaseMessageViewParams.Deprecated.swift in Sources */,
 				D71DDB5B256AADEC51B8CA51 /* SBUQuotedBaseMessageViewParams.swift in Sources */,
@@ -7599,7 +7611,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.sendbird.swiftui.sample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -7631,7 +7643,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.sendbird.swiftui.sample.SwiftUINotificationService;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -7721,7 +7733,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.sendbird.swiftui.sample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -7808,7 +7820,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.sendbird.swiftui.sample.SwiftUINotificationService;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -7857,7 +7869,7 @@
 			repositoryURL = "https://github.com/sendbird/sendbird-chat-sdk-ios";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 4.23.1;
+				minimumVersion = 4.25.0;
 			};
 		};
 		BA2412B4C520C201A8099145 /* XCRemoteSwiftPackageReference "sendbird-uikit-ios-spm" */ = {
@@ -7865,7 +7877,7 @@
 			repositoryURL = "https://github.com/sendbird/sendbird-uikit-ios-spm";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 3.29.2;
+				minimumVersion = 3.30.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */

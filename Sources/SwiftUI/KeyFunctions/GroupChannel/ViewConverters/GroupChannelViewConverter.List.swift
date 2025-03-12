@@ -166,6 +166,8 @@ extension GroupChannelViewConverter.List.TableView {
             case fileMessage
             case multipleFilesMessage
             case typingMessage
+            case quotedFileMessage
+            case quotedMultipleFilesMessage
         }
 
         // MARK: Converter
@@ -180,6 +182,8 @@ extension GroupChannelViewConverter.List.TableView {
         var fileMessage = FileMessage()
         var multipleFilesMessage = MultipleFilesMessage()
         var typingMessage = TypingIndicator()
+        var quotedFileMessage = QuotedFileMessage()
+        var quotedMultipleFilesMessage = QuotedMultipleFilesMessage()
 
         // MARK: ViewConfigurations
         public struct ViewConfig: ViewConfigurations {
@@ -198,6 +202,8 @@ extension GroupChannelViewConverter.List.TableView {
             self.fileMessage.applyViewUpdates(to: viewController, includeSubDepth: includeSubDepth)
             self.multipleFilesMessage.applyViewUpdates(to: viewController, includeSubDepth: includeSubDepth)
             self.typingMessage.applyViewUpdates(to: viewController, includeSubDepth: includeSubDepth)
+            self.quotedFileMessage.applyViewUpdates(to: viewController, includeSubDepth: includeSubDepth)
+            self.quotedMultipleFilesMessage.applyViewUpdates(to: viewController, includeSubDepth: includeSubDepth)
         }
     }
 }
@@ -325,6 +331,75 @@ extension GroupChannelViewConverter.List.TableView.RowView {
                 let thumbnailSize = CGSize(width: imageSize, height: imageSize)
                 return thumbnailSize
             }
+        }
+        
+        // MARK: View updater
+        var viewUpdateHandlers = [ViewType: (UpdatableVC) -> Void]()
+    }
+    
+    /// - Since: 1.0.2
+    public struct QuotedFileMessage: ViewConverterProtocol {
+        // MARK: ViewType
+        enum ViewType: ViewTypeEnum {
+            case entireContent
+        }
+        
+        // MARK: Converter
+        var entireContent: ViewConverter<ViewConfig>? {
+            didSet { _ = self.entireContent?(.init()) }
+        }
+        
+        // MARK: ViewConfigurations
+        public struct ViewConfig: ViewConfigurations {
+            /// The parent file message instance.
+            public var message: SendbirdChatSDK.FileMessage = DefaultViewConfigSet.fileMessage
+            
+            /// The default size of the thumbnail image in SendbirdSwiftUI.
+            public var thumbnailSize: CGSize = DefaultViewConfigSet.Group.Channel.quotedMessageThumbnailSize
+            
+            /// The default size of the icon image in SendbirdSwiftUI.
+            public var iconSize: CGSize = DefaultViewConfigSet.Group.Channel.quotedMessageIconSize
+            
+            /// The type of file.
+            public var fileType: SBUMessageFileType = .etc
+            
+            /// The file url.
+            public var fileURL: String = ""
+        }
+        
+        // MARK: View updater
+        var viewUpdateHandlers = [ViewType: (UpdatableVC) -> Void]()
+    }
+    
+    /// - Since: 1.0.2
+    public struct QuotedMultipleFilesMessage: ViewConverterProtocol {
+        // MARK: ViewType
+        enum ViewType: ViewTypeEnum {
+            case entireContent
+        }
+        
+        // MARK: Converter
+        var entireContent: ViewConverter<ViewConfig>? {
+            didSet { _ = self.entireContent?(.init()) }
+        }
+        
+        // MARK: ViewConfigurations
+        public struct ViewConfig: ViewConfigurations {
+            /// The parent multiple files message instance.
+            public var message: SendbirdChatSDK.MultipleFilesMessage = DefaultViewConfigSet.multipleFilesMessage
+            
+            /// The default size of the thumbnail image in SendbirdSwiftUI.
+            public var thumbnailSize: CGSize = DefaultViewConfigSet.Group.Channel.quotedMessageThumbnailSize
+            
+            /// The default size of the icon image in SendbirdSwiftUI.
+            public var iconSize: CGSize = DefaultViewConfigSet.Group.Channel.quotedMessageIconSize
+            
+            /// The uploaded files.
+            public var files: [SendbirdChatSDK.UploadedFileInfo] = []
+            
+            /// The pending files.
+            /// This property is valid when the sendingStatus is `MessageSendingStatus.pending` or `MessageSendingStatus.failed`.
+            public var pendingFiles: [SendbirdChatSDK.UploadableFileInfo]?
         }
         
         // MARK: View updater

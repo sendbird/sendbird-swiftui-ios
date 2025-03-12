@@ -199,7 +199,9 @@ extension SBUBaseMessageCell {
             
             typingMessageCell.mainContainerView.insertArrangedSubview(hostingView, at: 0)
             return true
+            
+        default:
+            return false 
         }
-        return false
     }
 }

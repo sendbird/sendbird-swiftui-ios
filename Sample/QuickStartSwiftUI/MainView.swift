@@ -22,7 +22,7 @@ struct MainView: View {
                 }
             )
         }
-        .navigationTitle("SwiftUI QA")
+        .navigationTitle("SwiftUIQuickStart")
         .navigationBarTitleDisplayMode(.large)
         // Receive push notification & move to that channel
         .onReceive(SendbirdUI.PushPayloadManager.pushNotificationPublisher) { channelURL in

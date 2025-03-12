@@ -106,6 +106,10 @@ extension CustomSampleManager {
             CustomGroupChannel.ViewConverter.List.adminMessageView()
 		case "CustomGroupChannel.ViewConverter.List.typingIndicatorView":
             CustomGroupChannel.ViewConverter.List.typingIndicatorView()
+        case "CustomGroupChannel.ViewConverter.List.quotedFileMessageView":
+            CustomGroupChannel.ViewConverter.List.quotedFileMessageView()
+        case "CustomGroupChannel.ViewConverter.List.quotedMultipleFilesMessageView":
+            CustomGroupChannel.ViewConverter.List.quotedMultipleFilesMessageView()
 		case "CustomGroupChannel.ViewConverter.List.newMessageInfoView":
             CustomGroupChannel.ViewConverter.List.newMessageInfoView()
 		case "CustomGroupChannel.ViewConverter.List.scrollBottomView":
