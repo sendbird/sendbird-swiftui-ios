@@ -54,7 +54,9 @@ public struct GroupOperatorListView: View {
             }
             .switchUIKitNavigationBar()
             .onDisappear {
-                SBViewConverterSet.GroupOperatorList = GroupOperatorListViewConverter()
+                if GlobalOptions.enableViewAdaptorAutoReset {
+                    SBViewConverterSet.GroupOperatorList = GroupOperatorListViewConverter()
+                }
             }
     }
     

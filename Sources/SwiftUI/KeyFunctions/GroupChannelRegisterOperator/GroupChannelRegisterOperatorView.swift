@@ -54,7 +54,9 @@ public struct GroupChannelRegisterOperatorView: View {
             }
             .switchUIKitNavigationBar()
             .onDisappear {
-                SBViewConverterSet.GroupChannelRegisterOperator = GroupChannelRegisterOperatorViewConverter()
+                if GlobalOptions.enableViewAdaptorAutoReset {
+                    SBViewConverterSet.GroupChannelRegisterOperator = GroupChannelRegisterOperatorViewConverter()
+                }
             }
     }
 

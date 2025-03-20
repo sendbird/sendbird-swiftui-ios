@@ -54,7 +54,9 @@ public struct GroupMemberListView: View {
             }
             .switchUIKitNavigationBar()
             .onDisappear {
-                SBViewConverterSet.GroupMemberList = GroupMemberListViewConverter()
+                if GlobalOptions.enableViewAdaptorAutoReset {
+                    SBViewConverterSet.GroupMemberList = GroupMemberListViewConverter()
+                }
             }
     }
     

@@ -50,7 +50,9 @@ public struct GroupChannelPushSettingsView: View {
             }
             .switchUIKitNavigationBar()
             .onDisappear {
-                SBViewConverterSet.GroupChannelPushSettings = GroupChannelPushSettingsViewConverter()
+                if GlobalOptions.enableViewAdaptorAutoReset {
+                    SBViewConverterSet.GroupChannelPushSettings = GroupChannelPushSettingsViewConverter()
+                }
             }
     }
     

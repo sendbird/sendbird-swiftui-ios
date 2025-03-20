@@ -51,9 +51,10 @@ public struct OpenChannelSettingsView: View {
             }
             .switchUIKitNavigationBar()
             .onDisappear {
-                SBViewConverterSet.OpenChannelSettings = OpenChannelSettingsViewConverter()
+                if GlobalOptions.enableViewAdaptorAutoReset {
+                    SBViewConverterSet.OpenChannelSettings = OpenChannelSettingsViewConverter()
+                }
             }
-        
     }
     
     // MARK: - Methods

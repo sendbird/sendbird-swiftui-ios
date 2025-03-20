@@ -31,7 +31,9 @@ class CustomSampleSubViewModel: ObservableObject {
             return
         }
         
-        SBViewConverterSet.resetAll()
+        // NOTE: No longer need to call this since GlobalOptions.enableViewAdaptorAutoReset was added.
+        // But use it if you later need it. 
+//        SBViewConverterSet.resetAll()
         
         // TODO: messageThread 나 setting 등 처리는 여기서 옵션을 받거나 하는 형태로 처리
         switch getRequiredDataContext(viewItem) {

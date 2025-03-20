@@ -51,7 +51,9 @@ public struct GroupModerationsView: View {
             }
             .switchUIKitNavigationBar()
             .onDisappear {
-                SBViewConverterSet.GroupModerations = GroupModerationsViewConverter()
+                if GlobalOptions.enableViewAdaptorAutoReset {
+                    SBViewConverterSet.GroupModerations = GroupModerationsViewConverter()
+                }
             }
     }
     

@@ -58,7 +58,9 @@ public struct MessageThreadView: View {
             }
             .switchUIKitNavigationBar()
             .onDisappear {
-                SBViewConverterSet.MessageThread = MessageThreadViewConverter()
+                if GlobalOptions.enableViewAdaptorAutoReset {
+                    SBViewConverterSet.MessageThread = MessageThreadViewConverter()
+                }
             }
     }
     
