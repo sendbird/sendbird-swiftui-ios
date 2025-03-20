@@ -54,7 +54,9 @@ public struct GroupMutedMemberListView: View {
             }
             .switchUIKitNavigationBar()
             .onDisappear {
-                SBViewConverterSet.GroupMutedMemberList = GroupMutedMemberListViewConverter()
+                if GlobalOptions.enableViewAdaptorAutoReset {
+                    SBViewConverterSet.GroupMutedMemberList = GroupMutedMemberListViewConverter()
+                }
             }
     }
     

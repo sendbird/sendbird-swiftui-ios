@@ -51,7 +51,9 @@ public struct MessageSearchView: View {
             }
             .switchUIKitNavigationBar()
             .onDisappear {
-                SBViewConverterSet.MessageSearch = MessageSearchViewConverter()
+                if GlobalOptions.enableViewAdaptorAutoReset {
+                    SBViewConverterSet.MessageSearch = MessageSearchViewConverter()
+                }
             }
     }
     

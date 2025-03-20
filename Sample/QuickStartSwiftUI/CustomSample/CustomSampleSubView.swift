@@ -27,6 +27,12 @@ struct CustomSampleSubView: View {
                 Button(action: {
                     Task {
                         await viewModel.loadEnvironment(for: viewItem)
+                        // NOTE: Use the below if you want to change `enableViewAdaptorAutoReset` setting for a specific view. 
+//                        if viewItem.viewFullPath == "CustomGroupChannel.ViewConverter.List.fileMessageView" {
+//                            GlobalOptions.enableViewAdaptorAutoReset = false
+//                        } else {
+//                            GlobalOptions.enableViewAdaptorAutoReset = true
+//                        }
                         self.destinationView = AnyView(
                             CustomSampleManager.viewForName(viewItem)
                                 .environmentObject(viewModel)

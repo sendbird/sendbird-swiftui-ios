@@ -54,7 +54,9 @@ public struct OpenMutedParticipantListView: View {
             }
             .switchUIKitNavigationBar()
             .onDisappear {
-                SBViewConverterSet.OpenMutedParticipantList = OpenMutedParticipantListViewConverter()
+                if GlobalOptions.enableViewAdaptorAutoReset {
+                    SBViewConverterSet.OpenMutedParticipantList = OpenMutedParticipantListViewConverter()
+                }
             }
     }
     

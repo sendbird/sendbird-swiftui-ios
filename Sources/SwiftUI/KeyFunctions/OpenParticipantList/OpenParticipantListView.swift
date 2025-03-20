@@ -54,7 +54,9 @@ public struct OpenParticipantListView: View {
             }
             .switchUIKitNavigationBar()
             .onDisappear {
-                SBViewConverterSet.OpenParticipantList = OpenParticipantListViewConverter()
+                if GlobalOptions.enableViewAdaptorAutoReset {
+                    SBViewConverterSet.OpenParticipantList = OpenParticipantListViewConverter()
+                }
             }
     }
     

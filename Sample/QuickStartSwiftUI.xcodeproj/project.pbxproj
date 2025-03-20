@@ -244,6 +244,7 @@
 		338BE5281B09CD9862D8B40F /* SBUUserMessageTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 608274ACB42DDAE6A5976FC6 /* SBUUserMessageTextView.swift */; };
 		33F211B7F47CC6FC91C639AF /* SBUCreateGroupChannelUserCell+SwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A63BAEF80ECC309FA1E7669 /* SBUCreateGroupChannelUserCell+SwiftUI.swift */; };
 		3407C53E67355F05BD5568CC /* SBUCoverImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C6B3B15A2C99291A025E96 /* SBUCoverImageView.swift */; };
+		340E18B59A67E5C046A9241D /* GlobalOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1502118E1864D319404F249C /* GlobalOptions.swift */; };
 		3412D19373A8ACC77B9277AA /* OpenOperatorListView+SubViewBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F32A69B02CCE4166DE09F9D /* OpenOperatorListView+SubViewBuilder.swift */; };
 		3416FD182734700D48191237 /* SBUOpenBannedUserListUserCell+SwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 934D088DA1735729346CE8C0 /* SBUOpenBannedUserListUserCell+SwiftUI.swift */; };
 		34C3EFDD816902E6ABBD97A4 /* SBUMessageFormChipsItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7C5297FA101765F9784775 /* SBUMessageFormChipsItemView.swift */; };
@@ -1211,6 +1212,7 @@
 		149EF5C6D56F66FA509EA283 /* SBUGroupChannelModule.List+SwiftUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SBUGroupChannelModule.List+SwiftUI.swift"; sourceTree = "<group>"; };
 		14A5CBF9A05A44B87429CDCC /* FontSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontSet.swift; sourceTree = "<group>"; };
 		14EA076EB6C73BA4290914FE /* CustomOpenMutedParticipantList.ViewConverter.List.profileImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomOpenMutedParticipantList.ViewConverter.List.profileImage.swift; sourceTree = "<group>"; };
+		1502118E1864D319404F249C /* GlobalOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalOptions.swift; sourceTree = "<group>"; };
 		151589C04C2127E51ABCF91D /* SBUGroupChannelListModule.Header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SBUGroupChannelListModule.Header.swift; sourceTree = "<group>"; };
 		15269264474C5B46CF1910BE /* SBUInviteUserModule.List+SwiftUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SBUInviteUserModule.List+SwiftUI.swift"; sourceTree = "<group>"; };
 		1594F63CF9E5FDE4E1A20E4E /* CustomOpenBannedUserList.ViewConverter.Header.titleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomOpenBannedUserList.ViewConverter.Header.titleView.swift; sourceTree = "<group>"; };
@@ -5029,6 +5031,7 @@
 		A9779DBC3ABC5BEFFBF2DC74 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				1502118E1864D319404F249C /* GlobalOptions.swift */,
 				2B50481174F97B1EE25DA725 /* Sendbird.swift */,
 				EB9EAE40ED4B2267D13C0B8C /* Sendbird+Typealias.swift */,
 			);
@@ -6864,6 +6867,7 @@
 				AEF6E6E5D58A1C14EADDF06B /* Float+SBUIKit.swift in Sources */,
 				53E5046D24EFD425EE0B8F01 /* FontSet.swift in Sources */,
 				28B038F489F6B33DF70C5A30 /* Formatter+SBUIKit.swift in Sources */,
+				340E18B59A67E5C046A9241D /* GlobalOptions.swift in Sources */,
 				F7F5896DD491728C5E9CBBB6 /* GroupBannedUserListView+Item.swift in Sources */,
 				93A5253A6300B53E76CB790C /* GroupBannedUserListView+SubViewBuilder.swift in Sources */,
 				48061E8A6A2CCB8E3B410263 /* GroupBannedUserListView+ViewConverter.swift in Sources */,
@@ -7611,7 +7615,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.2;
+				MARKETING_VERSION = 1.0.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.sendbird.swiftui.sample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -7643,7 +7647,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.2;
+				MARKETING_VERSION = 1.0.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.sendbird.swiftui.sample.SwiftUINotificationService;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -7733,7 +7737,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.2;
+				MARKETING_VERSION = 1.0.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.sendbird.swiftui.sample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -7820,7 +7824,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.2;
+				MARKETING_VERSION = 1.0.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.sendbird.swiftui.sample.SwiftUINotificationService;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -7877,7 +7881,7 @@
 			repositoryURL = "https://github.com/sendbird/sendbird-uikit-ios-spm";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 3.30.0;
+				minimumVersion = 3.30.1;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */

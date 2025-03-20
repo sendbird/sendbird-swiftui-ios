@@ -50,7 +50,9 @@ public struct OpenChannelListView: View {
             }
             .switchUIKitNavigationBar()
             .onDisappear {
-                SBViewConverterSet.OpenChannelList = OpenChannelListViewConverter()
+                if GlobalOptions.enableViewAdaptorAutoReset {
+                    SBViewConverterSet.OpenChannelList = OpenChannelListViewConverter()
+                }
             }
     }
     

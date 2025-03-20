@@ -53,7 +53,9 @@ public struct InviteUserView: View {
             }
             .switchUIKitNavigationBar()
             .onDisappear {
-                SBViewConverterSet.InviteUser = InviteUserViewConverter()
+                if GlobalOptions.enableViewAdaptorAutoReset {
+                    SBViewConverterSet.InviteUser = InviteUserViewConverter()
+                }
             }
     }
     

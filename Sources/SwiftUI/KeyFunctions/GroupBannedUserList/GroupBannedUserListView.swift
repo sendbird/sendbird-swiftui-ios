@@ -54,7 +54,9 @@ public struct GroupBannedUserListView: View {
             }
             .switchUIKitNavigationBar()
             .onDisappear {
-                SBViewConverterSet.GroupBannedUserList = GroupBannedUserListViewConverter()
+                if GlobalOptions.enableViewAdaptorAutoReset {
+                    SBViewConverterSet.GroupBannedUserList = GroupBannedUserListViewConverter()
+                }
             }
     }
     

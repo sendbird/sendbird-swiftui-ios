@@ -54,7 +54,9 @@ public struct OpenChannelRegisterOperatorView: View {
             }
             .switchUIKitNavigationBar()
             .onDisappear {
-                SBViewConverterSet.OpenChannelRegisterOperator = OpenChannelRegisterOperatorViewConverter()
+                if GlobalOptions.enableViewAdaptorAutoReset {
+                    SBViewConverterSet.OpenChannelRegisterOperator = OpenChannelRegisterOperatorViewConverter()
+                }
             }
     }
     

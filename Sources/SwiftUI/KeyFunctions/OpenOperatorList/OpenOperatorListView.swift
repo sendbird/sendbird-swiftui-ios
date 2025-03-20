@@ -54,7 +54,9 @@ public struct OpenOperatorListView: View {
             }
             .switchUIKitNavigationBar()
             .onDisappear {
-                SBViewConverterSet.OpenOperatorList = OpenOperatorListViewConverter()
+                if GlobalOptions.enableViewAdaptorAutoReset {
+                    SBViewConverterSet.OpenOperatorList = OpenOperatorListViewConverter()
+                }
             }
     }
     

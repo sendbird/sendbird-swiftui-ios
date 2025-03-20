@@ -55,7 +55,9 @@ public struct GroupChannelListView: View {
             }
             .switchUIKitNavigationBar()
             .onDisappear {
-                SBViewConverterSet.GroupChannelList = GroupChannelListViewConverter()
+                if GlobalOptions.enableViewAdaptorAutoReset {
+                    SBViewConverterSet.GroupChannelList = GroupChannelListViewConverter()
+                }
             }
     }
     

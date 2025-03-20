@@ -50,7 +50,9 @@ public struct CreateGroupChannelView: View {
             }
             .switchUIKitNavigationBar()
             .onDisappear {
-                SBViewConverterSet.CreateGroupChannel = CreateGroupChannelViewConverter()
+                if GlobalOptions.enableViewAdaptorAutoReset {
+                    SBViewConverterSet.CreateGroupChannel = CreateGroupChannelViewConverter()
+                }
             }
     }
 

@@ -51,7 +51,9 @@ public struct OpenModerationsView: View {
             }
             .switchUIKitNavigationBar()
             .onDisappear {
-                SBViewConverterSet.OpenModerations = OpenModerationsViewConverter()
+                if GlobalOptions.enableViewAdaptorAutoReset {
+                    SBViewConverterSet.OpenModerations = OpenModerationsViewConverter()
+                }
             }
     }
     

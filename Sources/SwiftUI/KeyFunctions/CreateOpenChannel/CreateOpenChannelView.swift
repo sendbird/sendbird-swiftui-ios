@@ -48,7 +48,9 @@ public struct CreateOpenChannelView: View {
             }
             .switchUIKitNavigationBar()
             .onDisappear {
-                SBViewConverterSet.CreateOpenChannel = CreateOpenChannelViewConverter()
+                if GlobalOptions.enableViewAdaptorAutoReset {
+                    SBViewConverterSet.CreateOpenChannel = CreateOpenChannelViewConverter()
+                }
             }
     }
     

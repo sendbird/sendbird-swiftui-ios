@@ -54,7 +54,9 @@ public struct OpenBannedUserListView: View {
             }
             .switchUIKitNavigationBar()
             .onDisappear {
-                SBViewConverterSet.OpenBannedUserList = OpenBannedUserListViewConverter()
+                if GlobalOptions.enableViewAdaptorAutoReset {
+                    SBViewConverterSet.OpenBannedUserList = OpenBannedUserListViewConverter()
+                }
             }
     }
     
