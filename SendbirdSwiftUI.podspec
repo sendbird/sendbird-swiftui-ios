@@ -21,5 +21,6 @@ Pod::Spec.new do |s|
 	s.ios.frameworks = ["UIKit", "SwiftUI", "Foundation", "CoreData", "SendbirdChatSDK"]
 	s.requires_arc = true
 	s.dependency "SendbirdChatSDK", ">= 4.25.0"
+	s.dependency "SendbirdUIMessageTemplate", ">= 3.30.1"
 	s.ios.library = "icucore"
 end
