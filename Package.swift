@@ -20,6 +20,7 @@ let package = Package(
             from: "4.25.0"
         ),
         .package(
+            name: "sendbird-uikit-ios",
             url: "https://github.com/sendbird/sendbird-uikit-ios",
             from: "3.30.1"
         ),
