@@ -301,14 +301,35 @@ extension Sendbird.View.GroupChannel.Channel {
 //        public typealias RightViewConverter = ViewConverter.MessageInputView.RightView
 //        public typealias SendButtonViewConverter = ViewConverter.MessageInputView.RightView.SendButton
 //        public typealias VoiceButtonViewConverter = ViewConverter.MessageInputView.RightView.VoiceButton
-        
-        
+              
         var viewConverter: GroupChannelViewConverter.Input {
             get { SBViewConverterSet.GroupChannel.input }
             set { SBViewConverterSet.GroupChannel.input = newValue }
         }
         
         public init() {}
+        
+        public func topView<Content: View> (
+            @ViewBuilder content: @escaping (MessageInputViewContent.TopView.ViewConfig) -> Content
+        ) -> Self {
+            var copy = self
+            copy.viewConverter.messageInputView.topView.entireContent = createViewConverter(content: content)
+            
+            copy.viewConverter.messageInputView.topView.viewUpdateHandlers[.entireContent] = { viewController in
+                if let inputView = viewController.inputComponent?.messageInputView as? SBUMessageInputView {
+                    let viewUpdateData = copy.viewConverter.messageInputView.topView.viewUpdateData
+                    
+                    inputView.applyViewConverter(
+                        .topView,
+                        isHidden: viewUpdateData?.isHidden,
+                        isEnabled: viewUpdateData?.isEnabled,
+                        alpha: viewUpdateData?.alpha,
+                        quoteMessageInputViewParams: viewUpdateData?.quoteMessageInputViewParams
+                    )
+                }
+            }
+            return copy
+        }
         
         public func leftView<Content: View> (
             @ViewBuilder content: @escaping (MessageInputViewContent.LeftView.ViewConfig) -> Content

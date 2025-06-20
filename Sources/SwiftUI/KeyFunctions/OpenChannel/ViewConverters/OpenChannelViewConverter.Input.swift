@@ -32,6 +32,13 @@ extension OpenChannelViewConverter {
             guard includeSubDepth else { return }
             self.messageInputView.applyViewUpdates(to: viewController, includeSubDepth: includeSubDepth)
         }
+        
+        // MARK: ViewUpdateData
+        /// - Since: 1.1.0
+        var viewUpdateData: ViewUpdateData?
+        
+        /// - Since: 1.1.0
+        struct ViewUpdateData: ViewUpdateDataType { }
     }
 }
 
@@ -60,6 +67,13 @@ extension OpenChannelViewConverter.Input {
             self.leftView.applyViewUpdates(to: viewController, includeSubDepth: includeSubDepth)
             self.rightView.applyViewUpdates(to: viewController, includeSubDepth: includeSubDepth)
         }
+        
+        // MARK: ViewUpdateData
+        /// - Since: 1.1.0
+        var viewUpdateData: ViewUpdateData?
+        
+        /// - Since: 1.1.0
+        struct ViewUpdateData: ViewUpdateDataType { }
     }
 }
 
@@ -90,6 +104,13 @@ extension OpenChannelViewConverter.Input.MessageInputView {
             guard includeSubDepth else { return }
             self.addButton.applyViewUpdates(to: viewController, includeSubDepth: includeSubDepth)
         }
+        
+        // MARK: ViewUpdateData
+        /// - Since: 1.1.0
+        var viewUpdateData: ViewUpdateData?
+        
+        /// - Since: 1.1.0
+        struct ViewUpdateData: ViewUpdateDataType { }
     }
     
     // MARK: - RightView
@@ -118,6 +139,13 @@ extension OpenChannelViewConverter.Input.MessageInputView {
             guard includeSubDepth else { return }
             self.sendButton.applyViewUpdates(to: viewController, includeSubDepth: includeSubDepth)
         }
+        
+        // MARK: ViewUpdateData
+        /// - Since: 1.1.0
+        var viewUpdateData: ViewUpdateData?
+        
+        /// - Since: 1.1.0
+        struct ViewUpdateData: ViewUpdateDataType { }
     }
 }
 
@@ -139,6 +167,13 @@ extension OpenChannelViewConverter.Input.MessageInputView.LeftView {
         }
         
         var viewUpdateHandlers = [ViewType: (UpdatableVC) -> Void]()
+        
+        // MARK: ViewUpdateData
+        /// - Since: 1.1.0
+        var viewUpdateData: ViewUpdateData?
+        
+        /// - Since: 1.1.0
+        struct ViewUpdateData: ViewUpdateDataType { }
     }
 }
 
@@ -160,5 +195,12 @@ extension OpenChannelViewConverter.Input.MessageInputView.RightView {
         }
         
         var viewUpdateHandlers = [ViewType: (UpdatableVC) -> Void]()
+        
+        // MARK: ViewUpdateData
+        /// - Since: 1.1.0
+        var viewUpdateData: ViewUpdateData?
+        
+        /// - Since: 1.1.0
+        struct ViewUpdateData: ViewUpdateDataType { }
     }
 }

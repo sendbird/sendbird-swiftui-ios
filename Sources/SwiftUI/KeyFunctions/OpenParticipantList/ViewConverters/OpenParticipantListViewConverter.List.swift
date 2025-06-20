@@ -37,6 +37,13 @@ extension OpenParticipantListViewConverter {
             guard includeSubDepth else { return }
             self.tableView.applyViewUpdates(to: viewController, includeSubDepth: includeSubDepth)
         }
+        
+        // MARK: ViewUpdateData
+        /// - Since: 1.1.0
+        var viewUpdateData: ViewUpdateData?
+        
+        /// - Since: 1.1.0
+        struct ViewUpdateData: ViewUpdateDataType { }
     }
 }
 
@@ -69,6 +76,13 @@ extension OpenParticipantListViewConverter.List {
             
             self.rowView.applyViewUpdates(to: viewController, includeSubDepth: includeSubDepth)
         }
+        
+        // MARK: ViewUpdateData
+        /// - Since: 1.1.0
+        var viewUpdateData: ViewUpdateData?
+        
+        /// - Since: 1.1.0
+        struct ViewUpdateData: ViewUpdateDataType { }
     }
 }
 
@@ -113,6 +127,13 @@ extension OpenParticipantListViewConverter.List.TableView {
             self.moreButton.applyViewUpdates(to: viewController, includeSubDepth: includeSubDepth)
             self.operatorStateView.applyViewUpdates(to: viewController, includeSubDepth: includeSubDepth)
         }
+        
+        // MARK: ViewUpdateData
+        /// - Since: 1.1.0
+        var viewUpdateData: ViewUpdateData?
+        
+        /// - Since: 1.1.0
+        struct ViewUpdateData: ViewUpdateDataType { }
     }
 }
 
@@ -137,6 +158,13 @@ extension OpenParticipantListViewConverter.List.TableView.RowView {
 
         // MARK: View updater
         var viewUpdateHandlers = [ViewType: (UpdatableVC) -> Void]()
+        
+        // MARK: ViewUpdateData
+        /// - Since: 1.1.0
+        var viewUpdateData: ViewUpdateData?
+        
+        /// - Since: 1.1.0
+        struct ViewUpdateData: ViewUpdateDataType { }
     }
     
     public struct UserNameLabel: ViewConverterProtocol {
@@ -158,6 +186,13 @@ extension OpenParticipantListViewConverter.List.TableView.RowView {
 
         // MARK: View updater
         var viewUpdateHandlers = [ViewType: (UpdatableVC) -> Void]()
+        
+        // MARK: ViewUpdateData
+        /// - Since: 1.1.0
+        var viewUpdateData: ViewUpdateData?
+        
+        /// - Since: 1.1.0
+        struct ViewUpdateData: ViewUpdateDataType { }
     }
     
     public struct MoreButton: ViewConverterProtocol {
@@ -179,6 +214,13 @@ extension OpenParticipantListViewConverter.List.TableView.RowView {
 
         // MARK: View updater
         var viewUpdateHandlers = [ViewType: (UpdatableVC) -> Void]()
+        
+        // MARK: ViewUpdateData
+        /// - Since: 1.1.0
+        var viewUpdateData: ViewUpdateData?
+        
+        /// - Since: 1.1.0
+        struct ViewUpdateData: ViewUpdateDataType { }
     }
 
     public struct OperatorStateView: ViewConverterProtocol {
@@ -199,5 +241,12 @@ extension OpenParticipantListViewConverter.List.TableView.RowView {
 
         // MARK: View updater
         var viewUpdateHandlers = [ViewType: (UpdatableVC) -> Void]()
+        
+        // MARK: ViewUpdateData
+        /// - Since: 1.1.0
+        var viewUpdateData: ViewUpdateData?
+        
+        /// - Since: 1.1.0
+        struct ViewUpdateData: ViewUpdateDataType { }
     }
 }

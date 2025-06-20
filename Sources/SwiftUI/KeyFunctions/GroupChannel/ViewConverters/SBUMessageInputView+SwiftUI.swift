@@ -11,7 +11,12 @@ import SendbirdChatSDK
 extension SBUMessageInputView {
     typealias ViewConverter = GroupChannelViewConverter.Input.MessageInputView
     var viewConverter: ViewConverter {
-        SBViewConverterSet.GroupChannel.input.messageInputView
+        get {
+            SBViewConverterSet.GroupChannel.input.messageInputView
+        }
+        set {
+            SBViewConverterSet.GroupChannel.input.messageInputView = newValue
+        }
     }
     
     typealias LeftViewConverter = ViewConverter.LeftView
@@ -30,7 +35,8 @@ extension SBUMessageInputView {
         _ viewType: ViewConverter.ViewType,
         isHidden: Bool? = nil,
         isEnabled: Bool? = nil,
-        alpha: CGFloat? = nil
+        alpha: CGFloat? = nil,
+        quoteMessageInputViewParams: SBUQuoteMessageInputViewParams? = nil
     ) -> Bool {
         let tag = viewType.tag
         
@@ -98,6 +104,56 @@ extension SBUMessageInputView {
                     isEnabled: isEnabled ?? oldHostingView?.isUserInteractionEnabled,
                     alpha: alpha ?? oldHostingView?.alpha
                 )
+                return true
+            }
+            return false
+            
+        // - Since: 1.1.0
+        case .topView:
+            SBULog.info("[.topView]  isFrozen=\(isFrozen), isMuted=\(isMuted), isQuoteReplyingMode=\(isQuoteReplyingMode), quoteMessageInputViewParams=\(String(describing: quoteMessageInputViewParams))")
+            let config = ViewConverter.TopView.ViewConfig.init(
+                isFrozen: self.isFrozen,
+                isMuted: self.isMuted,
+                isQuoteReplyingMode: self.isQuoteReplyingMode,
+                quoteMessageInputViewConfiguration: QuoteMessageInputView.Configuration(
+                    config: quoteMessageInputViewParams,
+                    delegate: self
+                ),
+                quoteMessageInputViewHeight: DefaultViewConfigSet.GroupChannel.Input.quoteReplyInputViewHeight
+            )
+            
+            if let viewConverter = self.viewConverter.topView.entireContent,
+               let hostingView = viewConverter(config) {
+                
+                let viewUpdateData = ViewConverter.TopView.ViewUpdateData(
+                    isHidden: isHidden,
+                    isEnabled: isEnabled,
+                    alpha: alpha,
+                    quoteMessageInputViewParams: quoteMessageInputViewParams
+                )
+                self.viewConverter.topView.updateViewUpdateData(viewUpdateData)
+                
+                // setupViews
+                self.topStackView.removeFromSuperview()
+                
+                let oldHostingView = self.contentVStackView.viewWithTag(tag)
+                oldHostingView?.removeFromSuperview()
+                
+                hostingView.tag = tag
+                self.contentVStackView.insertArrangedSubview(hostingView, at: 0)
+                
+                // setup layout
+                
+                // setup style
+                
+                // setup state
+                updateState(
+                    for: hostingView,
+                    isHidden: isHidden ?? oldHostingView?.isHidden,
+                    isEnabled: isEnabled ?? oldHostingView?.isUserInteractionEnabled,
+                    alpha: alpha ?? oldHostingView?.alpha
+                )
+                return true
             }
             return false
         }

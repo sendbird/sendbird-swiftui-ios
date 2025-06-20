@@ -325,6 +325,12 @@
                     "viewFullPath": "CustomGroupChannel.ViewConverter.List.channelStateBanner"
                 },
                 {
+                    "viewTitle": "topView",
+                    "viewType": "[Input]",
+                    "viewDesc": "ViewConverter",
+                    "viewFullPath": "CustomGroupChannel.ViewConverter.Input.topView"
+                },
+                {
                     "viewTitle": "leftView",
                     "viewType": "[Input]",
                     "viewDesc": "ViewConverter",

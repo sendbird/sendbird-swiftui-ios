@@ -82,6 +82,9 @@ extension DefaultViewConfigSet {
     struct GroupChannel {
         struct Input {
             static let buttonSize: CGSize = CGSize(width: 32, height: 38)
+            
+            // Quote reply input
+            static let quoteReplyInputViewHeight: CGFloat = 56
         }
     }
     

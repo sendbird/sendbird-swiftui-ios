@@ -37,6 +37,13 @@ extension GroupChannelSettingsViewConverter {
             guard includeSubDepth else { return }
             self.tableView.applyViewUpdates(to: viewController, includeSubDepth: includeSubDepth)
         }
+        
+        // MARK: ViewUpdateData
+        /// - Since: 1.1.0
+        var viewUpdateData: ViewUpdateData?
+        
+        /// - Since: 1.1.0
+        struct ViewUpdateData: ViewUpdateDataType { }
     }
 }
 
@@ -74,6 +81,13 @@ extension GroupChannelSettingsViewConverter.List {
             self.channelInfo.applyViewUpdates(to: viewController, includeSubDepth: includeSubDepth)
             self.settingCell.applyViewUpdates(to: viewController, includeSubDepth: includeSubDepth)
         }
+        
+        // MARK: ViewUpdateData
+        /// - Since: 1.1.0
+        var viewUpdateData: ViewUpdateData?
+        
+        /// - Since: 1.1.0
+        struct ViewUpdateData: ViewUpdateDataType { }
     }
 }
 
@@ -119,6 +133,13 @@ extension GroupChannelSettingsViewConverter.List.TableView {
             self.searchItem.applyViewUpdates(to: viewController, includeSubDepth: includeSubDepth)
             self.leaveChannel.applyViewUpdates(to: viewController, includeSubDepth: includeSubDepth)
         }
+        
+        // MARK: ViewUpdateData
+        /// - Since: 1.1.0
+        var viewUpdateData: ViewUpdateData?
+        
+        /// - Since: 1.1.0
+        struct ViewUpdateData: ViewUpdateDataType { }
     }
     
     public struct ChannelInfo: ViewConverterProtocol {
@@ -147,6 +168,13 @@ extension GroupChannelSettingsViewConverter.List.TableView {
            
            guard includeSubDepth else { return }
        }
+        
+        // MARK: ViewUpdateData
+        /// - Since: 1.1.0
+        var viewUpdateData: ViewUpdateData?
+        
+        /// - Since: 1.1.0
+        struct ViewUpdateData: ViewUpdateDataType { }
     }
 }
 
@@ -178,7 +206,14 @@ extension GroupChannelSettingsViewConverter.List.TableView.SettingCell {
             self.viewUpdateHandlers.values.forEach { $0(viewController) }
             
             guard includeSubDepth else { return }
-        }        
+        }
+        
+        // MARK: ViewUpdateData
+        /// - Since: 1.1.0
+        var viewUpdateData: ViewUpdateData?
+        
+        /// - Since: 1.1.0
+        struct ViewUpdateData: ViewUpdateDataType { }
     }
         
     public struct Notification: ViewConverterProtocol {
@@ -209,7 +244,14 @@ extension GroupChannelSettingsViewConverter.List.TableView.SettingCell {
             self.viewUpdateHandlers.values.forEach { $0(viewController) }
             
             guard includeSubDepth else { return }
-        }        
+        }
+        
+        // MARK: ViewUpdateData
+        /// - Since: 1.1.0
+        var viewUpdateData: ViewUpdateData?
+        
+        /// - Since: 1.1.0
+        struct ViewUpdateData: ViewUpdateDataType { }
     }
 
     public struct Member: ViewConverterProtocol {
@@ -240,7 +282,14 @@ extension GroupChannelSettingsViewConverter.List.TableView.SettingCell {
             self.viewUpdateHandlers.values.forEach { $0(viewController) }
             
             guard includeSubDepth else { return }
-        }        
+        }
+        
+        // MARK: ViewUpdateData
+        /// - Since: 1.1.0
+        var viewUpdateData: ViewUpdateData?
+        
+        /// - Since: 1.1.0
+        struct ViewUpdateData: ViewUpdateDataType { }
     }
 
     public struct SearchItem: ViewConverterProtocol {
@@ -270,7 +319,14 @@ extension GroupChannelSettingsViewConverter.List.TableView.SettingCell {
             self.viewUpdateHandlers.values.forEach { $0(viewController) }
             
             guard includeSubDepth else { return }
-        }        
+        }
+        
+        // MARK: ViewUpdateData
+        /// - Since: 1.1.0
+        var viewUpdateData: ViewUpdateData?
+        
+        /// - Since: 1.1.0
+        struct ViewUpdateData: ViewUpdateDataType { }
     }
 
     public struct LeaveChannel: ViewConverterProtocol {
@@ -300,6 +356,13 @@ extension GroupChannelSettingsViewConverter.List.TableView.SettingCell {
             self.viewUpdateHandlers.values.forEach { $0(viewController) }
             
             guard includeSubDepth else { return }
-        }        
+        }
+        
+        // MARK: ViewUpdateData
+        /// - Since: 1.1.0
+        var viewUpdateData: ViewUpdateData?
+        
+        /// - Since: 1.1.0
+        struct ViewUpdateData: ViewUpdateDataType { }
     }
 }

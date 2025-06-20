@@ -39,6 +39,13 @@ extension MessageThreadViewConverter {
             self.tableView.applyViewUpdates(to: viewController, includeSubDepth: includeSubDepth)
             self.channelStateBar.applyViewUpdates(to: viewController, includeSubDepth: includeSubDepth)
         }
+        
+        // MARK: ViewUpdateData
+        /// - Since: 1.1.0
+        var viewUpdateData: ViewUpdateData?
+        
+        /// - Since: 1.1.0
+        struct ViewUpdateData: ViewUpdateDataType { }
     }
 }
 
@@ -75,6 +82,13 @@ extension MessageThreadViewConverter.List {
             
             self.rowView.applyViewUpdates(to: viewController, includeSubDepth: includeSubDepth)
         }
+        
+        // MARK: ViewUpdateData
+        /// - Since: 1.1.0
+        var viewUpdateData: ViewUpdateData?
+        
+        /// - Since: 1.1.0
+        struct ViewUpdateData: ViewUpdateDataType { }
     }
     
     public struct ChannelStateBar: ViewConverterProtocol {
@@ -102,6 +116,13 @@ extension MessageThreadViewConverter.List {
             
             guard includeSubDepth else { return }
         }
+        
+        // MARK: ViewUpdateData
+        /// - Since: 1.1.0
+        var viewUpdateData: ViewUpdateData?
+        
+        /// - Since: 1.1.0
+        struct ViewUpdateData: ViewUpdateDataType { }
     }
 }
 
@@ -147,6 +168,13 @@ extension MessageThreadViewConverter.List.TableView {
             self.fileMessage.applyViewUpdates(to: viewController, includeSubDepth: includeSubDepth)
             self.multipleFilesMessage.applyViewUpdates(to: viewController, includeSubDepth: includeSubDepth)
         }
+        
+        // MARK: ViewUpdateData
+        /// - Since: 1.1.0
+        var viewUpdateData: ViewUpdateData?
+        
+        /// - Since: 1.1.0
+        struct ViewUpdateData: ViewUpdateDataType { }
     }
 }
 
@@ -170,6 +198,13 @@ extension MessageThreadViewConverter.List.TableView.RowView {
         
         // MARK: View updater
         var viewUpdateHandlers = [ViewType: (UpdatableVC) -> Void]()
+        
+        // MARK: ViewUpdateData
+        /// - Since: 1.1.0
+        var viewUpdateData: ViewUpdateData?
+        
+        /// - Since: 1.1.0
+        struct ViewUpdateData: ViewUpdateDataType { }
     }
 }
 
@@ -193,6 +228,13 @@ extension MessageThreadViewConverter.List.TableView.RowView {
 
         // MARK: View updater
         var viewUpdateHandlers = [ViewType: (UpdatableVC) -> Void]()
+        
+        // MARK: ViewUpdateData
+        /// - Since: 1.1.0
+        var viewUpdateData: ViewUpdateData?
+        
+        /// - Since: 1.1.0
+        struct ViewUpdateData: ViewUpdateDataType { }
     }
     
     public struct FileMessage: ViewConverterProtocol {
@@ -221,6 +263,13 @@ extension MessageThreadViewConverter.List.TableView.RowView {
         
         // MARK: View updater
         var viewUpdateHandlers = [ViewType: (UpdatableVC) -> Void]()
+        
+        // MARK: ViewUpdateData
+        /// - Since: 1.1.0
+        var viewUpdateData: ViewUpdateData?
+        
+        /// - Since: 1.1.0
+        struct ViewUpdateData: ViewUpdateDataType { }
     }
     
     public struct MultipleFilesMessage: ViewConverterProtocol {
@@ -253,5 +302,12 @@ extension MessageThreadViewConverter.List.TableView.RowView {
         
         // MARK: View updater
         var viewUpdateHandlers = [ViewType: (UpdatableVC) -> Void]()
+        
+        // MARK: ViewUpdateData
+        /// - Since: 1.1.0
+        var viewUpdateData: ViewUpdateData?
+        
+        /// - Since: 1.1.0
+        struct ViewUpdateData: ViewUpdateDataType { }
     }
 }

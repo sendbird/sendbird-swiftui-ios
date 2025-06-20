@@ -44,6 +44,13 @@ extension GroupChannelViewConverter {
             self.scrollBottomView.applyViewUpdates(to: viewController, includeSubDepth: includeSubDepth)
             self.channelStateBar.applyViewUpdates(to: viewController, includeSubDepth: includeSubDepth)
         }
+        
+        // MARK: ViewUpdateData
+        /// - Since: 1.1.0
+        var viewUpdateData: ViewUpdateData?
+        
+        /// - Since: 1.1.0
+        struct ViewUpdateData: ViewUpdateDataType { }
     }
 }
 
@@ -78,6 +85,13 @@ extension GroupChannelViewConverter.List {
             
             self.rowView.applyViewUpdates(to: viewController, includeSubDepth: includeSubDepth)
         }
+        
+        // MARK: ViewUpdateData
+        /// - Since: 1.1.0
+        var viewUpdateData: ViewUpdateData?
+        
+        /// - Since: 1.1.0
+        struct ViewUpdateData: ViewUpdateDataType { }
     }
     
     public struct NewMessageInfoView: ViewConverterProtocol {
@@ -100,6 +114,13 @@ extension GroupChannelViewConverter.List {
         
         // MARK: View updater
         var viewUpdateHandlers = [ViewType: (UpdatableVC) -> Void]()
+        
+        // MARK: ViewUpdateData
+        /// - Since: 1.1.0
+        var viewUpdateData: ViewUpdateData?
+        
+        /// - Since: 1.1.0
+        struct ViewUpdateData: ViewUpdateDataType { }
     }
     
     public struct ScrollBottomView: ViewConverterProtocol {
@@ -122,6 +143,13 @@ extension GroupChannelViewConverter.List {
         
         // MARK: View updater
         var viewUpdateHandlers = [ViewType: (UpdatableVC) -> Void]()
+        
+        // MARK: ViewUpdateData
+        /// - Since: 1.1.0
+        var viewUpdateData: ViewUpdateData?
+        
+        /// - Since: 1.1.0
+        struct ViewUpdateData: ViewUpdateDataType { }
     }
     
     public struct ChannelStateBar: ViewConverterProtocol {
@@ -149,6 +177,13 @@ extension GroupChannelViewConverter.List {
             
             guard includeSubDepth else { return }
         }
+        
+        // MARK: ViewUpdateData
+        /// - Since: 1.1.0
+        var viewUpdateData: ViewUpdateData?
+        
+        /// - Since: 1.1.0
+        struct ViewUpdateData: ViewUpdateDataType { }
     }
 }
 
@@ -205,6 +240,13 @@ extension GroupChannelViewConverter.List.TableView {
             self.quotedFileMessage.applyViewUpdates(to: viewController, includeSubDepth: includeSubDepth)
             self.quotedMultipleFilesMessage.applyViewUpdates(to: viewController, includeSubDepth: includeSubDepth)
         }
+        
+        // MARK: ViewUpdateData
+        /// - Since: 1.1.0
+        var viewUpdateData: ViewUpdateData?
+        
+        /// - Since: 1.1.0
+        struct ViewUpdateData: ViewUpdateDataType { }
     }
 }
 
@@ -228,6 +270,13 @@ extension GroupChannelViewConverter.List.TableView.RowView {
         
         // MARK: View updater
         var viewUpdateHandlers = [ViewType: (UpdatableVC) -> Void]()
+        
+        // MARK: ViewUpdateData
+        /// - Since: 1.1.0
+        var viewUpdateData: ViewUpdateData?
+        
+        /// - Since: 1.1.0
+        struct ViewUpdateData: ViewUpdateDataType { }
     }
 }
 
@@ -250,6 +299,13 @@ extension GroupChannelViewConverter.List.TableView.RowView {
         
         // MARK: View updater
         var viewUpdateHandlers = [ViewType: (UpdatableVC) -> Void]()
+        
+        // MARK: ViewUpdateData
+        /// - Since: 1.1.0
+        var viewUpdateData: ViewUpdateData?
+        
+        /// - Since: 1.1.0
+        struct ViewUpdateData: ViewUpdateDataType { }
     }
     
     public struct UserMessage: ViewConverterProtocol {
@@ -271,6 +327,13 @@ extension GroupChannelViewConverter.List.TableView.RowView {
 
         // MARK: View updater
         var viewUpdateHandlers = [ViewType: (UpdatableVC) -> Void]()
+        
+        // MARK: ViewUpdateData
+        /// - Since: 1.1.0
+        var viewUpdateData: ViewUpdateData?
+        
+        /// - Since: 1.1.0
+        struct ViewUpdateData: ViewUpdateDataType { }
     }
     
     public struct FileMessage: ViewConverterProtocol {
@@ -299,6 +362,13 @@ extension GroupChannelViewConverter.List.TableView.RowView {
         
         // MARK: View updater
         var viewUpdateHandlers = [ViewType: (UpdatableVC) -> Void]()
+        
+        // MARK: ViewUpdateData
+        /// - Since: 1.1.0
+        var viewUpdateData: ViewUpdateData?
+        
+        /// - Since: 1.1.0
+        struct ViewUpdateData: ViewUpdateDataType { }
     }
     
     public struct MultipleFilesMessage: ViewConverterProtocol {
@@ -335,6 +405,13 @@ extension GroupChannelViewConverter.List.TableView.RowView {
         
         // MARK: View updater
         var viewUpdateHandlers = [ViewType: (UpdatableVC) -> Void]()
+        
+        // MARK: ViewUpdateData
+        /// - Since: 1.1.0
+        var viewUpdateData: ViewUpdateData?
+        
+        /// - Since: 1.1.0
+        struct ViewUpdateData: ViewUpdateDataType { }
     }
     
     /// - Since: 1.0.2
@@ -369,6 +446,13 @@ extension GroupChannelViewConverter.List.TableView.RowView {
         
         // MARK: View updater
         var viewUpdateHandlers = [ViewType: (UpdatableVC) -> Void]()
+        
+        // MARK: ViewUpdateData
+        /// - Since: 1.1.0
+        var viewUpdateData: ViewUpdateData?
+        
+        /// - Since: 1.1.0
+        struct ViewUpdateData: ViewUpdateDataType { }
     }
     
     /// - Since: 1.0.2
@@ -404,6 +488,13 @@ extension GroupChannelViewConverter.List.TableView.RowView {
         
         // MARK: View updater
         var viewUpdateHandlers = [ViewType: (UpdatableVC) -> Void]()
+        
+        // MARK: ViewUpdateData
+        /// - Since: 1.1.0
+        var viewUpdateData: ViewUpdateData?
+        
+        /// - Since: 1.1.0
+        struct ViewUpdateData: ViewUpdateDataType { }
     }
     
     public struct TypingIndicator: ViewConverterProtocol {
@@ -426,5 +517,12 @@ extension GroupChannelViewConverter.List.TableView.RowView {
         
         // MARK: View updater
         var viewUpdateHandlers = [ViewType: (UpdatableVC) -> Void]()
+        
+        // MARK: ViewUpdateData
+        /// - Since: 1.1.0
+        var viewUpdateData: ViewUpdateData?
+        
+        /// - Since: 1.1.0
+        struct ViewUpdateData: ViewUpdateDataType { }
     }
 }

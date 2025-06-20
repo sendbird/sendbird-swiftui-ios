@@ -70,6 +70,13 @@ extension MessageThreadViewConverter {
             self.webView.applyViewUpdates(to: viewController, includeSubDepth: includeSubDepth)
             self.reactionView.applyViewUpdates(to: viewController, includeSubDepth: includeSubDepth)
         }
+        
+        // MARK: ViewUpdateData
+        /// - Since: 1.1.0
+        var viewUpdateData: ViewUpdateData?
+        
+        /// - Since: 1.1.0
+        struct ViewUpdateData: ViewUpdateDataType { }
     }
 }
 
@@ -96,6 +103,13 @@ extension MessageThreadViewConverter.ParentInfo {
         
         // MARK: View updater
         var viewUpdateHandlers = [ViewType: (UpdatableVC) -> Void]()
+        
+        // MARK: ViewUpdateData
+        /// - Since: 1.1.0
+        var viewUpdateData: ViewUpdateData?
+        
+        /// - Since: 1.1.0
+        struct ViewUpdateData: ViewUpdateDataType { }
     }
     
     public struct UserNameLabel: ViewConverterProtocol {
@@ -120,6 +134,13 @@ extension MessageThreadViewConverter.ParentInfo {
         
         // MARK: View updater
         var viewUpdateHandlers = [ViewType: (UpdatableVC) -> Void]()
+        
+        // MARK: ViewUpdateData
+        /// - Since: 1.1.0
+        var viewUpdateData: ViewUpdateData?
+        
+        /// - Since: 1.1.0
+        struct ViewUpdateData: ViewUpdateDataType { }
     }
     
     public struct DateLabel: ViewConverterProtocol {
@@ -144,6 +165,13 @@ extension MessageThreadViewConverter.ParentInfo {
         
         // MARK: View updater
         var viewUpdateHandlers = [ViewType: (UpdatableVC) -> Void]()
+        
+        // MARK: ViewUpdateData
+        /// - Since: 1.1.0
+        var viewUpdateData: ViewUpdateData?
+        
+        /// - Since: 1.1.0
+        struct ViewUpdateData: ViewUpdateDataType { }
     }
     
     public struct MoreButton: ViewConverterProtocol {
@@ -168,6 +196,13 @@ extension MessageThreadViewConverter.ParentInfo {
         
         // MARK: View updater
         var viewUpdateHandlers = [ViewType: (UpdatableVC) -> Void]()
+        
+        // MARK: ViewUpdateData
+        /// - Since: 1.1.0
+        var viewUpdateData: ViewUpdateData?
+        
+        /// - Since: 1.1.0
+        struct ViewUpdateData: ViewUpdateDataType { }
     }
     
     public struct ReplyLabel: ViewConverterProtocol {
@@ -192,6 +227,13 @@ extension MessageThreadViewConverter.ParentInfo {
         
         // MARK: View updater
         var viewUpdateHandlers = [ViewType: (UpdatableVC) -> Void]()
+        
+        // MARK: ViewUpdateData
+        /// - Since: 1.1.0
+        var viewUpdateData: ViewUpdateData?
+        
+        /// - Since: 1.1.0
+        struct ViewUpdateData: ViewUpdateDataType { }
     }
     
     public struct MessageTextView: ViewConverterProtocol {
@@ -218,6 +260,13 @@ extension MessageThreadViewConverter.ParentInfo {
         
         // MARK: View updater
         var viewUpdateHandlers = [ViewType: (UpdatableVC) -> Void]()
+        
+        // MARK: ViewUpdateData
+        /// - Since: 1.1.0
+        var viewUpdateData: ViewUpdateData?
+        
+        /// - Since: 1.1.0
+        struct ViewUpdateData: ViewUpdateDataType { }
     }
     
     // voice / image & video / file / multiplefile
@@ -247,6 +296,13 @@ extension MessageThreadViewConverter.ParentInfo {
         
         // MARK: View updater
         var viewUpdateHandlers = [ViewType: (UpdatableVC) -> Void]()
+        
+        // MARK: ViewUpdateData
+        /// - Since: 1.1.0
+        var viewUpdateData: ViewUpdateData?
+        
+        /// - Since: 1.1.0
+        struct ViewUpdateData: ViewUpdateDataType { }
     }
     
     public struct MultipleFileContentView: ViewConverterProtocol {
@@ -275,6 +331,13 @@ extension MessageThreadViewConverter.ParentInfo {
         
         // MARK: View updater
         var viewUpdateHandlers = [ViewType: (UpdatableVC) -> Void]()
+        
+        // MARK: ViewUpdateData
+        /// - Since: 1.1.0
+        var viewUpdateData: ViewUpdateData?
+        
+        /// - Since: 1.1.0
+        struct ViewUpdateData: ViewUpdateDataType { }
     }
     
     public struct WebView: ViewConverterProtocol {
@@ -300,6 +363,13 @@ extension MessageThreadViewConverter.ParentInfo {
         
         // MARK: View updater
         var viewUpdateHandlers = [ViewType: (UpdatableVC) -> Void]()
+        
+        // MARK: ViewUpdateData
+        /// - Since: 1.1.0
+        var viewUpdateData: ViewUpdateData?
+        
+        /// - Since: 1.1.0
+        struct ViewUpdateData: ViewUpdateDataType { }
     }
     
     public struct ReactionView: ViewConverterProtocol {
@@ -324,5 +394,12 @@ extension MessageThreadViewConverter.ParentInfo {
         
         // MARK: View updater
         var viewUpdateHandlers = [ViewType: (UpdatableVC) -> Void]()
+        
+        // MARK: ViewUpdateData
+        /// - Since: 1.1.0
+        var viewUpdateData: ViewUpdateData?
+        
+        /// - Since: 1.1.0
+        struct ViewUpdateData: ViewUpdateDataType { }
     }
 }
