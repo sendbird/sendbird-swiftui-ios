@@ -18,7 +18,9 @@ extension CustomGroupChannel.SwiftUI.View {
         
         var body: some View {
             VStack {
-                GroupChannelView(provider: provider)
+                GroupChannelView(
+                    provider: provider
+                )
                     .onAppear {
                         if let channelURL = viewModel.groupChannel?.channelURL {
                             provider.setup(channelURL: channelURL)

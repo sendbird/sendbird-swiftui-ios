@@ -46,6 +46,13 @@ extension GroupChannelSettingsViewConverter {
             self.rightView.applyViewUpdates(to: viewController, includeSubDepth: includeSubDepth)
             self.titleView.applyViewUpdates(to: viewController, includeSubDepth: includeSubDepth)
         }
+        
+        // MARK: ViewUpdateData
+        /// - Since: 1.1.0
+        var viewUpdateData: ViewUpdateData?
+        
+        /// - Since: 1.1.0
+        struct ViewUpdateData: ViewUpdateDataType { }
     }
 }
 
@@ -62,6 +69,13 @@ extension GroupChannelSettingsViewConverter.Header {
         }
         // MARK: View updater
         var viewUpdateHandlers = [ViewType: (UpdatableVC) -> Void]()
+        
+        // MARK: ViewUpdateData
+        /// - Since: 1.1.0
+        var viewUpdateData: ViewUpdateData?
+        
+        /// - Since: 1.1.0
+        struct ViewUpdateData: ViewUpdateDataType { }
     }
     
     /// A converter that updates the right bar button of a `SBUGroupChannelSettingsViewController`.
@@ -76,6 +90,13 @@ extension GroupChannelSettingsViewConverter.Header {
         }
         // MARK: View updater
         var viewUpdateHandlers = [ViewType: (UpdatableVC) -> Void]()
+        
+        // MARK: ViewUpdateData
+        /// - Since: 1.1.0
+        var viewUpdateData: ViewUpdateData?
+        
+        /// - Since: 1.1.0
+        struct ViewUpdateData: ViewUpdateDataType { }
     }
     
     /// A converter that updates the title view of a `SBUGroupChannelSettingsViewController`.
@@ -90,5 +111,12 @@ extension GroupChannelSettingsViewConverter.Header {
         }
         // MARK: View updater
         var viewUpdateHandlers = [ViewType: (UpdatableVC) -> Void]()
+        
+        // MARK: ViewUpdateData
+        /// - Since: 1.1.0
+        var viewUpdateData: ViewUpdateData?
+        
+        /// - Since: 1.1.0
+        struct ViewUpdateData: ViewUpdateDataType { }
     }
 }

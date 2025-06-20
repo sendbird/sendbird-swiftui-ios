@@ -24,7 +24,7 @@ protocol ViewItemProtocol {
 // extension ViewItemType {
 extension ViewItemProtocol {
     func createViewConverter<Content: View, Config: ViewConfigurations>(
-        content: @escaping (Config) -> Content
+        content: @escaping (Config) -> Content  // SwiftUI View
     ) -> ViewConverter<Config> {
         return ViewConverter { config in
             let view = UIHostingController(rootView: content(config)).view

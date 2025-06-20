@@ -25,13 +25,20 @@ extension GroupChannelViewConverter {
         }
         
         var viewUpdateHandlers = [ViewType: (UpdatableVC) -> Void]()
-        
         func applyViewUpdates(to viewController: UpdatableVC, includeSubDepth: Bool) {
             self.viewUpdateHandlers.values.forEach { $0(viewController) }
             
             guard includeSubDepth else { return }
             self.messageInputView.applyViewUpdates(to: viewController, includeSubDepth: includeSubDepth)
         }
+        
+        // MARK: ViewUpdateData
+        
+        /// - Since: 1.1.0
+        var viewUpdateData: ViewUpdateData?
+        
+        /// - Since: 1.1.0
+        struct ViewUpdateData: ViewUpdateDataType { }
     }
 }
 
@@ -43,11 +50,13 @@ extension GroupChannelViewConverter.Input {
         var entireContent: ViewConverter<ViewConfig>?
         var leftView = LeftView()
         var rightView = RightView()
+        var topView = TopView()
         
         enum ViewType: ViewTypeEnum {
 //            case entireContent  // not used.
             case leftView
             case rightView
+            case topView  // 1.1.0
         }
         
         public struct ViewConfig: ViewConfigurations { }  // not used
@@ -59,7 +68,16 @@ extension GroupChannelViewConverter.Input {
             guard includeSubDepth else { return }
             self.leftView.applyViewUpdates(to: viewController, includeSubDepth: includeSubDepth)
             self.rightView.applyViewUpdates(to: viewController, includeSubDepth: includeSubDepth)
+            self.topView.applyViewUpdates(to: viewController, includeSubDepth: includeSubDepth)
         }
+        
+        // MARK: ViewUpdateData
+        
+        /// - Since: 1.1.0
+        var viewUpdateData: ViewUpdateData?
+        
+        /// - Since: 1.1.0
+        struct ViewUpdateData: ViewUpdateDataType { }
     }
 }
 
@@ -90,6 +108,14 @@ extension GroupChannelViewConverter.Input.MessageInputView {
             guard includeSubDepth else { return }
             self.addButton.applyViewUpdates(to: viewController, includeSubDepth: includeSubDepth)
         }
+        
+        // MARK: ViewUpdateData
+        
+        /// - Since: 1.1.0
+        var viewUpdateData: ViewUpdateData?
+        
+        /// - Since: 1.1.0
+        struct ViewUpdateData: ViewUpdateDataType { }
     }
     
     // MARK: - RightView
@@ -121,6 +147,56 @@ extension GroupChannelViewConverter.Input.MessageInputView {
             self.sendButton.applyViewUpdates(to: viewController, includeSubDepth: includeSubDepth)
             self.voiceButton.applyViewUpdates(to: viewController, includeSubDepth: includeSubDepth)
         }
+        
+        // MARK: ViewUpdateData
+        
+        /// - Since: 1.1.0
+        var viewUpdateData: ViewUpdateData?
+        
+        /// - Since: 1.1.0
+        struct ViewUpdateData: ViewUpdateDataType { }
+    }
+    
+    /// - Since: 1.1.0
+    public struct TopView: ViewConverterProtocol {
+        typealias UpdatableVC = SBUGroupChannelViewController
+        
+        var entireContent: ViewConverter<ViewConfig>?
+        
+        enum ViewType: ViewTypeEnum {
+            case entireContent
+        }
+        
+        public struct ViewConfig: ViewConfigurations {
+            public var isFrozen: Bool = false
+            public var isMuted: Bool = false
+            public var isQuoteReplyingMode: Bool = false
+            public var quoteMessageInputViewConfiguration: QuoteMessageInputView.Configuration
+            public var quoteMessageInputViewHeight: CGFloat
+        }
+        
+        var viewUpdateHandlers = [ViewType: (UpdatableVC) -> Void]()
+            
+        func applyViewUpdates(to viewController: UpdatableVC, includeSubDepth: Bool) {
+            self.viewUpdateHandlers.values.forEach { $0(viewController) }
+            
+            // call applyViewUpdates on sub items
+            // guard includeSubDepth else { return }
+            // self.sendButton.applyViewUpdates(to: viewController, includeSubDepth: includeSubDepth)
+        }
+        
+        // MARK: ViewUpdateData
+        
+        /// - Since: 1.1.0
+        var viewUpdateData: ViewUpdateData?
+        
+        /// - Since: 1.1.0
+        struct ViewUpdateData: ViewUpdateDataType {
+            var isHidden: Bool?
+            var isEnabled: Bool?
+            var alpha: CGFloat?
+            var quoteMessageInputViewParams: SBUQuoteMessageInputViewParams?
+        }
     }
 }
 
@@ -142,6 +218,14 @@ extension GroupChannelViewConverter.Input.MessageInputView.LeftView {
         }
         
         var viewUpdateHandlers = [ViewType: (UpdatableVC) -> Void]()
+        
+        // MARK: ViewUpdateData
+        
+        /// - Since: 1.1.0
+        var viewUpdateData: ViewUpdateData?
+        
+        /// - Since: 1.1.0
+        struct ViewUpdateData: ViewUpdateDataType { }
     }
 }
 
@@ -163,6 +247,14 @@ extension GroupChannelViewConverter.Input.MessageInputView.RightView {
         }
         
         var viewUpdateHandlers = [ViewType: (UpdatableVC) -> Void]()
+        
+        // MARK: ViewUpdateData
+        
+        /// - Since: 1.1.0
+        var viewUpdateData: ViewUpdateData?
+        
+        /// - Since: 1.1.0
+        struct ViewUpdateData: ViewUpdateDataType { }
     }
     
     // MARK: - Voice message button
@@ -182,5 +274,13 @@ extension GroupChannelViewConverter.Input.MessageInputView.RightView {
         }
         
         var viewUpdateHandlers = [ViewType: (UpdatableVC) -> Void]()
+        
+        // MARK: ViewUpdateData
+        
+        /// - Since: 1.1.0
+        var viewUpdateData: ViewUpdateData?
+        
+        /// - Since: 1.1.0
+        struct ViewUpdateData: ViewUpdateDataType { }
     }
 }

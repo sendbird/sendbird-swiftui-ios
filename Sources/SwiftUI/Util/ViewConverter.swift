@@ -22,6 +22,10 @@ struct ViewConverter<T> {
 
 protocol ViewConfigurations {}
 
+/// A way to pass update data between in the SwiftUI wrapper's view update cycle and SendbirdUIKit's view update cycle.
+/// - Since: 1.1.0
+protocol ViewUpdateDataType { }
+
 protocol ViewConverterProtocol: ViewUpdateHandlerProtocol {
     associatedtype EntireContentArgs: ViewConfigurations
     var entireContent: ViewConverter<EntireContentArgs>? { get set }
@@ -30,12 +34,29 @@ protocol ViewConverterProtocol: ViewUpdateHandlerProtocol {
 protocol ViewUpdateHandlerProtocol {
     associatedtype UpdatableVCType
     associatedtype ViewType: ViewTypeEnum
+    associatedtype ViewUpdateData: ViewUpdateDataType
     
     var viewUpdateHandlers: [ViewType: (UpdatableVCType) -> Void] { get set }
     func applyViewUpdates(to viewController: UpdatableVCType, includeSubDepth: Bool)
+    
+    /// Data that need to be passed into `applyViewConverter(...)` method of each UIKit views
+    /// when calling it from `applyViewUpdates(to:includeSubDepth)`.
+    /// To see a use case, see ``func topView<Content: View>``  in ``Sendbird.View.GroupChannel.Channel.InputItem``.
+    /// - Since: 1.1.0
+    var viewUpdateData: ViewUpdateDataType? { get set }
+    
+    /// Updates the `viewUpdateData` in `SBViewConverterSet` from UIKit side.
+    /// To see a use case, see SBUMessageInputView+SwiftUI.
+    /// - Since: 1.1.0
+    mutating func updateViewUpdateData(_ viewUpdateData: ViewUpdateData)
 }
 
 extension ViewUpdateHandlerProtocol {
+     var viewUpdateData: ViewUpdateDataType? {
+         get { return nil }
+         set { /* No-op by default */ }
+     }
+    
     func applyViewUpdates(to viewController: UpdatableVCType, includeSubDepth: Bool = true) {
         self.viewUpdateHandlers.values.forEach { $0(viewController) }
         
@@ -44,6 +65,10 @@ extension ViewUpdateHandlerProtocol {
         // guard includeSubDepth else { return }
         // subView.applyViewUpdates(to: viewController, includeSubDepth: includeSubDepth)
         // ```
+    }
+    
+    mutating func updateViewUpdateData(_ viewUpdateData: ViewUpdateData) {
+        self.viewUpdateData = viewUpdateData
     }
 }
 

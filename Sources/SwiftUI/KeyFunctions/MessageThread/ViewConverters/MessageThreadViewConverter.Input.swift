@@ -32,6 +32,13 @@ extension MessageThreadViewConverter {
             guard includeSubDepth else { return }
             self.messageInputView.applyViewUpdates(to: viewController, includeSubDepth: includeSubDepth)
         }
+        
+        // MARK: ViewUpdateData
+        /// - Since: 1.1.0
+        var viewUpdateData: ViewUpdateData?
+        
+        /// - Since: 1.1.0
+        struct ViewUpdateData: ViewUpdateDataType { }
     }
 }
 
@@ -60,6 +67,13 @@ extension MessageThreadViewConverter.Input {
             self.leftView.applyViewUpdates(to: viewController, includeSubDepth: includeSubDepth)
             self.rightView.applyViewUpdates(to: viewController, includeSubDepth: includeSubDepth)
         }
+        
+        // MARK: ViewUpdateData
+        /// - Since: 1.1.0
+        var viewUpdateData: ViewUpdateData?
+        
+        /// - Since: 1.1.0
+        struct ViewUpdateData: ViewUpdateDataType { }
     }
 }
 
@@ -90,6 +104,13 @@ extension MessageThreadViewConverter.Input.MessageInputView {
             guard includeSubDepth else { return }
             self.addButton.applyViewUpdates(to: viewController, includeSubDepth: includeSubDepth)
         }
+        
+        // MARK: ViewUpdateData
+        /// - Since: 1.1.0
+        var viewUpdateData: ViewUpdateData?
+        
+        /// - Since: 1.1.0
+        struct ViewUpdateData: ViewUpdateDataType { }
     }
     
     // MARK: - RightView
@@ -121,6 +142,13 @@ extension MessageThreadViewConverter.Input.MessageInputView {
             self.sendButton.applyViewUpdates(to: viewController, includeSubDepth: includeSubDepth)
             self.voiceButton.applyViewUpdates(to: viewController, includeSubDepth: includeSubDepth)
         }
+        
+        // MARK: ViewUpdateData
+        /// - Since: 1.1.0
+        var viewUpdateData: ViewUpdateData?
+        
+        /// - Since: 1.1.0
+        struct ViewUpdateData: ViewUpdateDataType { }
     }
 }
 
@@ -142,6 +170,13 @@ extension MessageThreadViewConverter.Input.MessageInputView.LeftView {
         }
         
         var viewUpdateHandlers = [ViewType: (UpdatableVC) -> Void]()
+        
+        // MARK: ViewUpdateData
+        /// - Since: 1.1.0
+        var viewUpdateData: ViewUpdateData?
+        
+        /// - Since: 1.1.0
+        struct ViewUpdateData: ViewUpdateDataType { }
     }
 }
 
@@ -163,6 +198,13 @@ extension MessageThreadViewConverter.Input.MessageInputView.RightView {
         }
         
         var viewUpdateHandlers = [ViewType: (UpdatableVC) -> Void]()
+        
+        // MARK: ViewUpdateData
+        /// - Since: 1.1.0
+        var viewUpdateData: ViewUpdateData?
+        
+        /// - Since: 1.1.0
+        struct ViewUpdateData: ViewUpdateDataType { }
     }
     
     // MARK: - Voice message button
@@ -182,5 +224,12 @@ extension MessageThreadViewConverter.Input.MessageInputView.RightView {
         }
         
         var viewUpdateHandlers = [ViewType: (UpdatableVC) -> Void]()
+        
+        // MARK: ViewUpdateData
+        /// - Since: 1.1.0
+        var viewUpdateData: ViewUpdateData?
+        
+        /// - Since: 1.1.0
+        struct ViewUpdateData: ViewUpdateDataType { }
     }
 }

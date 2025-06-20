@@ -116,9 +116,9 @@ extension CustomSampleManager {
             CustomGroupChannel.ViewConverter.List.scrollBottomView()
 		case "CustomGroupChannel.ViewConverter.List.channelStateBanner":
             CustomGroupChannel.ViewConverter.List.channelStateBanner()
-		case "CustomGroupChannel.ViewConverter.Input.entireView":
+//		case "CustomGroupChannel.ViewConverter.Input.entireView":
 //            CustomGroupChannel.ViewConverter.Input.entireView()
-//		case "CustomGroupChannel.ViewConverter.Input.leftView":
+		case "CustomGroupChannel.ViewConverter.Input.leftView":
             CustomGroupChannel.ViewConverter.Input.leftView()
 		case "CustomGroupChannel.ViewConverter.Input.addButton":
             CustomGroupChannel.ViewConverter.Input.addButton()
@@ -128,6 +128,8 @@ extension CustomSampleManager {
             CustomGroupChannel.ViewConverter.Input.sendButton()
 		case "CustomGroupChannel.ViewConverter.Input.voiceButton":
             CustomGroupChannel.ViewConverter.Input.voiceButton()
+        case "CustomGroupChannel.ViewConverter.Input.topView":
+            CustomGroupChannel.ViewConverter.Input.topView()
 		case "CustomOpenChannel.SwiftUI.View.Main":
             CustomOpenChannel.SwiftUI.View.Main()
 		case "CustomOpenChannel.SwiftUI.View.CustomMain":

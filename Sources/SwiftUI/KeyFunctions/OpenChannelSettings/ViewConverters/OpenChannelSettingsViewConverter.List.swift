@@ -39,6 +39,13 @@ extension OpenChannelSettingsViewConverter {
             guard includeSubDepth else { return }
             self.tableView.applyViewUpdates(to: viewController, includeSubDepth: includeSubDepth)
         }
+        
+        // MARK: ViewUpdateData
+        /// - Since: 1.1.0
+        var viewUpdateData: ViewUpdateData?
+        
+        /// - Since: 1.1.0
+        struct ViewUpdateData: ViewUpdateDataType { }
     }
 }
 
@@ -75,6 +82,13 @@ extension OpenChannelSettingsViewConverter.List {
             // TODO: 추가로 구현한 하위 아이템들 업데이트 (↓↓ example ↓↓)
             // self.channelCell.applyViewUpdates(to: viewController, includeSubDepth: includeSubDepth)
         }
+        
+        // MARK: ViewUpdateData
+        /// - Since: 1.1.0
+        var viewUpdateData: ViewUpdateData?
+        
+        /// - Since: 1.1.0
+        struct ViewUpdateData: ViewUpdateDataType { }
     }
 }
 
