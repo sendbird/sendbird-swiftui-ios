@@ -12,10 +12,10 @@ options:
 packages:
   SendbirdChatSDK:
     url: https://github.com/sendbird/sendbird-chat-sdk-ios
-    from: 4.26.0
+    from: 4.29.0
   SendbirdUIKit:
     url: https://github.com/sendbird/sendbird-uikit-ios-spm
-    from: 3.31.0
+    from: 0.0.999
     
 schemes:
   QuickStartSwiftUI:
