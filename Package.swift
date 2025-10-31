@@ -16,11 +16,11 @@ let package = Package(
     dependencies: [
         .package(
             url: "https://github.com/sendbird/sendbird-chat-sdk-ios",
-            from: "4.32.0"
+            from: "4.29.0"
         ),
         .package(
             url: "https://github.com/sendbird/sendbird-uikit-ios-spm",
-            from: "3.32.3"
+            from: "3.32.2"
         ),
     ],
     targets: [
@@ -33,7 +33,7 @@ let package = Package(
             name: "SendbirdSwiftUITarget",
             dependencies: [
                 .target(name: "SendbirdSwiftUI"),
-                .product(name: "SendbirdChatSDK", package: "SendbirdChatSDK"),
+                .product(name: "SendbirdChatSDK", package: "sendbird-chat-sdk-ios"),
                 .product(name: "SendbirdUIMessageTemplate", package: "sendbird-uikit-ios-spm"),
             ],
             path: "Framework/Dependency",
