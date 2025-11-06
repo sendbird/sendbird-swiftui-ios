@@ -49,6 +49,13 @@ class SwiftUIBarButtonItem: UIBarButtonItem {
         }
         
         self.customView = containerView
+        
+        // Remove default liquid glass effect from custom navigation bar button
+        if #available(iOS 26.0, *) {
+            if GlobalOptions.hidesSharedBackgroundForCustomNavBarButton {
+                self.hidesSharedBackground = true
+            }
+        }
     }
     
     required init?(coder: NSCoder) {
