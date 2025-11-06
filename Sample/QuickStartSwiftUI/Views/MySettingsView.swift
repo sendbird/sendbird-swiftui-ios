@@ -7,6 +7,9 @@
 
 import SwiftUI
 import SendbirdChatSDK
+#if canImport(SendbirdSwiftUI)
+import SendbirdSwiftUI
+#endif
 
 struct MySettingsView: View {
     @State var user: SBUUser? = SBUGlobals.currentUser

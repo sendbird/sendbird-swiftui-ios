@@ -6,6 +6,9 @@
 //
 
 import SwiftUI
+#if canImport(SendbirdSwiftUI)
+import SendbirdSwiftUI
+#endif
 
 struct LoginView: View {
     @EnvironmentObject var appDelegate: AppDelegate

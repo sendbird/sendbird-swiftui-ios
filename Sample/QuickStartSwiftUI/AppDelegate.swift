@@ -6,6 +6,9 @@
 //
 
 import SwiftUI
+#if canImport(SendbirdSwiftUI)
+import SendbirdSwiftUI
+#endif
 
 class AppDelegate: NSObject, UIApplicationDelegate, ObservableObject {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool {

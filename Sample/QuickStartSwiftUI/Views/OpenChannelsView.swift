@@ -6,6 +6,9 @@
 //
 
 import SwiftUI
+#if canImport(SendbirdSwiftUI)
+import SendbirdSwiftUI
+#endif
 
 struct OpenChannelsView: View {
     var body: some View {
