@@ -142,6 +142,11 @@ extension LoginView {
         SendbirdUI.config.groupChannel.channel.isMultipleFilesMessageEnabled = true
         
         SBUGlobals.isImageCompressionEnabled = true
+        
+        // Set `hidesSharedBackgroundForUIBarButtonItem` to `true` to remove liquid glass effect from custom navigation bar button.
+        if #available(iOS 26.0, *) {
+            GlobalOptions.hidesSharedBackgroundForCustomNavBarButton = true
+        }
     }
     
     func initializeSendbird() {

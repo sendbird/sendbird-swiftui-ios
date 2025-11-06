@@ -15,4 +15,17 @@ public class GlobalOptions {
     /// Set to `true` by default.
     /// - Since: 1.0.3
     public static var enableViewAdaptorAutoReset = true
+    
+    /// Setting this flag to `true` removes the default liquid glass effect from custom SendbirdSwiftUI navigation bar buttons for iOS 26 or above.
+    /// Setting this flag to `false` shows the default liquid glass effect from custom SendbirdSwiftUI navigation bar buttons for iOS 26 or above.
+    /// The default is set to `false`.
+    ///
+    /// ```
+    /// GlobalOptions.hidesSharedBackgroundForUIBarButtonItem = false // shows liquid glass effect on custom SendbirdSwiftUI navigation bar buttons.
+    /// GlobalOptions.hidesSharedBackgroundForUIBarButtonItem = true // removes liquid glass effect from custom SendbirdSwiftUI navigation bar buttons.
+    /// ```
+    ///
+    /// - Since: [SWIFTUI_NEXT_VERSION]
+    @available(iOS 26, *)
+    public static var hidesSharedBackgroundForCustomNavBarButton: Bool = false
 }

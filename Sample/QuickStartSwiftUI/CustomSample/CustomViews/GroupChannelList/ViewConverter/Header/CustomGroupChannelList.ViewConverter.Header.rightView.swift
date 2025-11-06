@@ -25,6 +25,9 @@ extension CustomGroupChannelList.ViewConverter.Header {
                     .rightView { config in
                         Text("Right \(customFlag ? "ON" : "OFF")")
                             .foregroundStyle(.blue)
+                        
+                        // This removes the right bar button.
+                        // Color.clear.frame(width: 0, height: 0)
                     }
                 }
             )
