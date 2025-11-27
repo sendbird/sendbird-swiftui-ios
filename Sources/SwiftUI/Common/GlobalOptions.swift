@@ -25,7 +25,7 @@ public class GlobalOptions {
     /// GlobalOptions.hidesSharedBackgroundForUIBarButtonItem = true // removes liquid glass effect from custom SendbirdSwiftUI navigation bar buttons.
     /// ```
     ///
-    /// - Since: [SWIFTUI_NEXT_VERSION]
+    /// - Since: 1.1.2
     @available(iOS 26, *)
     public static var hidesSharedBackgroundForCustomNavBarButton: Bool = false
 }
