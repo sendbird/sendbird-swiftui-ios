@@ -232,7 +232,8 @@ extension GroupChannelViewProvider: SBUGroupChannelViewModelDelegate {
         _ viewModel: SBUBaseChannelViewModel,
         didChangeMessageList messages: [BaseMessage],
         needsToReload: Bool,
-        initialLoad: Bool
+        initialLoad: Bool,
+        isEventMessageReceived: Bool
     ) {
         StateImpactHandler.safeExecute { [weak self] in
             self?.fullMessages = messages
