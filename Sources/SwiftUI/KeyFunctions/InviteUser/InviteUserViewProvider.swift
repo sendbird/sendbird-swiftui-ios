@@ -9,6 +9,7 @@ import Foundation
 import SwiftUI
 import SendbirdChatSDK
 
+/// A provider that manages data and state for the Invite User view.
 public class InviteUserViewProvider: SendbirdUIProvider {
     // init properties
     var channelURL: String
@@ -18,6 +19,7 @@ public class InviteUserViewProvider: SendbirdUIProvider {
     weak var viewController: SBUInviteUserViewController?
     var eventHandlers = InviteUserEventHandlers()
     
+    /// Initializes a new provider with the given parameters.
     public init(
         channelURL: String,
         customUsers: [SBUUser]? = nil
@@ -25,7 +27,7 @@ public class InviteUserViewProvider: SendbirdUIProvider {
         self.channelURL = channelURL
         self.customUsers = customUsers
     }
-    
+
     /// This function sets up the provider.
     @discardableResult
     public func setup(
@@ -69,6 +71,7 @@ extension InviteUserViewProvider: InviteUserViewEventDelegate {
     
 }
 
+/// Event handlers for the Invite User view.
 public struct InviteUserEventHandlers {
-    
+
 }

@@ -79,7 +79,7 @@ struct MySettingsView: View {
                 endMin: 59,
                 timezone: "UTC"
             ) { error in
-                if let error {
+                if let error = error {
                     self.doNotDisturb = !value
                     return
                 }

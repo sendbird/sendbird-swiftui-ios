@@ -102,6 +102,7 @@ extension Sendbird.View.OpenChannel.ChannelList {
         ) -> Self {
             var copy = self
             copy.viewConverter.tableView.channelCell.channelName.entireContent = createViewConverter(content: content)
+            // swiftlint:disable:next identifier_name
             copy.viewConverter.tableView.channelCell.viewUpdateHandlers[.channelName] = { vc in
                 vc.listComponent?.reloadTableView()
             }
@@ -113,6 +114,7 @@ extension Sendbird.View.OpenChannel.ChannelList {
         ) -> Self {
             var copy = self
             copy.viewConverter.tableView.channelCell.channelPreview.entireContent = createViewConverter(content: content)
+            // swiftlint:disable:next identifier_name
             copy.viewConverter.tableView.channelCell.viewUpdateHandlers[.channelPreview] = { vc in
                 vc.listComponent?.reloadTableView()
             }

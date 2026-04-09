@@ -103,5 +103,3 @@ extension SBUModerationsModule.Header {
         }
     }
 }
-
-

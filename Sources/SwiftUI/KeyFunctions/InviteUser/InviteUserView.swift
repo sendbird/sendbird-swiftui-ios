@@ -22,6 +22,7 @@ public struct InviteUserView: View {
         self.provider = provider  // Default
     }
     
+    /// The content and behavior of the view.
     public var body: some View {
         SBUViewControllerSet.InviteUserViewController
             .swiftUI {
@@ -80,8 +81,10 @@ public struct InviteUserView: View {
 /// InviteUserView initializers
 public extension InviteUserView {
     // MARK: - typealias
+    /// The list content type alias for InviteUserView.
     typealias ListContent = InviteUserViewConverter.List
 
+    /// Initializes a new view with the given parameters.
     init(
         provider: InviteUserViewProvider,
         headerItem: (() -> InviteUserType.HeaderItem)? = nil,
@@ -121,6 +124,6 @@ public extension InviteUserView {
 
 #Preview {
     NavigationView {
-        InviteUserView(provider: .init(channelURL:""))
+        InviteUserView(provider: .init(channelURL: ""))
     }
 }

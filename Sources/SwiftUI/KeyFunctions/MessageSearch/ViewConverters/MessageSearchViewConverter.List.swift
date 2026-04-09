@@ -93,7 +93,7 @@ extension MessageSearchViewConverter.List {
 }
 
 // TODO: Cell 단위나 하위 아이템들은 여기 참고해서 추가 (↓↓ example ↓↓)
-//extension MessageSearchViewConverter.List.TableView {
+// extension MessageSearchViewConverter.List.TableView {
 //    public struct ChannelCell: ViewConverterProtocol {
 //        // MARK: TypeAlias
 //        typealias UpdatableVC = MessageSearchViewConverter.List.UpdatableVC
@@ -124,9 +124,9 @@ extension MessageSearchViewConverter.List {
 //            self.coverImage.applyViewUpdates(to: viewController, includeSubDepth: includeSubDepth)
 //        }
 //    }
-//}
+// }
 //
-//extension MessageSearchViewConverter.List.TableView.ChannelCell {
+// extension MessageSearchViewConverter.List.TableView.ChannelCell {
 //    public struct CoverImage: ViewConverterProtocol {
 //        // MARK: ViewType
 //        enum ViewType: ViewTypeEnum { case none }
@@ -144,4 +144,4 @@ extension MessageSearchViewConverter.List {
 //        // MARK: View updater
 //        var viewUpdateHandlers = [ViewType: (UpdatableVC) -> Void]()
 //    }
-//}
+// }

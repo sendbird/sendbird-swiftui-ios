@@ -21,23 +21,13 @@ extension HierarchyScannable {
         handler pathToHandler: WritableKeyPath<Substructure.MethodHandlerSetType, Closure<Parameter, Return>?>,
         _ item: @escaping (Parameter) -> Return
     ) -> Self where Substructure: MethodOverridable {
-        // Access the substructure of the current hierarchy
-        let substructure = hierarchy[keyPath: pathToComponent]
-        
-        // Check if the handler is already set when debug mode
-//        #if DEBUG
-//        guard substructure.methodHandlerSet[keyPath: pathToHandler] == nil else {
-//            fatalError("The method handler has already been set.")
-//        }
-//        #endif
-        
         // Set a new handler
         var copy = self
         copy.hierarchy[keyPath: pathToComponent].methodHandlerSet[keyPath: pathToHandler] = Closure(behavior: behavior, closure: item)
-        
+
         return copy
     }
-    
+
     func ultimate<
         Parameter,
         Return,
@@ -48,15 +38,6 @@ extension HierarchyScannable {
         handler pathToHandler: WritableKeyPath<Substructure.ProtocolHandlerSetType, Closure<Parameter, Return>?>,
         _ item: @escaping (Parameter) -> Return
     ) -> Self where Substructure: ProtocolOverridable {
-        // Access the substructure of the current hierarchy
-        let substructure = hierarchy[keyPath: pathToComponent]
-        
-        // Check if the handler is already set when debug mode
-//        #if DEBUG
-//        guard substructure.protocolHandlerSet[keyPath: pathToHandler] == nil else {
-//            fatalError("The method handler has already been set.")
-//        }
-//        #endif
         
         // Set a new handler
         var copy = self

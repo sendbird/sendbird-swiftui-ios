@@ -18,8 +18,6 @@ extension SBUOpenChannelListModule.List {
 
 extension SBUOpenChannelListModule.List {
     func applyViewConverter(_ viewType: ViewConverter.TableView.ViewType) -> Bool {
-        let tag = viewType.tag
-        
         switch viewType {
         case .entireContent:
             if let tableViewConverter = self.viewConverter.tableView.entireContent,

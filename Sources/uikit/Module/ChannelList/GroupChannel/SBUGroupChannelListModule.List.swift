@@ -112,6 +112,13 @@ extension SBUGroupChannelListModule {
             }
             self.tableView.backgroundColor = self.theme?.backgroundColor
             
+            #if compiler(>=6.2)
+            if SendbirdUI.config.common.shouldApplyLiquidGlass, #available(iOS 26.0, *) {
+                self.tableView.topEdgeEffect.isHidden = true
+                self.tableView.bottomEdgeEffect.isHidden = false
+            }
+            #endif
+            
             (self.emptyView as? SBUEmptyView)?.setupStyles()
         }
         
@@ -233,7 +240,7 @@ extension SBUGroupChannelListModule {
             let inspectAction = UIContextualAction(
                 style: .normal,
                 title: ""
-            ) { [weak self] _, _, actionHandler in
+            ) { [weak self] _, _, _ in
                 guard let self = self else { return }
                 channel.inspect()
             }

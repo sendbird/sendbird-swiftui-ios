@@ -143,6 +143,5 @@ extension SBUBaseMessageCell {
             )
             return true
         }
-        return false
     }
 }

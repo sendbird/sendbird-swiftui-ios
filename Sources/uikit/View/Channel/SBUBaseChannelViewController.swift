@@ -228,6 +228,24 @@ open class SBUBaseChannelViewController: SBUBaseViewController, SBUBaseChannelVi
         NotificationCenter.default.removeObserver(self, name: UIApplication.willResignActiveNotification, object: nil)
     }
     
+    open override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        updateListContentInsetForLiquidGlass()
+    }
+
+    func updateListContentInsetForLiquidGlass() {
+        guard SendbirdUI.config.common.shouldApplyLiquidGlass,
+              let inputComponent = self.baseInputComponent else { return }
+
+        let inputTopInView = inputComponent.frame.minY
+        let padding: CGFloat = 16
+        let bottomInset = self.view.frame.height - inputTopInView + padding
+        let topInset = self.view.safeAreaInsets.top
+
+        let insets = UIEdgeInsets(top: bottomInset, left: 0, bottom: topInset, right: 0)
+        baseListComponent?.updateTableViewContentInset(insets: insets)
+    }
+    
     /// Called when the application will resign activity.
     open func applicationWillResignActivity() { }
     
@@ -335,6 +353,7 @@ open class SBUBaseChannelViewController: SBUBaseViewController, SBUBaseChannelVi
     func setupStyles(theme: SBUChannelTheme) {
         self.setupNavigationBar(
             backgroundColor: self.theme.navigationBarTintColor,
+            gradientBackgroundTint: self.theme.navigationBarGradientTint,
             shadowColor: self.theme.navigationBarShadowColor
         )
         
@@ -710,7 +729,7 @@ open class SBUBaseChannelViewController: SBUBaseViewController, SBUBaseChannelVi
             baseListComponent.setScrollBottomView(hidden: hidden)
             
             if baseListComponent.isScrollNearByBottom,
-                let fullMessageList = self.baseViewModel?.fullMessageList,
+                self.baseViewModel?.fullMessageList != nil,
                !self.isTransformedList {
                     autoScrollMessageOverflow(isEventMessageReceived: isEventMessageReceived)
             }
@@ -718,7 +737,7 @@ open class SBUBaseChannelViewController: SBUBaseViewController, SBUBaseChannelVi
             return
         }
         
-        baseListComponent.scrollTableView(to: lastSeenIndexPath.row,  at: .bottom)
+        baseListComponent.scrollTableView(to: lastSeenIndexPath.row, at: .bottom)
         let hidden = baseListComponent.isScrollNearByBottom
         baseListComponent.setScrollBottomView(hidden: hidden)
     }
@@ -954,8 +973,6 @@ open class SBUBaseChannelViewController: SBUBaseViewController, SBUBaseChannelVi
             break
         }
     }
-    
-    
 
     open func baseChannelModule(_ listComponent: SBUBaseChannelModule.List, didDismissMenuForCell cell: UITableViewCell) {
         cell.isSelected = false
@@ -976,7 +993,7 @@ open class SBUBaseChannelViewController: SBUBaseViewController, SBUBaseChannelVi
         
         self.baseViewModel?.channel?.getMessagesByMessageId(
             messageId,
-            params: MessageListParams(previousResultSize: 1, nextResultSize: 1),
+            params: MessageListParams { $0.previousResultSize = 1; $0.nextResultSize = 1 },
             completionHandler: { [weak self] messages, _ in
                 guard let self = self, let message = messages?.first(where: { $0.messageId == messageId }) else {
                     self?.errorHandler("Couldn't find the message with id: \(messageId)")

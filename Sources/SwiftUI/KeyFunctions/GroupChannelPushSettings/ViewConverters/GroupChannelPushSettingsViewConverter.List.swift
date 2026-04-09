@@ -93,7 +93,7 @@ extension GroupChannelPushSettingsViewConverter.List {
 }
 
 // TODO: Cell 단위나 하위 아이템들은 여기 참고해서 추가 (↓↓ example ↓↓)
-//extension GroupChannelPushSettingsViewConverter.List.TableView {
+// extension GroupChannelPushSettingsViewConverter.List.TableView {
 //    public struct ChannelCell: ViewConverterProtocol {
 //        // MARK: TypeAlias
 //        typealias UpdatableVC = GroupChannelPushSettingsViewConverter.List.UpdatableVC
@@ -124,9 +124,9 @@ extension GroupChannelPushSettingsViewConverter.List {
 //            self.coverImage.applyViewUpdates(to: viewController, includeSubDepth: includeSubDepth)
 //        }
 //    }
-//}
+// }
 //
-//extension GroupChannelPushSettingsViewConverter.List.TableView.ChannelCell {
+// extension GroupChannelPushSettingsViewConverter.List.TableView.ChannelCell {
 //    public struct CoverImage: ViewConverterProtocol {
 //        // MARK: ViewType
 //        enum ViewType: ViewTypeEnum { case none }
@@ -144,4 +144,4 @@ extension GroupChannelPushSettingsViewConverter.List {
 //        // MARK: View updater
 //        var viewUpdateHandlers = [ViewType: (UpdatableVC) -> Void]()
 //    }
-//}
+// }

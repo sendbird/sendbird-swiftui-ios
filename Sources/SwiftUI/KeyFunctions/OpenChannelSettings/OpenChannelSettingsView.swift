@@ -23,6 +23,7 @@ public struct OpenChannelSettingsView: View {
     }
         
     // MARK: - Methods
+    /// The content and behavior of the view.
     public var body: some View {
         SBUViewControllerSet.OpenChannelSettingsViewController
             .swiftUI {
@@ -78,8 +79,9 @@ public extension OpenChannelSettingsView {
     // MARK: - typealias
     // TODO: Initializer 에서 필요하면 구현
     // typealias ListContent = OpenChannelSettingsViewConverter.List
-    
+
 // (↓↓ example ↓↓)
+    /// Initializes a new view with the given parameters.
     init(
         provider: OpenChannelSettingsViewProvider,
         headerItem: (() -> OpenChannelSettingsType.HeaderItem)? = nil

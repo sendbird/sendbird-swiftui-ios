@@ -99,5 +99,3 @@ extension SBUMessageSearchModule.Header {
         }
     }
 }
-
-

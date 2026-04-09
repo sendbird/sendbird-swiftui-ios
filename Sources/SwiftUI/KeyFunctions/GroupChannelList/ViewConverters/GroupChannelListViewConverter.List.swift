@@ -150,7 +150,7 @@ extension GroupChannelListViewConverter.List.TableView.ChannelCell {
         public struct ViewConfig: ViewConfigurations {
             public var channel: GroupChannel = DefaultViewConfigSet.groupChannel
             public var imageSize: CGSize = DefaultViewConfigSet.GroupChannelList.coverImageSize
-            public var coverURL: String? = nil
+            public var coverURL: String?
             public var isBroadcastChannel: Bool = false
         }
         

@@ -9,10 +9,12 @@ import Foundation
 import SwiftUI
 import SendbirdChatSDK
 
+/// Event handlers for the Open Channel Settings view.
 public struct OpenChannelSettingsEventHandlers {
-    
+
 }
 
+/// A provider that manages data and state for the Open Channel Settings view.
 public class OpenChannelSettingsViewProvider: SendbirdUIProvider {
     // init properties
     var channelURL: String
@@ -21,10 +23,11 @@ public class OpenChannelSettingsViewProvider: SendbirdUIProvider {
     weak var viewController: SBUOpenChannelSettingsViewController?
     var eventHandlers = OpenChannelSettingsEventHandlers()
     
+    /// Initializes a new provider with the given channel URL.
     public init(channelURL: String) {
         self.channelURL = channelURL
     }
-    
+
     /// This function sets up the provider.
     @discardableResult
     public func setup(

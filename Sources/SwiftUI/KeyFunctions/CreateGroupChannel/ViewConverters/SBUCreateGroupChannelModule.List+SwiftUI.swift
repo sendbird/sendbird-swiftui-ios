@@ -52,6 +52,8 @@ extension SBUCreateChannelModule.List {
 }
 
 extension SBUCreateChannelModule.List {
+    /// Notifies the delegate that a user was selected in the create group channel user list.
+    /// - Parameter user: The user that was selected.
     public func onSelectUser(_ user: SBUUser) {
         self.delegate?.createChannelModule(self, didSelectUser: user)
     }

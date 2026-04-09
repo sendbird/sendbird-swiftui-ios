@@ -10,21 +10,22 @@ import SwiftUI
 import SendbirdChatSDK
 
 // MARK: GroupChannelListEventHandlers
+/// Event handlers for the Group Channel List view.
 public struct GroupChannelListEventHandlers {
     // View related event handlers.
     var selectRowHandler: ((_ indexPath: IndexPath) -> Void)?
     var selectLeaveChannelHandler: ((_ channel: GroupChannel) -> Void)?
     var changePushTriggerOptionHandler: ((_ channel: GroupChannel) -> Void)?
-    
+
     // Internal state event handlers.
     var connectionStateChangeHandler: SendbirdConnectionStateChangeHandler?
     var errorHandler: SendbirdErrorHandler?
-    
-    
+
     // Note: Events from Chat SDK are not be available in SendbirdSwiftUI.
 }
 
 // MARK: - GroupChannelListViewProvider
+/// A provider that manages data and state for the Group Channel List view.
 public class GroupChannelListViewProvider: SendbirdUIProvider {
     // Init properties
     var channelListQuery: GroupChannelListQuery?
@@ -35,16 +36,19 @@ public class GroupChannelListViewProvider: SendbirdUIProvider {
     
     // MARK: Public Data Properties
     // Note: @Published properties can't be computed properties.
+    /// The list of group channels.
     @Published public var channels: [GroupChannel] = []
+    /// Indicates whether the view is currently loading.
     @Published public var isLoading: Bool = false
-    
+
     // MARK: Public UI Properties (??)
     // public var theme: SBUGroupChannelListTheme
-    
+
+    /// Initializes a new provider with the given parameters.
     public init(channelListQuery: GroupChannelListQuery? = nil) {
         self.channelListQuery = channelListQuery
     }
-    
+
     /// This function sets up the provider.
     @discardableResult
     public func setup(
@@ -62,6 +66,7 @@ public class GroupChannelListViewProvider: SendbirdUIProvider {
 
 // MARK: - ViewController method wrappers
 extension GroupChannelListViewProvider {
+    /// Navigates to the channel with the given URL.
     public func showChannel(
         channelURL: String,
         messageListParams: MessageListParams? = nil
@@ -72,18 +77,22 @@ extension GroupChannelListViewProvider {
         )
     }
     
+    /// Presents the create channel screen or a type selector if multiple channel types are available.
     public func showCreateChannelOrTypeSelector () {
         self.viewController?.showCreateChannelOrTypeSelector()
     }
-    
+
+    /// Presents the channel type selector screen.
     public func showCreateChannelTypeSelector() {
         self.viewController?.showCreateChannelTypeSelector()
     }
-    
+
+    /// Presents the create channel screen for the specified channel type.
     public func showCreateChannel(type: ChannelCreationType = .group) {
         self.viewController?.showCreateChannel(type: type)
     }
-    
+
+    /// Presents the default create group channel screen.
     public func showCreateChannel() {
         self.viewController?.showCreateChannel()
     }

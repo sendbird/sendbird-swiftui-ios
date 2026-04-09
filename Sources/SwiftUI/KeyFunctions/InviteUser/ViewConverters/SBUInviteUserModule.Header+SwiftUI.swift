@@ -111,5 +111,3 @@ extension SBUInviteUserModule.Header {
         }
     }
 }
-
-

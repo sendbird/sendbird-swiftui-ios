@@ -15,7 +15,6 @@ extension Color {
     }
 }
 
-
 extension UIColor {
     /// UIColor -> Color
     public func asColor() -> Color {

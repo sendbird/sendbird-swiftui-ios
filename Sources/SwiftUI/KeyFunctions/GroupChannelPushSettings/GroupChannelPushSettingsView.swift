@@ -18,10 +18,12 @@ public struct GroupChannelPushSettingsView: View {
     
     @ObservedObject var provider: GroupChannelPushSettingsViewProvider
     
+    /// Initializes a new view with the given provider.
     public init(provider: GroupChannelPushSettingsViewProvider) {
         self.provider = provider  // Default provider
     }
-    
+
+    /// The content and behavior of the view.
     public var body: some View {
         SBUViewControllerSet.GroupChannelPushSettingsViewController
             .swiftUI {
@@ -79,6 +81,7 @@ public extension GroupChannelPushSettingsView {
     // typealias ListContent = GroupChannelPushSettingsViewConverter.List
 
 // (↓↓ example ↓↓)
+    /// Initializes a new view with the given parameters.
     init(
         provider: GroupChannelPushSettingsViewProvider,
         headerItem: (() -> GroupChannelPushSettingsType.HeaderItem)? = nil

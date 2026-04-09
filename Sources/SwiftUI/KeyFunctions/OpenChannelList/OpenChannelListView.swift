@@ -18,10 +18,12 @@ public struct OpenChannelListView: View {
 
     @ObservedObject var provider: OpenChannelListViewProvider
     
+    /// Initializes a new view with default settings.
     public init() {
         self.provider = OpenChannelListViewProvider()  // Default provider
     }
 
+    /// The content and behavior of the view.
     public var body: some View {
         SBUViewControllerSet.OpenChannelListViewController
             .swiftUI {
@@ -78,8 +80,10 @@ public struct OpenChannelListView: View {
 /// OpenChannelListView initializers
 public extension OpenChannelListView {
     // MARK: - typealias
+    /// The list content type alias for OpenChannelListView.
     typealias ListContent = OpenChannelListViewConverter.List
-    
+
+    /// Initializes a new view with the given parameters.
     init(
         provider: OpenChannelListViewProvider? = nil,
         headerItem: (() -> OpenChannelListType.HeaderItem)? = nil,
@@ -119,6 +123,7 @@ public extension OpenChannelListView {
 
 // MARK: Event handler interfaces
 public extension OpenChannelListView {
+    /// Called when a row is selected in the open channel list.
     func onSendbirdSelectRow(
         _ selectRowHandler: @escaping (_ indexPath: IndexPath) -> Void
     ) -> Self {
@@ -126,13 +131,15 @@ public extension OpenChannelListView {
         copy.provider.eventHandlers.selectRowHandler = selectRowHandler
         return copy
     }
-    
+
+    /// Called when the connection state changes.
     func onSendbirdConnectionStateChange(_ connectionStateChangeHandler: @escaping SendbirdConnectionStateChangeHandler) -> Self {
         let copy = self
         copy.provider.eventHandlers.connectionStateChangeHandler = connectionStateChangeHandler
         return copy
     }
-    
+
+    /// Called when an error occurs.
     func onSendbirdError(_ errorHandler: @escaping SendbirdErrorHandler) -> Self {
         let copy = self
         copy.provider.eventHandlers.errorHandler = errorHandler

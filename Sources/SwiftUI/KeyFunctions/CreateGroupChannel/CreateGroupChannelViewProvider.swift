@@ -10,6 +10,7 @@ import SwiftUI
 import SendbirdChatSDK
 
 // MARK: - ViewEventHandlers
+/// A struct that holds event handler closures for create group channel view interactions.
 public struct CreateGroupChannelEventHandlers {
     // Blocks for handling for user inputs.
     var selectRowHandler: ((_ indexPath: IndexPath) -> Void)?
@@ -41,6 +42,10 @@ public class CreateGroupChannelViewProvider: SendbirdUIProvider {
     // MARK: Public UI Properties
 
     // MARK: Methods
+    /// Initializes a new `CreateGroupChannelViewProvider` with optional custom users and channel type.
+    /// - Parameters:
+    ///   - customUsers: An optional list of custom users to pre-populate the user list.
+    ///   - type: The type of channel to create. Defaults to `.group`.
     public init(
         customUsers: [SBUUser]? = nil,
         type: ChannelCreationType = .group

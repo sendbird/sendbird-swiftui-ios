@@ -9,18 +9,18 @@ import Foundation
 import SwiftUI
 import SendbirdChatSDK
  
-// swiftlint:disable type_name
 // MARK: ViewEventHandlers
+/// Event handlers for the Open Moderations view.
 public struct OpenModerationsViewEventHandlers {
     // Blocks for handling for user inputs.
     var didChangeFrozenStateHandler: ((_ isFrozen: Bool) -> Void)?
-    
+
     // Blocks for handling for internal events.
     var errorHandler: ((_ error: SBError?) -> Void)?
 }
-// swiftlint:enable type_name
 
 // MARK: - OpenModerationsViewProvider
+/// A provider that manages data and state for the Open Moderations view.
 public class OpenModerationsViewProvider: SendbirdUIProvider {
     // Init properties
     var channelURL: String
@@ -31,20 +31,25 @@ public class OpenModerationsViewProvider: SendbirdUIProvider {
     
     // MARK: Public Data Properties
     // Note: @Published properties can't be computed properties.
+    /// The list of participants in the channel.
     @Published public var participants: [SBUUser] = []
+    /// The list of currently selected participants.
     @Published public var selectedParticipants: [SBUUser] = []
+    /// Indicates whether the view is currently loading.
     @Published public var isLoading: Bool = false
-    
+
     // MARK: Public Data Properties
+    /// The current open channel object.
     public var channel: OpenChannel?
     
     // MARK: Public UI Properties
 
     // MARK: Methods
+    /// Initializes a new provider with the given channel URL.
     public init(channelURL: String) {
         self.channelURL = channelURL
     }
-    
+
     /// This function sets up the provider.
     @discardableResult
     public func setup(
@@ -53,13 +58,14 @@ public class OpenModerationsViewProvider: SendbirdUIProvider {
         self.channelURL = channelURL
         return self
     }
-    
+
     func bind(viewController: SBUModerationsViewController) {
         viewController.swiftUIDelegate = self
         self.viewController = viewController
     }
-    
+
     // MARK: ViewController method wrappers
+    /// Freezes or unfreezes the channel.
     public func changeFreeze(_ freeze: Bool) {
         self.viewController?.changeFreeze(freeze)
     }
@@ -95,4 +101,3 @@ extension OpenModerationsViewProvider: ModerationsViewEventDelegate {
         self.eventHandlers.didChangeFrozenStateHandler?(isFrozen)
     }
 }
-

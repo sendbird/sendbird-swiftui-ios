@@ -9,8 +9,10 @@ import SwiftUI
 import SendbirdChatSDK
 
 extension SendbirdUI {
-    static func findChannelListViewControllerFromSwiftUI(rootViewController: UIViewController?,
-                                                                channelType: ChannelType) -> UIViewController? {
+    static func findChannelListViewControllerFromSwiftUI(
+        rootViewController: UIViewController?,
+        channelType: ChannelType
+    ) -> UIViewController? {
         guard let rootHostingViewController = rootViewController else {
             return nil
         }
@@ -48,8 +50,7 @@ extension SendbirdUI {
         public static func save(userInfo: [AnyHashable: Any]) {
             if
                 let sendbirdPayload = userInfo["sendbird"] as? [AnyHashable: Any],
-                let channel = sendbirdPayload["channel"] as? [AnyHashable: Any]
-            {
+                let channel = sendbirdPayload["channel"] as? [AnyHashable: Any] {
                 shared.payload = sendbirdPayload
                 shared.channel = channel
                 shared.channelURL = channel["channel_url"] as? String

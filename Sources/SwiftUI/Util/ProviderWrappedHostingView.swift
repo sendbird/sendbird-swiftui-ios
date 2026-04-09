@@ -56,6 +56,6 @@ struct ProviderAndConfigWrappedHostingView<Provider: ObservableObject, Config: V
     }
     
     var body: some View {
-        return content()
+        content()
     }
 }

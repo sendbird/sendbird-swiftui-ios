@@ -23,6 +23,7 @@ public struct OpenOperatorListView: View {
         self.provider = provider
     }
     
+    /// The content and behavior of the view.
     public var body: some View {
         SBUViewControllerSet.OpenUserListViewController
             .swiftUI {
@@ -86,8 +87,10 @@ public struct OpenOperatorListView: View {
 /// OpenOperatorListView initializers
 public extension OpenOperatorListView {
     // MARK: - typealias
+    /// The list content type alias for OpenOperatorListView.
     typealias ListContent = OpenOperatorListViewConverter.List
-    
+
+    /// Initializes a new view with the given parameters.
     init(
         provider: OpenOperatorListViewProvider,
         headerItem: (() -> OpenOperatorListType.HeaderItem)? = nil,
@@ -127,12 +130,14 @@ public extension OpenOperatorListView {
 
 // MARK: Event handler interfaces
 public extension OpenOperatorListView {
+    /// Called when a row is selected in the open operator list.
     func onSendbirdSelectRow(_ selectRowHandler: @escaping ((_ indexPath: IndexPath) -> Void)) -> Self {
         let copy = self
         copy.provider.eventHandlers.selectRowHandler = selectRowHandler
         return copy
     }
-    
+
+    /// Called when an error occurs.
     func onSendbirdError(_ errorHandler: @escaping ((_ error: SBError?) -> Void)) -> Self {
         let copy = self
         copy.provider.eventHandlers.errorHandler = errorHandler

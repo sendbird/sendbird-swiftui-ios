@@ -86,6 +86,7 @@ public extension GroupChannelRegisterOperatorView {
     // MARK: - typealias
     // typealias ListContent = GroupChannelRegisterOperatorViewConverter.List
     
+    /// Initializes a new `GroupChannelRegisterOperatorView` with the given provider and optional header item.
     init(
         provider: GroupChannelRegisterOperatorViewProvider,
         headerItem: (() -> GroupChannelRegisterOperatorType.HeaderItem)? = nil

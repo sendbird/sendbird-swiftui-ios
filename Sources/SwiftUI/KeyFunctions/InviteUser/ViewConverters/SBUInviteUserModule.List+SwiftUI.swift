@@ -52,6 +52,8 @@ extension SBUInviteUserModule.List {
 }
 
 extension SBUInviteUserModule.List {
+    /// Notifies the delegate that a user was selected in the invite user list.
+    /// - Parameter user: The user that was selected.
     public func onSelectUser(_ user: SBUUser) {
         self.delegate?.inviteUserModule(self, didSelectUser: user)
     }

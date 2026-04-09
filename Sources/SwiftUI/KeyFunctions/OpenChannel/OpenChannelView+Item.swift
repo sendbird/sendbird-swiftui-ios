@@ -252,4 +252,3 @@ extension Sendbird.View.OpenChannel.Channel {
         }
     }
 }
-

@@ -23,7 +23,6 @@ extension SBUUserListModule.List {
         
         switch viewType {
         case .entireContent:
-            let users = self.userList
             if let tableViewConverter = self.viewConverter.tableView.entireContent,
                let hostingView = tableViewConverter(
                 .init()

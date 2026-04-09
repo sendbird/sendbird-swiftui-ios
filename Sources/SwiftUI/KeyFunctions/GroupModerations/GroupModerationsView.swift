@@ -23,6 +23,7 @@ public struct GroupModerationsView: View {
         self.provider = provider
     }
     
+    /// The content and behavior of the view.
     public var body: some View {
         SBUViewControllerSet.GroupModerationsViewController
             .swiftUI {
@@ -81,7 +82,8 @@ public struct GroupModerationsView: View {
 public extension GroupModerationsView {
     // MARK: - typealias
     // typealias ListContent = GroupModerationsViewConverter.List
-    
+
+    /// Initializes a new view with the given parameters.
     init(
         provider: GroupModerationsViewProvider,
         headerItem: (() -> GroupModerationsType.HeaderItem)? = nil

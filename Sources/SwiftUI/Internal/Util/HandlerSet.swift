@@ -8,8 +8,6 @@
 
 import Foundation
 
-// swiftlint:disable missing_docs
-
 // ----------------------
 // MARK: - ViewController
 // ----------------------
@@ -24,6 +22,7 @@ class ViewControllerHandlerSet<T> {
     var setupStyles: Closure<T, Void>?
     var updateStyles: Closure<T, Void>?
     
+    // swiftlint:disable:next large_tuple
     var errorHandler: Closure<(T, message: String?, code: Int), Void>?
     // TODO: Add more...
 }
@@ -51,7 +50,6 @@ class ViewProtocolHandlerSet<T> {
     // TODO: Add more...
 }
 
-
 // -----------------
 // MARK: - ViewModel
 // -----------------
@@ -62,5 +60,3 @@ class ViewModelHandlerSet<T> {
 class ViewModelProtocolHandlerSet<T> {
     // TODO: Add more...
 }
-
-// swiftlint:enable missing_docs

@@ -9,15 +9,17 @@ import Foundation
 import SwiftUI
 import SendbirdChatSDK
 
+/// Event handlers for the Open Channel List view.
 public struct OpenChannelListEventHandlers {
     // View related event handlers.
     var selectRowHandler: ((_ indexPath: IndexPath) -> Void)?
-    
+
     // Internal state event handerls.
     var connectionStateChangeHandler: SendbirdConnectionStateChangeHandler?
     var errorHandler: SendbirdErrorHandler?
 }
 
+/// A provider that manages data and state for the Open Channel List view.
 public class OpenChannelListViewProvider: SendbirdUIProvider {
     // SendbirdProvider protocol
     weak var viewController: SBUOpenChannelListViewController?
@@ -27,9 +29,12 @@ public class OpenChannelListViewProvider: SendbirdUIProvider {
     var channelListQuery: OpenChannelListQuery?
     
     // Published properties
+    /// The list of open channels.
     @Published public var channels: [OpenChannel] = []
+    /// Indicates whether the view is currently loading.
     @Published public var isLoading: Bool = false
-    
+
+    /// Initializes a new provider with the given parameters.
     public init(channelListQuery: OpenChannelListQuery? = nil) {
         self.channelListQuery = channelListQuery
     }
@@ -51,14 +56,17 @@ public class OpenChannelListViewProvider: SendbirdUIProvider {
 
 // MARK: ViewController method wrappers
 public extension OpenChannelListViewProvider {
+    /// Reloads the channel list from the server.
     func reloadChannelList() {
         self.viewController?.reloadChannelList()
     }
-    
+
+    /// Navigates to the channel with the given URL.
     func showChannel(channelURL: String, messageListParams: MessageListParams? = nil) {
         self.viewController?.showChannel(channelURL: channelURL, messageListParams: messageListParams)
     }
-    
+
+    /// Presents the create open channel screen.
     func showCreateChannel() {
         self.viewController?.showCreateChannel()
     }
@@ -67,6 +75,7 @@ public extension OpenChannelListViewProvider {
 // MARK: ViewModel method wrappers
 public extension OpenChannelListViewProvider {
     // MARK: - List handling
+    /// Loads the next page of channels, resetting the list.
     func loadNextChannelList() {
         self.viewController?.viewModel?.loadNextChannelList(reset: true)
     }

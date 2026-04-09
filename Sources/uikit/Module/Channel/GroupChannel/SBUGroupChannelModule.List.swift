@@ -85,6 +85,7 @@ public protocol SBUGroupChannelModuleListDelegate: SBUBaseChannelModuleListDeleg
     ///   - messageForm: Message Form object
     ///   - messageCell: Message cell object
     /// - Since: 3.27.0
+    @available(*, deprecated, message: "This method is deprecated in 3.34.1")
     func groupChannelModule(_ listComponent: SBUGroupChannelModule.List, didSubmitMessageForm messageForm: MessageForm, messageCell: SBUBaseMessageCell)
     
     /// Called when updated the feedback answer.
@@ -92,6 +93,7 @@ public protocol SBUGroupChannelModuleListDelegate: SBUBaseChannelModuleListDeleg
     ///    - answer: The answer of the feedback that is updated by user.
     ///    - messageCell: Message cell object
     /// - Since: 3.15.0
+    @available(*, deprecated, message: "This method is deprecated in 3.34.1")
     func groupChannelModule(_ listComponent: SBUGroupChannelModule.List, didUpdate feedbackAnswer: SBUFeedbackAnswer, messageCell: SBUBaseMessageCell)
     
     /// Called when there’s a tap gesture on a message template that includes a web URL. e.g., `"https://www.sendbird.com"`
@@ -271,7 +273,7 @@ extension SBUGroupChannelModule {
         /// The first of all unread messages in the channel.
         /// - Since: 3.32.0
         public var firstUnreadMessage: BaseMessage? {
-            return self.dataSource?.groupChannelModuleFirstUnreadMessage(self)
+            self.dataSource?.groupChannelModuleFirstUnreadMessage(self)
         }
         
         /// Whether messages should be marked as read when scrolling.
@@ -450,8 +452,9 @@ extension SBUGroupChannelModule {
         open override func setupLayouts() {
             super.setupLayouts()
             
+            let userSafeArea = SendbirdUI.config.common.shouldApplyLiquidGlass
             self.topStackView
-                .sbu_constraint(equalTo: self, leading: 8, trailing: -8, top: 8)
+                .sbu_constraint(equalTo: self, leading: 8, trailing: -8, top: 8, useSafeArea: userSafeArea)
             
             channelStateBanner?.sbu_constraint(height: 24)
             channelStateBanner?.sbu_constraint(equalTo: topStackView, leading: 0, trailing: 0)
@@ -466,7 +469,13 @@ extension SBUGroupChannelModule {
                     width: SBUConstant.scrollBottomButtonSize.width,
                     height: SBUConstant.scrollBottomButtonSize.height
                 )
-                .sbu_constraint(equalTo: self, trailing: -16, bottom: 8)
+                .sbu_constraint(equalTo: self, trailing: -16)
+
+            // For liquid glass mode, bottom constraint is set in SBUGroupChannelViewController
+            // relative to the input component
+            if !SendbirdUI.config.common.shouldApplyLiquidGlass {
+                self.scrollBottomView?.sbu_constraint(equalTo: self, bottom: 8)
+            }
         }
         
         /// Updates styles of the views in the list component with the `theme`.
@@ -971,11 +980,9 @@ extension SBUGroupChannelModule {
                     joinedAt: self.channel?.joinedAt ?? 0,
                     messageOffsetTimestamp: self.channel?.messageOffsetTimestamp ?? 0,
                     shouldHideSuggestedReplies: shouldHideSuggestedReplies,
-                    shouldHideFormTypeMessage: false,
                     enableEmojiLongPress: enableEmojiLongPress,
                     isFirstUnreadMessage: isFirstUnreadMessage
                 )
-                configuration.shouldHideFeedback = message.myFeedbackStatus == .notApplicable
                 userMessageCell.configure(with: configuration)
                 userMessageCell.configure(highlightInfo: self.highlightInfo)
                 (userMessageCell.quotedMessageView as? SBUQuotedBaseMessageView)?.delegate = self
@@ -1000,8 +1007,6 @@ extension SBUGroupChannelModule {
                     enableEmojiLongPress: enableEmojiLongPress,
                     isFirstUnreadMessage: isFirstUnreadMessage
                 )
-                configuration.shouldHideFeedback = message.myFeedbackStatus == .notApplicable
-                
                 if voiceFileInfo != nil {
                     self.currentVoiceFileInfo = nil
                     self.currentVoiceContentView = nil
@@ -1034,7 +1039,6 @@ extension SBUGroupChannelModule {
                     enableEmojiLongPress: enableEmojiLongPress,
                     isFirstUnreadMessage: isFirstUnreadMessage
                 )
-                configuration.shouldHideFeedback = message.myFeedbackStatus == .notApplicable
                 multipleFilesMessageCell.configure(with: configuration)
                 (multipleFilesMessageCell.quotedMessageView as? SBUQuotedBaseMessageView)?.delegate = self
                 self.setMessageCellAnimation(multipleFilesMessageCell, message: multipleFilesMessage, indexPath: indexPath)
@@ -1120,17 +1124,6 @@ extension SBUGroupChannelModule {
             messageCell.suggestedReplySelectHandler = { [weak self] optionView in
                 guard let self = self else { return }
                 self.delegate?.groupChannelModule(self, didSelect: optionView)
-            }
-            
-            messageCell.submitMessageFormHandler = { [weak self] form, cell in
-                guard let self = self else { return }
-                guard let form = message.messageForm else { return }
-                self.delegate?.groupChannelModule(self, didSubmitMessageForm: form, messageCell: cell)
-            }
-            
-            messageCell.updateFeedbackHandler = { [weak self] answer, cell in
-                guard let self = self else { return }
-                self.delegate?.groupChannelModule(self, didUpdate: answer, messageCell: cell)
             }
             
             messageCell.uncachedMessageTemplateImageHandler = { [weak self] cacheData, messageCell in
@@ -1488,6 +1481,7 @@ extension SBUGroupChannelModule.List {
 }
 
 extension SBUGroupChannelModule.List {
+    /// Configures message template action and data handlers for the given message cell.
     public func configureMessageTemplateHandlers(
         with messageCell: SBUBaseMessageCell,
         indexPath: IndexPath

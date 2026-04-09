@@ -6,7 +6,7 @@
 //
 
 /// A converter that updates the views of a `SBURegisterOperatorViewController`.
-public struct GroupChannelRegisterOperatorViewConverter {
+public struct GroupChannelRegisterOperatorViewConverter { // swiftlint:disable:this type_name
     // MARK: TypeAlias
     typealias UpdatableVC = SBURegisterOperatorViewController
     

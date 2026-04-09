@@ -23,6 +23,7 @@ public struct OpenChannelRegisterOperatorView: View {
         self.provider = provider
     }
     
+    /// The content and behavior of the view.
     public var body: some View {
         SBUViewControllerSet.OpenChannelRegisterOperatorViewController
             .swiftUI {
@@ -86,7 +87,8 @@ public struct OpenChannelRegisterOperatorView: View {
 public extension OpenChannelRegisterOperatorView {
     // MARK: - typealias
     // typealias ListContent = OpenChannelRegisterOperatorViewConverter.List
-    
+
+    /// Initializes a new view with the given parameters.
     init(
         provider: OpenChannelRegisterOperatorViewProvider,
         headerItem: (() -> OpenChannelRegisterOperatorType.HeaderItem)? = nil

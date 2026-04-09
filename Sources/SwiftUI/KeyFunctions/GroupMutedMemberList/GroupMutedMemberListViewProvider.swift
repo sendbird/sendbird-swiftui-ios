@@ -10,15 +10,17 @@ import SwiftUI
 import SendbirdChatSDK
 
 // MARK: ViewEventHandlers
+/// Event handlers for the Group Muted Member List view.
 public struct GroupMutedMemberListViewEventHandlers {
     // Blocks for handling for user inputs.
     var selectRowHandler: ((_ indexPath: IndexPath) -> Void)?
-    
+
     // Blocks for handling for internal events.
     var errorHandler: ((_ error: SBError?) -> Void)?
 }
 
 // MARK: - GroupMutedMemberListViewProvider
+/// A provider that manages data and state for the Group Muted Member List view.
 public class GroupMutedMemberListViewProvider: SendbirdUIProvider {
     // MARK: - Init properties
     public var channelURL: String
@@ -41,6 +43,7 @@ public class GroupMutedMemberListViewProvider: SendbirdUIProvider {
     // MARK: Public UI Properties
 
     // MARK: Methods
+    /// Initializes a new provider with the given parameters.
     public init(
         channelURL: String,
         customUsers: [SBUUser]? = nil
@@ -48,7 +51,7 @@ public class GroupMutedMemberListViewProvider: SendbirdUIProvider {
         self.channelURL = channelURL
         self.customUsers = customUsers
     }
-    
+
     /// This function sets up the provider.
     @discardableResult
     public func setup(

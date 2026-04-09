@@ -53,7 +53,8 @@ protocol ViewUpdateHandlerProtocol {
 
 extension ViewUpdateHandlerProtocol {
      var viewUpdateData: ViewUpdateDataType? {
-         get { return nil }
+         get { nil }
+         // swiftlint:disable:next unused_setter_value
          set { /* No-op by default */ }
      }
     

@@ -27,5 +27,5 @@ public class GlobalOptions {
     ///
     /// - Since: 1.1.2
     @available(iOS 26, *)
-    public static var hidesSharedBackgroundForCustomNavBarButton: Bool = false
+    public static var hidesSharedBackgroundForCustomNavBarButton: Bool = false // swiftlint:disable:this identifier_name
 }
