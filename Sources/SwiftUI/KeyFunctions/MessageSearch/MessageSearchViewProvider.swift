@@ -9,10 +9,12 @@ import Foundation
 import SwiftUI
 import SendbirdChatSDK
 
+/// Event handlers for the Message Search view.
 public struct MessageSearchEventHandlers {
-    
+
 }
 
+/// A provider that manages data and state for the Message Search view.
 public class MessageSearchViewProvider: SendbirdUIProvider {
     // init params
     var channelURL: String
@@ -22,6 +24,7 @@ public class MessageSearchViewProvider: SendbirdUIProvider {
     weak var viewController: SBUMessageSearchViewController?
     var eventHandlers = MessageSearchEventHandlers()
     
+    /// Initializes a new provider with the given parameters.
     public init(
         channelURL: String,
         messageSearchQueryParams: MessageSearchQueryParams? = nil
@@ -29,7 +32,7 @@ public class MessageSearchViewProvider: SendbirdUIProvider {
         self.channelURL = channelURL
         self.messageSearchQueryParams = messageSearchQueryParams
     }
-    
+
     /// This function sets up the provider.
     @discardableResult
     public func setup(

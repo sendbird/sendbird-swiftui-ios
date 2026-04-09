@@ -23,6 +23,7 @@ public struct MessageThreadView: View {
         self.provider = provider  // Default
     }
     
+    /// The content and behavior of the view.
     public var body: some View {
         SBUViewControllerSet.MessageThreadViewController
             .swiftUI {
@@ -94,9 +95,12 @@ public struct MessageThreadView: View {
 /// MessageThreadView initializers
 public extension MessageThreadView {
     // MARK: - typealias
+    /// The list content type alias for MessageThreadView.
     typealias ListContent = MessageThreadViewConverter.List
+    /// The input content type alias for MessageThreadView.
     typealias InputContent = MessageThreadViewConverter.Input
-    
+
+    /// Initializes a new view with the given parameters.
     init(
         provider: MessageThreadViewProvider,
         headerItem: (() -> MessageThreadType.HeaderItem)? = nil,
@@ -128,12 +132,12 @@ public extension MessageThreadView {
             UIHostingController(rootView: list(tableViewConfig)).view
         }
         self.viewConverter.list.tableView.viewUpdateHandlers[.entireContent] = { viewController in
-            viewController.listComponent?.applyViewConverter(.entireContent)
+            _ = viewController.listComponent?.applyViewConverter(.entireContent)
         }
-        
+
         self.applyViewConverterSet()
     }
-    
+
     // NOTE: This interface has been temporarily closed.
     private init<Content: View>(
         provider: MessageThreadViewProvider,
@@ -154,14 +158,14 @@ public extension MessageThreadView {
         self.viewConverter.input.entireContent = ViewConverter { inputViewConfig in
             UIHostingController(rootView: input(inputViewConfig)).view
         }
-        
+
         self.viewConverter.input.viewUpdateHandlers[.entireContent] = { viewController in
             viewController.inputComponent?.applyViewConverter(.entireContent)
         }
-        
+
         self.applyViewConverterSet()
     }
-    
+
     // NOTE: This interface has been temporarily closed.
     private init<Content: View>(
         provider: MessageThreadViewProvider,
@@ -178,7 +182,7 @@ public extension MessageThreadView {
             UIHostingController(rootView: list(tableViewConfig)).view
         }
         self.viewConverter.list.tableView.viewUpdateHandlers[.entireContent] = { viewController in
-            viewController.listComponent?.applyViewConverter(.entireContent)
+            _ = viewController.listComponent?.applyViewConverter(.entireContent)
         }
         
         // SwiftUI TODO:  suggentedMentionList 할때 여기 .input 대신 .input.messageInputView. 로 해야하는거 아닌지 체크

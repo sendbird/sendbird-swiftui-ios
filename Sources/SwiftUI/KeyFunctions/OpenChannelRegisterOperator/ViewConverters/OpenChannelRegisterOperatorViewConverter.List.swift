@@ -93,7 +93,7 @@ extension OpenChannelRegisterOperatorViewConverter.List {
 }
 
 // TODO: Cell 단위나 하위 아이템들은 여기 참고해서 추가 (↓↓ example ↓↓)
-//extension OpenChannelRegisterOperatorViewConverter.List.TableView {
+// extension OpenChannelRegisterOperatorViewConverter.List.TableView {
 //    public struct ChannelCell: ViewConverterProtocol {
 //        // MARK: TypeAlias
 //        typealias UpdatableVC = OpenChannelRegisterOperatorViewConverter.List.UpdatableVC
@@ -124,9 +124,9 @@ extension OpenChannelRegisterOperatorViewConverter.List {
 //            self.coverImage.applyViewUpdates(to: viewController, includeSubDepth: includeSubDepth)
 //        }
 //    }
-//}
+// }
 //
-//extension OpenChannelRegisterOperatorViewConverter.List.TableView.ChannelCell {
+// extension OpenChannelRegisterOperatorViewConverter.List.TableView.ChannelCell {
 //    public struct CoverImage: ViewConverterProtocol {
 //        // MARK: ViewType
 //        enum ViewType: ViewTypeEnum { case none }
@@ -144,4 +144,4 @@ extension OpenChannelRegisterOperatorViewConverter.List {
 //        // MARK: View updater
 //        var viewUpdateHandlers = [ViewType: (UpdatableVC) -> Void]()
 //    }
-//}
+// }

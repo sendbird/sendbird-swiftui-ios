@@ -11,17 +11,19 @@ import SendbirdChatSDK
 
 // swiftlint:disable type_name
 // MARK: ViewEventHandlers
+/// Event handlers for the Open Channel Register Operator view.
 public struct OpenChannelRegisterOperatorViewEventHandlers {
     // Blocks for handling for user inputs.
     var selectRowHandler: ((_ indexPath: IndexPath) -> Void)?
     var didRegisterOperatorsHandler: ((_ operatorIds: [String]) -> Void)?
-    
+
     // Blocks for handling for internal events.
     var errorHandler: ((_ error: SBError?) -> Void)?
 }
 // swiftlint:enable type_name
 
 // MARK: - OpenChannelRegisterOperatorViewProvider
+/// A provider that manages data and state for the Open Channel Register Operator view.
 public class OpenChannelRegisterOperatorViewProvider: SendbirdUIProvider {
     // Init properties
     var channelURL: String
@@ -33,16 +35,21 @@ public class OpenChannelRegisterOperatorViewProvider: SendbirdUIProvider {
     
     // MARK: Public Data Properties
     // Note: @Published properties can't be computed properties.
+    /// The list of participants available to register as operators.
     @Published public var participants: [SBUUser] = []
+    /// The list of participants currently selected for operator registration.
     @Published public var selectedParticipants: [SBUUser] = []
+    /// Indicates whether the view is currently loading.
     @Published public var isLoading: Bool = false
-    
+
     // MARK: Public Data Properties
+    /// The current open channel object.
     public var channel: OpenChannel?
     
     // MARK: Public UI Properties
 
     // MARK: Methods
+    /// Initializes a new provider with the given parameters.
     public init(
         channelURL: String,
         customUsers: [SBUUser]? = nil
@@ -50,7 +57,7 @@ public class OpenChannelRegisterOperatorViewProvider: SendbirdUIProvider {
         self.channelURL = channelURL
         self.customUsers = customUsers
     }
-    
+
     /// This function sets up the provider.
     @discardableResult
     public func setup(
@@ -61,18 +68,20 @@ public class OpenChannelRegisterOperatorViewProvider: SendbirdUIProvider {
         if let customUsers { self.customUsers = customUsers }
         return self
     }
-    
+
     func bind(viewController: SBURegisterOperatorViewController) {
         viewController.swiftUIDelegate = self
         self.viewController = viewController
     }
-    
+
     // MARK: ViewController method wrappers
+    /// Registers all currently selected participants as operators.
     public func registerOperatorWithSelectedParticipants() {
         self.viewController?.registerSelectedUsers()
     }
-    
+
     // MARK: ViewModel method wrappers
+    /// Registers the specified user IDs as operators in the channel.
     public func registerOperator(with userIds: [String]) {
         self.viewController?.viewModel?.registerAsOperators(userIds: userIds)
     }

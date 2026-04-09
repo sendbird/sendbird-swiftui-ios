@@ -107,4 +107,3 @@ extension SBUGroupChannelModule.Header {
         }
     }
 }
-

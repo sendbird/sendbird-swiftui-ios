@@ -9,10 +9,12 @@ import Foundation
 import SwiftUI
 import SendbirdChatSDK
 
+/// Event handlers for the Group Channel Push Settings view.
 public struct GroupChannelPushSettingsEventHandlers {
-    
+
 }
 
+/// A provider that manages data and state for the Group Channel Push Settings view.
 public class GroupChannelPushSettingsViewProvider: SendbirdUIProvider {
     // init properties
     var channelURL: String
@@ -21,10 +23,11 @@ public class GroupChannelPushSettingsViewProvider: SendbirdUIProvider {
     weak var viewController: SBUGroupChannelPushSettingsViewController?
     var eventHandlers = GroupChannelPushSettingsEventHandlers()
     
+    /// Initializes a new provider with the given channel URL.
     public init(channelURL: String) {
         self.channelURL = channelURL
     }
-    
+
     /// This function sets up the provider.
     @discardableResult
     public func setup(

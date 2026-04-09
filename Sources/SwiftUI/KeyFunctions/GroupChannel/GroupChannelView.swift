@@ -27,6 +27,7 @@ public struct GroupChannelView: View {
         self.provider = provider  // Default
     }
     
+    /// The content and behavior of the view.
     public var body: some View {
         SBUViewControllerSet.GroupChannelViewController
             .swiftUI {
@@ -102,9 +103,12 @@ public struct GroupChannelView: View {
 /// GroupChannelView initializers
 public extension GroupChannelView {
     // MARK: - typealias
+    /// The list content type alias for GroupChannelView.
     typealias ListContent = GroupChannelViewConverter.List
+    /// The input content type alias for GroupChannelView.
     typealias InputContent = GroupChannelViewConverter.Input
-        
+
+    /// Initializes a new view with the given parameters.
     init(
         provider: GroupChannelViewProvider,
         headerItem: (() -> GroupChannelType.HeaderItem)? = nil,
@@ -205,6 +209,7 @@ public extension GroupChannelView {
 
 // MARK: Event handler interfaces
 public extension GroupChannelView {
+    /// Called when an error occurs.
     func onSendbirdError(_ errorHandler: @escaping SendbirdErrorHandler) -> Self {
         let copy = self
         copy.provider.eventHandlers.errorHandler = errorHandler

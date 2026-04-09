@@ -18,10 +18,12 @@ public struct CreateOpenChannelView: View {
     
     @ObservedObject private var provider: CreateOpenChannelViewProvider
     
+    /// Initializes a new view with default settings.
     public init() {
         self.provider = CreateOpenChannelViewProvider()  // Default provider
     }
-    
+
+    /// The content and behavior of the view.
     public var body: some View {
         SBUViewControllerSet.CreateOpenChannelViewController
             .swiftUI {
@@ -73,8 +75,9 @@ public extension CreateOpenChannelView {
     // MARK: - typealias
     // TODO: Initializer 에서 필요하면 구현
     // typealias ListContent = CreateOpenChannelViewConverter.List
-    
+
 // (↓↓ example ↓↓)
+    /// Initializes a new view with the given parameters.
     init(
         provider: CreateOpenChannelViewProvider? = nil,
         headerItem: (() -> CreateOpenChannelType.HeaderItem)? = nil
@@ -113,13 +116,13 @@ public extension CreateOpenChannelView {
 
 // MARK: Event handler interfaces
 public extension CreateOpenChannelView {
+    /// Called when an error occurs.
     func onSendbirdError(_ errorHandler: @escaping ((_ error: SBError?) -> Void)) -> Self {
         let copy = self
         copy.provider.eventHandlers.errorHandler = errorHandler
         return copy
     }
 }
-
 
 #Preview {
     NavigationView {

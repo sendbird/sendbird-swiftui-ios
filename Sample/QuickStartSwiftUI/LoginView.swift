@@ -144,9 +144,11 @@ extension LoginView {
         SBUGlobals.isImageCompressionEnabled = true
         
         // Set `hidesSharedBackgroundForUIBarButtonItem` to `true` to remove liquid glass effect from custom navigation bar button.
+        #if compiler(>=6.2)
         if #available(iOS 26.0, *) {
             GlobalOptions.hidesSharedBackgroundForCustomNavBarButton = true
         }
+        #endif
     }
     
     func initializeSendbird() {

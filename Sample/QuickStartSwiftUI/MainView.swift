@@ -11,7 +11,8 @@ import SendbirdSwiftUI
 #endif
 
 struct MainView: View {
-    @Environment(\.dismiss) var dismiss
+    @Environment(\.dismiss)
+    var dismiss
     @State private var activeItem: MainViewItems?
     
     var body: some View {

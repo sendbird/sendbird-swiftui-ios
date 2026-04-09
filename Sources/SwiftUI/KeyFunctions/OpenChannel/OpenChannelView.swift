@@ -23,6 +23,7 @@ public struct OpenChannelView: View {
         self.provider = provider  // Default
     }
     
+    /// The content and behavior of the view.
     public var body: some View {
         SBUViewControllerSet.OpenChannelViewController
             .swiftUI {
@@ -93,9 +94,12 @@ public struct OpenChannelView: View {
 /// OpenChannelView initializers
 public extension OpenChannelView {
     // MARK: - typealias
+    /// The list content type alias for OpenChannelView.
     typealias ListContent = OpenChannelViewConverter.List
+    /// The input content type alias for OpenChannelView.
     typealias InputContent = OpenChannelViewConverter.Input
-    
+
+    /// Initializes a new view with the given parameters.
     init(
         provider: OpenChannelViewProvider,
         headerItem: (() -> OpenChannelType.HeaderItem)? = nil,

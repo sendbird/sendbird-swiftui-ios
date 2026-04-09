@@ -23,6 +23,7 @@ public struct OpenBannedUserListView: View {
         self.provider = provider
     }
     
+    /// The content and behavior of the view.
     public var body: some View {
         SBUViewControllerSet.OpenUserListViewController
             .swiftUI {
@@ -86,8 +87,10 @@ public struct OpenBannedUserListView: View {
 /// OpenBannedUserListView initializers
 public extension OpenBannedUserListView {
     // MARK: - typealias
+    /// The list content type alias for OpenBannedUserListView.
     typealias ListContent = OpenBannedUserListViewConverter.List
-    
+
+    /// Initializes a new view with the given parameters.
     init(
         provider: OpenBannedUserListViewProvider,
         headerItem: (() -> OpenBannedUserListType.HeaderItem)? = nil,
@@ -127,12 +130,14 @@ public extension OpenBannedUserListView {
 
 // MARK: Event handler interfaces
 public extension OpenBannedUserListView {
+    /// Called when a row is selected in the open banned user list.
     func onSendbirdSelectRow(_ selectRowHandler: @escaping ((_ indexPath: IndexPath) -> Void)) -> Self {
         let copy = self
         copy.provider.eventHandlers.selectRowHandler = selectRowHandler
         return copy
     }
-    
+
+    /// Called when an error occurs.
     func onSendbirdError(_ errorHandler: @escaping ((_ error: SBError?) -> Void)) -> Self {
         let copy = self
         copy.provider.eventHandlers.errorHandler = errorHandler

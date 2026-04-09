@@ -23,6 +23,7 @@ public struct GroupBannedUserListView: View {
         self.provider = provider
     }
     
+    /// The content and behavior of the view.
     public var body: some View {
         SBUViewControllerSet.GroupUserListViewController
             .swiftUI {
@@ -82,8 +83,10 @@ public struct GroupBannedUserListView: View {
 /// GroupBannedUserListView initializers
 public extension GroupBannedUserListView {
     // MARK: - typealias
+    /// The list content type alias for GroupBannedUserListView.
     typealias ListContent = GroupBannedUserListViewConverter.List
-    
+
+    /// Initializes a new view with the given parameters.
     init(
         provider: GroupBannedUserListViewProvider,
         headerItem: (() -> GroupBannedUserListType.HeaderItem)? = nil,
@@ -123,12 +126,14 @@ public extension GroupBannedUserListView {
 
 // MARK: Event handler interfaces
 public extension GroupBannedUserListView {
+    /// Called when a row is selected in the group banned user list.
     func onSendbirdSelectRow(_ selectRowHandler: @escaping ((_ indexPath: IndexPath) -> Void)) -> Self {
         let copy = self
         copy.provider.eventHandlers.selectRowHandler = selectRowHandler
         return copy
     }
-    
+
+    /// Called when an error occurs.
     func onSendbirdError(_ errorHandler: @escaping ((_ error: SBError?) -> Void)) -> Self {
         let copy = self
         copy.provider.eventHandlers.errorHandler = errorHandler

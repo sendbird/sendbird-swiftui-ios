@@ -9,24 +9,32 @@ import Foundation
 import SwiftUI
 import SendbirdChatSDK
 
+/// Event handlers for the Open Channel view.
 public struct OpenChannelEventHandlers {
     var errorHandler: SendbirdErrorHandler?
     var connectionStateChangeHandler: SendbirdConnectionStateChangeHandler?
 }
 
+/// A provider that manages data and state for the Open Channel view.
 public class OpenChannelViewProvider: SendbirdUIProvider {
     // SendbirdProvider protocol
     weak var viewController: SBUOpenChannelViewController?
     var eventHandlers = OpenChannelEventHandlers()
     
     // init properties
+    /// The channel URL for the current channel.
     public private(set) var channelURL: String
+    /// The starting point timestamp for loading messages.
     public private(set) var startingPoint: Int64?
+    /// The message list parameters used to filter messages.
     public private(set) var messageListParams: MessageListParams?
-    
+
     // MARK: Published properties
+    /// The current open channel object.
     @Published public var channel: OpenChannel?
+    /// The list of messages in the channel.
     @Published public var fullMessages: [BaseMessage] = []
+    /// Indicates whether the view is currently loading.
     @Published public var isLoading: Bool = false
     
     // MARK: Private properties
@@ -34,6 +42,7 @@ public class OpenChannelViewProvider: SendbirdUIProvider {
         self.viewController?.viewModel
     }
     
+    /// Initializes a new provider with the given parameters.
     public init(
         channelURL: String,
         startingPoint: Int64? = nil,
@@ -43,7 +52,7 @@ public class OpenChannelViewProvider: SendbirdUIProvider {
         self.startingPoint = startingPoint
         self.messageListParams = messageListParams
     }
-    
+
     /// This function sets up the provider.
     @discardableResult
     public func setup(
@@ -65,14 +74,17 @@ public class OpenChannelViewProvider: SendbirdUIProvider {
 
 // MARK: - ViewController method wrappers
 public extension OpenChannelViewProvider {
+    /// Navigates back from the channel screen.
     func onClickBack() {
         self.viewController?.onClickBack()
     }
-    
+
+    /// Presents the channel settings screen.
     func showChannelSettings() {
         self.viewController?.showChannelSettings()
     }
-    
+
+    /// Presents the participants list screen.
     func showParticipantsList() {
         self.viewController?.showParticipantsList()
     }
@@ -80,10 +92,12 @@ public extension OpenChannelViewProvider {
 
 // MARK: - ViewModel method wrappers
 public extension OpenChannelViewProvider {
+    /// Loads older messages preceding the current list.
     func loadPreviousMessages() {
         viewModel?.loadPrevMessages(timestamp: .max)
     }
-    
+
+    /// Loads newer messages following the current list.
     func loadNextMessages() {
         viewModel?.loadNextMessages()
     }

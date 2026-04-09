@@ -27,7 +27,6 @@ public class SBUTheme {
                 channelTheme: SBUChannelTheme = .light,
                 messageInputTheme: SBUMessageInputTheme = .light,
                 messageCellTheme: SBUMessageCellTheme = .light,
-                messageTemplateTheme: SBUMessageTemplateTheme = .light,
                 userListTheme: SBUUserListTheme = .light,
                 userCellTheme: SBUUserCellTheme = .light,
                 channelSettingsTheme: SBUChannelSettingsTheme = .light,
@@ -47,7 +46,6 @@ public class SBUTheme {
         self.channelTheme = channelTheme
         self.messageInputTheme = messageInputTheme
         self.messageCellTheme = messageCellTheme
-        self.messageTemplateTheme = messageTemplateTheme
         self.userListTheme = userListTheme
         self.userCellTheme = userCellTheme
         self.channelSettingsTheme = channelSettingsTheme
@@ -101,15 +99,12 @@ public class SBUTheme {
         channelTheme: SBUChannelTheme,
         messageCellTheme: SBUMessageCellTheme,
         messageInputTheme: SBUMessageInputTheme,
-        componentTheme: SBUComponentTheme,
-        messageTemplateTheme: SBUMessageTemplateTheme
+        componentTheme: SBUComponentTheme
     ) {
-        
         self.channelTheme = channelTheme
         self.messageCellTheme = messageCellTheme
         self.messageInputTheme = messageInputTheme
         self.componentTheme = componentTheme
-        self.messageTemplateTheme = messageTemplateTheme
     }
     
     public static func setUserList(
@@ -142,7 +137,6 @@ public class SBUTheme {
             channelTheme: .dark,
             messageInputTheme: .dark,
             messageCellTheme: .dark,
-            messageTemplateTheme: .dark,
             userListTheme: .dark,
             userCellTheme: .dark,
             channelSettingsTheme: .dark,
@@ -173,7 +167,6 @@ public class SBUTheme {
             channelTheme: .light,
             messageInputTheme: .light,
             messageCellTheme: .light,
-            messageTemplateTheme: .light,
             userListTheme: .light,
             userCellTheme: .light,
             channelSettingsTheme: .light,
@@ -286,12 +279,6 @@ public class SBUTheme {
         set { shared.createOpenChannelTheme = newValue }
     }
     
-    // Message template
-    public static var messageTemplateTheme: SBUMessageTemplateTheme {
-        get { shared.messageTemplateTheme }
-        set { shared.messageTemplateTheme = newValue }
-    }
-    
     // Voice message input
     public static var voiceMessageInputTheme: SBUVoiceMessageInputTheme {
         get { shared.voiceMessageInputTheme }
@@ -306,7 +293,7 @@ public class SBUTheme {
     
     // MARK: - Private property
     
-    private static var shared: SBUTheme = SBUTheme()
+    static var shared: SBUTheme = SBUTheme()
     
     /// Color scheme of Sendbird UIKit (read-only class property)
     /// To update, use `set(colorScheme:)`.
@@ -356,7 +343,8 @@ public class SBUTheme {
     private var createOpenChannelTheme: SBUCreateOpenChannelTheme
     
     // Message Template
-    private var messageTemplateTheme: SBUMessageTemplateTheme = SBUMessageTemplateTheme()
+    @available(*, deprecated, renamed: "SendbirdUIMessageTemplate.TemplateTheme") // 3.34.1
+    var messageTemplateTheme: SBUMessageTemplateTheme = SBUMessageTemplateTheme()
 
     // Voice message input
     private var voiceMessageInputTheme: SBUVoiceMessageInputTheme
@@ -411,6 +399,9 @@ public class SBUGroupChannelListTheme {
         theme.leaveTintColor = SBUColorSet.onDarkTextHighEmphasis
         
         theme.alertBackgroundColor = SBUColorSet.background50
+        theme.channelTypeSelectorItemTintColor = SBUColorSet.primaryMain
+        
+        theme.navigationBarGradientTint = SBUColorSet.background50
         
         return theme
     }
@@ -435,23 +426,30 @@ public class SBUGroupChannelListTheme {
         theme.leaveTintColor = SBUColorSet.onLightTextHighEmphasis
         
         theme.alertBackgroundColor = SBUColorSet.background600
+        theme.channelTypeSelectorItemTintColor = SBUColorSet.primaryLight
+        
+        theme.navigationBarGradientTint = SBUColorSet.background600
         
         return theme
     }
     
-    public init(statusBarStyle: UIStatusBarStyle = .default,
-                leftBarButtonTintColor: UIColor = SBUColorSet.primaryMain,
-                rightBarButtonTintColor: UIColor = SBUColorSet.primaryMain,
-                navigationBarTintColor: UIColor = SBUColorSet.background50,
-                navigationBarShadowColor: UIColor = SBUColorSet.onLightTextDisabled,
-                backgroundColor: UIColor = SBUColorSet.background50,
-                notificationOnBackgroundColor: UIColor = SBUColorSet.primaryMain,
-                notificationOnTintColor: UIColor = SBUColorSet.onDarkTextHighEmphasis,
-                notificationOffBackgroundColor: UIColor = SBUColorSet.background200,
-                notificationOffTintColor: UIColor = SBUColorSet.onLightTextHighEmphasis,
-                leaveBackgroundColor: UIColor = SBUColorSet.errorMain,
-                leaveTintColor: UIColor = SBUColorSet.onDarkTextHighEmphasis,
-                alertBackgroundColor: UIColor = SBUColorSet.background50) {
+    public init(
+        statusBarStyle: UIStatusBarStyle = .default,
+        leftBarButtonTintColor: UIColor = SBUColorSet.primaryMain,
+        rightBarButtonTintColor: UIColor = SBUColorSet.primaryMain,
+        navigationBarTintColor: UIColor = SBUColorSet.background50,
+        navigationBarShadowColor: UIColor = SBUColorSet.onLightTextDisabled,
+        backgroundColor: UIColor = SBUColorSet.background50,
+        notificationOnBackgroundColor: UIColor = SBUColorSet.primaryMain,
+        notificationOnTintColor: UIColor = SBUColorSet.onDarkTextHighEmphasis,
+        notificationOffBackgroundColor: UIColor = SBUColorSet.background200,
+        notificationOffTintColor: UIColor = SBUColorSet.onLightTextHighEmphasis,
+        leaveBackgroundColor: UIColor = SBUColorSet.errorMain,
+        leaveTintColor: UIColor = SBUColorSet.onDarkTextHighEmphasis,
+        alertBackgroundColor: UIColor = SBUColorSet.background50,
+        channelTypeSelectorItemTintColor: UIColor = SBUColorSet.primaryMain,
+        navigationBarGradientTint: UIColor = SBUColorSet.background50
+    ) {
         
         self.statusBarStyle = statusBarStyle
         self.leftBarButtonTintColor = leftBarButtonTintColor
@@ -466,7 +464,8 @@ public class SBUGroupChannelListTheme {
         self.leaveBackgroundColor = leaveBackgroundColor
         self.leaveTintColor = leaveTintColor
         self.alertBackgroundColor = alertBackgroundColor
-        
+        self.channelTypeSelectorItemTintColor = channelTypeSelectorItemTintColor
+        self.navigationBarGradientTint = navigationBarGradientTint
     }
     
     public var statusBarStyle: UIStatusBarStyle
@@ -487,6 +486,12 @@ public class SBUGroupChannelListTheme {
     public var leaveTintColor: UIColor
     
     public var alertBackgroundColor: UIColor
+    
+    /// - Since: 3.34.0
+    public var channelTypeSelectorItemTintColor: UIColor
+    
+    // Liquid Glass
+    public var navigationBarGradientTint: UIColor
 }
 
 // MARK: - Group Channel Cell Theme
@@ -669,6 +674,8 @@ public class SBUOpenChannelListTheme {
         theme.refreshIndicatorColor = SBUColorSet.primaryMain
         theme.refreshBackgroundColor = SBUColorSet.background100
         
+        theme.navigationBarGradientTint = SBUColorSet.background50
+        
         return theme
     }
     
@@ -687,17 +694,21 @@ public class SBUOpenChannelListTheme {
         theme.refreshIndicatorColor = SBUColorSet.primaryLight
         theme.refreshBackgroundColor = SBUColorSet.background700
         
+        theme.navigationBarGradientTint = SBUColorSet.background600
         return theme
     }
     
-    public init(statusBarStyle: UIStatusBarStyle = .default,
-                leftBarButtonTintColor: UIColor = SBUColorSet.primaryMain,
-                rightBarButtonTintColor: UIColor = SBUColorSet.primaryMain,
-                navigationBarTintColor: UIColor = SBUColorSet.background50,
-                navigationBarShadowColor: UIColor = SBUColorSet.onLightTextDisabled,
-                backgroundColor: UIColor = SBUColorSet.background50,
-                refreshIndicatorColor: UIColor = SBUColorSet.primaryMain,
-                refreshBackgroundColor: UIColor = SBUColorSet.background100) {
+    public init(
+        statusBarStyle: UIStatusBarStyle = .default,
+        leftBarButtonTintColor: UIColor = SBUColorSet.primaryMain,
+        rightBarButtonTintColor: UIColor = SBUColorSet.primaryMain,
+        navigationBarTintColor: UIColor = SBUColorSet.background50,
+        navigationBarShadowColor: UIColor = SBUColorSet.onLightTextDisabled,
+        backgroundColor: UIColor = SBUColorSet.background50,
+        refreshIndicatorColor: UIColor = SBUColorSet.primaryMain,
+        refreshBackgroundColor: UIColor = SBUColorSet.background100,
+        navigationBarGradientTint: UIColor = SBUColorSet.background50
+    ) {
         
         self.statusBarStyle = statusBarStyle
         self.leftBarButtonTintColor = leftBarButtonTintColor
@@ -707,6 +718,7 @@ public class SBUOpenChannelListTheme {
         self.backgroundColor = backgroundColor
         self.refreshIndicatorColor = refreshIndicatorColor
         self.refreshBackgroundColor = refreshBackgroundColor
+        self.navigationBarGradientTint = navigationBarGradientTint
     }
     
     public var statusBarStyle: UIStatusBarStyle
@@ -720,6 +732,10 @@ public class SBUOpenChannelListTheme {
     
     public var refreshIndicatorColor: UIColor
     public var refreshBackgroundColor: UIColor
+    
+    // Liquid Glass
+    /// - Since: 3.34.0
+    public var navigationBarGradientTint: UIColor
 }
 
 // MARK: - Open Channel Cell Theme
@@ -856,6 +872,8 @@ public class SBUChannelTheme {
         theme.messageThreadTitleChannelNameColor = SBUColorSet.primaryMain
         theme.messageThreadTitleChannelNameFont = SBUFontSet.caption2
         
+        // Liquid glass
+        theme.navigationBarGradientTint = SBUColorSet.background50
         return theme
     }
     
@@ -900,6 +918,8 @@ public class SBUChannelTheme {
         theme.messageThreadTitleChannelNameColor = SBUColorSet.primaryLight
         theme.messageThreadTitleChannelNameFont = SBUFontSet.caption2
         
+        // Liquid glass
+        theme.navigationBarGradientTint = SBUColorSet.background600
         return theme
     }
     
@@ -944,6 +964,9 @@ public class SBUChannelTheme {
         theme.messageThreadTitleChannelNameColor = SBUColorSet.primaryLight
         theme.messageThreadTitleChannelNameFont = SBUFontSet.caption2
         
+        // Liquid glass
+        theme.navigationBarGradientTint = SBUColorSet.background600
+        
         return theme
     }
     
@@ -970,7 +993,8 @@ public class SBUChannelTheme {
                 messageThreadTitleColor: UIColor = SBUColorSet.onLightTextHighEmphasis,
                 messageThreadTitleFont: UIFont = SBUFontSet.h3,
                 messageThreadTitleChannelNameColor: UIColor = SBUColorSet.primaryMain,
-                messageThreadTitleChannelNameFont: UIFont = SBUFontSet.caption2
+                messageThreadTitleChannelNameFont: UIFont = SBUFontSet.caption2,
+                navigationBarGradientTint: UIColor = SBUColorSet.background50
     ) {
         
         self.statusBarStyle = statusBarStyle
@@ -999,6 +1023,9 @@ public class SBUChannelTheme {
         self.messageThreadTitleFont = messageThreadTitleFont
         self.messageThreadTitleChannelNameColor = messageThreadTitleChannelNameColor
         self.messageThreadTitleChannelNameFont = messageThreadTitleChannelNameFont
+        
+        // Liquid glass
+        self.navigationBarGradientTint = navigationBarGradientTint
     }
     
     public var statusBarStyle: UIStatusBarStyle
@@ -1008,6 +1035,7 @@ public class SBUChannelTheme {
     public var leftBarButtonTintColor: UIColor
     public var rightBarButtonTintColor: UIColor
     public var backgroundColor: UIColor
+    public var navigationBarGradientTint: UIColor
     
     // Alert
     public var removeItemColor: UIColor
@@ -1047,14 +1075,11 @@ public class SBUMessageInputTheme {
     public static var light: SBUMessageInputTheme {
         let theme = SBUMessageInputTheme()
         
-        theme.backgroundColor = SBUColorSet.background50
-        theme.textFieldBackgroundColor = SBUColorSet.background100
         theme.textFieldPlaceholderColor = SBUColorSet.onLightTextLowEmphasis
         theme.textFieldPlaceholderFont = SBUFontSet.body3
         theme.textFieldDisabledColor = SBUColorSet.onLightTextDisabled
         theme.textFieldTintColor = SBUColorSet.primaryMain
         theme.textFieldTextColor = SBUColorSet.onLightTextHighEmphasis
-        theme.textFieldBorderColor = SBUColorSet.background100
         theme.textFieldFont = SBUFontSet.body3
         
         theme.buttonTintColor = SBUColorSet.primaryMain
@@ -1064,8 +1089,29 @@ public class SBUMessageInputTheme {
         theme.saveButtonFont = SBUFontSet.button2
         theme.saveButtonTextColor = SBUColorSet.onDarkTextHighEmphasis
         
+        // Liquid glass - Adaptive
+        theme._backgroundColorAdaptive = SBUAdaptive(
+            base: SBUColorSet.background50,
+            liquidGlass: SBUColorSet.background0
+        )
+        theme._textFieldBackgroundColorAdaptive = SBUAdaptive(
+            base: SBUColorSet.background100,
+            liquidGlass: SBUColorSet.background0
+        )
+        theme._textFieldBorderColorAdaptive = SBUAdaptive(
+            base: SBUColorSet.background100,
+            liquidGlass: SBUColorSet.background0
+        )
+        theme._channelViewDividerColorAdaptive = SBUAdaptive(
+            base: SBUColorSet.onLightTextDisabled,
+            liquidGlass: SBUColorSet.background0
+        )
+        
+        // Liquid glass only
+        theme.inputViewShadowColor = SBUColorSet.background700
+        theme.inputButtonBackgroundColor = SBUColorSet.liquidGlassInputButtonBackgroundLight
+        
         // Quoted message
-        theme.channelViewDividerColor = SBUColorSet.onLightTextDisabled
         theme.quotedFileMessageThumbnailBackgroundColor = SBUColorSet.background200
         theme.quotedFileMessageThumbnailTintColor = SBUColorSet.onLightTextMidEmphasis
         theme.replyToTextColor = SBUColorSet.onLightTextHighEmphasis
@@ -1082,14 +1128,11 @@ public class SBUMessageInputTheme {
     }
     public static var dark: SBUMessageInputTheme {
         let theme = SBUMessageInputTheme()
-        theme.backgroundColor = SBUColorSet.background600
-        theme.textFieldBackgroundColor = SBUColorSet.background400
         theme.textFieldPlaceholderColor = SBUColorSet.onDarkTextLowEmphasis
         theme.textFieldPlaceholderFont = SBUFontSet.body3
         theme.textFieldDisabledColor = SBUColorSet.onDarkTextDisabled
         theme.textFieldTintColor = SBUColorSet.primaryLight
         theme.textFieldTextColor = SBUColorSet.onDarkTextHighEmphasis
-        theme.textFieldBorderColor = SBUColorSet.background400
         theme.textFieldFont = SBUFontSet.body3
         
         theme.buttonTintColor = SBUColorSet.primaryLight
@@ -1099,7 +1142,29 @@ public class SBUMessageInputTheme {
         theme.saveButtonFont = SBUFontSet.button2
         theme.saveButtonTextColor = SBUColorSet.onLightTextHighEmphasis
         
-        theme.channelViewDividerColor = SBUColorSet.onDarkTextDisabled
+        // Liquid glass - Adaptive
+        theme._backgroundColorAdaptive = SBUAdaptive(
+            base: SBUColorSet.background600,
+            liquidGlass: SBUColorSet.background0
+        )
+        theme._textFieldBackgroundColorAdaptive = SBUAdaptive(
+            base: SBUColorSet.background400,
+            liquidGlass: SBUColorSet.background0
+        )
+        theme._textFieldBorderColorAdaptive = SBUAdaptive(
+            base: SBUColorSet.background400,
+            liquidGlass: SBUColorSet.background0
+        )
+        theme._channelViewDividerColorAdaptive = SBUAdaptive(
+            base: SBUColorSet.onDarkTextDisabled,
+            liquidGlass: SBUColorSet.background0
+        )
+        
+        // Liquid glass only
+        theme.inputViewShadowColor = SBUColorSet.background700
+        theme.inputButtonBackgroundColor = SBUColorSet.liquidGlassInputButtonBackgroundDark
+        
+        // Quoted message
         theme.quotedFileMessageThumbnailBackgroundColor = SBUColorSet.background500
         theme.quotedFileMessageThumbnailTintColor = SBUColorSet.onDarkTextMidEmphasis
         theme.replyToTextColor = SBUColorSet.onDarkTextHighEmphasis
@@ -1116,14 +1181,11 @@ public class SBUMessageInputTheme {
     }
     public static var overlay: SBUMessageInputTheme {
         let theme = SBUMessageInputTheme()
-        theme.backgroundColor = SBUColorSet.onLightTextMidEmphasis
-        theme.textFieldBackgroundColor = SBUColorSet.background400
         theme.textFieldPlaceholderColor = SBUColorSet.onDarkTextLowEmphasis
         theme.textFieldPlaceholderFont = SBUFontSet.body3
         theme.textFieldDisabledColor = SBUColorSet.onDarkTextDisabled
         theme.textFieldTintColor = SBUColorSet.primaryLight
         theme.textFieldTextColor = SBUColorSet.onDarkTextHighEmphasis
-        theme.textFieldBorderColor = SBUColorSet.background400
         theme.textFieldFont = SBUFontSet.body3
         
         theme.buttonTintColor = SBUColorSet.onDarkTextHighEmphasis
@@ -1137,46 +1199,75 @@ public class SBUMessageInputTheme {
         theme.mentionTextColor = SBUColorSet.onDarkTextHighEmphasis
         theme.mentionTextBackgroundColor = .clear
         
+        // Liquid glass - adaptive
+        theme._backgroundColorAdaptive = SBUAdaptive(
+            base: SBUColorSet.onLightTextMidEmphasis,
+            liquidGlass: SBUColorSet.background0
+        )
+        theme._textFieldBackgroundColorAdaptive = SBUAdaptive(
+            base: SBUColorSet.background400,
+            liquidGlass: SBUColorSet.background0
+        )
+        theme._textFieldBorderColorAdaptive = SBUAdaptive(
+            base: SBUColorSet.background400,
+            liquidGlass: SBUColorSet.background0
+        )
+        theme._channelViewDividerColorAdaptive = SBUAdaptive(
+            base: SBUColorSet.onLightTextDisabled,
+            liquidGlass: SBUColorSet.background0
+        )
+        
+        // Liquid glass only
+        theme.inputViewShadowColor = SBUColorSet.background700
+        theme.inputButtonBackgroundColor = SBUColorSet.liquidGlassInputButtonBackgroundLight
+        
         return theme
     }
 
     // swiftlint:disable identifier_name
-    public init(backgroundColor: UIColor = SBUColorSet.background50,
-                textFieldBackgroundColor: UIColor = SBUColorSet.background100,
-                textFieldPlaceholderColor: UIColor = SBUColorSet.onLightTextLowEmphasis,
-                textFieldPlaceholderFont: UIFont = SBUFontSet.body3,
-                textFieldDisabledColor: UIColor = SBUColorSet.onLightTextDisabled,
-                textFieldTintColor: UIColor = SBUColorSet.primaryMain,
-                textFieldTextColor: UIColor = SBUColorSet.onLightTextHighEmphasis,
-                textFieldBorderColor: UIColor = SBUColorSet.background100,
-                textFieldFont: UIFont = SBUFontSet.body3,
-                buttonTintColor: UIColor = SBUColorSet.primaryMain,
-                buttonDisabledTintColor: UIColor = SBUColorSet.onLightTextDisabled,
-                cancelButtonFont: UIFont = SBUFontSet.button2,
-                saveButtonFont: UIFont = SBUFontSet.button2,
-                saveButtonTextColor: UIColor = SBUColorSet.onDarkTextHighEmphasis,
-                channelViewDividerColor: UIColor = SBUColorSet.onLightTextDisabled,
-                quotedFileMessageThumbnailBackgroundColor: UIColor = SBUColorSet.background200,
-                quotedFileMessageThumbnailTintColor: UIColor = SBUColorSet.onLightTextMidEmphasis,
-                replyToTextColor: UIColor = SBUColorSet.onLightTextHighEmphasis,
-                replyToTextFont: UIFont = SBUFontSet.caption1,
-                quotedMessageTextColor: UIColor = SBUColorSet.onLightTextLowEmphasis,
-                quotedMessageTextFont: UIFont = SBUFontSet.caption2,
-                closeReplyButtonColor: UIColor = SBUColorSet.onLightTextHighEmphasis,
-                mentionTextFont: UIFont = SBUFontSet.body2,
-                mentionTextColor: UIColor = SBUColorSet.onLightTextHighEmphasis,
-                mentionTextBackgroundColor: UIColor = .clear
-                
+    public init(
+        backgroundColor: UIColor = SBUColorSet.background50,
+        textFieldBackgroundColor: UIColor = SBUColorSet.background100,
+        textFieldPlaceholderColor: UIColor = SBUColorSet.onLightTextLowEmphasis,
+        textFieldPlaceholderFont: UIFont = SBUFontSet.body3,
+        textFieldDisabledColor: UIColor = SBUColorSet.onLightTextDisabled,
+        textFieldTintColor: UIColor = SBUColorSet.primaryMain,
+        textFieldTextColor: UIColor = SBUColorSet.onLightTextHighEmphasis,
+        textFieldBorderColor: UIColor = SBUColorSet.background100,
+        textFieldFont: UIFont = SBUFontSet.body3,
+        buttonTintColor: UIColor = SBUColorSet.primaryMain,
+        buttonDisabledTintColor: UIColor = SBUColorSet.onLightTextDisabled,
+        cancelButtonFont: UIFont = SBUFontSet.button2,
+        saveButtonFont: UIFont = SBUFontSet.button2,
+        saveButtonTextColor: UIColor = SBUColorSet.onDarkTextHighEmphasis,
+        channelViewDividerColor: UIColor = SBUColorSet.onLightTextDisabled,
+        quotedFileMessageThumbnailBackgroundColor: UIColor = SBUColorSet.background200,
+        quotedFileMessageThumbnailTintColor: UIColor = SBUColorSet.onLightTextMidEmphasis,
+        replyToTextColor: UIColor = SBUColorSet.onLightTextHighEmphasis,
+        replyToTextFont: UIFont = SBUFontSet.caption1,
+        quotedMessageTextColor: UIColor = SBUColorSet.onLightTextLowEmphasis,
+        quotedMessageTextFont: UIFont = SBUFontSet.caption2,
+        closeReplyButtonColor: UIColor = SBUColorSet.onLightTextHighEmphasis,
+        mentionTextFont: UIFont = SBUFontSet.body2,
+        mentionTextColor: UIColor = SBUColorSet.onLightTextHighEmphasis,
+        mentionTextBackgroundColor: UIColor = .clear,
+        
+        // Liquid glass - Adaptive
+        backgroundColorLiquidGlass: UIColor = .clear,
+        textFieldBackgroundColorLiquidGlass: UIColor = .clear,
+        textFieldBorderColorLiquidGlass: UIColor = .clear,
+        channelViewDividerColorLiquidGlass: UIColor = .clear,
+        
+        // Liquid glass only
+        inputViewShadowColor: UIColor = SBUColorSet.background700,
+        inputButtonBackgroundColor: UIColor = SBUColorSet.background700
     ) {
         
-        self.backgroundColor = backgroundColor
-        self.textFieldBackgroundColor = textFieldBackgroundColor
         self.textFieldPlaceholderColor = textFieldPlaceholderColor
         self.textFieldPlaceholderFont = textFieldPlaceholderFont
         self.textFieldDisabledColor = textFieldDisabledColor
         self.textFieldTintColor = textFieldTintColor
         self.textFieldTextColor = textFieldTextColor
-        self.textFieldBorderColor = textFieldBorderColor
         self.textFieldFont = textFieldFont
         self.buttonTintColor = buttonTintColor
         self.buttonDisabledTintColor = buttonDisabledTintColor
@@ -1184,8 +1275,29 @@ public class SBUMessageInputTheme {
         self.saveButtonFont = saveButtonFont
         self.saveButtonTextColor = saveButtonTextColor
         
+        // Liquid glass - Adaptive
+        self._backgroundColorAdaptive = SBUAdaptive(
+            base: backgroundColor,
+            liquidGlass: backgroundColorLiquidGlass
+        )
+        self._textFieldBackgroundColorAdaptive = SBUAdaptive(
+            base: textFieldBackgroundColor,
+            liquidGlass: textFieldBackgroundColorLiquidGlass
+        )
+        self._textFieldBorderColorAdaptive = SBUAdaptive(
+            base: textFieldBorderColor,
+            liquidGlass: textFieldBorderColorLiquidGlass
+        )
+        self._channelViewDividerColorAdaptive = SBUAdaptive(
+            base: channelViewDividerColor,
+            liquidGlass: channelViewDividerColorLiquidGlass
+        )
+        
+        // Liquid glass only
+        self.inputViewShadowColor = inputViewShadowColor
+        self.inputButtonBackgroundColor = inputButtonBackgroundColor
+        
         // Quoted message
-        self.channelViewDividerColor = channelViewDividerColor
         self.quotedFileMessageThumbnailBackgroundColor = quotedFileMessageThumbnailBackgroundColor
         self.quotedFileMessageThumbnailTintColor = quotedFileMessageThumbnailTintColor
         self.replyToTextColor = replyToTextColor
@@ -1199,14 +1311,50 @@ public class SBUMessageInputTheme {
     }
     // swiftlint:enable identifier_name
     
-    public var backgroundColor: UIColor
-    public var textFieldBackgroundColor: UIColor
+    @available(*, deprecated, renamed: "backgroundColorAdaptive")
+    public var backgroundColor: UIColor {
+        get {
+            self.backgroundColorAdaptive
+        }
+        set {
+            self._backgroundColorAdaptive = SBUAdaptive(
+                base: newValue,
+                liquidGlass: backgroundColor
+            )
+        }
+    }
+    
+    @available(*, deprecated, renamed: "textFieldBackgroundColorAdaptive")
+    public var textFieldBackgroundColor: UIColor {
+        get {
+            self.textFieldBackgroundColorAdaptive
+        }
+        set {
+            self._textFieldBackgroundColorAdaptive = SBUAdaptive(
+                base: newValue,
+                liquidGlass: textFieldBackgroundColor
+            )
+        }
+    }
     public var textFieldPlaceholderColor: UIColor
     public var textFieldPlaceholderFont: UIFont
     public var textFieldDisabledColor: UIColor
     public var textFieldTintColor: UIColor
     public var textFieldTextColor: UIColor
-    public var textFieldBorderColor: UIColor
+    
+    @available(*, deprecated, renamed: "textFieldBorderColorAdaptive")
+    public var textFieldBorderColor: UIColor {
+        get {
+            self.textFieldBorderColorAdaptive
+        }
+        set {
+            self._textFieldBorderColorAdaptive = SBUAdaptive(
+                base: newValue,
+                liquidGlass: textFieldBorderColor
+            )
+        }
+    }
+    
     public var textFieldFont: UIFont
     
     public var buttonTintColor: UIColor
@@ -1216,9 +1364,38 @@ public class SBUMessageInputTheme {
     public var saveButtonFont: UIFont
     public var saveButtonTextColor: UIColor
     
+    // MARK: Liquid glass
+    /// - Since: 3.34.0
+    @SBUAdaptive public var backgroundColorAdaptive: UIColor
+    /// - Since: 3.34.0
+    @SBUAdaptive public var textFieldBackgroundColorAdaptive: UIColor
+    /// - Since: 3.34.0
+    @SBUAdaptive public var textFieldBorderColorAdaptive: UIColor
+    /// - Since: 3.34.0
+    @SBUAdaptive public var channelViewDividerColorAdaptive: UIColor
+    
+    /// The color of shadow behind the message input view when liquid glass is enabled.
+    /// - Since: 3.34.0
+    public var inputViewShadowColor: UIColor
+    
+    /// The background color of a button in the message input view when liquid glass is enabled.
+    /// - Since: 3.34.0
+    public var inputButtonBackgroundColor: UIColor
+    
     // MARK: Quoted message
     /// The color of divider between message input view and table view of channel view.
-    public var channelViewDividerColor: UIColor
+    @available(*, deprecated, renamed: "channelViewDividerColorAdaptive")
+    public var channelViewDividerColor: UIColor {
+        get {
+            self.channelViewDividerColorAdaptive
+        }
+        set {
+            self._channelViewDividerColorAdaptive = SBUAdaptive(
+                base: newValue,
+                liquidGlass: channelViewDividerColor
+            )
+        }
+    }
     
     // swiftlint:disable identifier_name
     /// The background color of thumbnail image of the quoted message
@@ -2931,12 +3108,30 @@ public class SBUComponentTheme {
         theme.emptyViewRetryButtonFont = SBUFontSet.button2
         
         theme.overlayColor = SBUColorSet.overlayDark
-        theme.backgroundColor = SBUColorSet.background50
         theme.highlightedColor = SBUColorSet.background100
         theme.buttonTextColor = SBUColorSet.primaryMain
         theme.separatorColor = SBUColorSet.onLightTextDisabled
         theme.shadowColor = SBUColorSet.background700.withAlphaComponent(0.12)
         theme.closeBarButtonTintColor = SBUColorSet.onLightTextHighEmphasis
+        
+        // Common > Liquid glass (3.34.0)
+        theme._backgroundColorAdaptive = SBUAdaptive(
+            base: SBUColorSet.background50,
+            liquidGlass: SBUColorSet.background0
+        )
+        
+        theme._alertButtonBackgroundColorAdaptive = SBUAdaptive(
+            base: SBUColorSet.background50,
+            liquidGlass: SBUColorSet.buttonBackgroundLight
+        )
+        theme._highlightedColorAdaptive = SBUAdaptive(
+            base: SBUColorSet.background100,
+            liquidGlass: SBUColorSet.liquidGlassButtonHighlightLight
+        )
+        theme._overlayColorAdaptive = SBUAdaptive(
+            base: SBUColorSet.overlayDark,
+            liquidGlass: SBUColorSet.overlayDarkLiquidGlass
+        )
         
         // Alert
         theme.alertTitleColor = SBUColorSet.onLightTextHighEmphasis
@@ -2950,6 +3145,12 @@ public class SBUComponentTheme {
         theme.alertTextFieldBackgroundColor = SBUColorSet.background100
         theme.alertTextFieldTintColor = SBUColorSet.primaryMain
         theme.alertTextFieldFont = SBUFontSet.body3
+        
+        // Alert > Liquid glass (3.34.0)
+        theme._alertTitleFontAdaptive = SBUAdaptive(
+            base: SBUFontSet.h3,
+            liquidGlass: SBUFontSet.h1
+        )
         
         // Action Sheet
         theme.actionSheetTextFont = SBUFontSet.subtitle1
@@ -3044,6 +3245,12 @@ public class SBUComponentTheme {
         theme.newLineLabelTintColor = SBUColorSet.primaryMain
         theme.newLineTintColor = SBUColorSet.primaryMain
         
+        // Liquid glass
+        theme._shadowColorAdaptive = SBUAdaptive(
+            base: SBUColorSet.background700.withAlphaComponent(0.12),
+            liquidGlass: SBUColorSet.liquidGlassMenuViewShadowLight
+        )
+        
         return theme
     }
     
@@ -3059,11 +3266,10 @@ public class SBUComponentTheme {
         theme.emptyViewRetryButtonFont = SBUFontSet.button2
         
         theme.overlayColor = SBUColorSet.overlayLight
-        theme.backgroundColor = SBUColorSet.background500
         theme.highlightedColor = SBUColorSet.background400
         theme.buttonTextColor = SBUColorSet.primaryLight
         theme.separatorColor = SBUColorSet.onDarkTextDisabled
-        theme.shadowColor = SBUColorSet.background700.withAlphaComponent(0.36)
+        theme.shadowColor = SBUColorSet.liquidGlassMenuViewShadowDark
         theme.closeBarButtonTintColor = SBUColorSet.onDarkTextHighEmphasis
         
         // Alert
@@ -3172,6 +3378,31 @@ public class SBUComponentTheme {
         theme.newLineLabelTintColor = SBUColorSet.primaryLight
         theme.newLineTintColor = SBUColorSet.primaryLight
         
+        // Liquid glass 3.34.0
+        theme._backgroundColorAdaptive = SBUAdaptive(
+            base: SBUColorSet.background500,
+            liquidGlass: SBUColorSet.background0
+        )
+        
+        theme._alertButtonBackgroundColorAdaptive = SBUAdaptive(
+            base: SBUColorSet.background500,
+            liquidGlass: SBUColorSet.buttonBackgroundDark
+        )
+        
+        theme._highlightedColorAdaptive = SBUAdaptive(
+            base: SBUColorSet.background100,
+            liquidGlass: SBUColorSet.liquidGlassButtonHighlightDark
+        )
+        
+        theme._shadowColorAdaptive = SBUAdaptive(
+            base: SBUColorSet.background700.withAlphaComponent(0.12),
+            liquidGlass: SBUColorSet.liquidGlassMenuViewShadowLight
+        )
+        theme._overlayColorAdaptive = SBUAdaptive(
+            base: SBUColorSet.overlayLight,
+            liquidGlass: SBUColorSet.overlayLight
+        )
+        
         return theme
     }
     
@@ -3187,11 +3418,10 @@ public class SBUComponentTheme {
         theme.emptyViewRetryButtonFont = SBUFontSet.button2
         
         theme.overlayColor = SBUColorSet.overlayLight
-        theme.backgroundColor = SBUColorSet.onLightTextLowEmphasis
         theme.highlightedColor = SBUColorSet.background400
         theme.buttonTextColor = SBUColorSet.primaryLight
         theme.separatorColor = SBUColorSet.onDarkTextDisabled
-        theme.shadowColor = SBUColorSet.background700.withAlphaComponent(0.36)
+        theme.shadowColor = SBUColorSet.liquidGlassMenuViewShadowLight
         theme.closeBarButtonTintColor = SBUColorSet.onDarkTextHighEmphasis
         
         // Alert
@@ -3289,6 +3519,22 @@ public class SBUComponentTheme {
         
         theme.feedbackToastUpdateDoneColor = SBUColorSet.secondaryLight // 3.15.0
         
+        // Liquid glass  3.34.0
+        theme._shadowColorAdaptive = SBUAdaptive(
+            base: SBUColorSet.background700.withAlphaComponent(0.12),
+            liquidGlass: SBUColorSet.liquidGlassMenuViewShadowLight
+        )
+
+        theme._backgroundColorAdaptive = SBUAdaptive(
+            base: SBUColorSet.onLightTextLowEmphasis,
+            liquidGlass: SBUColorSet.onLightTextLowEmphasis
+        )
+        
+        theme._overlayColorAdaptive = SBUAdaptive(
+            base: SBUColorSet.overlayDark,
+            liquidGlass: SBUColorSet.overlayDarkLiquidGlass
+        )
+        
         return theme
     }
     
@@ -3306,6 +3552,7 @@ public class SBUComponentTheme {
                 closeBarButtonTintColor: UIColor = SBUColorSet.onLightTextHighEmphasis,
                 alertTitleColor: UIColor = SBUColorSet.onLightTextHighEmphasis,
                 alertTitleFont: UIFont = SBUFontSet.h3,
+                alertTitleLiquidGlassFont: UIFont = SBUFontSet.h1,
                 alertDetailColor: UIColor = SBUColorSet.onLightTextMidEmphasis,
                 alertDetailFont: UIFont = SBUFontSet.body3,
                 alertPlaceholderColor: UIColor = SBUColorSet.onLightTextLowEmphasis,
@@ -3378,7 +3625,13 @@ public class SBUComponentTheme {
                 
                 newLineLabelFont: UIFont = SBUFontSet.caption3,
                 newLineLabelTintColor: UIColor = SBUColorSet.primaryMain,
-                newLineTintColor: UIColor = SBUColorSet.primaryMain
+                newLineTintColor: UIColor = SBUColorSet.primaryMain,
+                
+                backgroundLiquidGlassColor: UIColor = SBUColorSet.background0,
+                buttonBackgroundLiquidGlassColor: UIColor = SBUColorSet.background0,
+                highlightedLiquidGlassColor: UIColor = SBUColorSet.liquidGlassButtonHighlightLight,
+                shadowColorLiquidGlass: UIColor = SBUColorSet.liquidGlassMenuViewShadowLight,
+                overlayColorLiquidGlass: UIColor = SBUColorSet.overlayDarkLiquidGlass
     ) {
         
         self.emptyViewBackgroundColor = emptyViewBackgroundColor
@@ -3387,7 +3640,6 @@ public class SBUComponentTheme {
         self.emptyViewRetryButtonTintColor = emptyViewRetryButtonTintColor
         self.emptyViewRetryButtonFont = emptyViewRetryButtonFont
         self.overlayColor = overlayColor
-        self.backgroundColor = backgroundColor
         self.highlightedColor = highlightedColor
         self.buttonTextColor = buttonTextColor
         self.separatorColor = separatorColor
@@ -3482,6 +3734,33 @@ public class SBUComponentTheme {
         self.newLineLabelFont = newLineLabelFont
         self.newLineLabelTintColor = newLineLabelTintColor
         self.newLineTintColor = newLineTintColor
+        
+        // Liquid glass 3.34.0
+        self._backgroundColorAdaptive = SBUAdaptive(
+            base: backgroundColor,
+            liquidGlass: backgroundLiquidGlassColor
+        )
+        
+        self._alertButtonBackgroundColorAdaptive = SBUAdaptive(
+            base: backgroundColor,
+            liquidGlass: buttonBackgroundLiquidGlassColor
+        )
+        
+        self._highlightedColorAdaptive = SBUAdaptive(
+            base: highlightedColor,
+            liquidGlass: highlightedLiquidGlassColor
+        )
+        
+        self._alertTitleFontAdaptive = SBUAdaptive(
+            base: alertTitleFont,
+            liquidGlass: alertTitleLiquidGlassFont
+        )
+        
+        self._shadowColorAdaptive = SBUAdaptive(base: shadowColor, liquidGlass: shadowColorLiquidGlass)
+        self._overlayColorAdaptive = SBUAdaptive(
+            base: overlayColor,
+            liquidGlass: overlayColorLiquidGlass
+        )
     }
     
     // EmptyView
@@ -3503,6 +3782,14 @@ public class SBUComponentTheme {
     public var alertTextFieldBackgroundColor: UIColor
     public var alertTextFieldTintColor: UIColor
     public var alertTextFieldFont: UIFont
+    
+    // Alert - Liquid Glass
+    // 3.34.0
+    @SBUAdaptive public var backgroundColorAdaptive: UIColor
+    @SBUAdaptive public var alertButtonBackgroundColorAdaptive: UIColor
+    @SBUAdaptive public var highlightedColorAdaptive: UIColor
+    @SBUAdaptive public var alertTitleFontAdaptive: UIFont
+    @SBUAdaptive public var overlayColorAdaptive: UIColor
     
     // Action Sheet
     public var actionSheetTextFont: UIFont
@@ -3540,11 +3827,30 @@ public class SBUComponentTheme {
     
     // Common
     public var overlayColor: UIColor
-    public var backgroundColor: UIColor
-    public var highlightedColor: UIColor
+    @available(*, deprecated, renamed: "backgroundAdaptiveColor")
+    public var backgroundColor: UIColor {
+        get {
+            self.backgroundColorAdaptive
+        }
+        set {
+            self._backgroundColorAdaptive = SBUAdaptive(base: newValue, liquidGlass: backgroundColor)
+        }
+    }
+    public var highlightedColor: UIColor {
+        // 3.34.0
+        didSet {
+            self._highlightedColorAdaptive = SBUAdaptive(base: highlightedColor, liquidGlass: highlightedColor)
+        }
+    }
     public var buttonTextColor: UIColor
     public var separatorColor: UIColor
-    public var shadowColor: UIColor
+    
+    public var shadowColor: UIColor {
+        didSet {
+            self._shadowColorAdaptive = SBUAdaptive(base: shadowColor, liquidGlass: shadowColor)
+        }
+    }
+    
     public var closeBarButtonTintColor: UIColor
     
     // placeholder
@@ -3611,6 +3917,10 @@ public class SBUComponentTheme {
     public var newLineLabelFont: UIFont  // 3.32.0
     public var newLineLabelTintColor: UIColor  // 3.32.0
     public var newLineTintColor: UIColor  // 3.32.0
+    
+    // Liquid Glass
+    /// - Since: 3.34.0
+    @SBUAdaptive public var shadowColorAdaptive: UIColor
 }
 
 // MARK: - Message Search Theme

@@ -31,7 +31,7 @@ class AppDelegate: NSObject, UIApplicationDelegate, ObservableObject {
 extension AppDelegate: UNUserNotificationCenterDelegate {
     // MARK: Registering Remote Notifications
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
-        SendbirdUI.registerPush(deviceToken: deviceToken) { success in
+        SendbirdUI.registerPush(deviceToken: deviceToken) { _ in
             
         }
     }

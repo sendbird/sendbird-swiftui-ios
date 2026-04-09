@@ -23,6 +23,7 @@ public struct OpenMutedParticipantListView: View {
         self.provider = provider
     }
     
+    /// The content and behavior of the view.
     public var body: some View {
         SBUViewControllerSet.OpenUserListViewController
             .swiftUI {
@@ -86,8 +87,10 @@ public struct OpenMutedParticipantListView: View {
 /// OpenMutedParticipantListView initializers
 public extension OpenMutedParticipantListView {
     // MARK: - typealias
+    /// The list content type alias for OpenMutedParticipantListView.
     typealias ListContent = OpenMutedParticipantListViewConverter.List
-    
+
+    /// Initializes a new view with the given parameters.
     init(
         provider: OpenMutedParticipantListViewProvider,
         headerItem: (() -> OpenMutedParticipantType.HeaderItem)? = nil,
@@ -127,12 +130,14 @@ public extension OpenMutedParticipantListView {
 
 // MARK: Event handler interfaces
 public extension OpenMutedParticipantListView {
+    /// Called when a row is selected in the open muted participant list.
     func onSendbirdSelectRow(_ selectRowHandler: @escaping ((_ indexPath: IndexPath) -> Void)) -> Self {
         let copy = self
         copy.provider.eventHandlers.selectRowHandler = selectRowHandler
         return copy
     }
-    
+
+    /// Called when an error occurs.
     func onSendbirdError(_ errorHandler: @escaping ((_ error: SBError?) -> Void)) -> Self {
         let copy = self
         copy.provider.eventHandlers.errorHandler = errorHandler

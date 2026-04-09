@@ -9,29 +9,40 @@ import Foundation
 import SwiftUI
 import SendbirdChatSDK
 
+/// Event handlers for the Message Thread view.
 public struct MessageThreadViewEventHandlers {
     // Blocks for handling for internal events.
     var errorHandler: ((_ error: SBError?) -> Void)?
 }
 
+/// A provider that manages data and state for the Message Thread view.
 public class MessageThreadViewProvider: SendbirdUIProvider {
     // SendbirdUIProvider protocol
     weak var viewController: SBUMessageThreadViewController?
     var eventHandlers = MessageThreadViewEventHandlers()
     
-    //
+    /// The channel URL for the thread's parent channel.
     public private(set) var channelURL: String
+    /// The ID of the parent message for this thread.
     public private(set) var parentMessageId: Int64
+    /// The message list parameters used to filter threaded messages.
     public private(set) var threadedMessageListParams: ThreadedMessageListParams?
+    /// The starting point timestamp for loading messages.
     public private(set) var startingPoint: Int64? = .max
+    /// Voice file information keyed by request ID.
     public private(set) var voiceFileInfos: [String: SBUVoiceFileInfo]?
-    
+
     // MARK: Published properties
+    /// The current channel object.
     @Published public var channel: BaseChannel?
+    /// The parent message of this thread.
     @Published public var parentMessage: BaseMessage?
+    /// The list of threaded messages.
     @Published public var fullMessages: [BaseMessage] = []
+    /// Indicates whether the view is currently loading.
     @Published public var isLoading: Bool = false
-    
+
+    /// Initializes a new provider with the given parameters.
     public init(
         channelURL: String,
         parentMessageId: Int64,

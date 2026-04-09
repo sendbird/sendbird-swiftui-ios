@@ -10,12 +10,14 @@ import SwiftUI
 import SendbirdChatSDK
 
 // MARK: - ViewEventHandlers
+/// Event handlers for the Create Open Channel view.
 public struct CreateOpenChannelEventHandlers {
     // Blocks for handling for internal events.
     var errorHandler: ((_ error: SBError?) -> Void)?
 }
 
 // MARK: - CreateOpenChannelViewProvider
+/// A provider that manages data and state for the Create Open Channel view.
 public class CreateOpenChannelViewProvider: SendbirdUIProvider {
     // init properties
     
@@ -24,12 +26,13 @@ public class CreateOpenChannelViewProvider: SendbirdUIProvider {
     var eventHandlers = CreateOpenChannelEventHandlers()
     
     // MARK: Public Data Properties
-    /// Loading state
+    /// Indicates whether the view is currently loading.
     @Published public var isLoading: Bool = false
-    
+
     // MARK: Public UI Properties
 
     // MARK: Methods
+    /// Initializes a new provider with default parameters.
     public init() {}
     
     /// This function sets up the provider.
@@ -44,6 +47,7 @@ public class CreateOpenChannelViewProvider: SendbirdUIProvider {
     }
     
     // MARK: UIKit method wrappers
+    /// Creates a new open channel with the given parameters.
     public func createChannel(params: OpenChannelCreateParams) {
         self.viewController?.viewModel?.createChannel(params: params)
     }
@@ -71,5 +75,6 @@ extension CreateOpenChannelViewProvider: SBUCommonViewModelDelegate {
 
 // MARK: - ViewModelDelegate (default implementation)
 extension SBUCreateOpenChannelViewModelDelegate {
+    /// Called when the create open channel view model has created a channel.
     public func createOpenChannelViewModel(_ viewModel: SBUCreateOpenChannelViewModel, didCreateChannel channel: SendbirdChatSDK.BaseChannel?) { }
 }

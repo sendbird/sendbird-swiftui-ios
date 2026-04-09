@@ -22,6 +22,7 @@ public struct GroupChannelSettingsView: View {
         self.provider = provider  // Default
     }
     
+    /// The content and behavior of the view.
     public var body: some View {
         SBUViewControllerSet.GroupChannelSettingsViewController
             .swiftUI {
@@ -73,8 +74,10 @@ public struct GroupChannelSettingsView: View {
 /// GroupChannelSettingsView initializers
 public extension GroupChannelSettingsView {
     // MARK: - typealias
+    /// The list content type alias for GroupChannelSettingsView.
     typealias ListContent = GroupChannelSettingsViewConverter.List
-    
+
+    /// Initializes a new view with the given parameters.
     init(
         provider: GroupChannelSettingsViewProvider,
         headerItem: (() -> GroupChannelSettingsType.HeaderItem)? = nil,
@@ -103,6 +106,7 @@ public extension GroupChannelSettingsView {
         }
         
         self.viewConverter.list.tableView.entireContent = listViewConverter
+        // swiftlint:disable:next identifier_name
         self.viewConverter.list.tableView.viewUpdateHandlers[.entireContent] = { vc in
             vc.listComponent?.reloadTableView()
         }

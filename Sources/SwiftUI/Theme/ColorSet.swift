@@ -189,6 +189,7 @@ public class ColorSet {
 }
 
 extension ColorSet {
+    /// Restores all colors in the color set to their default values.
     public static func restoreDefaultColors() {
         SBUColorSet.restoreDefaultColors()
     }

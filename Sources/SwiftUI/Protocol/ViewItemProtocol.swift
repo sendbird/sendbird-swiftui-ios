@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-//typealias ViewItemProtocol = ViewItemType & ViewItemInitialize
+// typealias ViewItemProtocol = ViewItemType & ViewItemInitialize
 
 // protocol ViewItemType {
 protocol ViewItemProtocol {

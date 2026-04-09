@@ -115,6 +115,7 @@ public class FontSet {
 }
 
 extension FontSet {
+    /// Restores all fonts in the font set to their default values.
     public static func restoreDefaultFonts() {
         SBUFontSet.restoreDefaultFonts()
     }

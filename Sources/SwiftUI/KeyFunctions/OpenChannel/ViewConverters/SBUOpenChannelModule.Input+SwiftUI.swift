@@ -51,4 +51,3 @@ extension SBUOpenChannelModule.Input {
         return false
     }
 }
-

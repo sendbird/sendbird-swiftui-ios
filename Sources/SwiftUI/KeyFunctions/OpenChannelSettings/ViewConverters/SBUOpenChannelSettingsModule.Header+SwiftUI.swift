@@ -107,5 +107,3 @@ extension SBUOpenChannelSettingsModule.Header {
         }
     }
 }
-
-

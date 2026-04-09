@@ -12,10 +12,10 @@ options:
 packages:
   SendbirdChatSDK:
     url: https://github.com/sendbird/sendbird-chat-sdk-ios
-    from: 4.36.0
+    from: 4.39.0
   SendbirdUIKit:
     url: https://github.com/sendbird/sendbird-uikit-ios-spm
-    from: 3.33.1
+    from: 3.35.0
     
 schemes:
   QuickStartSwiftUI:
@@ -43,7 +43,7 @@ settingGroups:
     FRAMEWORK_SEARCH_PATHS: ''
     IPHONEOS_DEPLOYMENT_TARGET: '15.0'
     LD_RUNPATH_SEARCH_PATHS: ["$(inherited)", "@executable_path/Frameworks", "@loader_path/Frameworks"]
-    MARKETING_VERSION: '1.1.4'
+    MARKETING_VERSION: '1.2.0'
     PRODUCT_NAME: "$(TARGET_NAME)"
     SDKROOT: iphoneos
     SWIFT_VERSION: '5.0'

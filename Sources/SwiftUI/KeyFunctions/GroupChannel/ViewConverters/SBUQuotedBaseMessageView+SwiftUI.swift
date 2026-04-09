@@ -20,8 +20,6 @@ extension SBUQuotedBaseMessageView {
         _ viewType: ViewConverter.ViewType,
         configuration: SBUQuotedBaseMessageViewParams
     ) -> Bool {
-        let tag = viewType.tag
-        
         switch viewType {
         // case .quotedUserMessage:
             // todo

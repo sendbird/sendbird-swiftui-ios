@@ -18,10 +18,12 @@ public struct CreateGroupChannelView: View {
     
     @ObservedObject private var provider: CreateGroupChannelViewProvider
     
+    /// Initializes a new view with default settings.
     public init() {
         self.provider = CreateGroupChannelViewProvider()
     }
-    
+
+    /// The content and behavior of the view.
     public var body: some View {
         SBUViewControllerSet.CreateChannelViewController
             .swiftUI {
@@ -76,8 +78,10 @@ public struct CreateGroupChannelView: View {
 /// CreateGroupChannelView initializers
 public extension CreateGroupChannelView {
     // MARK: - typealias
+    /// The list content type alias for CreateGroupChannelView.
     typealias ListContent = CreateGroupChannelViewConverter.List
-    
+
+    /// Initializes a new view with the given parameters.
     init(
         provider: CreateGroupChannelViewProvider? = nil,
         headerItem: (() -> CreateGroupChannelType.HeaderItem)? = nil,
@@ -117,12 +121,14 @@ public extension CreateGroupChannelView {
 
 // MARK: Event handler interfaces
 public extension CreateGroupChannelView {
+    /// Called when a row is selected in the create group channel view.
     func onSendbirdSelectRow(_ selectRowHandler: @escaping ((_ indexPath: IndexPath) -> Void)) -> Self {
         let copy = self
         copy.provider.eventHandlers.selectRowHandler = selectRowHandler
         return copy
     }
-    
+
+    /// Called when an error occurs.
     func onSendbirdError(_ errorHandler: @escaping ((_ error: SBError?) -> Void)) -> Self {
         let copy = self
         copy.provider.eventHandlers.errorHandler = errorHandler

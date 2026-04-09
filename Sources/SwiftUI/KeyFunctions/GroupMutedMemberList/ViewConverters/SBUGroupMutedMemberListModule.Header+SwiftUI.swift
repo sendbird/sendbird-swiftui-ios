@@ -62,5 +62,3 @@ extension SBUUserListModule.Header {
         }
     }
 }
-
-

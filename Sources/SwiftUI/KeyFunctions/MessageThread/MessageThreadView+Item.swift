@@ -402,5 +402,3 @@ extension Sendbird.View.GroupChannel.MessageThread {
         }
     }
 }
-
-

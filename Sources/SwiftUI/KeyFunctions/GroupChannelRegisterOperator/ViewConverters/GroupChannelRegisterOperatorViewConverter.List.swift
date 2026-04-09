@@ -93,55 +93,55 @@ extension GroupChannelRegisterOperatorViewConverter.List {
 }
 
 // TODO: Cell 단위나 하위 아이템들은 여기 참고해서 추가 (↓↓ example ↓↓)
-//extension GroupChannelRegisterOperatorViewConverter.List.TableView {
-//    public struct ChannelCell: ViewConverterProtocol {
-//        // MARK: TypeAlias
-//        typealias UpdatableVC = GroupChannelRegisterOperatorViewConverter.List.UpdatableVC
+// extension GroupChannelRegisterOperatorViewConverter.List.TableView {
+//     public struct ChannelCell: ViewConverterProtocol {
+//         // MARK: TypeAlias
+//         typealias UpdatableVC = GroupChannelRegisterOperatorViewConverter.List.UpdatableVC
 //
-//        // MARK: ViewType
-//        enum ViewType: ViewTypeEnum {
-//            case entireContent  // entire cell content
-//            case coverImage
-//        }
+//         // MARK: ViewType
+//         enum ViewType: ViewTypeEnum {
+//             case entireContent  // entire cell content
+//             case coverImage
+//         }
 //
-//        // MARK: Converter
-//        var entireContent: ViewConverter<ViewConfig>? {
-//            didSet { self.entireContent?(.init()) }
-//        }
-//        var coverImage = CoverImage()
+//         // MARK: Converter
+//         var entireContent: ViewConverter<ViewConfig>? {
+//             didSet { self.entireContent?(.init()) }
+//         }
+//         var coverImage = CoverImage()
 //
-//        // MARK: ViewConfigurations
-//        public struct ViewConfig: ViewConfigurations {
-//            public var groupChannel: GroupChannel = DefaultViewConfigSet.groupChannel
-//        }
+//         // MARK: ViewConfigurations
+//         public struct ViewConfig: ViewConfigurations {
+//             public var groupChannel: GroupChannel = DefaultViewConfigSet.groupChannel
+//         }
 //
-//        // MARK: View updater
-//        var viewUpdateHandlers = [ViewType: (UpdatableVC) -> Void]()
-//        func applyViewUpdates(to viewController: UpdatableVC, includeSubDepth: Bool) {
-//            self.viewUpdateHandlers.values.forEach { $0(viewController) }
+//         // MARK: View updater
+//         var viewUpdateHandlers = [ViewType: (UpdatableVC) -> Void]()
+//         func applyViewUpdates(to viewController: UpdatableVC, includeSubDepth: Bool) {
+//             self.viewUpdateHandlers.values.forEach { $0(viewController) }
 //
-//            guard includeSubDepth else { return }
-//            self.coverImage.applyViewUpdates(to: viewController, includeSubDepth: includeSubDepth)
-//        }
-//    }
-//}
+//             guard includeSubDepth else { return }
+//             self.coverImage.applyViewUpdates(to: viewController, includeSubDepth: includeSubDepth)
+//         }
+//     }
+// }
 //
-//extension GroupChannelRegisterOperatorViewConverter.List.TableView.ChannelCell {
-//    public struct CoverImage: ViewConverterProtocol {
-//        // MARK: ViewType
-//        enum ViewType: ViewTypeEnum { case none }
-//        // MARK: Converter
-//        var entireContent: ViewConverter<ViewConfig>? {
-//            didSet { self.entireContent?(.init()) }
-//        }
+// extension GroupChannelRegisterOperatorViewConverter.List.TableView.ChannelCell {
+//     public struct CoverImage: ViewConverterProtocol {
+//         // MARK: ViewType
+//         enum ViewType: ViewTypeEnum { case none }
+//         // MARK: Converter
+//         var entireContent: ViewConverter<ViewConfig>? {
+//             didSet { self.entireContent?(.init()) }
+//         }
 //
-//        // MARK: ViewConfigurations
-//        public struct ViewConfig: ViewConfigurations {
-//            public var groupChannel: GroupChannel = DefaultViewConfigSet.groupChannel
-//            public var coverImageSize: CGFloat
-//        }
+//         // MARK: ViewConfigurations
+//         public struct ViewConfig: ViewConfigurations {
+//             public var groupChannel: GroupChannel = DefaultViewConfigSet.groupChannel
+//             public var coverImageSize: CGFloat
+//         }
 //
-//        // MARK: View updater
-//        var viewUpdateHandlers = [ViewType: (UpdatableVC) -> Void]()
-//    }
-//}
+//         // MARK: View updater
+//         var viewUpdateHandlers = [ViewType: (UpdatableVC) -> Void]()
+//     }
+// }

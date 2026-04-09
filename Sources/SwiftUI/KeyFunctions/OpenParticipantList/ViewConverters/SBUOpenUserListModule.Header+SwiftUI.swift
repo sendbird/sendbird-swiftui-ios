@@ -108,5 +108,3 @@ extension SBUUserListModule.Header {
         }
     }
 }
-
-

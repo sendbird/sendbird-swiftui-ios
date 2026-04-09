@@ -21,10 +21,12 @@ public struct GroupChannelListView: View {
     
     @ObservedObject private var provider: GroupChannelListViewProvider
     
+    /// Initializes a new view with default settings.
     public init() {
         self.provider = GroupChannelListViewProvider() // Default
     }
     
+    /// The content and behavior of the view.
     public var body: some View {
         SBUViewControllerSet.GroupChannelListViewController
             .swiftUI {
@@ -92,8 +94,10 @@ public struct GroupChannelListView: View {
 /// GroupChannelListView initializers
 public extension GroupChannelListView {
     // MARK: - typealias
+    /// The list content type alias for GroupChannelListView.
     typealias ListContent = GroupChannelListViewConverter.List
-    
+
+    /// Initializes a new view with the given parameters.
     init(
         provider: GroupChannelListViewProvider? = nil,
         headerItem: (() -> GroupChannelListType.HeaderItem)? = nil,
@@ -138,30 +142,35 @@ public extension GroupChannelListView {
 
 // MARK: Event handler interfaces
 public extension GroupChannelListView {
+    /// Called when a row is selected in the group channel list.
     func onSendbirdSelectRow(_ selectRowHandler: @escaping (_ indexPath: IndexPath) -> Void) -> Self {
         let copy = self
         copy.provider.eventHandlers.selectRowHandler = selectRowHandler
         return copy
     }
     
+    /// Called when the leave channel action is selected.
     func onSendbirdSelectLeaveChannel(_ selectLeaveChannelHandler: @escaping (_ channel: GroupChannel) -> Void) -> Self {
         let copy = self
         copy.provider.eventHandlers.selectLeaveChannelHandler = selectLeaveChannelHandler
         return copy
     }
-    
+
+    /// Called when the push trigger option changes for a channel.
     func onSendbirdChangePushTriggerOption(_ changePushTriggerOptionHandler: @escaping (_ channel: GroupChannel) -> Void) -> Self {
         let copy = self
         copy.provider.eventHandlers.changePushTriggerOptionHandler = changePushTriggerOptionHandler
         return copy
     }
-    
+
+    /// Called when the connection state changes.
     func onSendbirdConnectionStateChange(_ connectionStateChangeHandler: @escaping SendbirdConnectionStateChangeHandler) -> Self {
         let copy = self
         copy.provider.eventHandlers.connectionStateChangeHandler = connectionStateChangeHandler
         return copy
     }
-    
+
+    /// Called when an error occurs.
     func onSendbirdError(_ errorHandler: @escaping SendbirdErrorHandler) -> Self {
         let copy = self
         copy.provider.eventHandlers.errorHandler = errorHandler

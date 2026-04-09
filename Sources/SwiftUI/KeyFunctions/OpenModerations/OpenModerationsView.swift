@@ -23,6 +23,7 @@ public struct OpenModerationsView: View {
         self.provider = provider
     }
     
+    /// The content and behavior of the view.
     public var body: some View {
         SBUViewControllerSet.OpenModerationsViewController
             .swiftUI {
@@ -81,7 +82,8 @@ public struct OpenModerationsView: View {
 public extension OpenModerationsView {
     // MARK: - typealias
     // typealias ListContent = OpenModerationsViewConverter.List
-    
+
+    /// Initializes a new view with the given parameters.
     init(
         provider: OpenModerationsViewProvider,
         headerItem: (() -> OpenModerationsType.HeaderItem)? = nil

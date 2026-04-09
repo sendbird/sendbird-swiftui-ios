@@ -17,6 +17,10 @@ protocol SwiftUIMessageInputInterface: SBUActionSheetDelegate {
 
 extension SwiftUIMessageInputInterface {
     // MARK: SBUActionSheetDelegate
+    /// Handles the selection of an action sheet item by dispatching the corresponding media resource action.
+    /// - Parameters:
+    ///   - index: The index of the selected action sheet item.
+    ///   - identifier: The identifier associated with the action sheet.
     public func didSelectActionSheetItem(index: Int, identifier: Int) {
         let type = MediaResourceType.init(rawValue: index) ?? .unknown
         switch type {

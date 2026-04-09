@@ -147,7 +147,5 @@ extension SBUOpenChannelBaseMessageCell {
             // TODO: SwiftUI - 파일 타입별 처리
             return true
         }
-        
-        return false
     }
 }

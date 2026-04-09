@@ -138,7 +138,6 @@ extension SwiftUIViewController: UIViewControllerRepresentable {
         return false
     }
     
-    
     // A navigation controller is considered present only if the currently selected tab contains one;
     // navigation controllers in other tabs are independent and not reused here.
     private func findNavigationController(in tabBarController: UITabBarController) -> Bool {

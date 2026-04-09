@@ -93,7 +93,7 @@ extension GroupModerationsViewConverter.List {
 }
 
 // TODO: Cell 단위나 하위 아이템들은 여기 참고해서 추가 (↓↓ example ↓↓)
-//extension GroupModerationsViewConverter.List.TableView {
+// extension GroupModerationsViewConverter.List.TableView {
 //    public struct ChannelCell: ViewConverterProtocol {
 //        // MARK: TypeAlias
 //        typealias UpdatableVC = GroupModerationsViewConverter.List.UpdatableVC
@@ -124,9 +124,9 @@ extension GroupModerationsViewConverter.List {
 //            self.coverImage.applyViewUpdates(to: viewController, includeSubDepth: includeSubDepth)
 //        }
 //    }
-//}
+// }
 //
-//extension GroupModerationsViewConverter.List.TableView.ChannelCell {
+// extension GroupModerationsViewConverter.List.TableView.ChannelCell {
 //    public struct CoverImage: ViewConverterProtocol {
 //        // MARK: ViewType
 //        enum ViewType: ViewTypeEnum { case none }
@@ -144,4 +144,4 @@ extension GroupModerationsViewConverter.List {
 //        // MARK: View updater
 //        var viewUpdateHandlers = [ViewType: (UpdatableVC) -> Void]()
 //    }
-//}
+// }
