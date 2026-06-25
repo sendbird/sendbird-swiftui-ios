@@ -66,7 +66,7 @@ public struct GroupChannelView: View {
     }
     
     private func createViewController() -> SBUGroupChannelViewController {
-        SBULog.info(
+        Log.info(
             """
             [\(Self.self).\(#function)] provider
             channelURL = \(provider.channelURL)

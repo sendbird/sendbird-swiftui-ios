@@ -6,9 +6,16 @@
 //
 
 import SwiftUI
+#if canImport(SendbirdUIKit)
+import SendbirdUIKit
+#endif
 #if canImport(SendbirdSwiftUI)
 import SendbirdSwiftUI
 #endif
+#if canImport(SendbirdUIMessageTemplate)
+import SendbirdUIMessageTemplate
+#endif
+import SendbirdChatSDK
 
 struct LoginView: View {
     @EnvironmentObject var appDelegate: AppDelegate
@@ -152,7 +159,8 @@ extension LoginView {
     }
     
     func initializeSendbird() {
-        SendbirdUI.setLogLevel(.all)
+        SendbirdLogger.setLevel(.info, for: .uikit)
+        SendbirdLogger.setLevel(.info, for: .messageTemplate)
         SendbirdUI.initialize(
             applicationId: self.appID
         ) { params in

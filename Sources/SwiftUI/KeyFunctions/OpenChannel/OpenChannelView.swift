@@ -62,7 +62,7 @@ public struct OpenChannelView: View {
     
     // MARK: - Methods
     private func createViewController() -> SBUOpenChannelViewController {
-        SBULog.info(
+        Log.info(
             """
             [\(Self.self).\(#function)] provider
             channelURL = \(provider.channelURL)

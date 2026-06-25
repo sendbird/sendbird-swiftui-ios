@@ -78,7 +78,7 @@ extension UIFont {
                 return font
             }
             
-            SBULog.warning("Font is not set. Default font is applied.")
+            Log.warning("Font is not set. Default font is applied.")
             return UIFont.preferredFont(forTextStyle: .body)
         }
         
@@ -94,7 +94,7 @@ extension UIFont {
             }
         }
         
-        SBULog.warning("Font is not set. Default font is applied.")
+        Log.warning("Font is not set. Default font is applied.")
         return UIFont.preferredFont(forTextStyle: .body)
     }
 }

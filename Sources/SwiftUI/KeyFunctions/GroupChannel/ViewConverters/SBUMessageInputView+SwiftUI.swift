@@ -110,7 +110,7 @@ extension SBUMessageInputView {
             
         // - Since: 1.1.0
         case .topView:
-            SBULog.info("[.topView]  isFrozen=\(isFrozen), isMuted=\(isMuted), isQuoteReplyingMode=\(isQuoteReplyingMode), quoteMessageInputViewParams=\(String(describing: quoteMessageInputViewParams))")
+            Log.info("[.topView]  isFrozen=\(isFrozen), isMuted=\(isMuted), isQuoteReplyingMode=\(isQuoteReplyingMode), quoteMessageInputViewParams=\(String(describing: quoteMessageInputViewParams))")
             let config = ViewConverter.TopView.ViewConfig.init(
                 isFrozen: self.isFrozen,
                 isMuted: self.isMuted,

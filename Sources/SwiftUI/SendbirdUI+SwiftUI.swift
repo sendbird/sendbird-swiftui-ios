@@ -55,7 +55,7 @@ extension SendbirdUI {
                 shared.channel = channel
                 shared.channelURL = channel["channel_url"] as? String
             } else {
-                SBULog.error("Sendbird payload not found")
+                Log.error("Sendbird payload not found")
             }
         }
         

@@ -72,7 +72,7 @@ open class SBUCreateChannelViewController: SBUBaseViewController, SBUCreateChann
     ///   - type: The type of channel to create (default: `.group`)
     required public init(users: [SBUUser]? = nil, type: ChannelCreationType = .group) {
         super.init(nibName: nil, bundle: nil)
-        SBULog.info("")
+        Log.info("")
         
         self.users = users
         self.type = type
@@ -97,7 +97,7 @@ open class SBUCreateChannelViewController: SBUBaseViewController, SBUCreateChann
     }
     
     deinit {
-        SBULog.info("")
+        Log.info("")
         self.viewModel = nil
         self.headerComponent = nil
         self.listComponent = nil
@@ -140,13 +140,17 @@ open class SBUCreateChannelViewController: SBUBaseViewController, SBUCreateChann
     }
     
     open override func setupLayouts() {
+        // Extend the list under the nav bar so the Liquid Glass progressive-blur
+        // overlay has scrolling content to blur. With `useSafeArea: true` the
+        // table starts at safe-area top, leaving the overlay over a flat opaque
+        // background — which renders as a hard edge and defeats the gradient.
         self.listComponent?.sbu_constraint(
             equalTo: self.view,
             left: 0,
             right: 0,
             top: 0,
             bottom: 0,
-            useSafeArea: true
+            useSafeArea: false
         )
     }
     
@@ -197,7 +201,7 @@ open class SBUCreateChannelViewController: SBUBaseViewController, SBUCreateChann
     }
     
     open override func errorHandler(_ message: String?, _ code: NSInteger? = nil) {
-        SBULog.error("Did receive error: \(message ?? "")")
+        Log.error("Did receive error: \(message ?? "")")
     }
     
     // MARK: - SBUCreateChannelModuleHeaderDelegate
@@ -312,7 +316,7 @@ open class SBUCreateChannelViewController: SBUBaseViewController, SBUCreateChann
         withMessageListParams messageListParams: MessageListParams?
     ) {
         guard let channelURL = channel?.channelURL else {
-            SBULog.error("[Failed] Create channel request: There is no channel url.")
+            Log.error("[Failed] Create channel request: There is no channel url.")
             return
         }
         SendbirdUI.moveToChannel(channelURL: channelURL, messageListParams: messageListParams)
