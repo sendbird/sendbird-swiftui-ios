@@ -15,7 +15,7 @@ packages:
     from: 4.39.6
   SendbirdUIKit:
     url: https://github.com/sendbird/sendbird-uikit-ios-spm
-    from: 3.35.4
+    from: 3.35.5
     
 schemes:
   QuickStartSwiftUI:
@@ -43,7 +43,7 @@ settingGroups:
     FRAMEWORK_SEARCH_PATHS: ''
     IPHONEOS_DEPLOYMENT_TARGET: '15.0'
     LD_RUNPATH_SEARCH_PATHS: ["$(inherited)", "@executable_path/Frameworks", "@loader_path/Frameworks"]
-    MARKETING_VERSION: '1.2.1'
+    MARKETING_VERSION: '1.2.2'
     PRODUCT_NAME: "$(TARGET_NAME)"
     SDKROOT: iphoneos
     SWIFT_VERSION: '5.0'
