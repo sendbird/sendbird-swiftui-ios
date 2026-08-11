@@ -25,20 +25,42 @@ struct SwiftUIViewController<Content: UIViewController> {
     private var injectionHandler: ((Content) -> Void)?
 }
 
+// MARK: - Environment
+
+/// Forces `SwiftUIViewController` to wrap its content in its own internal
+/// `UINavigationController` instead of consulting the global window hierarchy.
+///
+/// `findNavigationController()` walks the app's window/view-controller tree, so its
+/// result depends on transient global state (transition timing, OS version, embedding
+/// structure). When the SDK itself pushes a key function view wrapped in
+/// `SBUSwiftUIHostingController` (which hides the navigation bar), a "navigation
+/// controller found" result would route the header into that hidden bar and the header
+/// would disappear. SDK push call sites set this to `true` to make the outcome
+/// deterministic. (SBISSUE-21868)
+struct SBUAlwaysWrapNavigationKey: EnvironmentKey {
+    static let defaultValue = false
+}
+
+extension EnvironmentValues {
+    var sbuAlwaysWrapNavigation: Bool {
+        get { self[SBUAlwaysWrapNavigationKey.self] }
+        set { self[SBUAlwaysWrapNavigationKey.self] = newValue }
+    }
+}
+
 // MARK: - UIViewControllerRepresentable
 extension SwiftUIViewController: UIViewControllerRepresentable {
     func makeUIViewController(context: Context) -> UIViewController {
-        if findNavigationController() {
+        if !context.environment.sbuAlwaysWrapNavigation, findNavigationController() {
             let newViewController: UIViewController = makeContent()
             return newViewController
         } else {
             let contentViewController = makeContent()
             let navigationController = UINavigationController(rootViewController: contentViewController)
-            
+
             navigationController.delegate = context.coordinator
             context.coordinator.parent = self
             context.coordinator.navigationController = navigationController
-            
             return navigationController
         }
     }
