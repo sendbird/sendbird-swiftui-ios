@@ -21,6 +21,12 @@ public class SendbirdUI {
     /// Checks dashboard configuration load status
     static var isDashboardConfigLoaded: Bool = false
     
+    /// Posted on the main thread when the dashboard configuration has been applied to `SendbirdUI.config`
+    /// (from cache or from the server) during the connect flow.
+    /// `connectIfNeeded` can complete before this point when local caching has a cached user,
+    /// so a screen that depends on dashboard config can observe this to refresh.
+    static let didLoadDashboardConfigNotification = Notification.Name("com.sendbird.uikit.didLoadDashboardConfig")
+    
     // MARK: - Initialize
     
     /// This function is used to initializes SDK with applicationId.
@@ -971,7 +977,8 @@ public class SendbirdUI {
                 Log.error("[Failed] Create channel request: There is no channel url.")
                 return
             }
-            Log.info("[Succeed] Create channel: \(channel?.description ?? "")")
+            // 채널 전체(description)를 문자열로 만들지 않고 URL만 남긴다.
+            Log.info("[Succeed] Create channel: \(channelURL)")
             
             SendbirdUI.moveToChannel(channelURL: channelURL, messageListParams: messageListParams)
         }
@@ -1104,7 +1111,8 @@ extension SendbirdUI {
                     return
                 }
                 
-                Log.info("[Succeed] Create channel: \(channel.description)")
+                // 채널 전체(description)를 문자열로 만들지 않고 URL만 남긴다.
+                Log.info("[Succeed] Create channel: \(channel.channelURL)")
                 
                 SendbirdUI.moveToChannel(channelURL: channel.channelURL,
                                          basedOnChannelList: false)

@@ -23,7 +23,7 @@ extension SBUGroupChannelListModule.List {
         switch viewType {
         case .entireContent:
             if let tableViewConverter = self.viewConverter.tableView.entireContent,
-               let groupChannels = self.baseChannelList as? [GroupChannel],
+               let groupChannels = self.latestChannelList as? [GroupChannel],
                let hostingView = tableViewConverter(.init(channels: groupChannels)) {
                 
                 // remove UITableView
