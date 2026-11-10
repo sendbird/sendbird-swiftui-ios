@@ -54,6 +54,41 @@ extension SBUTemplateCacheType {
         Self.diskCache.set(templates: templates)
     }
     
+    /// Runs `work` on this cache's disk queue (used to keep JSON parsing off the main thread).
+    func performOnDiskQueue(_ work: @escaping () -> Void) {
+        Self.diskCache.diskQueue.async(execute: work)
+    }
+    
+    /// Non-blocking read of the cached token. `completionHandler` is called on the main thread.
+    func loadLastToken(completionHandler: @escaping (String) -> Void) {
+        if let memoryCache = Self.memoryCache.lastToken {
+            Thread.executeOnMain { completionHandler(memoryCache) }
+            return
+        }
+        Self.diskCache.loadLastTokenKey { token in
+            Thread.executeOnMain { completionHandler(token) }
+        }
+    }
+    
+    /// Non-blocking variant of `loadAllTemplates()`: disk read + decode run on the disk queue.
+    /// `completionHandler` is called on the main thread.
+    func loadAllTemplates(completionHandler: @escaping ([String: MessageTemplate]?) -> Void) {
+        if let templateList = Self.memoryCache.getAllTemplates() {
+            Thread.executeOnMain { completionHandler(templateList) }
+            return
+        }
+        Self.diskCache.getAllTemplates { templateList in
+            Thread.executeOnMain {
+                if let templateList = templateList {
+                    Self.memoryCache.set(templates: Array(templateList.values))
+                } else {
+                    Log.info("No have templates in cache")
+                }
+                completionHandler(templateList)
+            }
+        }
+    }
+    
     @discardableResult
     func loadAllTemplates() -> [String: MessageTemplate]? {
         if let templateList = Self.memoryCache.getAllTemplates() {
@@ -74,6 +109,31 @@ extension SBUTemplateCacheType {
     }
     
     // MARK: - Single template
+    /// Rendering must not wait for disk I/O. Missing templates are loaded by the view model.
+    func getMemoryTemplate(forKey key: String) -> MessageTemplate? {
+        return Self.memoryCache.get(key: key)
+    }
+
+    /// Restores requested templates without blocking the main thread. Completes on main.
+    func loadTemplates(forKeys keys: [String], completionHandler: @escaping () -> Void) {
+        Thread.executeOnMain {
+            let missingKeys = keys.filter { Self.memoryCache.get(key: $0) == nil }
+            guard !missingKeys.isEmpty else {
+                completionHandler()
+                return
+            }
+            Self.diskCache.getTemplates(forKeys: missingKeys) { templates in
+                Thread.executeOnMain {
+                    // A server response may have populated memory while the disk read was pending.
+                    for template in templates where Self.memoryCache.get(key: template.key) == nil {
+                        Self.memoryCache.set(key: template.key, template: template)
+                    }
+                    completionHandler()
+                }
+            }
+        }
+    }
+
     func save(template: MessageTemplate) {
         self.save(templates: [template])
     }
@@ -89,12 +149,6 @@ extension SBUTemplateCacheType {
             return diskTemplate
         }
         return nil
-    }
-    
-    func getTemplateList(forKeys keys: [String]) -> [String: MessageTemplate]? {
-        let results = keys.compactMap { self.getTemplate(forKey: $0) }
-        guard results.count == keys.count else { return nil }
-        return results.reduce(into: [String: MessageTemplate]()) { $0[$1.key] = $1 }
     }
     
     func removeTemplate(forKey key: String) {
@@ -128,8 +182,7 @@ extension SBUCacheManager {
         // MARK: - Properties
         let fileManager = FileManager.default
         let cacheType: String
-        let diskQueue = DispatchQueue(label: "\(SBUConstant.bundleIdentifier).queue.diskcache.template", qos: .background)
-        var fileSemaphore = DispatchSemaphore(value: 1)
+        let diskQueue = DispatchQueue(label: "\(SBUConstant.bundleIdentifier).queue.diskcache.template")
         
         let lastTokenKey = "sbu_template_list_updated_at"
         
@@ -162,108 +215,131 @@ extension SBUCacheManager {
             return fileManager.fileExists(atPath: self.pathForKey(key))
         }
 
+        /// Reads and decodes one cached file. Must be called on `diskQueue`.
+        private func read(fullPath: URL) -> MessageTemplate? {
+            do {
+                let data = try Data(contentsOf: fullPath)
+                return try JSONDecoder().decode(MessageTemplate.self, from: data)
+            } catch {
+                Log.info(error.localizedDescription)
+            }
+            return nil
+        }
+        
+        /// Blocking read when `needToSync` is true; otherwise the caller must already be on `diskQueue`.
         func get(fullPath: URL, needToSync: Bool = true) -> MessageTemplate? {
-            let template: MessageTemplate? = {
-                do {
-                    let data = try Data(contentsOf: fullPath)
-                    let template = try JSONDecoder().decode(MessageTemplate.self, from: data)
-                    return template
-                } catch {
-                    Log.info(error.localizedDescription)
-                }
-                return nil
-            }()
-            
             if needToSync {
                 return self.diskQueue.sync {
-                    self.fileSemaphore.wait()
-                    defer { self.fileSemaphore.signal() }
-                    
-                    return template
+                    return self.read(fullPath: fullPath)
                 }
             } else {
-                return template
+                return self.read(fullPath: fullPath)
             }
         }
         
         func get(key: String) -> MessageTemplate? {
-            guard cacheExists(key: key) else { return nil }
-            
             let filePath = URL(fileURLWithPath: self.pathForKey(key))
-            return self.get(fullPath: filePath)
-        }
-        
-        func getAllTemplates() -> [String: MessageTemplate]? {
             return self.diskQueue.sync {
-                self.fileSemaphore.wait()
-                defer { self.fileSemaphore.signal() }
-                
-                var templateList: [String: MessageTemplate]?
-                
-                do {
-                    let items = try fileManager.contentsOfDirectory(at: cachePathURL(), includingPropertiesForKeys: nil)
-                    if items.count > 0 {
-                        templateList = [:]
-                    }
-                    for item in items {
-                        if let template = get(fullPath: item, needToSync: false) {
-                            templateList?[template.key] = template
-                        }
-                    }
-                } catch {
-                    Log.info(error.localizedDescription)
-                }
-                
-                return templateList
+                // Existence check inside the queue: writes are async, so a pending write is observed.
+                guard self.cacheExists(key: key) else { return nil }
+                return self.get(fullPath: filePath, needToSync: false)
             }
         }
         
+        /// Reads and decodes every cached template. Must be called on `diskQueue`.
+        private func readAllTemplates() -> [String: MessageTemplate]? {
+            var templateList: [String: MessageTemplate]?
+            
+            do {
+                let items = try fileManager.contentsOfDirectory(at: cachePathURL(), includingPropertiesForKeys: nil)
+                if items.count > 0 {
+                    templateList = [:]
+                }
+                for item in items {
+                    if let template = get(fullPath: item, needToSync: false) {
+                        templateList?[template.key] = template
+                    }
+                }
+            } catch {
+                Log.info(error.localizedDescription)
+            }
+            
+            return templateList
+        }
+        
+        /// Blocking read. Prefer `getAllTemplates(completionHandler:)` on the main thread.
+        func getAllTemplates() -> [String: MessageTemplate]? {
+            return self.diskQueue.sync {
+                return self.readAllTemplates()
+            }
+        }
+        
+        /// Non-blocking read. `completionHandler` is called on `diskQueue`.
+        func getAllTemplates(completionHandler: @escaping ([String: MessageTemplate]?) -> Void) {
+            self.diskQueue.async {
+                completionHandler(self.readAllTemplates())
+            }
+        }
+        
+        /// Reads only the requested files. Completion runs on `diskQueue`.
+        func getTemplates(forKeys keys: [String], completionHandler: @escaping ([MessageTemplate]) -> Void) {
+            diskQueue.async {
+                let templates = keys.compactMap { key -> MessageTemplate? in
+                    guard self.cacheExists(key: key) else { return nil }
+                    return self.read(fullPath: URL(fileURLWithPath: self.pathForKey(key)))
+                }
+                completionHandler(templates)
+            }
+        }
+
         func set(templates: [MessageTemplate]) {
-            for template in templates {
-                let encoder = JSONEncoder()
-                do {
-                    let data = try encoder.encode(template)
-                    self.set(key: template.key, data: data as NSData)
-                } catch {
-                    Log.error("Failed to save template to disk cache: \(error)")
+            // Encoding runs on `diskQueue` too, so the caller thread does no JSON work.
+            diskQueue.async {
+                for template in templates {
+                    do {
+                        let data = try JSONEncoder().encode(template)
+                        self.write(key: template.key, data: data as NSData)
+                    } catch {
+                        Log.error("Failed to save template to disk cache: \(error)")
+                    }
                 }
             }
         }
         
         func set(key: String, data: NSData, completionHandler: SBUCacheCompletionHandler? = nil) {
-            diskQueue.sync {
-                self.fileSemaphore.wait()
-                defer { self.fileSemaphore.signal() }
-                
-                let filePath = URL(fileURLWithPath: self.pathForKey(key))
-                
-                do {
-                    let subPath = filePath.deletingLastPathComponent()
-                    try self.fileManager.createDirectory(
-                        atPath: subPath.path,
-                        withIntermediateDirectories: true,
-                        attributes: nil
-                    )
-                } catch {
-                    Log.error(error.localizedDescription)
-                    DispatchQueue.main.async {
-                        completionHandler?(nil, nil)
-                    }
-                    return
+            // async: the caller (connect flow on the main thread) must not wait for the file write.
+            diskQueue.async {
+                self.write(key: key, data: data, completionHandler: completionHandler)
+            }
+        }
+        
+        /// Writes one file. Must be called on `diskQueue`. `completionHandler` is called on the main thread.
+        private func write(key: String, data: NSData, completionHandler: SBUCacheCompletionHandler? = nil) {
+            let filePath = URL(fileURLWithPath: self.pathForKey(key))
+            
+            do {
+                let subPath = filePath.deletingLastPathComponent()
+                try self.fileManager.createDirectory(
+                    atPath: subPath.path,
+                    withIntermediateDirectories: true,
+                    attributes: nil
+                )
+            } catch {
+                Log.error(error.localizedDescription)
+                Thread.executeOnMain {
+                    completionHandler?(nil, nil)
                 }
-                
-                data.write(to: filePath, atomically: true)
-                DispatchQueue.main.async {
-                    completionHandler?(filePath, data)
-                }
+                return
+            }
+            
+            data.write(to: filePath, atomically: true)
+            Thread.executeOnMain {
+                completionHandler?(filePath, data)
             }
         }
         
         func remove(key: String) {
             diskQueue.sync {
-                self.fileSemaphore.wait()
-                defer { self.fileSemaphore.signal() }
-                
                 do {
                     let path = self.pathForKey(key)
                     let fileManager = self.fileManager
@@ -276,9 +352,6 @@ extension SBUCacheManager {
         
         func removePath() {
             diskQueue.sync {
-                self.fileSemaphore.wait()
-                defer { self.fileSemaphore.signal() }
-                
                 do {
                     let path = self.cachePathURL()
                     let fileManager = self.fileManager
@@ -307,37 +380,50 @@ extension SBUCacheManager {
         }
         
         // MARK: lastTokenKey
+        /// Must be called on `diskQueue`.
+        private func readLastTokenKey() -> String {
+            let cachePathURL = cachePathURL()
+            let filePath = cachePathURL.appendingPathComponent(lastTokenKey)
+            guard let retrievedString = try? String(contentsOf: filePath, encoding: .utf8) else {
+                if let storedValue = UserDefaults.standard.string(forKey: lastTokenKey) {
+                    // for backward
+                    UserDefaults.standard.removeObject(forKey: lastTokenKey)
+                    self.writeLastTokenKey(storedValue)
+                    return storedValue
+                }
+                return ""
+            }
+            return retrievedString
+        }
+        
+        /// Blocking read. Prefer `loadLastTokenKey(completionHandler:)` on the main thread.
         func loadLastTokenKey() -> String {
             return self.diskQueue.sync {
-                self.fileSemaphore.wait()
-                defer { self.fileSemaphore.signal() }
-                
-                let cachePathURL = cachePathURL()
-                let filePath = cachePathURL.appendingPathComponent(lastTokenKey)
-                guard let retrievedString = try? String(contentsOf: filePath, encoding: .utf8) else {
-                    if let storedValue = UserDefaults.standard.string(forKey: lastTokenKey) {
-                        // for backward
-                        UserDefaults.standard.removeObject(forKey: lastTokenKey)
-                        self.saveLastTokenKey(storedValue)
-                        return storedValue
-                    }
-                    return ""
-                }
-                return retrievedString
+                return self.readLastTokenKey()
             }
         }
         
-        func saveLastTokenKey(_ value: String) {
+        /// Non-blocking read. `completionHandler` is called on `diskQueue`.
+        func loadLastTokenKey(completionHandler: @escaping (String) -> Void) {
             self.diskQueue.async {
-                do {
-                    try self.createDirectoryIfNeeded()
-                    let cachePathURL = cachePathURL()
-                    let filePath = cachePathURL.appendingPathComponent(lastTokenKey)
-                    try value.write(to: filePath, atomically: true, encoding: .utf8)
-                } catch {
-                    Log.error("Error writing to file: lastTokenKey value")
-                }
+                completionHandler(self.readLastTokenKey())
             }
+        }
+        
+        /// Writes inline. Must be called on `diskQueue`.
+        private func writeLastTokenKey(_ value: String) {
+            do {
+                try self.createDirectoryIfNeeded()
+                let cachePathURL = cachePathURL()
+                let filePath = cachePathURL.appendingPathComponent(lastTokenKey)
+                try value.write(to: filePath, atomically: true, encoding: .utf8)
+            } catch {
+                Log.error("Error writing to file: lastTokenKey value")
+            }
+        }
+
+        func saveLastTokenKey(_ value: String) {
+            self.diskQueue.async { self.writeLastTokenKey(value) }
         }
         
         // MARK: reset
@@ -350,37 +436,64 @@ extension SBUCacheManager {
 extension SBUCacheManager {
     // MARK: - MemoryCache
     class MemoryCacheForTemplate {
-        var lastToken: String?
-        var templateList: [String: MessageTemplate]?
+        // 셀의 조회(main), 템플릿 응답 저장, 아무 스레드에서나 불리는 공개 초기화 API 가 겹친다.
+        // 사전과 토큰의 읽기, 쓰기, 초기화를 이 잠금 하나로 묶는다.
+        private let lock = NSLock()
+        private var _lastToken: String?
+        private var _templateList: [String: MessageTemplate]?
+        
+        var lastToken: String? {
+            get { self.locked { self._lastToken } }
+            set { self.locked { self._lastToken = newValue } }
+        }
+        
+        var templateList: [String: MessageTemplate]? {
+            get { self.locked { self._templateList } }
+            set { self.locked { self._templateList = newValue } }
+        }
         
         // MARK: - Memory Cache
         func set(templates: [MessageTemplate]) {
-            for template in templates {
-                set(key: template.key, template: template)
+            self.locked {
+                for template in templates {
+                    self.setLocked(key: template.key, template: template)
+                }
             }
         }
         
         func set(key: String, template: MessageTemplate) {
-            if self.templateList == nil { self.templateList = [:] }
-            self.templateList?[key] = template
+            self.locked { self.setLocked(key: key, template: template) }
+        }
+        
+        /// `lock` 을 잡은 채로만 부른다.
+        private func setLocked(key: String, template: MessageTemplate) {
+            if self._templateList == nil { self._templateList = [:] }
+            self._templateList?[key] = template
         }
         
         func get(key: String) -> MessageTemplate? {
-            guard let template = self.templateList?[key] else { return nil }
-            return template as MessageTemplate
+            self.locked { self._templateList?[key] }
         }
         
         func getAllTemplates() -> [String: MessageTemplate]? {
-            return templateList
+            self.locked { self._templateList }
         }
         
         func remove(key: String) {
-            self.templateList?.removeValue(forKey: key)
+            self.locked { _ = self._templateList?.removeValue(forKey: key) }
         }
         
         func resetCache() {
-            self.lastToken = nil
-            self.templateList = nil
+            self.locked {
+                self._lastToken = nil
+                self._templateList = nil
+            }
+        }
+        
+        private func locked<T>(_ work: () -> T) -> T {
+            self.lock.lock()
+            defer { self.lock.unlock() }
+            return work()
         }
     }
 }

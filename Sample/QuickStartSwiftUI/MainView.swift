@@ -61,6 +61,9 @@ enum MainViewItems: String, CaseIterable, Identifiable {
     case open
     case mySettings
     case custom
+    #if SBISSUE_MODE
+    case sbissue
+    #endif
     
     var id: String { self.rawValue }
     var title: String {
@@ -73,6 +76,10 @@ enum MainViewItems: String, CaseIterable, Identifiable {
             "My Settings"
         case .custom:
             "Customized Samples"
+        #if SBISSUE_MODE
+        case .sbissue:
+            "SBISSUE Reproductions"
+        #endif
         }
     }
     
@@ -86,6 +93,10 @@ enum MainViewItems: String, CaseIterable, Identifiable {
             MySettingsView()
         case .custom:
             CustomSampleView()
+        #if SBISSUE_MODE
+        case .sbissue:
+            SBISSUEReproductionListView()
+        #endif
         }
     }
 }

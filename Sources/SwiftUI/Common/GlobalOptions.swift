@@ -21,8 +21,8 @@ public class GlobalOptions {
     /// The default is set to `false`.
     ///
     /// ```
-    /// GlobalOptions.hidesSharedBackgroundForUIBarButtonItem = false // shows liquid glass effect on custom SendbirdSwiftUI navigation bar buttons.
-    /// GlobalOptions.hidesSharedBackgroundForUIBarButtonItem = true // removes liquid glass effect from custom SendbirdSwiftUI navigation bar buttons.
+    /// GlobalOptions.hidesSharedBackgroundForCustomNavBarButton = false // shows liquid glass effect on custom SendbirdSwiftUI navigation bar buttons.
+    /// GlobalOptions.hidesSharedBackgroundForCustomNavBarButton = true // removes liquid glass effect from custom SendbirdSwiftUI navigation bar buttons.
     /// ```
     ///
     /// - Since: 1.1.2

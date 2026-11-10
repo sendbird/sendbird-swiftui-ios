@@ -21,7 +21,7 @@ extension SBUOpenChannelListModule.List {
         switch viewType {
         case .entireContent:
             if let tableViewConverter = self.viewConverter.tableView.entireContent,
-               let openChannels = self.channelList,
+               let openChannels = self.latestChannelList as? [OpenChannel],
                let hostingView = tableViewConverter(.init(channels: openChannels)) {
             
                 let tag = ViewConverter.ViewType.entireContent.tag

@@ -22,7 +22,7 @@ extension SBUUserListModule.List {
         
         switch viewType {
         case .entireContent:
-            let users = self.userList
+            let users = self.latestUserList ?? []
             if let tableViewConverter = self.viewConverterForOpenBannedUser.tableView.entireContent,
                let hostingView = tableViewConverter(
                 .init(
