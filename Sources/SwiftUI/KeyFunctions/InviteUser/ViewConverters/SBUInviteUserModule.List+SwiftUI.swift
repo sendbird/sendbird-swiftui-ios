@@ -24,7 +24,7 @@ extension SBUInviteUserModule.List {
         switch viewType {
         case .entireContent:
             if let tableViewConverter = self.viewConverter.tableView.entireContent,
-               let users = self.userList,
+               let users = self.latestUserList,
                let hostingView = tableViewConverter(
                 .init(
                     parentView: self,
