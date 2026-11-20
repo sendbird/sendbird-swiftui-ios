@@ -1,25 +1,53 @@
 ## Improvements
 
-- Fixed crashes in channel and member lists when the list changed before the list reloaded
-- Fixed crashes when no rows are visible during a huge gap, and when reaction or category lists change before a reload
-- Fixed a data race on the photo library list
-- Fixed a crash when a message template, notification setting, or config cache was reset while cells were reading it
-- Fixed template message cells reloading repeatedly after the template cache was reset
-- Fixed a crash when an animated GIF had a frame that could not be decoded
-- Fixed a crash when a voice message's duration metadata was empty, non-finite, or out of range. Such durations, and negative durations, are now shown as 00:00
-- Fixed a crash when `SBUUserMentionConfiguration.suggestionLimit` was negative or `Int.max`. A negative limit is treated as 0 and `Int.max` as `Int.max - 1` where the limit is used. The stored value is unchanged
-- Fixed a crash when the alert countdown seconds exceeded `Int.max`. The countdown is capped at `Int.max`
-- Fixed a crash when a message template had non-finite or very large margin, padding, spacing, or max child width values, or when `TemplateConfig.defaultChildTemplateWidth` was not finite. The renderer treats non-finite layout values as 0 and clips very large ones. Public model values are unchanged
-- Fixed a crash on launch when the cached UIKit version contained a number too large to compare. Such a version is treated as the oldest version, so the image cache is cleared once
-- Fixed a potential crash caused by logging the full channel when loading or creating a channel
-- Fixed the message thread view layout with Liquid Glass on iOS 26: the gap between the header and the parent message, the parent message being pushed off screen when the keyboard appears, and an empty glass circle on the right side of the header
-- Reduced memory use of GIF thumbnails, video thumbnails, and pending multiple files message previews
-- Reduced main thread work when sending videos
-- Improved performance by skipping log message creation when the log level is disabled
-- Removed debug console output from the message menu and photo picker
+- Fixed a crash in the message input view when the send or voice button view converter is used with `addButton` or `voiceMessageButton` set to `nil`
+- Fixed crashes in the message list, mention suggestion list, and user selection lists when the list changed before the list reloaded. These lists now draw from the list taken at reload time
+- Fixed a crash when reloading a message cell while the row count had changed
+- Fixed a crash when swiping a group channel list row while no cell was visible
+- Fixed a crash when pending messages were changed from several threads at the same time
+- Fixed a crash when opening a channel from the group channel list while the Chat SDK callback queue is not the main queue
+- Fixed a crash when message list updates and view callbacks ran on a background thread while the Chat SDK callback queue is not the main queue
+- Fixed a crash when the channel header, message input, or list was updated from a background thread after a channel change event in group, open, and thread channel views
+- Fixed a crash when a received message, an updated message, or a channel change event read the scroll position or updated the unread message info view from a background thread in group, open, and thread channel views
+- Fixed a crash when message list changes, scroll position reads, and view updates ran on a background thread after message history, changelog, send, edit, reaction, mark-as-unread, or file upload results arrived while the Chat SDK callback queue is not the main queue
+- Fixed a possible crash when moving to a newly created channel touched views off the main thread while the Chat SDK callback queue is not the main queue
+- Fixed a possible crash when notification channel and channel settings views closed off the main thread while the Chat SDK callback queue is not the main queue
+- Fixed a possible crash when notification channel views updated the title, category filter, error view, and notification list off the main thread while the Chat SDK callback queue is not the main queue
+- Fixed a possible crash when `SBUGlobals.currentUser` was replaced during connect, user-info update or disconnect while another thread read it
+- Fixed a crash when picking multiple files where one file exceeded the upload size limit
+- Fixed a crash in the reaction user list when another user's reaction was removed while a row was being drawn
+- Fixed a crash in the open channel message cache when change logs and a cache clear ran at the same time on a concurrent callback queue
+- Fixed a crash when drawing a message whose mention template had a combining mark right after a mention
+- Fixed a crash when picking a suggested user after the input was cleared while members were loading
+- Fixed a crash in `SBUMentionManager.generateTemplate(with:mentions:)` when `mentions` is longer than the mentions the manager holds
+- Fixed a crash or a wrong row removal when the same message ID or channel URL is passed twice to `deleteMessagesInList(messageIds:needReload:)` or `deleteChannels(channelURLs:needReload:)`
+- Fixed a crash when a carousel or cascade child template had a body without items
+- Fixed a crash when a label returned by a custom message template data source from `templateView(_:viewForPartialItem:with:)` was laid out again
+- Fixed member lists resetting, switching to another channel, or closing when an event arrived from a different channel
+- Fixed an issue where attachments picked after a video stopped being sent when iOS could not provide the video file
+- Fixed an issue where picking multiple files that included an item that is neither an image nor a GIF stopped later attachments from being sent
+- Fixed a data race when multiple picked images or GIFs finished loading at the same time
+- Fixed an issue where an attachment that finished loading at the same moment the attachment queue started it could stop later attachments from being sent
+- Fixed an issue where a file message whose upload was canceled stayed in the message list as sending
+- Fixed the message thread view loading the parent message and the thread message list twice when the connection was closed
+- Fixed an issue where the parent message in the message thread view went back to the text before the edit when the thread has no replies
+- Fixed an issue where the open channel and message thread views stopped loading next messages after a message changelog spanning multiple pages
+- Fixed a memory leak where the message input view stayed in memory when a custom input top view kept its configuration
+- Fixed a memory leak where message template views, carousel views, and notification cells stayed in memory after leaving the view
+- Fixed message template images being redrawn on every layout
+- Fixed an issue where the new message button was covered by the message input in liquid glass mode
+- Fixed the voice message progress bar when the message has no duration
+- Fixed high memory use when opening, saving, or attaching large videos and documents
+- `PushPayloadManager.save(userInfo:)` now updates its published values on the main thread
+- Image and file downloads now reuse one URLSession instead of creating a new one per request
+- Reduced memory use of large animated GIFs and of image previews in pending and failed messages
+- Reduced main thread time when showing or sending large animated GIFs from the cache
+- Improved message template layout performance: text in a row box or a fixed-height column box no longer adds a new constraint on every layout pass
+- Improved the performance of markdown link parsing for long messages that contain many unclosed links
+- Improved the performance of the vertical suggested reply view by showing up to 20 options
 
 ## Changes
 
 - Updated dependency SDK version to the latest stable release
-    - SendbirdChatSDK: 4.39.13
-    - SendbirdMessageTemplate: 3.36.4
+    - SendbirdChatSDK: 4.39.15
+    - SendbirdMessageTemplate: 3.36.5

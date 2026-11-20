@@ -28,7 +28,7 @@ extension SBUOpenChannelModule.List {
             if let tableViewConverter = self.viewConverter.tableView.entireContent,
                let hostingView = tableViewConverter(.init(
                 channel: channel,
-                messages: self.fullMessageList
+                messages: self.latestFullMessageList
                )) {
                 // remove UITableView
                 self.tableView.removeFromSuperview()

@@ -185,7 +185,9 @@ extension SBUMessageInputView {
                 oldHostingView?.removeFromSuperview()
                 
                 hostingView.tag = tag
-                self.inputHStackView.insertArrangedSubview(hostingView, at: 4)
+                // 고정 위치가 아니라 이웃 뷰 기준으로 넣는다 (음성 버튼 뷰 바로 앞).
+                let index = self.sendButtonConverterIndex(voiceTag: nil)
+                self.inputHStackView.insertArrangedSubview(hostingView, at: index)
                 
                 // setupLayout
                 

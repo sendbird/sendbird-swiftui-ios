@@ -241,7 +241,9 @@ extension SBUMessageInputView {
                 oldHostingView?.removeFromSuperview()
                 
                 hostingView.tag = tag    
-                self.inputHStackView.insertArrangedSubview(hostingView, at: 4)
+                // 고정 위치가 아니라 이웃 뷰 기준으로 넣는다 (음성 버튼 뷰 바로 앞).
+                let index = self.sendButtonConverterIndex(voiceTag: RightViewConverter.ViewType.voiceButton.tag)
+                self.inputHStackView.insertArrangedSubview(hostingView, at: index)
                 
                 // setupLayout
                 
@@ -277,7 +279,9 @@ extension SBUMessageInputView {
                 oldHostingView?.removeFromSuperview()
                 
                 hostingView.tag = tag    
-                self.inputHStackView.insertArrangedSubview(hostingView, at: 5)
+                // 고정 위치가 아니라 이웃 뷰 기준으로 넣는다 (전송 버튼 뷰 바로 뒤).
+                let index = self.voiceButtonConverterIndex(sendTag: RightViewConverter.ViewType.sendButton.tag)
+                self.inputHStackView.insertArrangedSubview(hostingView, at: index)
                 
                 // setupLayout
                 
@@ -319,5 +323,31 @@ extension SBUMessageInputView {
         if let alpha {
             hostingView.alpha = alpha
         }
+    }
+
+    // 전송, 음성 버튼 hosting view 를 넣을 자리.
+    // 고정 위치(4, 5)로 넣으면 고객이 추가 버튼을 nil 로 둔 입력창에서 범위를 넘거나,
+    // 전송 버튼만 다시 적용할 때(동결 상태 등) 음성 버튼 뒤로 밀린다.
+    // 그래서 이웃 뷰 기준으로 넣는다. 이웃이 없을 때만 고정 위치를 스택 길이 안으로 줄여 쓴다.
+
+    /// 전송 버튼 자리: 음성 버튼 뷰(UIKit 버튼 또는 음성 hosting view) 바로 앞.
+    func sendButtonConverterIndex(voiceTag: Int?) -> Int {
+        let views = self.inputHStackView.arrangedSubviews
+        let voiceIndex = views.firstIndex { view in
+            if let voiceButton = self.voiceMessageButton, view === voiceButton { return true }
+            if let voiceTag, view.tag == voiceTag { return true }
+            return false
+        }
+        return voiceIndex ?? min(4, views.count)
+    }
+
+    /// 음성 버튼 자리: 전송 버튼 뷰(UIKit 버튼 또는 전송 hosting view) 바로 뒤.
+    func voiceButtonConverterIndex(sendTag: Int) -> Int {
+        let views = self.inputHStackView.arrangedSubviews
+        let sendIndex = views.firstIndex { view in
+            if let sendButton = self.sendButton, view === sendButton { return true }
+            return view.tag == sendTag
+        }
+        return sendIndex.map { $0 + 1 } ?? min(5, views.count)
     }
 }

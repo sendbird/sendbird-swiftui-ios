@@ -51,9 +51,11 @@ extension SendbirdUI {
             if
                 let sendbirdPayload = userInfo["sendbird"] as? [AnyHashable: Any],
                 let channel = sendbirdPayload["channel"] as? [AnyHashable: Any] {
-                shared.payload = sendbirdPayload
-                shared.channel = channel
-                shared.channelURL = channel["channel_url"] as? String
+                runOnMainSync {
+                    shared.payload = sendbirdPayload
+                    shared.channel = channel
+                    shared.channelURL = channel["channel_url"] as? String
+                }
             } else {
                 Log.error("Sendbird payload not found")
             }
@@ -66,9 +68,20 @@ extension SendbirdUI {
         }
         
         func clear() {
-            payload = [:]
-            channel = [:]
-            channelURL = nil
+            Self.runOnMainSync {
+                self.payload = [:]
+                self.channel = [:]
+                self.channelURL = nil
+            }
+        }
+        
+        // published 값은 main에서만 바꾼다. 호출이 끝나면 값이 이미 바뀌어 있도록 동기로 돈다.
+        private static func runOnMainSync(_ work: () -> Void) {
+            if Thread.isMainThread {
+                work()
+            } else {
+                DispatchQueue.main.sync(execute: work)
+            }
         }
     }
 }

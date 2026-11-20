@@ -28,7 +28,7 @@ extension SBUMessageThreadModule.List {
             let config = ViewConverter.TableView.ViewConfig(
                 channel: channel,
                 parentMessage: parentMessage,
-                messages: self.fullMessageList
+                messages: self.latestFullMessageList
             )
             guard let hostingView = self.viewConverter.tableView.entireContent?(config) else { return false }
                 

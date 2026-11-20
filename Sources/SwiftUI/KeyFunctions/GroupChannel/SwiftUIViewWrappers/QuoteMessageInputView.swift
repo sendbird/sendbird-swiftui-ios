@@ -39,6 +39,7 @@ extension QuoteMessageInputView {
     /// - Since: 1.1.0
     public struct Configuration {
         var config: SBUQuoteMessageInputViewParams?
-        var delegate: SBUQuoteMessageInputViewDelegate?
+        // delegate는 이 설정을 담은 hosting view의 상위 입력창이라, 강하게 잡으면 입력창이 해제되지 않습니다.
+        weak var delegate: SBUQuoteMessageInputViewDelegate?
     }
 }
